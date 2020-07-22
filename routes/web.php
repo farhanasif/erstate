@@ -72,3 +72,11 @@ Route::get('/vendor/all-vendor', 'VendorController@allVendor')->name('allVendor'
 Route::get('/vendor/edit-vendor/{id}', 'VendorController@editVendor')->name('editVendor');
 Route::post('/vendor/update-vendor/{id}', 'VendorController@updateVendor')->name('updateVendor');
 Route::get('/vendor/delete-vendor/{id}', 'VendorController@deleteVendor')->name('deleteVendor');
+
+// ALL SALES ROUTES
+Route::get('/sales/add-sales', 'SalesController@showAddSales')->name('showAddSales');
+Route::post('/sales/store-sales', 'SalesController@storeSales')->name('storeSales');
+Route::get('/sales/all-sales', 'SalesController@allSales')->name('allSales');
+Route::get('/sales/edit-sales/{id}', 'SalesController@editSales')->name('editSales');
+Route::post('/sales/update-sales/{id}', 'SalesController@updateSales')->name('updateSales');
+Route::get('/sales/delete-sales/{id}', 'SalesController@deleteSales')->name('deleteSales');

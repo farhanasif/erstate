@@ -37,7 +37,7 @@
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $vendor->name }}</td>
-                <td>{{ $vendor->position }}</td>
+                <td>{{ $vendor->company_name }}</td>
                 <td>{{ $vendor->address }}</td>
                 <td>{{ $vendor->phone }}</td>
                 <td>{{ $vendor->email }}</td>

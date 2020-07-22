@@ -24,7 +24,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="{{ route('dashboard') }}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -177,7 +177,35 @@
 
             </ul>
           </li>
-          {{-- //end Employee menu --}}
+          {{-- //end Vendor menu --}}
+
+           {{-- // Sales menu  --}}
+           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Sales
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('allSales') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Sales</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('showAddSales') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create Sales</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          {{-- //end Sales menu --}}
 
         </ul>
       </nav>
