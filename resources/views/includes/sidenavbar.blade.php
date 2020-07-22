@@ -66,6 +66,35 @@
 
             </ul>
           </li>
+
+          {{-- // product menu  --}}
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Product
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('allProduct') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Product</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('showAddProduct') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create Product</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          {{-- //end product menu --}}
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -22,4 +22,8 @@
 <!-- PAGE SCRIPTS -->
 <script src="{{ asset('assets/dist/js/pages/dashboard2.js') }}"></script>
 
+<!-- DataTables -->
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
+
 @yield('custom_js')
