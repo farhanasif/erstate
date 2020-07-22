@@ -29,31 +29,31 @@ class SalesController extends Controller
     public function storeSales(Request $request)
     {
 // dd($request->all());
-//         $this->validate($request,[
-//             'customer_name' => 'required',
-//             'project_name' => 'required',
-//             'product_name' => 'required',
-//             'employee_name' => 'required',
-//             'customer_name' => 'required',
-//             'description' => 'required',
-//             'amount' => 'required',
-//             'amount_paid' => 'required',
-//             'amount_due' => 'required',
-//             'sales_date' => 'required',
-//         ]);
+        $this->validate($request,[
+            'customer_name' => 'required',
+            'project_name' => 'required',
+            'product_name' => 'required',
+            'employee_name' => 'required',
+            'customer_name' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'amount_paid' => 'required',
+            'amount_due' => 'required',
+            'sales_date' => 'required',
+        ]);
 
-        $employees = new Sale;
-        $employees->customer_name = $request->customer_name;
-        $employees->project_id = $request->project_name;
-        $employees->product_id = $request->product_name;
-        $employees->employee_id = $request->employee_name;
-        $employees->customer_id = $request->customer_name;
-        $employees->description = $request->description;
-        $employees->amount = $request->amount;
-        $employees->amount_paid = $request->amount_paid;
-        $employees->amount_due = $request->amount_due;
-        $employees->sales_date = $request->sales_date;
-        $employees->save(); 
+        $sales = new Sale;
+        $sales->customer_name = $request->customer_name;
+        $sales->project_id = $request->project_name;
+        $sales->product_id = $request->product_name;
+        $sales->employee_id = $request->employee_name;
+        $sales->customer_id = $request->customer_name;
+        $sales->description = $request->description;
+        $sales->amount = $request->amount;
+        $sales->amount_paid = $request->amount_paid;
+        $sales->amount_due = $request->amount_due;
+        $sales->sales_date = $request->sales_date;
+        $sales->save(); 
 
         return redirect()->back()->with('success','Sales Added Successfully!');
     }
@@ -62,13 +62,13 @@ class SalesController extends Controller
     {        
         $data['projects'] = Project::all();
         $data['products'] = Product::all();
-        $data['employees'] = Product::all();
+        $data['employees'] = Employee::all();
         $data['customers'] = Customer::all();
-        $data['vendor'] = Sale::find($id);
+        $data['sales'] = Sale::find($id);
          return view('sales.edit_sales',$data);
     }
 
-    public function updateSale(Request $request, $id)
+    public function updateSales(Request $request, $id)
     {
         $this->validate($request,[
             'customer_name' => 'required',
@@ -83,18 +83,18 @@ class SalesController extends Controller
             'sales_date' => 'required',
         ]);
 
-        $employees = Sale::find($id);
-        $employees->customer_id = $request->customer_name;
-        $employees->project_id = $request->project_name;
-        $employees->product_id = $request->product_name;
-        $employees->employee_id = $request->employee_name;
-        $employees->customer_id = $request->emacustomer_nameil;
-        $employees->description = $request->description;
-        $employees->amount = $request->amount;
-        $employees->amount_paid = $request->amount_paid;
-        $employees->amount_due = $request->amount_due;
-        $employees->sales_date = $request->sales_date;;
-        $employees->save(); 
+        $sales = Sale::find($id);
+        $sales->customer_name = $request->customer_name;
+        $sales->project_id = $request->project_name;
+        $sales->product_id = $request->product_name;
+        $sales->employee_id = $request->employee_name;
+        $sales->customer_id = $request->customer_name;
+        $sales->description = $request->description;
+        $sales->amount = $request->amount;
+        $sales->amount_paid = $request->amount_paid;
+        $sales->amount_due = $request->amount_due;
+        $sales->sales_date = $request->sales_date;
+        $sales->save(); 
 
         return redirect()->route('allSales')->with('success','Sales Updated Successfully!');
     }
