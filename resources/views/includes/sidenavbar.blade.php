@@ -95,6 +95,90 @@
           </li>
           {{-- //end product menu --}}
 
+          {{-- // customer menu  --}}
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Customer
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('allCustomer') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Customer</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('showAddCustomer') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create Customer</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          {{-- //end customer menu --}}
+
+          {{-- // Employee menu  --}}
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Employee
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('allEmployee') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Employee</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('showAddEmployee') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create Employee</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          {{-- //end Employee menu --}}
+
+           {{-- // Vendor menu  --}}
+           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Vendor
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('allVendor') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Vendor</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('showAddVendor') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create Vendor</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          {{-- //end Employee menu --}}
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
