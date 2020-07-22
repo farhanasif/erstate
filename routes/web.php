@@ -57,18 +57,18 @@ Route::post('/customer/update-customer/{id}', 'CustomerController@updateCustomer
 Route::get('/customer/delete-customer/{id}', 'CustomerController@deleteCustomer')->name('deleteCustomer');
 
 // ALL Employee ROUTES
-Route::get('/employee/add-employee', 'CustomerController@showAddEmployee')->name('showAddEmployee');
-Route::post('/employee/store-employee', 'CustomerController@storeEmployee')->name('storeEmployee');
-Route::get('/employee/all-employee', 'CustomerController@allEmployee')->name('allEmployee');
-Route::get('/employee/edit-employee/{id}', 'CustomerController@editEmployee')->name('editEmployee');
-Route::post('/employee/update-employee/{id}', 'CustomerController@updateEmployee')->name('updateEmployee');
-Route::get('/employee/delete-employee/{id}', 'CustomerController@deleteEmployee')->name('deleteEmployee');
+Route::get('/employee/add-employee', 'EmployeeController@showAddEmployee')->name('showAddEmployee');
+Route::post('/employee/store-employee', 'EmployeeController@storeEmployee')->name('storeEmployee');
+Route::get('/employee/all-employee', 'EmployeeController@allEmployee')->name('allEmployee');
+Route::get('/employee/edit-employee/{id}', 'EmployeeController@editEmployee')->name('editEmployee');
+Route::post('/employee/update-employee/{id}', 'EmployeeController@updateEmployee')->name('updateEmployee');
+Route::get('/employee/delete-employee/{id}', 'EmployeeController@deleteEmployee')->name('deleteEmployee');
 
 
 // ALL Vendor ROUTES
-Route::get('/vendor/add-vendor', 'CustomerController@showAddVendor')->name('showAddVendor');
-Route::post('/vendor/store-vendor', 'CustomerController@storeVendor')->name('storeVendor');
-Route::get('/vendor/all-vendor', 'CustomerController@allVendor')->name('allVendor');
-Route::get('/vendor/edit-vendor/{id}', 'CustomerController@editVendor')->name('editVendor');
-Route::post('/vendor/update-vendor/{id}', 'CustomerController@updateVendor')->name('updateVendor');
-Route::get('/vendor/delete-vendor/{id}', 'CustomerController@deleteVendor')->name('deleteVendor');
+Route::get('/vendor/add-vendor', 'VendorController@showAddVendor')->name('showAddVendor');
+Route::post('/vendor/store-vendor', 'VendorController@storeVendor')->name('storeVendor');
+Route::get('/vendor/all-vendor', 'VendorController@allVendor')->name('allVendor');
+Route::get('/vendor/edit-vendor/{id}', 'VendorController@editVendor')->name('editVendor');
+Route::post('/vendor/update-vendor/{id}', 'VendorController@updateVendor')->name('updateVendor');
+Route::get('/vendor/delete-vendor/{id}', 'VendorController@deleteVendor')->name('deleteVendor');
