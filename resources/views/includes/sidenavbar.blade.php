@@ -372,14 +372,14 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('allCustomer') }}" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon text-blue-grey "></i>
                 <p>All Bank Cash</p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="{{ route('showAddCustomer') }}" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon text-blue-grey "></i>
                 <p>Create Bank Cash</p>
               </a>
