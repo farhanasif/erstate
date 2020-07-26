@@ -1,8 +1,8 @@
 
 @extends('master')
 
-@section('dashboard-title', 'Add Sales Information')
-@section('breadcrumb-title', 'Add Sales Information')
+@section('dashboard-title', 'Edit Sell Information')
+@section('breadcrumb-title', 'Edit Sell Information')
 
 @section('content')
 
@@ -11,7 +11,7 @@
     <div class="col-md-10">
         <div class="card card-success card-outline">
             <div class="card-header">
-              <h3 class="card-title">Add Sales Information</h3>
+              <h3 class="card-title">Edit Sell Information</h3>
             </div>
     
             @include('message')
@@ -87,7 +87,7 @@
                             <label  class="col-form-label col-md-3 col-sm-3 label-align"> Customer Name</label>
                             <div class="col-md-8 col-sm-3 ">
                               {{-- <input type="text" name="customer_name" class="form-control" placeholder="Customer Name"> --}}
-                              <select name="customer_name" id="" class="form-control">
+                              <select name="customer_id" id="" class="form-control">
                                 <option value="">--select--</option>
                                 @foreach ($customers as $customer)
                                     <option value="{{ $customer->id }}">{{ $customer->name }}</option>
