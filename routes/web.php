@@ -80,3 +80,27 @@ Route::get('/sales/all-sales', 'SalesController@allSales')->name('allSales');
 Route::get('/sales/edit-sales/{id}', 'SalesController@editSales')->name('editSales');
 Route::post('/sales/update-sales/{id}', 'SalesController@updateSales')->name('updateSales');
 Route::get('/sales/delete-sales/{id}', 'SalesController@deleteSales')->name('deleteSales');
+
+// ALL item ROUTES
+Route::get('/item/add-item', 'ItemController@showAddItem')->name('showAddItem');
+Route::post('/item/store-item', 'ItemController@storeItem')->name('storeItem');
+Route::get('/item/all-item', 'ItemController@allItem')->name('allItem');
+Route::get('/item/edit-item/{id}', 'ItemController@editItem')->name('editItem');
+Route::post('/item/update-item/{id}', 'ItemController@updateItem')->name('updateItem');
+Route::get('/item/delete-item/{id}', 'ItemController@deleteItem')->name('deleteItem');
+
+// ALL requisition ROUTES
+Route::get('/requisition/add-requisition', 'RequisitionController@showAddRequisition')->name('showAddRequisition');
+Route::post('/requisition/store-requisition', 'RequisitionController@storeRequisition')->name('storeRequisition');
+Route::get('/requisition/all-requisition', 'RequisitionController@allRequisition')->name('allRequisition');
+Route::get('/requisition/edit-requisition/{id}', 'RequisitionController@editRequisition')->name('editRequisition');
+Route::post('/requisition/update-requisition/{id}', 'RequisitionController@updateRequisition')->name('updateRequisition');
+Route::get('/requisition/delete-requisition/{id}', 'RequisitionController@deleteRequisition')->name('deleteRequisition');
+
+// ALL requisition details ROUTES
+Route::get('/requisition-details/add-requisition-details', 'RequisitionDetailsController@showAddRequisitionDetails')->name('showAddRequisitionDetails');
+Route::post('/requisition-details/store-requisition-details', 'RequisitionDetailsController@storeRequisitionDetails')->name('storeRequisitionDetails');
+Route::get('/requisition-details/all-requisition-details', 'RequisitionDetailsController@allRequisitionDetails')->name('allRequisitionDetails');
+Route::get('/requisition-details/edit-requisition-details/{id}', 'RequisitionDetailsController@editRequisitionDetails')->name('editRequisitionDetails');
+Route::post('/requisition-details/update-requisition-details/{id}', 'RequisitionDetailsController@updateRequisitionDetails')->name('updateRequisitionDetails');
+Route::get('/requisition-details/delete-requisition-details/{id}', 'RequisitionDetailsController@deleteRequisitionDetails')->name('deleteRequisitionDetails');

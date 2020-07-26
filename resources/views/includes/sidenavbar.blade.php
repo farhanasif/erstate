@@ -85,33 +85,61 @@
           </li>
           {{-- //end product menu --}}
 
-              {{-- // Sell menu  --}}
-              <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-dolly text-green"></i>
-                <p>
-                  Sell
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('allSales') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon text-green"></i>
-                    <p>All Sell</p>
-                  </a>
-                </li>
-  
-                <li class="nav-item">
-                  <a href="{{ route('showAddSales') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon text-green"></i>
-                    <p>Create Sell</p>
-                  </a>
-                </li>
-  
-              </ul>
-            </li>
-            {{-- //end Sell menu --}}
+            {{-- // Sell menu  --}}
+            <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-dolly text-green"></i>
+              <p>
+                Sell
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('allSales') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon text-green"></i>
+                  <p>All Sell</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('showAddSales') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon text-green"></i>
+                  <p>Create Sell</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          {{-- //end Sell menu --}}
+
+          {{-- // Item menu  --}}
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-dolly text-pink"></i>
+              <p>
+                Item
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('allItem') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon text-pink"></i>
+                  <p>All Item</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('showAddItem') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon text-pink"></i>
+                  <p>Create Item</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          {{-- //end Item menu --}}
 
             {{-- // Purchase menu  --}}
             <li class="nav-item has-treeview">
@@ -133,15 +161,39 @@
                   </a>
                   <ul class="nav nav-treeview" style="display: none;">
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{ route('allRequisition') }}" class="nav-link">
                         <i class="far fa-dot-circle nav-icon text-danger"></i>
                         <p> All Requisition</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{ route('showAddRequisition') }}" class="nav-link">
                         <i class="far fa-dot-circle nav-icon text-danger"></i>
                         <p>create Requisition</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon text-danger"></i>
+                    <p>
+                      Requisition Details
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                      <a href="{{ route('allRequisitionDetails') }}" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon text-danger"></i>
+                        <p> All Requisition Details</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('showAddRequisitionDetails') }}" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon text-danger"></i>
+                        <p>create Requisition Details</p>
                       </a>
                     </li>
                   </ul>

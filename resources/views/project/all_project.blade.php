@@ -45,9 +45,9 @@
                 <td>{{ $project->land_area }}</td>
                 <td>{{ date('j F, Y', strtotime($project->launching_date)) }}</td>
                 <td>{{ date('j F, Y', strtotime($project->hand_over_date)) }}</td>
-                <td>
-                    <a href="{{ route('editProject',$project->id) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
-                    <a href="{{ route('deleteProject',$project->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                <td class="row">
+                    <a href="{{ route('editProject',$project->id) }}" class="btn btn-warning row"><i class="far fa-edit"></i></a>
+                    <a href="{{ route('deleteProject',$project->id) }}" class="btn btn-danger row ml-2"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
               @endforeach

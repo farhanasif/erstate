@@ -19,7 +19,7 @@
             <div class="card-body">
               <!-- /.card -->
                 <!-- Horizontal Form -->
-               <form class="form-horizontal form-label-left" action="{{route('storeProduct',$product->id)}}" method="post" enctype="multipart/form-data">
+               <form class="form-horizontal form-label-left" action="{{route('updateProduct',$product->id)}}" method="post" enctype="multipart/form-data">
                  @csrf
     
                    <div class="row">

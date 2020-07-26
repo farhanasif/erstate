@@ -57,9 +57,9 @@
                 <td>{{ $product->refund_additional_work_charge }}</td>
                 <td>{{ $product->net_total }}</td>
                 <td>{{ $product->description }}</td>
-                <td>
-                    <a href="{{ route('editProduct',$product->id) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
-                    <a href="{{ route('deleteProduct',$product->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                <td class="row">
+                    <a href="{{ route('editProduct',$product->id) }}" class="btn btn-warning row"><i class="far fa-edit"></i></a>
+                    <a href="{{ route('deleteProduct',$product->id) }}" class="btn btn-danger row ml-2"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
               @endforeach
