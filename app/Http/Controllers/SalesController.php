@@ -8,6 +8,7 @@ use App\Project;
 use App\Product;
 use App\Employee;
 use App\Customer;
+use Illuminate\Support\Facades\DB;
 
 class SalesController extends Controller
 {
@@ -22,8 +23,21 @@ class SalesController extends Controller
 
     public function allSales()
     {
-        $sales = Sale::all();
-        return view('sales.all_sales', compact('sales'));
+        $data['sales'] = Sale::all();
+
+        // $data['salesInformations'] = DB::select(
+        //     "SELECT sales.*,
+        // projects.id AS project_id, (projects.name) AS project_name , (projects.id) AS project_id, (projects.name) AS project_name,
+        //  (organizations.id) AS organization_id, organizations.organization_name,
+        //  thana.id AS thana_id, (thana.name) AS thana_name
+        //  FROM donation_information
+        //  LEFT JOIN districts ON donation_information.district_id = districts.id
+        //  LEFT JOIN projects ON donation_information.project_id = projects.id
+        //  LEFT JOIN organizations ON donation_information.organization_id = organizations.id
+        //  LEFT JOIN thana ON donation_information.thana_id = thana.id WHERE donation_information.organization_id = $org_id"
+        //      );
+
+        return view('sales.all_sales',$data);
     }
 
     public function storeSales(Request $request)
@@ -47,7 +61,7 @@ class SalesController extends Controller
         $sales->project_id = $request->project_name;
         $sales->product_id = $request->product_name;
         $sales->employee_id = $request->employee_name;
-        $sales->customer_id = $request->customer_name;
+        $sales->customer_id = $request->customer_id;
         $sales->description = $request->description;
         $sales->amount = $request->amount;
         $sales->amount_paid = $request->amount_paid;
