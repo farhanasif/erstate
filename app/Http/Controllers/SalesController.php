@@ -23,19 +23,20 @@ class SalesController extends Controller
 
     public function allSales()
     {
-        $data['sales'] = Sale::all();
+        // $data['sales'] = Sale::all();
 
-        // $data['salesInformations'] = DB::select(
-        //     "SELECT sales.*,
-        // projects.id AS project_id, (projects.name) AS project_name , (projects.id) AS project_id, (projects.name) AS project_name,
-        //  (organizations.id) AS organization_id, organizations.organization_name,
-        //  thana.id AS thana_id, (thana.name) AS thana_name
-        //  FROM donation_information
-        //  LEFT JOIN districts ON donation_information.district_id = districts.id
-        //  LEFT JOIN projects ON donation_information.project_id = projects.id
-        //  LEFT JOIN organizations ON donation_information.organization_id = organizations.id
-        //  LEFT JOIN thana ON donation_information.thana_id = thana.id WHERE donation_information.organization_id = $org_id"
-        //      );
+        $data['salesInformations'] = DB::select(
+            "SELECT sales.*,
+        projects.id AS project_id, (projects.name) AS project_name , 
+        (employees.id) AS employee_id, (employees.name) AS employee_name,
+         (products.id) AS product_id,
+         customers.id AS customer_id, (customers.name) AS customer_name
+         FROM sales
+         LEFT JOIN employees ON sales.employee_id = employees.id
+         LEFT JOIN projects ON sales.project_id = projects.id
+         LEFT JOIN products ON sales.product_id = products.id
+         LEFT JOIN customers ON sales.customer_id = customers.id"
+             );
 
         return view('sales.all_sales',$data);
     }
