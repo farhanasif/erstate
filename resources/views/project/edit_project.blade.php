@@ -16,7 +16,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('storeItem') }}" method="POST">
+        <form action="{{ route('updateProject',$project->id) }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
