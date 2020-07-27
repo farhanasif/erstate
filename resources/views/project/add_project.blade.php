@@ -17,7 +17,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('storeItem') }}" method="POST">
+        <form action="{{ route('storeProject') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -53,10 +53,10 @@
                   <div class="col-md-6">
                     <div class="form-group">
                         <label>Facing</label>
-                            <input type="text" name="facing" class="form-control" placeholder="Facing">
-                             @if($errors->has('facing'))
-                                <strong class="text-danger">{{ $errors->first('facing') }}</strong>
-                             @endif
+                        <input type="text" name="facing" class="form-control" placeholder="Facing">
+                        @if($errors->has('facing'))
+                          <strong class="text-danger">{{ $errors->first('facing') }}</strong>
+                        @endif
                     </div>
                 </div>
 
