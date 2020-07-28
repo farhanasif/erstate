@@ -11,12 +11,12 @@
       <!-- SELECT2 EXAMPLE -->
       <div class="card card-default">
         <div class="card-header bg-success">
-          <h3 class="card-title">Edit Item Information</h3>
+          <h3 class="card-title">Edit Project Information</h3>
         </div>
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('storeItem') }}" method="POST">
+        <form action="{{ route('updateProject',$project->id) }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -103,7 +103,7 @@
                 <!-- /.row -->
               </div>
               <div class="card-footer">
-                 <button type="submit" class="btn btn-success ">Submit</button>
+                 <button type="submit" class="btn btn-success ">Update</button>
                  <a href="{{ route('allProject') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>

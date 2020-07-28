@@ -1,8 +1,8 @@
 
 @extends('master')
 
-@section('dashboard-title', ' All Project Information')
-@section('breadcrumb-title', 'All Project Information')
+@section('dashboard-title', ' All Product Information')
+@section('breadcrumb-title', 'All Product Information')
 
 @section('content')
 
@@ -10,8 +10,8 @@
 
   <div class="card card-success card-outline">
     <div class="card-header">
-        <h3 class="card-title">All Project Information</h3>
-        <a href="{{route('showAddProduct')}}" class="btn btn-success float-sm-right"><i class="fas fa-plus"></i> Add Project</a>
+        <h3 class="card-title">All Product Information</h3>
+        <a href="{{route('showAddProduct')}}" class="btn btn-success float-sm-right"><i class="fas fa-plus"></i> Add Product</a>
 
         @include('message')
 
@@ -40,10 +40,10 @@
             </tr>
           </thead>
           <tbody>
-              @foreach ($products as $product)
+              @foreach ($productsInformations as $product)
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $product->project_id }}</td>
+                <td>{{ $product->project_name }}</td>
                 <td>{{ $product->flat_type }}</td>
                 <td>{{ $product->floor_number }}</td>
                 <td>{{ $product->flat_size }}</td>

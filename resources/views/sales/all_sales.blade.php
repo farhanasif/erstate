@@ -35,14 +35,14 @@
             </tr>
           </thead>
           <tbody>
-              @foreach ($sales as $sale)
+              @foreach ($salesInformations as $sale)
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $sale->customer_name }}</td>
-                <td>{{ $sale->project_id }}</td>
+                <td>{{ $sale->project_name }}</td>
                 <td>{{ $sale->product_id }}</td>
-                <td>{{ $sale->employee_id }}</td>
-                <td>{{ $sale->customer_id }}</td>
+                <td>{{ $sale->employee_name }}</td>
+                <td>{{ $sale->customer_name }}</td>
                 <td>{{ $sale->description }}</td>
                 <td>{{ $sale->amount }}</td>
                 <td>{{ $sale->amount_paid }}</td>

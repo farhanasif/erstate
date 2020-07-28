@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Project;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -16,8 +17,13 @@ class ProductController extends Controller
 
     public function allProduct()
     {
-        $products = Product::all();
-        return view('product.all_product', compact('products'));
+        // $data['products'] = Product::all();
+
+        $data['productsInformations'] = DB::select("SELECT products.*, projects.id AS project_id, (projects.name) AS project_name
+            FROM products
+            LEFT JOIN projects ON products.project_id = projects.id");
+
+        return view('product.all_product', $data);
     }
 
     public function storeProduct(Request $request)
@@ -42,12 +48,12 @@ class ProductController extends Controller
             'description' => 'required',
         ]);
         
-        $fileName = time().'.'.$request->file_attached->extension();  
+        $fileName = time().'.'.$request->file_attached->getClientOriginalName();  
         // // dd($fileName);
         // $file_attached = $request->file_attached->move('uploads', $fileName);
 
         $directory = 'uploads/';
-        $file_attached =  $request->file_attached->move(public_path().$directory, $fileName);
+        $file_attached =  $request->file_attached->move($directory, $fileName);
         // dd($file_attached);
 
         $projects = new Product;
@@ -98,11 +104,12 @@ class ProductController extends Controller
             'description' => 'required',
         ]);
 
-        $fileName = time().'.'.$request->file_attached->extension();  
-   
-        $file_attached = $request->file_attached->move(public_path('uploads'), $fileName);
+        $fileName = time().'.'.$request->file_attached->getClientOriginalName();  
 
-        $projects = new Product;
+        $directory = 'uploads/';
+        $file_attached =  $request->file_attached->move($directory, $fileName);
+
+        $projects = Product::find($id);
         $projects->project_id = $request->project_name;
         $projects->flat_type = $request->flat_type;
         $projects->floor_number = $request->floor_number;
