@@ -50,7 +50,11 @@
                     </div>
                     <div class="col-lg-8 align-self-baseline">
                         <p class="text-white-75 font-weight-light mb-5">Manage your projects, products in one platform. Keep track of your purchases and vendors. Complete customer managmenet with sales!</p>
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+                        @guest
+                            <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{ route('login') }}">Find Out More</a>
+                        @else
+                            <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{ route('dashboard') }}">Find Out More</a>
+                        @endguest
                     </div>
                 </div>
             </div>
@@ -64,6 +68,11 @@
                         <hr class="divider light my-4" />
                         <p class="text-white-50 mb-4">From project management to accounts, our solution covered all of the aspects of a real state and construction system. We cover projects, products, sell and purchases, vendors, clients, ledger, voucher, reports etc. in one single platform!</p>
                         <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+                        @guest
+                            <a class="btn btn-light btn-xl js-scroll-trigger" href="{{ route('login') }}">Get Started!</a>
+                        @else
+                            <a class="btn btn-light btn-xl js-scroll-trigger" href="{{ route('dashboard') }}">Get Started!</a>
+                        @endguest
                     </div>
                 </div>
             </div>
