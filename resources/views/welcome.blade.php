@@ -28,8 +28,14 @@
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Login</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Register</a></li>
+                        @guest
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('login') }}">Login</a></li>
+                            @if (Route::has('register'))
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Register</a></li>
+                            @endif
+                        @else
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('dashboard') }}">Dashboard</a></li>
+                        @endguest
                     </ul>
                 </div>
             </div>
@@ -104,7 +110,12 @@
         <section class="page-section bg-dark text-white">
             <div class="container text-center">
                 <h2 class="mb-4">It's a complete package!</h2>
-                <a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Sign in!</a>
+                @guest
+                    <a class="btn btn-light btn-xl" href="{{ route('login') }}">Sign in!</a>
+                @else
+                    <a class="btn btn-light btn-xl" href="{{ route('dashboard') }}">Go to Dahsboard!</a>
+                @endguest
+                
             </div>
         </section>
         <!-- Contact-->
