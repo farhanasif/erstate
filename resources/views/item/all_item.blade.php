@@ -1,7 +1,6 @@
 
 @extends('master')
 
-@section('dashboard-title', ' All Item Information')
 @section('breadcrumb-title', 'All Item Information')
 
 @section('content')
@@ -11,7 +10,7 @@
   <div class="card card-success card-outline">
     <div class="card-header">
         <h3 class="card-title">All Item Information</h3>
-        <a href="{{route('showAddItem')}}" class="btn btn-success float-sm-right"><i class="fas fa-plus"></i> Add Item</a>
+        <a href="{{route('showAddItem')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add Item</a>
 
         @include('message')
 
@@ -21,11 +20,11 @@
       <table id="all-item" class="table table-bordered table-striped">
         <thead>
             <tr>
-              <th class="bg-success">SL NO</th>
-              <th class="bg-success">Item Name</th>
-              <th class="bg-success">Item Description</th>
-              <th class="bg-success">Unit</th>
-              <th class="bg-success">Action</th>
+              <th>SL NO</th>
+              <th>Item Name</th>
+              <th>Item Description</th>
+              <th>Unit</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -56,11 +55,10 @@
 <script>
     $(document).ready(function() {
     $('#all-item').DataTable( {
-        "info": true,
-          "autoWidth": false,
-          scrollX:'50vh', 
-          scrollY:'50vh',
-        scrollCollapse: true,
+        // scrollY:        '50vh',
+        // scrollCollapse: true,
+        "responsive": true,
+      "autoWidth": false,
     } );
 } );
 </script>

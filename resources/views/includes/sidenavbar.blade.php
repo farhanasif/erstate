@@ -1,38 +1,38 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{route('dashboard')}}" class="brand-link">
       <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Erstate</span>
+      <span class="brand-text font-weight-light">ER State</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
-      </div>
+      </div> -->
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="{{ route('dashboard') }}" class="nav-link active">
+          <li class="nav-item has-treeview">
+            <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('dashboard') ? 'active' :''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview {{ request()->is('project/*') ? ' menu-open' :''}}">
+            <a href="#" class="nav-link {{ request()->is('project/*') ? 'active' :''}}">
               <i class="nav-icon fas fa-project-diagram text-pink"></i>
               <p>
                 Project
@@ -41,14 +41,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('allProject') }}" class="nav-link">
+                <a href="{{ route('allProject') }}" class="nav-link {{ request()->is('project/all-project') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-pink"></i>
                   <p>All Project</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{ route('showAddProject') }}" class="nav-link">
+                <a href="{{ route('showAddProject') }}" class="nav-link {{ request()->is('project/add-project') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-pink"></i>
                   <p>Create Project</p>
                 </a>
@@ -58,8 +58,8 @@
           </li>
 
           {{-- // product menu  --}}
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview {{ request()->is('product/*') ? 'menu-open' :''}}">
+            <a href="#" class="nav-link {{ request()->is('product/*') ? 'active' :''}}">
               <i class="nav-icon fas fa-boxes bg-amber"></i>
               <p>
                 Product
@@ -68,14 +68,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('allProduct') }}" class="nav-link">
+                <a href="{{ route('allProduct') }}" class="nav-link {{ request()->is('product/all-product') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Product</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{ route('showAddProduct') }}" class="nav-link">
+                <a href="{{ route('showAddProduct') }}" class="nav-link {{ request()->is('product/add-product') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Product</p>
                 </a>
@@ -86,8 +86,8 @@
           {{-- //end product menu --}}
 
             {{-- // Sell menu  --}}
-            <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <li class="nav-item has-treeview {{ request()->is('sales/*') ? ' menu-open' :''}}">
+            <a href="#" class="nav-link {{ request()->is('sales/*') ? 'active' :''}}">
               <i class="nav-icon fas fa-dolly text-green"></i>
               <p>
                 Sell
@@ -96,14 +96,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('allSales') }}" class="nav-link">
+                <a href="{{ route('allSales') }}" class="nav-link {{ request()->is('sales/all-sales') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-green"></i>
                   <p>All Sell</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{ route('showAddSales') }}" class="nav-link">
+                <a href="{{ route('showAddSales') }}" class="nav-link {{ request()->is('sales/add-sales') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-green"></i>
                   <p>Create Sell</p>
                 </a>
@@ -114,8 +114,8 @@
           {{-- //end Sell menu --}}
 
           {{-- // Item menu  --}}
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview {{ request()->is('item/*') ? ' menu-open' :''}}">
+            <a href="#" class="nav-link {{ request()->is('item/*') ? 'active' :''}}">
               <i class="nav-icon fas fa-dolly text-pink"></i>
               <p>
                 Item
@@ -124,14 +124,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('allItem') }}" class="nav-link">
+                <a href="{{ route('allItem') }}" class="nav-link {{ request()->is('item/all-item') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-pink"></i>
                   <p>All Item</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{ route('showAddItem') }}" class="nav-link">
+                <a href="{{ route('showAddItem') }}" class="nav-link {{ request()->is('item/add-item') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-pink"></i>
                   <p>Create Item</p>
                 </a>
@@ -142,16 +142,16 @@
           {{-- //end Item menu --}}
 
             {{-- // Purchase menu  --}}
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
+            <li class="nav-item has-treeview {{ request()->is('requisition/*') ? 'menu-open' :''}}">
+              <a href="#" class="nav-link {{ request()->is('requisition/*') ? 'active' :''}}">
                 <i class="nav-icon fas fa-shopping-cart text-danger"></i>
                 <p>
                   Purchase
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview" style="display: none;">
-                <li class="nav-item has-treeview">
+              <ul class="nav nav-treeview " style="display: none;">
+                <li class="nav-item has-treeview {{ request()->is('requisition/all-requisition') ? 'menu-open' :''}}">
                   <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon text-danger"></i>
                     <p>
@@ -161,7 +161,7 @@
                   </a>
                   <ul class="nav nav-treeview" style="display: none;">
                     <li class="nav-item">
-                      <a href="{{ route('allRequisition') }}" class="nav-link">
+                      <a href="{{ route('allRequisition') }}" class="nav-link {{ request()->is('requisition/all-requisition') ? 'active' :''}}">
                         <i class="far fa-dot-circle nav-icon text-danger"></i>
                         <p> All Requisition</p>
                       </a>
@@ -251,8 +251,8 @@
           {{-- //end Purchase menu --}}
 
           {{-- // Vendor menu  --}}
-          <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
+          <li class="nav-item has-treeview {{ request()->is('vendor/*') ? 'menu-open' :''}}">
+          <a href="#" class="nav-link {{ request()->is('vendor/*') ? 'active' :''}}">
             <i class="nav-icon fas fa-industry text-orange"></i>
             <p>
               Vendor
@@ -261,14 +261,14 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('allVendor') }}" class="nav-link">
+              <a href="{{ route('allVendor') }}" class="nav-link {{ request()->is('vendor/all-vendor') ? 'active' :''}}">
                 <i class="far fa-circle nav-icon text-orange"></i>
                 <p>All Vendor</p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="{{ route('showAddVendor') }}" class="nav-link">
+              <a href="{{ route('showAddVendor') }}" class="nav-link {{ request()->is('vendor/add-vendor') ? 'active' :''}}">
                 <i class="far fa-circle nav-icon text-orange"></i>
                 <p>Create Vendor</p>
               </a>
@@ -279,8 +279,8 @@
         {{-- //end Vendor menu --}}
 
         {{-- // Employee menu  --}}
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
+        <li class="nav-item has-treeview {{ request()->is('employee/*') ? 'menu-open' :''}}">
+          <a href="#" class="nav-link {{ request()->is('employee/*') ? 'active' :''}}">
             <i class="nav-icon fas fa-user-graduate text-red"></i>
             <p>
               Employee
@@ -289,14 +289,14 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('allEmployee') }}" class="nav-link">
+              <a href="{{ route('allEmployee') }}" class="nav-link {{ request()->is('employee/all-employee') ? 'active' :''}}">
                 <i class="far fa-circle nav-icon text-red"></i>
                 <p>All Employee</p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="{{ route('showAddEmployee') }}" class="nav-link">
+              <a href="{{ route('showAddEmployee') }}" class="nav-link {{ request()->is('employee/add-employee') ? 'active' :''}}">
                 <i class="far fa-circle nav-icon text-red"></i>
                 <p>Create Employee</p>
               </a>
@@ -307,8 +307,8 @@
         {{-- //end Employee menu --}}
 
           {{-- // customer menu  --}}
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview {{ request()->is('customer/*') ? 'menu-open' :''}}">
+            <a href="#" class="nav-link {{ request()->is('customer/*') ? 'active' :''}}">
               <i class="nav-icon fas fa-user-tie text-blue"></i>
               <p>
                 Customer
@@ -317,14 +317,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('allCustomer') }}" class="nav-link">
+                <a href="{{ route('allCustomer') }}" class="nav-link {{ request()->is('customer/all-customer') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-blue"></i>
                   <p>All Customer</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{ route('showAddCustomer') }}" class="nav-link">
+                <a href="{{ route('showAddCustomer') }}" class="nav-link {{ request()->is('customer/add-customer') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-blue"></i>
                   <p>Create Customer</p>
                 </a>

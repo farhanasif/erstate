@@ -1,7 +1,6 @@
 
 @extends('master')
 
-@section('dashboard-title', ' All Product Information')
 @section('breadcrumb-title', 'All Product Information')
 
 @section('content')
@@ -11,7 +10,7 @@
   <div class="card card-success card-outline">
     <div class="card-header">
         <h3 class="card-title">All Product Information</h3>
-        <a href="{{route('showAddProduct')}}" class="btn btn-success float-sm-right"><i class="fas fa-plus"></i> Add Product</a>
+        <a href="{{route('showAddProduct')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add Product</a>
 
         @include('message')
 
@@ -21,22 +20,22 @@
       <table id="all-product" class="table table-bordered table-striped">
         <thead>
             <tr>
-              <th class="bg-success">SL NO</th>
-              <th class="bg-success">Project Name</th>
-              <th class="bg-success">Flat Type</th>
-              <th class="bg-success">Floor Number</th>
-              <th class="bg-success">Flat Size</th>
-              <th class="bg-success">Unit Price</th>
-              <th class="bg-success">Total Flat Price</th>
-              <th class="bg-success">Car Parking Charge	</th>
-              <th class="bg-success">Utility Charge</th>
-              <th class="bg-success">Additional Work Charge</th>
-              <th class="bg-success">Other Charge</th>
-              <th class="bg-success">Discount</th>
-              <th class="bg-success">Refund Additional Work Charge</th>
-              <th class="bg-success">Net Total</th>
-              <th class="bg-success">Description</th>
-              <th class="bg-success">Action</th>
+              <th>SL NO</th>
+              <th>Project Name</th>
+              <th>Flat Type</th>
+              <th>Floor Number</th>
+              <th>Flat Size</th>
+              <th>Unit Price</th>
+              <th>Total Flat Price</th>
+              <th>Car Parking Charge	</th>
+              <th>Utility Charge</th>
+              <th>Additional Work Charge</th>
+              <th>Other Charge</th>
+              <th>Discount</th>
+              <th>Refund Additional Work Charge</th>
+              <th>Net Total</th>
+              <th>Description</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -57,9 +56,9 @@
                 <td>{{ $product->refund_additional_work_charge }}</td>
                 <td>{{ $product->net_total }}</td>
                 <td>{{ $product->description }}</td>
-                <td class="row">
-                    <a href="{{ route('editProduct',$product->id) }}" class="btn btn-warning row"><i class="far fa-edit"></i></a>
-                    <a href="{{ route('deleteProduct',$product->id) }}" class="btn btn-danger row ml-2"><i class="far fa-trash-alt"></i></a>
+                <td>
+                    <a href="{{ route('editProduct',$product->id) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                    <a href="{{ route('deleteProduct',$product->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
               @endforeach
@@ -78,13 +77,12 @@
 <script>
     $(document).ready(function() {
     $('#all-product').DataTable( {
-        "info": true,
-          "autoWidth": false,
-          scrollX:'50vh', 
-          scrollY:'50vh',
+        scrollY:        '50vh',
+        // scrollX:        '50vh',
         scrollCollapse: true,
+      "responsive": true,
+      // "autoWidth": false,
     } );
 } );
 </script>
 @endsection
-

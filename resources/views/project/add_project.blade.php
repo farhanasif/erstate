@@ -2,7 +2,6 @@
 
 @extends('master')
 
-@section('dashboard-title', 'Add Project Information')
 @section('breadcrumb-title', 'Add Project Information')
 
 @section('content')
@@ -10,9 +9,9 @@
 <section class="content">
     <div class="container-fluid">
       <!-- SELECT2 EXAMPLE -->
-      <div class="card card-default">
-        <div class="card-header bg-success">
-          <h3 class="card-title">Add Item Information</h3>
+      <div class="card card-success card-outline">
+        <div class="card-header">
+          <h3 class="card-title">Add Project Information</h3>
         </div>
 
          @include('message')
