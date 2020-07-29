@@ -23,8 +23,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview {{ request()->is('dashboard') ? 'active' :''}}">
-            <a href="{{ route('dashboard') }}" class="nav-link">
+          <li class="nav-item has-treeview">
+            <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('dashboard') ? 'active' :''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -41,14 +41,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('allProject') }}" class="nav-link {{ request()->is('/project/all-project') ? 'active' :''}}">
+                <a href="{{ route('allProject') }}" class="nav-link {{ request()->is('project/all-project') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-pink"></i>
                   <p>All Project</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{ route('showAddProject') }}" class="nav-link {{ request()->is('/project/add-project') ? 'active' :''}}">
+                <a href="{{ route('showAddProject') }}" class="nav-link {{ request()->is('project/add-project') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-pink"></i>
                   <p>Create Project</p>
                 </a>
