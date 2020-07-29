@@ -1,7 +1,6 @@
 
 @extends('master')
 
-@section('dashboard-title', ' All Sell Information')
 @section('breadcrumb-title', 'All Sell Information')
 
 @section('content')
@@ -11,7 +10,7 @@
   <div class="card card-success card-outline">
     <div class="card-header">
         <h3 class="card-title">All Sell Information</h3>
-        <a href="{{route('showAddSales')}}" class="btn btn-success float-sm-right"><i class="fas fa-plus"></i> Add Sell</a>
+        <a href="{{route('showAddSales')}}" class="btn btn-defult float-sm-right"><i class="fas fa-plus"></i> Add Sell</a>
 
         @include('message')
 

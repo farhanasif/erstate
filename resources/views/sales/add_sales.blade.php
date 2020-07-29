@@ -1,7 +1,6 @@
 
 @extends('master')
 
-@section('dashboard-title', 'Add Sell Information')
 @section('breadcrumb-title', 'Add Sell Information')
 
 @section('content')

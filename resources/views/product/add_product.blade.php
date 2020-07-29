@@ -1,7 +1,6 @@
 
 @extends('master')
 
-@section('dashboard-title', 'Add Product Information')
 @section('breadcrumb-title', 'Add Product Information')
 
 @section('content')
@@ -10,7 +9,7 @@
     <div class="container-fluid">
       <!-- SELECT2 EXAMPLE -->
       <div class="card card-default">
-        <div class="card-header bg-success">
+        <div class="card-header">
           <h3 class="card-title">Add Product Information</h3>
         </div>
 
