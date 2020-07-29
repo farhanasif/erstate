@@ -1,7 +1,6 @@
 
 @extends('master')
 
-@section('dashboard-title', ' All Customer Information')
 @section('breadcrumb-title', 'All Customer Information')
 
 @section('content')
@@ -11,7 +10,7 @@
   <div class="card card-success card-outline">
     <div class="card-header">
         <h3 class="card-title">All Customer Information</h3>
-        <a href="{{route('showAddCustomer')}}" class="btn btn-success float-sm-right"><i class="fas fa-plus"></i> Add Customer</a>
+        <a href="{{route('showAddCustomer')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add Customer</a>
 
         @include('message')
 
@@ -21,15 +20,15 @@
       <table id="all-customer" class="table table-bordered table-striped">
         <thead>
             <tr>
-              <th class="bg-success">SL NO</th>
-              <th class="bg-success">Name</th>
-              <th class="bg-success">Father Spouse</th>
-              <th class="bg-success">Address</th>
-              <th class="bg-success">Phone</th>
-              <th class="bg-success">Email</th>
-              <th class="bg-success">NID</th>
-              <th class="bg-success">Permanent Address</th>
-              <th class="bg-success">Action</th>
+              <th>SL NO</th>
+              <th>Name</th>
+              <th>Father Spouse</th>
+              <th>Address</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>NID</th>
+              <th>Permanent Address</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>

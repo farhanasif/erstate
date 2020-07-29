@@ -52,6 +52,8 @@ class EmployeeController extends Controller
 
     public function updateEmployee(Request $request, $id)
     {
+        // dd($request->all());
+
         $this->validate($request,[
             'name' => 'required',
             'position' => 'required',
@@ -59,7 +61,7 @@ class EmployeeController extends Controller
             'phone' => 'required',
             'email' => 'required',
             'nid' => 'required',
-            'permanent_address' => 'required',
+            'department' => 'required',
         ]);
 
         $employees = Employee::find($id);

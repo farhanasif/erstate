@@ -1,6 +1,5 @@
 @extends('master')
 
-@section('dashboard-title', 'Edit Item Information')
 @section('breadcrumb-title', 'Edit Item Information')
 
 @section('content')
@@ -9,7 +8,7 @@
     <div class="container-fluid">
       <!-- SELECT2 EXAMPLE -->
       <div class="card card-default">
-        <div class="card-header bg-success">
+        <div class="card-header">
           <h3 class="card-title">Edit Item Information</h3>
         </div>
         <!-- /.card-header -->

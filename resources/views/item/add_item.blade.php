@@ -1,6 +1,5 @@
 @extends('master')
 
-@section('dashboard-title', 'Add Item Information')
 @section('breadcrumb-title', 'Add Item Information')
 
 @section('content')
@@ -9,7 +8,7 @@
     <div class="container-fluid">
       <!-- SELECT2 EXAMPLE -->
       <div class="card card-default">
-        <div class="card-header bg-success">
+        <div class="card-header">
           <h3 class="card-title">Add Item Information</h3>
         </div>
 
@@ -41,7 +40,7 @@
                   <div class="col-md-6">
                       <div class="form-group">
                           <label>Description</label>
-                          <textarea style="width: 100%;" class="form-control" name="description" id="" cols="30" rows="5" placeholder="Description"></textarea>
+                          <textarea style="width: 100%;" class="form-control" name="description" id="" cols="30" rows="3" placeholder="Description"></textarea>
                           @if($errors->has('description'))
                           <strong class="text-danger">{{ $errors->first('description') }}</strong>
                       @endif

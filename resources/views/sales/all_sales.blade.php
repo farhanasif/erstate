@@ -20,17 +20,17 @@
       <table id="all-sale" class="table table-bordered table-striped">
         <thead>
             <tr>
-              <th class="bg-success">SL NO</th>
-              <th class="bg-success">Customer Name</th>
-              <th class="bg-success">Project Name</th>
-              <th class="bg-success">Product Name</th>
-              <th class="bg-success">Employee Name</th>
-              <th class="bg-success">Customer Name</th>
-              <th class="bg-success">Description</th>
-              <th class="bg-success">Amount</th>
-              <th class="bg-success">Amount paid</th>
-              <th class="bg-success">Amount Due</th>
-              <th class="bg-success">Action</th>
+              <th>SL NO</th>
+              <th>Customer Name</th>
+              <th>Project Name</th>
+              <th>Product Name</th>
+              <th>Employee Name</th>
+              <th>Customer Name</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Amount paid</th>
+              <th>Amount Due</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -67,11 +67,7 @@
 <script>
     $(document).ready(function() {
     $('#all-sale').DataTable( {
-        "info": true,
-          "autoWidth": false,
-          scrollX:'50vh', 
-          scrollY:'50vh',
-        scrollCollapse: true,
+         scrollY:        '50vh',
     } );
 } );
 </script>
