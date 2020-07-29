@@ -80,7 +80,7 @@
         scrollY:        '50vh',
         // scrollX:        '50vh',
         scrollCollapse: true,
-      //   "responsive": true,
+      "responsive": true,
       // "autoWidth": false,
     } );
 } );

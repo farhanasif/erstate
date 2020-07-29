@@ -1,7 +1,6 @@
 
 @extends('master')
 
-@section('dashboard-title', ' All Requisition Information')
 @section('breadcrumb-title', 'All Requisition Information')
 
 @section('content')
@@ -11,7 +10,7 @@
   <div class="card card-success card-outline">
     <div class="card-header">
         <h3 class="card-title">All Requisition Information</h3>
-        <a href="{{route('showAddRequisition')}}" class="btn btn-success float-sm-right"><i class="fas fa-plus"></i> Add Requisition</a>
+        <a href="{{route('showAddRequisition')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add Requisition</a>
 
         @include('message')
 
@@ -21,15 +20,15 @@
       <table id="all-requisition" class="table table-bordered table-striped">
         <thead>
             <tr>
-              <th class="bg-success">SL NO</th>
-              <th class="bg-success">Project Name</th>
-              <th class="bg-success">Employee Name</th>
-              <th class="bg-success">Contact Person</th>
-              <th class="bg-success">Remark</th>
-              <th class="bg-success">Requisition Date</th>
-              <th class="bg-success">Required Date</th>
-              <th class="bg-success">Remark</th>
-              <th class="bg-success">Action</th>
+              <th>SL NO</th>
+              <th>Project Name</th>
+              <th>Employee Name</th>
+              <th>Contact Person</th>
+              <th>Remark</th>
+              <th>Requisition Date</th>
+              <th>Required Date</th>
+              <th>Remark</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -45,7 +44,7 @@
                 <td>{{ date('j F, Y', strtotime($requisition->required_date)) }}</td>
                 <td class="row">
                     <a href="{{ route('editRequisition',$requisition->id) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
-                    <a href="{{ route('deleteRequisition',$requisition->id) }}" class="btn btn-danger ml-2"><i class="far fa-trash-alt"></i></a>
+                    <a href="{{ route('deleteRequisition',$requisition->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
               @endforeach
