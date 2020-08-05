@@ -49,7 +49,6 @@ class SalesController extends Controller
             'project_name' => 'required',
             'product_name' => 'required',
             'employee_name' => 'required',
-            'customer_name' => 'required',
             'description' => 'required',
             'amount' => 'required',
             'amount_paid' => 'required',
@@ -62,7 +61,6 @@ class SalesController extends Controller
         $sales->project_id = $request->project_name;
         $sales->product_id = $request->product_name;
         $sales->employee_id = $request->employee_name;
-        $sales->customer_id = $request->customer_id;
         $sales->description = $request->description;
         $sales->amount = $request->amount;
         $sales->amount_paid = $request->amount_paid;
@@ -70,7 +68,7 @@ class SalesController extends Controller
         $sales->sales_date = $request->sales_date;
         $sales->save(); 
 
-        return redirect()->back()->with('success','Sales Added Successfully!');
+        return redirect()->back()->with('success','Sells Added Successfully!');
     }
 
     public function editSales($id)
@@ -90,7 +88,6 @@ class SalesController extends Controller
             'project_name' => 'required',
             'product_name' => 'required',
             'employee_name' => 'required',
-            'customer_name' => 'required',
             'description' => 'required',
             'amount' => 'required',
             'amount_paid' => 'required',
@@ -103,7 +100,6 @@ class SalesController extends Controller
         $sales->project_id = $request->project_name;
         $sales->product_id = $request->product_name;
         $sales->employee_id = $request->employee_name;
-        $sales->customer_id = $request->customer_name;
         $sales->description = $request->description;
         $sales->amount = $request->amount;
         $sales->amount_paid = $request->amount_paid;
@@ -111,12 +107,12 @@ class SalesController extends Controller
         $sales->sales_date = $request->sales_date;
         $sales->save(); 
 
-        return redirect()->route('allSales')->with('success','Sales Updated Successfully!');
+        return redirect()->route('allSales')->with('success','Sells Updated Successfully!');
     }
     public function deleteSales($id)
     {
         $sales = Sale::find($id);
         $sales->delete();
-        return redirect()->back()->with('danger','Sales Deleted Successfully!');
+        return redirect()->back()->with('danger','Sells Deleted Successfully!');
     }
 }
