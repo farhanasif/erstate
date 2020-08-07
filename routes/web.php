@@ -104,3 +104,9 @@ Route::get('/requisition-details/all-requisition-details', 'RequisitionDetailsCo
 Route::get('/requisition-details/edit-requisition-details/{id}', 'RequisitionDetailsController@editRequisitionDetails')->name('editRequisitionDetails');
 Route::post('/requisition-details/update-requisition-details/{id}', 'RequisitionDetailsController@updateRequisitionDetails')->name('updateRequisitionDetails');
 Route::get('/requisition-details/delete-requisition-details/{id}', 'RequisitionDetailsController@deleteRequisitionDetails')->name('deleteRequisitionDetails');
+
+
+//--------Bank ROUTES---------//
+Route::resource('banks', 'BankController');
+Route::post('/banks_update', 'BankController@update')->name('banks_update');
+Route::post('/delete_bank','BankController@destroy')->name('delete_bank');
