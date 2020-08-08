@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Lname;
+use App\Ltype;
+use App\Lgroup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LnameController extends Controller
 {
@@ -14,7 +17,13 @@ class LnameController extends Controller
      */
     public function index()
     {
-        //
+        $lnames = DB::table('lnames')
+            ->join('lgroups', 'lnames.lgroup_id', '=', 'lgroups.id')
+            ->join('ltypes', 'ltypes.id', '=', 'lnames.ltype_id')
+            ->select('lnames.*', 'lgroups.name as lgroup_name', 'ltypes.name as ltype_name')
+            ->get();
+        //dd($lnames);
+        return view('lname.view', compact('lnames'));
     }
 
     /**
@@ -24,7 +33,9 @@ class LnameController extends Controller
      */
     public function create()
     {
-        //
+        $lgroups = Lgroup::all();
+        $ltypes = Ltype::all();
+        return view('lname.create', compact('lgroups','ltypes'));
     }
 
     /**
@@ -35,7 +46,24 @@ class LnameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'ltype_id' => 'required',
+            'lgroup_id' => 'required',
+            'is_debit' => 'required'
+        ]);
+
+        //dd($request);
+
+        $lname = new Lname;
+        $lname->name = $request->name;
+        $lname->is_debit = $request->is_debit;
+        $lname->unit = $request->unit;
+        $lname->ltype_id = $request->ltype_id;
+        $lname->lgroup_id = $request->lgroup_id;
+        $lname->save(); 
+
+        return redirect()->back()->with('success','Ledger Group Added Successfully!');
     }
 
     /**
@@ -55,9 +83,13 @@ class LnameController extends Controller
      * @param  \App\Lname  $lname
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lname $lname)
+    public function edit($id)
     {
-        //
+        $lname = Lname::find($id);
+        $lgroups = Lgroup::all();
+        $ltypes = Ltype::all();
+        
+        return view('lname.edit',compact('lname','lgroups','ltypes'));
     }
 
     /**
@@ -67,9 +99,20 @@ class LnameController extends Controller
      * @param  \App\Lname  $lname
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lname $lname)
+    public function update(Request $request)
     {
-        //
+        $lname = Lname::findOrFail($request->id);
+
+        $this->validate($request,[
+            'name' => 'required',
+            'ltype_id' => 'required',
+            'lgroup_id' => 'required',
+            'is_debit' => 'required'
+        ]);
+
+        $lname->update($request->all());
+
+        return redirect()->route('lname.index')->with('success','Ledger Updated Successfully!');
     }
 
     /**
@@ -78,8 +121,10 @@ class LnameController extends Controller
      * @param  \App\Lname  $lname
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lname $lname)
+    public function destroy(Request $request)
     {
-        //
+        $lname = Lname::findOrFail($request->id);
+        $lname->delete();
+        return redirect()->route('lname.index')->with('danger','Ledger Deleted Successfully!');
     }
 }

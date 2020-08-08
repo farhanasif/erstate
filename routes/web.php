@@ -118,3 +118,8 @@ Route::post('/ledgertype_update', 'LtypeController@update')->name('ledgertype_up
 //--------Ledger Group ROUTEs------//
 Route::resource('lgroup', 'LgroupController');
 Route::post('/ledgergroup_update', 'LgroupController@update')->name('ledgergroup_update');
+
+//--------Ledger Name ROUTEs------//
+Route::resource('lname', 'LnameController');
+Route::post('/ledgername_update', 'LnameController@update')->name('ledgername_update');
+Route::post('/ledgername_delete','LnameController@destroy')->name('ledgername_delete');
