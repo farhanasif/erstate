@@ -114,3 +114,7 @@ Route::post('/delete_bank','BankController@destroy')->name('delete_bank');
 //--------Ledger Type ROUTEs------//
 Route::resource('ltype', 'LtypeController');
 Route::post('/ledgertype_update', 'LtypeController@update')->name('ledgertype_update');
+
+//--------Ledger Group ROUTEs------//
+Route::resource('lgroup', 'LgroupController');
+Route::post('/ledgergroup_update', 'LgroupController@update')->name('ledgergroup_update');
