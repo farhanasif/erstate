@@ -110,3 +110,7 @@ Route::get('/requisition-details/delete-requisition-details/{id}', 'RequisitionD
 Route::resource('banks', 'BankController');
 Route::post('/banks_update', 'BankController@update')->name('banks_update');
 Route::post('/delete_bank','BankController@destroy')->name('delete_bank');
+
+//--------Ledger Type ROUTEs------//
+Route::resource('ltype', 'LtypeController');
+Route::post('/ledgertype_update', 'LtypeController@update')->name('ledgertype_update');
