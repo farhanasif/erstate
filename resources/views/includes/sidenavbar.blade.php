@@ -354,7 +354,7 @@
                 </a>
                 <ul class="nav nav-treeview" style="display: none;">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('ltype.index') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-purple"></i>
                       <p> All </p>
                     </a>
@@ -372,7 +372,7 @@
                 </a>
                 <ul class="nav nav-treeview" style="display: none;">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('lgroup.index') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-purple"></i>
                       <p> All Group</p>
                     </a>
@@ -396,13 +396,13 @@
                 </a>
                 <ul class="nav nav-treeview" style="display: none;">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('lname.index') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-purple"></i>
                       <p> All Name</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('lname.create') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-purple"></i>
                       <p>create Name</p>
                     </a>
@@ -461,7 +461,7 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('initial.index') }}" class="nav-link">
                   <i class="far fa-dot-circle nav-icon text-pink"></i>
                   <p> All </p>
                 </a>
@@ -479,7 +479,7 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('initialledger') }}" class="nav-link">
                   <i class="far fa-dot-circle nav-icon text-pink"></i>
                   <p> All</p>
                 </a>
