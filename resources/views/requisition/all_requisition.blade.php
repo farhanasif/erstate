@@ -24,10 +24,8 @@
               <th>Project Name</th>
               <th>Employee Name</th>
               <th>Contact Person</th>
-              <th>Remark</th>
               <th>Requisition Date</th>
               <th>Required Date</th>
-              <th>Remark</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -38,7 +36,6 @@
                 <td>{{ $requisition->project_name }}</td>
                 <td>{{ $requisition->employee_name }}</td>
                 <td>{{ $requisition->contact_person }}</td>
-                <td>{{ $requisition->remark }}</td>
                 <td>{{ $requisition->purpose }}</td>
                 <td>{{ date('j F, Y', strtotime($requisition->requisition_date)) }}</td>
                 <td>{{ date('j F, Y', strtotime($requisition->required_date)) }}</td>
