@@ -8,6 +8,7 @@ use App\Project;
 use App\Bank;
 use App\Lname;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VoucherController extends Controller
 {
@@ -18,7 +19,15 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        //
+        $voucher_details = DB::table('voucher_details')
+            ->join('vouchers', 'voucher_details.voucher_id', '=', 'vouchers.id')
+            ->join('projects', 'vouchers.project_id', '=', 'projects.id')
+            ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
+            ->join('lnames', 'voucher_details.lname_id', '=', 'lnames.id')
+            ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
+            ->get();
+        //dd($voucher_details);
+        return view('voucher.view_credit', compact('voucher_details'));
     }
 
     /**

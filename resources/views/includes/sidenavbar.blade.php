@@ -496,7 +496,7 @@
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-gift text-red"></i>
           <p>
-            Voucer
+            Voucher
             <i class="right fas fa-angle-left"></i>
           </p>
         </a>
@@ -511,13 +511,13 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+              <a href="{{ route('allcreditvoucher') }}" class="nav-link">
                   <i class="far fa-dot-circle nav-icon text-red"></i>
                   <p> All Credit</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('creditvoucher') }}" class="nav-link">
                   <i class="far fa-dot-circle nav-icon text-red"></i>
                   <p> Create Credit</p>
                 </a>
