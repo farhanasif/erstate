@@ -69,7 +69,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                       <label>Perticulers</label>
-                      <input type="text" name="perticulars" class="form-control" placeholder="perticulars">
+                      <textarea name="perticulers" id="perticulers" cols="3" rows="3" class="form-control" placeholder="Perticulers"></textarea>
                       @if($errors->has('perticulars'))
                           <strong class="text-danger">{{ $errors->first('perticulars') }}</strong>
                       @endif
@@ -79,30 +79,37 @@
                 </div>
                 <div class="col-md-12">
                   <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Account Head Name</label>
-                        <select name="lname_id" class="form-control">
-                          <option value="">--select account head--</option>
-                          @foreach ($lnames as $lname)
-                              <option value="{{ $lname->id }}">{{ $lname->name }}</option>
-                          @endforeach
-                      </select>
-                      @if($errors->has('lname_id'))
-                          <strong class="text-danger">{{ $errors->first('lname_id') }}</strong>
-                      @endif
+                    <div class="col-md-12" id="voucher_details">
+                      <div class="row" id="row_1">
+                        <div class="col-md-5">
+                          <div class="form-group">
+                            <label>Account Head Name</label>
+                            <select name="lname_id[]" class="form-control">
+                              <option value="">--select account head--</option>
+                              @foreach ($lnames as $lname)
+                                  <option value="{{ $lname->id }}">{{ $lname->name }}</option>
+                              @endforeach
+                          </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                              <label>Amount</label>
+                              <input type="text" name="amount[]" class="form-control" placeholder="0">
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group pt-4">
+                                <span style="font-size: 1.2em; color: Tomato;" id="addButton"> 
+                                  <i class="far fa-plus-square fa-lg pt-3"></i>
+                                </span>
+                            </div>
+                        </div>
                       </div>
+                      
                     </div>
-                    <div class="col-md-5">
-                      <div class="form-group">
-                          <label>Amount</label>
-                          <input type="text" name="amount" class="form-control" placeholder="0">
-                          @if($errors->has('amount'))
-                              <strong class="text-danger">{{ $errors->first('amount') }}</strong>
-                          @endif
-                      </div>
-                    </div>
-                  </div>
+                      
+                </div>
                   
                 </div>
                    <!-- /.col -->
@@ -125,9 +132,49 @@
 
   <script>
       $(document).ready(function() {
-          $(function() { 
-       $( "#voucher_date" ).datepicker();
-    });
+        var i=1;
+
+        console.log('here you go');
+
+        $("#addButton").click(function (e) {
+          e.preventDefault();
+          i++;
+
+          _dynamic_div = `<div class="row" id="row_`+i+`">
+                        <div class="col-md-5">
+                          <div class="form-group">
+                            <label>Account Head Name</label>
+                            <select name="lname_id[]" class="form-control">
+                              <option value="">--select account head--</option>
+                              @foreach ($lnames as $lname)
+                                  <option value="{{ $lname->id }}">{{ $lname->name }}</option>
+                              @endforeach
+                          </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                              <label>Amount</label>
+                              <input type="text" name="amount[]" class="form-control" placeholder="0">
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group pt-4">
+                                <span style="font-size: 1.2em; color: red;" class="btn_remove" id="`+i+`"> 
+                                  <i class="far fa-trash-alt pt-3"></i>
+                                </span>
+                            </div>
+                        </div>
+                      </div>`;
+          //console.log(_dynamic_div);
+          $('#voucher_details').append(_dynamic_div)
+        });
+
+        $(document).on('click', '.btn_remove', function(){
+            var button_id = $(this).attr("id");
+            //console.log(button_id);   
+            $('#row_'+button_id+'').remove();  
+      });
       });
   </script>
       

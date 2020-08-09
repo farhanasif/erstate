@@ -20,7 +20,7 @@
 <script src="{{ asset('assets/plugins/chart.js/Chart.min.js') }}"></script>
 
 <!-- PAGE SCRIPTS -->
-<script src="{{ asset('assets/dist/js/pages/dashboard2.js') }}"></script>
+{{-- <script src="{{ asset('assets/dist/js/pages/dashboard2.js') }}"></script> --}}
 
 <!-- DataTables -->
 <!-- <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.js') }}"></script>

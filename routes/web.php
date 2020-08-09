@@ -129,5 +129,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/initialledger', 'InitialController@ledgerIndex')->name('initialledger');
 
     Route::get('/creditvoucher','VoucherController@creditvoucher')->name('creditvoucher');
-    Route::post('/save_credit','VoucherController@creditvoucher')->name('save_credit');
+    Route::post('/save_credit','VoucherController@save_credit')->name('save_credit');
 });

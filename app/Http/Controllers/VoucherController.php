@@ -34,6 +34,39 @@ class VoucherController extends Controller
         return view('voucher.credit', compact('projects','banks','lnames'));
     }
 
+    public function save_credit(Request $request){
+        //dd($request);
+        $this->validate($request,[
+            'project_id' => 'required',
+            'bank_id' => 'required',
+        ]);
+
+        $ledger_count = sizeof($request->lname_id);
+        if($ledger_count > 0){
+            $voucher = new Voucher;
+            $voucher->project_id = $request->project_id;
+            $voucher->bank_id = $request->bank_id;
+            $voucher->cheque_no = $request->cheque_no;
+            $voucher->perticulers = $request->perticulers;
+            $voucher->voucher_type = 'CR';
+            $voucher->voucher_date = $request->voucher_date;
+            $voucher->save();
+
+            for($i = 0; $i < $ledger_count; $i++){
+                $voucher_detail = new VoucherDetail;
+                $voucher_detail->voucher_id = $voucher->id;
+                $voucher_detail->lname_id = $request->lname_id[$i];
+                $voucher_detail->amount = $request->amount[$i];
+                $voucher_detail->save();
+            }
+
+            return redirect()->back()->with('success','Credit Voucher Added Successfully!');
+        }
+        else{
+            return redirect()->back()->with('error','Credit Voucher failed to add, must add account head with amount!');
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
