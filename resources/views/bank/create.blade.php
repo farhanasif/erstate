@@ -13,8 +13,6 @@
         <div class="card-header">
           <h3 class="card-title">Add Bank/Cash Information</h3>
         </div>
-
-         @include('message')
         <!-- /.card-header -->
         <form action="{{ route('banks.store') }}" method="POST">
             @csrf
@@ -66,7 +64,44 @@
 
   @section('custom_js')
 
-<script>
-</script>
+  <script>
+    $(document).ready(function() {
+      @if ($message = Session::get('success'))
+        console.log('{{ $message }}');
+        Swal.fire({
+            icon: 'success',
+            title: '{{ $message }}',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+      @endif
+      
+      @if ($message = Session::get('error'))
+        console.log('{{ $message }}');
+        Swal.fire({
+            icon: 'error',
+            title: '{{ $message }}',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 7000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+      @endif
+    
+    });
+      
+  </script>
     
 @endsection
