@@ -126,5 +126,8 @@ Route::middleware('auth')->group(function () {
 
     //--------Initial Balance ROUTEs------//
     Route::resource('initial', 'InitialController');
-    Route::get('initialledger', 'InitialController@ledgerIndex')->name('initialledger');
+    Route::get('/initialledger', 'InitialController@ledgerIndex')->name('initialledger');
+
+    Route::get('/creditvoucher','VoucherController@creditvoucher')->name('creditvoucher');
+    Route::post('/save_credit','VoucherController@creditvoucher')->name('save_credit');
 });
