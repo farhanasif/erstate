@@ -95,7 +95,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Flat Size</label>
-                      <input type="number" name="flat_size" class="form-control" placeholder="Flat Size">
+                      <input type="number" name="flat_size" id="flat_size" class="form-control" placeholder="Flat Size">
                       @if($errors->has('flat_size'))
                           <strong class="text-danger">{{ $errors->first('flat_size') }}</strong>
                       @endif
@@ -105,7 +105,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Unit Price</label>
-                      <input type="number" name="unit_price" class="form-control" placeholder="Unit Price">
+                      <input type="number" name="unit_price" id="unit_price" class="form-control" placeholder="Unit Price">
                       @if($errors->has('unit_price'))
                           <strong class="text-danger">{{ $errors->first('unit_price') }}</strong>
                       @endif
@@ -115,7 +115,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Total Flat Price</label>
-                      <input type="text" readonly name="total_flat_price" class="form-control">
+                      <input type="text" readonly name="total_flat_price" id="total_flat_price" class="form-control">
                       @if($errors->has('project_name'))
                           <strong class="text-danger">{{ $errors->first('total_flat_price') }}</strong>
                       @endif
@@ -125,7 +125,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Car Parking Charge</label>
-                        <input type="number" name="car_parking_charge" class="form-control" placeholder="Car Parking Charge">
+                        <input type="number" name="car_parking_charge" id="car_parking_charge" class="form-control" placeholder="Car Parking Charge">
                         @if($errors->has('car_parking_charge'))
                             <strong class="text-danger">{{ $errors->first('car_parking_charge') }}</strong>
                         @endif
@@ -134,7 +134,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Utility Charge</label>
-                      <input type="number" name="utility_charge" class="form-control" placeholder="Utility Charge">
+                      <input type="number" name="utility_charge" id="utility_charge" class="form-control" placeholder="Utility Charge">
                       @if($errors->has('utility_charge'))
                           <strong class="text-danger">{{ $errors->first('utility_charge') }}</strong>
                       @endif
@@ -144,7 +144,7 @@
                   <div class="col-md-4">
                       <div class="form-group">
                           <label>Additional Work Charge</label>
-                          <input type="number" name="additional_work_charge" class="form-control" placeholder="Additional Work Charge">
+                          <input type="number" name="additional_work_charge" id="additional_work_charge" class="form-control" placeholder="Additional Work Charge">
                           @if($errors->has('additional_work_charge'))
                               <strong class="text-danger">{{ $errors->first('additional_work_charge') }}</strong>
                           @endif                      
@@ -153,7 +153,7 @@
                   <div class="col-md-4">
                       <div class="form-group">
                           <label>Other Charge</label>
-                          <input type="number" name="other_charge" class="form-control" placeholder="Other Charge">
+                          <input type="number" name="other_charge" id="other_charge" class="form-control" placeholder="Other Charge">
                           @if($errors->has('other_charge'))
                               <strong class="text-danger">{{ $errors->first('other_charge') }}</strong>
                           @endif
@@ -163,7 +163,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                         <label>Discount</label>
-                        <input type="number" name="discount" class="form-control" placeholder="Discount">
+                        <input type="number" name="discount" id="discount" class="form-control" placeholder="Discount">
                         @if($errors->has('discount'))
                             <strong class="text-danger">{{ $errors->first('discount') }}</strong>
                         @endif
@@ -173,7 +173,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                       <label>Refund Additional Work Charge</label>
-                      <input type="number" name="refund_additional_work_charge" class="form-control" placeholder="Refund Additional Work Charge">
+                      <input type="number" name="refund_additional_work_charge" id="refund_additional_work_charge" class="form-control" placeholder="Refund Additional Work Charge">
                       @if($errors->has('refund_additional_work_charge'))
                           <strong class="text-danger">{{ $errors->first('refund_additional_work_charge') }}</strong>
                       @endif
@@ -183,7 +183,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                     <label>Net Total</label>
-                    <input type="text" readonly name="net_total" class="form-control">
+                    <input type="text" readonly name="net_total" id="net_total" class="form-control">
                     @if($errors->has('net_total'))
                         <strong class="text-danger">{{ $errors->first('net_total') }}</strong>
                     @endif
@@ -223,4 +223,29 @@
     </div><!-- /.container-fluid -->
   </section>
 
+  @endsection
+
+  @section('custom_js')
+      <script>
+        $("#unit_price").on("input", function () {
+          var d = $('#flat_size').val()*$(this).val();
+          $('#total_flat_price').val(d);
+      });
+
+        $("#flat_size").on("input", function () {
+          var d = $('#unit_price').val()*$(this).val();
+          $('#total_flat_price').val(d);
+      });
+
+
+      $("#utility_charge").on("input", function () {
+        var total_charge = $('#total_flat_price').val() + $('#additional_work_charge').val() + $('#car_parking_charge').val() 
+        + $('#other_charge').val() + $(this).val();
+
+        var net_value = total_charge - $('#discount').val() + $('#refund_additional_work_charge').val();
+        
+        $('#net_total').val(net_value);
+    });
+
+      </script>
   @endsection
