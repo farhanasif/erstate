@@ -27,7 +27,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
-
         Route::get('/home', 'HomeController@index')->name('home');
         Route::get('/dashboard', 'AdminController@index')->name('dashboard');
         // ALL PROJECTS ROUTES
@@ -102,5 +101,30 @@ Route::middleware('auth')->group(function () {
         Route::get('/requisition-details/edit-requisition-details/{id}', 'RequisitionDetailsController@editRequisitionDetails')->name('editRequisitionDetails');
         Route::post('/requisition-details/update-requisition-details/{id}', 'RequisitionDetailsController@updateRequisitionDetails')->name('updateRequisitionDetails');
         Route::get('/requisition-details/delete-requisition-details/{id}', 'RequisitionDetailsController@deleteRequisitionDetails')->name('deleteRequisitionDetails');
+   
+    //--------Bank ROUTES---------//
+    Route::resource('banks', 'BankController');
+    Route::post('/banks_update', 'BankController@update')->name('banks_update');
+    Route::post('/delete_bank','BankController@destroy')->name('delete_bank');
 
+    //--------Ledger Type ROUTEs------//
+    Route::resource('ltype', 'LtypeController');
+    Route::post('/ledgertype_update', 'LtypeController@update')->name('ledgertype_update');
+
+    //--------Ledger Group ROUTEs------//
+    Route::resource('lgroup', 'LgroupController');
+    Route::post('/ledgergroup_update', 'LgroupController@update')->name('ledgergroup_update');
+
+    //--------Ledger Name ROUTEs------//
+    Route::resource('lname', 'LnameController');
+    Route::post('/ledgername_update', 'LnameController@update')->name('ledgername_update');
+    Route::post('/ledgername_delete','LnameController@destroy')->name('ledgername_delete');
+
+    //--------Initial Balance ROUTEs------//
+    Route::resource('initial', 'InitialController');
+    Route::get('/initialledger', 'InitialController@ledgerIndex')->name('initialledger');
+
+    Route::get('/allcreditvoucher','VoucherController@index')->name('allcreditvoucher');
+    Route::get('/creditvoucher','VoucherController@creditvoucher')->name('creditvoucher');
+    Route::post('/save_credit','VoucherController@save_credit')->name('save_credit');
 });
