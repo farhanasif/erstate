@@ -535,13 +535,13 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('alldebitvoucher') }}" class="nav-link">
                   <i class="far fa-dot-circle nav-icon text-red"></i>
                   <p> All Debit</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('debitvoucher') }}" class="nav-link">
                   <i class="far fa-dot-circle nav-icon text-red"></i>
                   <p> Create Debit</p>
                 </a>
