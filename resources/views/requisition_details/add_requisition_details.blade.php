@@ -9,7 +9,7 @@
     <div class="container-fluid">
       <!-- SELECT2 EXAMPLE -->
       <div class="card card-default">
-        <div class="card-header bg-success">
+        <div class="card-header">
           <h3 class="card-title">Add Requisition Details Information</h3>
         </div>
         @include('message')

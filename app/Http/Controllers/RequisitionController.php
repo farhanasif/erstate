@@ -6,6 +6,8 @@ use App\Employee;
 use App\Project;
 use Illuminate\Http\Request;
 use App\Requisition;
+use App\Item;
+use App\RequisitionDetails;
 use Illuminate\Support\Facades\DB;
 
 class RequisitionController extends Controller
@@ -14,6 +16,7 @@ class RequisitionController extends Controller
     {
         $data['projects'] = Project::all();
         $data['employees'] = Employee::all();
+        $data['item_names'] = Item::all();
 
         return view('requisition.add_requisition',$data);
     }
@@ -48,19 +51,37 @@ class RequisitionController extends Controller
             'required_date' => 'required',
             'status' => 'required',
         ]);
-        
-        $requisitions = new Requisition;
-        $requisitions->project_id = $request->project_name;
-        $requisitions->employee_id = $request->employee_name;
-        $requisitions->contact_person = $request->contact_person;
-        $requisitions->remark = $request->remark;
-        $requisitions->purpose = $request->purpose;
-        $requisitions->requisition_date = $request->requisition_date;
-        $requisitions->required_date = $request->required_date;
-        $requisitions->status = $request->status;
-        $requisitions->save(); 
 
-        return redirect()->back()->with('success','Requisition Added Successfully!');
+        $item_count = sizeof($request->item_name);
+
+        if($item_count > 0){
+
+            $requisitions = new Requisition;
+            $requisitions->project_id = $request->project_name;
+            $requisitions->employee_id = $request->employee_name;
+            $requisitions->contact_person = $request->contact_person;
+            $requisitions->remark = $request->remark;
+            $requisitions->purpose = $request->purpose;
+            $requisitions->requisition_date = $request->requisition_date;
+            $requisitions->required_date = $request->required_date;
+            $requisitions->status = $request->status;
+            $requisitions->save(); 
+
+            for ($i=0; $i <$item_count ; $i++) { 
+                $requisitions_items = new RequisitionDetails;
+                $requisitions_items->requisition_id = $requisitions->id;
+                $requisitions_items->item_id = $request->item_name[$i];
+                $requisitions_items->description = $request->description[$i];
+                $requisitions_items->quantity = $request->quantity[$i];
+                $requisitions_items->rate = $request->rate[$i];
+                $requisitions_items->amount = $request->amount[$i];
+                $requisitions_items->save(); 
+            }
+
+            return redirect()->back()->with('success','Requisition Added Successfully!');
+        }
+
+        return redirect()->back()->with('success','Requisition failed to add, must add rate, amount with quantity!');
     }
 
     public function editRequisition($id)
