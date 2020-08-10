@@ -82,7 +82,7 @@
               </div>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="form-group">
                 <label>Address</label>
                 <textarea name="address" id="perment_address" cols="3" rows="3" class="form-control" placeholder="Address"></textarea>

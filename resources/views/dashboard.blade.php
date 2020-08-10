@@ -26,7 +26,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
-            <span class="info-box-icon bg-amber elevation-1"><i class="fas fa-boxes"></i></span>
+            <span class="info-box-icon bg-yellow elevation-1"><i class="fas fa-boxes"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Product</span>
@@ -79,7 +79,7 @@
       <div class="row">
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box">
-            <span class="info-box-icon bg-brown elevation-1"><i class="fas fa-shopping-cart"></i></span>
+            <span class="info-box-icon bg-red elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text"> Purchase Order</span>
@@ -125,7 +125,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
-            <span class="info-box-icon bg-light-green elevation-1"><i class="fas fa-file-invoice-dollar"></i></span>
+            <span class="info-box-icon bg-yellow elevation-1"><i class="fas fa-file-invoice-dollar"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Ledger</span>
@@ -148,7 +148,7 @@
       <div class="row">
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box">
-            <span class="info-box-icon bg-blue-grey elevation-1"><i class="fas fa-university"></i></span>
+            <span class="info-box-icon bg-green elevation-1"><i class="fas fa-university"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Bank Or Cash</span>
@@ -181,7 +181,7 @@
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
-            <span class="info-box-icon bg-reds elevation-1"><i class="fas fa-user-lock"></i></span>
+            <span class="info-box-icon bg-red elevation-1"><i class="fas fa-user-lock"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Role Manage</span>
@@ -194,7 +194,7 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
-            <span class="info-box-icon bg-brown elevation-1"><i class="fas fa-receipt"></i></span>
+            <span class="info-box-icon bg-blue elevation-1"><i class="fas fa-receipt"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Report</span>
