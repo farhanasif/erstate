@@ -127,4 +127,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/allcreditvoucher','VoucherController@index')->name('allcreditvoucher');
     Route::get('/creditvoucher','VoucherController@creditvoucher')->name('creditvoucher');
     Route::post('/save_credit','VoucherController@save_credit')->name('save_credit');
+
+    Route::get('/alldebitvoucher','VoucherController@alldebitvoucher')->name('alldebitvoucher');
+    Route::get('/debitvoucher','VoucherController@debitvoucher')->name('debitvoucher');
+    Route::post('/save_debit','VoucherController@save_debit')->name('save_debit');
 });

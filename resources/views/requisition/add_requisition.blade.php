@@ -171,7 +171,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     {{-- <label>Amount</label> --}}
-                                    <input type="text" name="amount[]" id="" class="form-control" placeholder="Amount">
+                                    <input type="text" name="amount[]" readonly id="" class="form-control" placeholder="Amount">
                                     @if($errors->has('amount'))
                                         <strong class="text-danger">{{ $errors->first('amount') }}</strong>
                                     @endif
@@ -263,7 +263,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     {{-- <label>Amount</label> --}}
-                    <input type="text" name="amount[]" id="" class="form-control" placeholder="Amount">
+                    <input type="text" name="amount[]" id="" readonly class="form-control" placeholder="Amount">
                     @if($errors->has('amount'))
                         <strong class="text-danger">{{ $errors->first('amount') }}</strong>
                     @endif

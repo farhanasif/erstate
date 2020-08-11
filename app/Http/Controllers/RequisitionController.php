@@ -74,7 +74,7 @@ class RequisitionController extends Controller
                 $requisitions_items->description = $request->description[$i];
                 $requisitions_items->quantity = $request->quantity[$i];
                 $requisitions_items->rate = $request->rate[$i];
-                $requisitions_items->amount = $request->amount[$i];
+                $requisitions_items->amount = $request->rate[$i] * $request->quantity[$i];
                 $requisitions_items->save(); 
             }
 
