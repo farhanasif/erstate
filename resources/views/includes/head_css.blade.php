@@ -3,7 +3,7 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 <title>Real State & Construction Managment</title>
-
+<link rel="icon" type="image/x-icon" href="{{ asset('assets/dist/img/erstate-ico.ico')}}" />
 <!-- Font Awesome Icons -->
 <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
 <!-- overlayScrollbars -->

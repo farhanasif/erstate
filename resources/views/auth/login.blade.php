@@ -6,7 +6,7 @@
   <title>Real State & Construction Managment</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="icon" type="image/x-icon" href="{{ asset('assets/dist/img/erstate-ico.ico')}}" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
@@ -21,12 +21,15 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Admin</b>Login</a>
+    <a href="#">
+      <img src="{{ asset('assets/dist/img/erstate-icon.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+    </a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in</p>
+      <p class="login-box-msg">Sign in to start your session</p>
 
       <form action="{{ route('login') }}" method="post">
         @csrf
@@ -47,14 +50,14 @@
           </div>
         </div>
         <div class="row">
-          {{-- <div class="col-8">
+          <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
                 Remember Me
               </label>
             </div>
-          </div> --}}
+          </div>
           <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
@@ -62,6 +65,14 @@
           <!-- /.col -->
         </div>
       </form>
+      <br />
+      <br />
+      <p class="mb-1">
+        <a href="#">I forgot my password</a>
+      </p>
+      <p class="mb-0">
+        <a href="#" class="text-center">Register a new user</a>
+      </p>
     </div>
     <!-- /.login-card-body -->
   </div>
