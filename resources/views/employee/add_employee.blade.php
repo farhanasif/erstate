@@ -45,7 +45,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="text" name="phone" class="form-control" placeholder="Phone">
+                            <input type="number" name="phone" class="form-control" placeholder="Phone">
                               @if($errors->has('phone'))
                                   <strong class="text-danger">{{ $errors->first('phone') }}</strong>
                               @endif
@@ -65,7 +65,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                     <label>NID</label>
-                    <input type="text" name="nid" class="form-control" placeholder="NID">
+                    <input type="number" name="nid" class="form-control" placeholder="NID">
                     @if($errors->has('nid'))
                         <strong class="text-danger">{{ $errors->first('nid') }}</strong>
                     @endif

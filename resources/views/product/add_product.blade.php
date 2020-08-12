@@ -237,15 +237,64 @@
           $('#total_flat_price').val(d);
       });
 
-
-      $("#utility_charge").on("input", function () {
-        var total_charge = $('#total_flat_price').val() + $('#additional_work_charge').val() + $('#car_parking_charge').val() 
-        + $('#other_charge').val() + $(this).val();
-
-        var net_value = total_charge - $('#discount').val() + $('#refund_additional_work_charge').val();
-        
-        $('#net_total').val(net_value);
+    
+    $("#utility_charge").on("input", function () {
+       calculate();
     });
+    $("#additional_work_charge").on("input", function () {
+      calculate();
+   });
+   $("#car_parking_charge").on("input", function () {
+    calculate();
+  });
+  $("#other_charge").on("input", function () {
+    calculate();
+  });
+  $("#utility_charge").on("input", function () {
+    calculate();
+  });
+  $("#discount").on("input", function () {
+    calculate();
+  });
+  $("#refund_additional_work_charge").on("input", function () {
+    calculate();
+  });
+
+    function calculate(){
+      var adw = parseInt($('#additional_work_charge').val());
+      var cpc = parseInt($('#car_parking_charge').val());
+      var oc = parseInt($('#other_charge').val());
+      var tfp =parseInt($('#total_flat_price').val());
+      var uc =parseInt($('#utility_charge').val());
+      var dis =parseInt($('#discount').val());
+      var re =parseInt($('#refund_additional_work_charge').val());
+
+
+     
+      if (isNaN(adw)){
+        adw = 0;
+      }
+      if (isNaN(uc)){
+        uc = 0;
+      }
+      if (isNaN(cpc)){
+        cpc = 0;
+      }
+      if(isNaN(oc)){
+        oc =0;
+      }
+      if(isNaN(dis)){
+        dis =0;
+      }
+      if(isNaN(re)){
+        re =0;
+      }
+      
+   var total_charge = (tfp + adw+ cpc+oc +uc)-(dis+re);
+
+      
+      $('#net_total').val(total_charge);
+    }
 
       </script>
   @endsection

@@ -7,6 +7,8 @@ use App\VoucherDetail;
 use App\Project;
 use App\Bank;
 use App\Lname;
+use App\Journal;
+use App\JournalDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -138,12 +140,57 @@ class VoucherController extends Controller
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function journalvoucher()
+    {
+        $projects = Project::all();
+        $lnames = Lname::all();
+        return view('voucher.create_journal', compact('projects','lnames'));
+    }
+
+    public function alljournalvoucher()
+    {
+        // $voucher_details = DB::table('voucher_details')
+        //     ->join('vouchers', 'voucher_details.voucher_id', '=', 'vouchers.id')
+        //     ->join('projects', 'vouchers.project_id', '=', 'projects.id')
+        //     ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
+        //     ->join('lnames', 'voucher_details.lname_id', '=', 'lnames.id')
+        //     ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
+        //     ->get();
+        //dd($voucher_details);
+        return view('voucher.view_journal');
+    }
+
+    public function save_journal(Request $request){
+        //dd($request);
+
+        $ledger_count = sizeof($request->lname_id);
+        if($ledger_count > 0){
+            $voucher = new Voucher;
+            $voucher->project_id = $request->project_id;
+            $voucher->bank_id = $request->bank_id;
+            $voucher->cheque_no = $request->cheque_no;
+            $voucher->perticulers = $request->perticulers;
+            $voucher->voucher_type = 'DR';
+            $voucher->voucher_date = $request->voucher_date;
+            $voucher->save();
+
+            for($i = 0; $i < $ledger_count; $i++){
+                $voucher_detail = new VoucherDetail;
+                $voucher_detail->voucher_id = $voucher->id;
+                $voucher_detail->lname_id = $request->lname_id[$i];
+                $voucher_detail->amount = $request->amount[$i];
+                $voucher_detail->save();
+            }
+
+            return redirect()->back()->with('success','Debit Voucher Added Successfully!');
+        }
+        else{
+            return redirect()->back()->with('error','Debit Voucher failed to add, must add account head with amount!');
+        }
+    }
+
+
+
     public function store(Request $request)
     {
         //

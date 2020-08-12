@@ -559,13 +559,13 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('alljournalvoucher') }}" class="nav-link">
                   <i class="far fa-dot-circle nav-icon text-red"></i>
                   <p> All Journal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('journalvoucher') }}" class="nav-link">
                   <i class="far fa-dot-circle nav-icon text-red"></i>
                   <p> Create Journal</p>
                 </a>
