@@ -16,7 +16,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('save_credit') }}" method="POST">
+        <form action="{{ route('save_journal') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -58,7 +58,7 @@
                           </div>
                           <div class="col-md-2">
                               <div class="form-group pt-4">
-                                  <span style="font-size: 1.2em; color: Tomato;" id="addButton"> 
+                                  <span style="font-size: 1.2em; color: Tomato;" id="addButtonDr"> 
                                     <i class="far fa-plus-square fa-lg pt-3"></i>
                                   </span>
                               </div>
@@ -109,7 +109,7 @@
                           </div>
                           <div class="col-md-2">
                               <div class="form-group pt-4">
-                                  <span style="font-size: 1.2em; color: Tomato;" id="addButton"> 
+                                  <span style="font-size: 1.2em; color: Tomato;" id="addButtonCr"> 
                                     <i class="far fa-plus-square fa-lg pt-3"></i>
                                   </span>
                               </div>
@@ -164,10 +164,11 @@
   <script>
       $(document).ready(function() {
         var i=1;
+        var j=1;
 
         console.log('here you go');
 
-        $("#addButton").click(function (e) {
+        $("#addButtonDr").click(function (e) {
           e.preventDefault();
           i++;
 
@@ -176,7 +177,7 @@
                           <div class="form-group">
                             <label>Account Head Name</label>
                             <select name="lname_id[]" class="form-control">
-                              <option value="">--select account head--</option>
+                              <option value="">--select account head (Dr)--</option>
                               @foreach ($lnames as $lname)
                                   <option value="{{ $lname->id }}">{{ $lname->name }}</option>
                               @endforeach
@@ -206,6 +207,49 @@
             //console.log(button_id);   
             $('#row_'+button_id+'').remove();  
       });
+
+
+      //journal details cr
+
+      $("#addButtonCr").click(function (e) {
+        e.preventDefault();
+        j++;
+
+        _dynamic_div_cr = `<div class="row" id="row_`+j+`">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label>Account Head Name</label>
+                          <select name="lname_id[]" class="form-control">
+                            <option value="">--select account head (Cr)--</option>
+                            @foreach ($lnames as $lname)
+                                <option value="{{ $lname->id }}">{{ $lname->name }}</option>
+                            @endforeach
+                        </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="text" name="amount[]" class="form-control" placeholder="0">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                          <div class="form-group pt-4">
+                              <span style="font-size: 1.2em; color: red;" class="btn_remove" id="`+j+`"> 
+                                <i class="far fa-trash-alt pt-3"></i>
+                              </span>
+                          </div>
+                      </div>
+                    </div>`;
+        //console.log(_dynamic_div);
+        $('#journal_details_dr').append(_dynamic_div_cr)
+      });
+
+      $(document).on('click', '.btn_remove', function(){
+          var button_id = $(this).attr("id");
+          //console.log(button_id);   
+          $('#row_'+button_id+'').remove();  
+    });
       });
   </script>
       

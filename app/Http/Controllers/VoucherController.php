@@ -161,83 +161,32 @@ class VoucherController extends Controller
     }
 
     public function save_journal(Request $request){
-        //dd($request);
+        // dd($request->all());
+        // $this->validate($request,[
+        //     'perticulers' => 'required',
+        //     'journal_date' => 'required',
+        // ]);
 
         $ledger_count = sizeof($request->lname_id);
         if($ledger_count > 0){
-            $voucher = new Voucher;
-            $voucher->project_id = $request->project_id;
-            $voucher->bank_id = $request->bank_id;
-            $voucher->cheque_no = $request->cheque_no;
-            $voucher->perticulers = $request->perticulers;
-            $voucher->voucher_type = 'DR';
-            $voucher->voucher_date = $request->voucher_date;
-            $voucher->save();
+            $journal = new Journal;
+            $journal->perticulers = $request->perticulers;
+            $journal->journal_date = $request->journal_date;
+            $journal->save();
 
             for($i = 0; $i < $ledger_count; $i++){
-                $voucher_detail = new VoucherDetail;
-                $voucher_detail->voucher_id = $voucher->id;
-                $voucher_detail->lname_id = $request->lname_id[$i];
-                $voucher_detail->amount = $request->amount[$i];
-                $voucher_detail->save();
+                $journal_detail = new JournalDetail;
+                $journal_detail->journal_id = $journal->id;
+                $journal_detail->lname_id = $request->lname_id[$i];
+                $journal_detail->amount = $request->amount[$i];
+                $journal_detail->save();
             }
 
-            return redirect()->back()->with('success','Debit Voucher Added Successfully!');
+            return redirect()->back()->with('success','Journal Added Successfully!');
         }
         else{
-            return redirect()->back()->with('error','Debit Voucher failed to add, must add account head with amount!');
+            return redirect()->back()->with('error','Journal failed to add, must add account head with amount!');
         }
     }
 
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Voucher  $voucher
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Voucher $voucher)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Voucher  $voucher
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Voucher $voucher)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Voucher  $voucher
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Voucher $voucher)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Voucher  $voucher
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Voucher $voucher)
-    {
-        //
-    }
 }
