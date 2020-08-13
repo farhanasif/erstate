@@ -96,6 +96,8 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request, $id)
     {
+        // dd($request->all());
+
         $total_f_p = $request->flat_size * $request->unit_price;
         $net_t = ($total_f_p + $request->car_parking_charge + $request->utility_charge + $request->additional_work_charge + $request->other_charge)
                   - ($request->discount + $request->refund_additional_work_charge);
@@ -115,18 +117,22 @@ class ProductController extends Controller
             'description' => 'required',
         ]);
         
-        // $fileName = time().'.'.$request->file_attached->getClientOriginalName();  
-        // $directory = 'uploads/';
-        // $file_attached =  $request->file_attached->move($directory, $fileName);
+        $projects = Product::find($id);
+        $date = Carbon::now()->format("his")+rand(1000,9999);
+        //print_r ($request->file('file_attached'));
+     
+        if ($image = $request->file('file_attached')){
+            $extension = $request->file('file_attached')->getClientOriginalExtension();
+            $imageName = $date.'.'.$extension;
+            $path = public_path('uploads/');
+            $image->move($path, $imageName);
+            $projects->file_attached = $imageName;
+            
+        }
+        else{
+            $projects->file_attached = "Null";
+        }
 
-            $data = $request->input('file_attached');
-            $photo = $request->file('file_attached')->getClientOriginalName();
-            $destination = base_path() . '/public/uploads';
-            $file_attached = $request->file('file_attached')->move($destination, $photo);
-
-
-
-            $projects = Product::find($id);
             $projects->project_id = $request->project_name;
             $projects->flat_type = $request->flat_type;
             $projects->floor_number = $request->floor_number;
@@ -140,10 +146,10 @@ class ProductController extends Controller
             $projects->discount = $request->discount;
             $projects->refund_additional_work_charge = $request->refund_additional_work_charge;
             $projects->net_total = $net_t;
-            $projects->file_attached = $file_attached;
             $projects->description = $request->description;
             $projects->save();
-        return redirect()->route('allProduct')->with('success','Product Updated Successfully!');
+
+            return redirect()->route('allProduct')->with('success','Product Updated Successfully!');
     }
     public function deleteProduct($id)
     {

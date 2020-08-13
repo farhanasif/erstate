@@ -23,7 +23,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Project</label>
-                      <select name="project_id" class="form-control">
+                      <select name="project_id_dr" class="form-control">
                         <option value="">--select project name (Dr)--</option>
                         @foreach ($projects as $project)
                             <option value="{{ $project->id }}">{{ $project->name }}</option>
@@ -42,7 +42,7 @@
                           <div class="col-md-5">
                             <div class="form-group">
                               <label>Account Head Name</label>
-                              <select name="lname_id[]" class="form-control">
+                              <select name="lname_id_dr[]" class="form-control">
                                 <option value="">--select account head (Dr)--</option>
                                 @foreach ($lnames as $lname)
                                     <option value="{{ $lname->id }}">{{ $lname->name }}</option>
@@ -53,7 +53,7 @@
                           <div class="col-md-4">
                             <div class="form-group">
                                 <label>Amount</label>
-                                <input type="text" name="amount[]" class="form-control" placeholder="0">
+                                <input type="text" name="amount_dr[]" class="form-control" placeholder="0">
                             </div>
                           </div>
                           <div class="col-md-2">
@@ -74,7 +74,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Project</label>
-                      <select name="project_id" class="form-control">
+                      <select name="project_id_cr" class="form-control">
                         <option value="">--select project name (Cr)--</option>
                         @foreach ($projects as $project)
                             <option value="{{ $project->id }}">{{ $project->name }}</option>
@@ -93,7 +93,7 @@
                           <div class="col-md-5">
                             <div class="form-group">
                               <label>Account Head Name</label>
-                              <select name="lname_id[]" class="form-control">
+                              <select name="lname_id_cr[]" class="form-control">
                                 <option value="">--select account head (Cr)--</option>
                                 @foreach ($lnames as $lname)
                                     <option value="{{ $lname->id }}">{{ $lname->name }}</option>
@@ -104,7 +104,7 @@
                           <div class="col-md-4">
                             <div class="form-group">
                                 <label>Amount</label>
-                                <input type="text" name="amount[]" class="form-control" placeholder="0">
+                                <input type="text" name="amount_cr[]" class="form-control" placeholder="0">
                             </div>
                           </div>
                           <div class="col-md-2">

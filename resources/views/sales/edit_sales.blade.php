@@ -81,70 +81,44 @@
                   </div>
 
                   <div class="col-md-6">
-                      <div class="form-group">
-                          <label>Location</label>
-                          <input type="text" name="location" class="form-control" placeholder="Location" value="{{ $sales->location }}">
-                          @if($errors->has('location'))
-                              <strong class="text-danger">{{ $errors->first('location') }}</strong>
-                          @endif
-                      </div>
-                  </div>
+                    <div class="form-group">
+                        <label>Sells Date</label>
+                        <input type="date" name="sales_date" id="sales_date" class="form-control" placeholder="Sells Date" value="{{ $sales->sales_date }}">
+                        @if($errors->has('sales_date'))
+                            <strong class="text-danger">{{ $errors->first('sales_date') }}</strong>
+                        @endif
+                    </div>
+                </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
-                      <label>Amount</label>
-                      <input type="number" name="amount" class="form-control" placeholder="Amount" value="{{ $sales->amount }}">
-                      @if($errors->has('phone'))
-                          <strong class="text-danger">{{ $errors->first('amount') }}</strong>
+                      <label>Status</label>
+                      <select name="status" id="" class="form-control">
+                        <option value="">--select--</option>
+                        <option <?= $sales->status == '1' ? 'selected' : ''?> value="1">Active</option>
+                        <option <?= $sales->status == '0' ? 'selected' : ''?> value="0">Inactive</option>
+                      </select>
+                      @if($errors->has('sales_date'))
+                          <strong class="text-danger">{{ $errors->first('sales_date') }}</strong>
                       @endif
                   </div>
               </div>
 
-              <div class="col-md-6">
-                <div class="form-group">
-                    <label>Amount Paid</label>
-                    <input type="number" name="amount_paid" class="form-control" placeholder="Amount Paid" value="{{ $sales->amount_paid }}">
-                    @if($errors->has('amount_paid'))
-                        <strong class="text-danger">{{ $errors->first('amount_paid') }}</strong>
-                    @endif
-                </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="form-group">
-                  <label>Amount Due</label>
-                  <input type="number" name="amount_due" class="form-control" placeholder="Amount Due" value="{{ $sales->amount_due }}">
-                  @if($errors->has('amount_due'))
-                      <strong class="text-danger">{{ $errors->first('amount_due') }}</strong>
-                  @endif
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label>Description</label>
+                      <textarea name="description" id="address" cols="3" rows="3" class="form-control" placeholder="Description"> {{ $sales->description }}</textarea>
+                      @if($errors->has('description'))
+                          <strong class="text-danger">{{ $errors->first('description') }}</strong>
+                      @endif
+                  </div>
               </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="form-group">
-                <label>Sells Date</label>
-                <input type="date" name="sales_date" id="sales_date" class="form-control" placeholder="Sells Date" value="{{ $sales->sales_date }}">
-                @if($errors->has('sales_date'))
-                    <strong class="text-danger">{{ $errors->first('sales_date') }}</strong>
-                @endif
-            </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-              <label>Description</label>
-              <textarea name="description" id="address" cols="3" rows="3" class="form-control" placeholder="Description"> {{ $sales->description }}</textarea>
-              @if($errors->has('description'))
-                  <strong class="text-danger">{{ $errors->first('description') }}</strong>
-              @endif
-          </div>
-      </div>
                   <!-- /.col -->
                 </div>
                 <!-- /.row -->
               </div>
               <div class="card-footer">
-                 <button type="submit" class="btn btn-success ">Submit</button>
+                 <button type="submit" class="btn btn-success ">Update</button>
                  <a href="{{ route('allSales') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>

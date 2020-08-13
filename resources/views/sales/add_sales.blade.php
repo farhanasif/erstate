@@ -19,125 +19,99 @@
             @csrf
             <div class="card-body">
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Customer Name</label>
-                      <select name="customer_name" id="" class="form-control">
-                        <option value="">--select--</option>
-                        @foreach ($customers as $customer)
-                            <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-                        @endforeach
-                      </select>
-                      @if($errors->has('customer_name'))
-                          <strong class="text-danger">{{ $errors->first('customer_name') }}</strong>
-                      @endif
-                    </div>
-                  </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Customer Name</label>
+                          <select name="customer_name" id="" class="form-control">
+                            <option value="">--select--</option>
+                            @foreach ($customers as $customer)
+                                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                            @endforeach
+                          </select>
+                          @if($errors->has('customer_name'))
+                              <strong class="text-danger">{{ $errors->first('customer_name') }}</strong>
+                          @endif
+                        </div>
+                      </div>
 
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Project Name</label>
-                        <select name="project_name" id="" class="form-control">
-                          <option value="">--select--</option>
-                          @foreach ($projects as $project)
-                              <option value="{{ $project->id }}">{{ $project->name }}</option>
-                          @endforeach
-                        </select>
-                        @if($errors->has('project_name'))
-                            <strong class="text-danger">{{ $errors->first('project_name') }}</strong>
-                        @endif
-                    </div>
-                  </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Project Name</label>
+                            <select name="project_name" id="" class="form-control">
+                              <option value="">--select--</option>
+                              @foreach ($projects as $project)
+                                  <option value="{{ $project->id }}">{{ $project->name }}</option>
+                              @endforeach
+                            </select>
+                            @if($errors->has('project_name'))
+                                <strong class="text-danger">{{ $errors->first('project_name') }}</strong>
+                            @endif
+                        </div>
+                      </div>
 
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Product Name</label>
-                      <select name="product_name" id="" class="form-control">
-                        <option value="">--select--</option>
-                        @foreach ($products as $product)
-                            <option value="{{ $product->id }}">{{ $product->id }}</option>
-                        @endforeach
-                      </select>
-                      @if($errors->has('product_name'))
-                          <strong class="text-danger">{{ $errors->first('product_name') }}</strong>
-                      @endif
-                    </div>
-                  </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Product Name</label>
+                          <select name="product_name" id="" class="form-control">
+                            <option value="">--select--</option>
+                            @foreach ($products as $product)
+                                <option value="{{ $product->id }}">{{ $product->id }}</option>
+                            @endforeach
+                          </select>
+                          @if($errors->has('product_name'))
+                              <strong class="text-danger">{{ $errors->first('product_name') }}</strong>
+                          @endif
+                        </div>
+                      </div>
 
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Employee Name</label>
-                      <select name="employee_name" id="" class="form-control">
-                        <option value="">--select--</option>
-                        @foreach ($employees as $employee)
-                            <option value="{{ $employee->id }}">{{ $employee->name }}</option>
-                        @endforeach
-                      </select>
-                      @if($errors->has('employee_name'))
-                          <strong class="text-danger">{{ $errors->first('employee_name') }}</strong>
-                      @endif
-                    </div>
-                  </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Employee Name</label>
+                          <select name="employee_name" id="" class="form-control">
+                            <option value="">--select--</option>
+                            @foreach ($employees as $employee)
+                                <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                            @endforeach
+                          </select>
+                          @if($errors->has('employee_name'))
+                              <strong class="text-danger">{{ $errors->first('employee_name') }}</strong>
+                          @endif
+                        </div>
+                      </div>
 
-                  <div class="col-md-6">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Sells Date</label>
+                            <input type="date" name="sales_date" id="sales_date" class="form-control" placeholder="Sells Date">
+                            @if($errors->has('sales_date'))
+                                <strong class="text-danger">{{ $errors->first('sales_date') }}</strong>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
                       <div class="form-group">
-                          <label>Location</label>
-                          <input type="text" name="location" class="form-control" placeholder="Location">
-                          @if($errors->has('location'))
-                              <strong class="text-danger">{{ $errors->first('location') }}</strong>
+                          <label>Status</label>
+                          <select name="status" id="" class="form-control">
+                            <option value="">--select--</option>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                          </select>
+                          @if($errors->has('sales_date'))
+                              <strong class="text-danger">{{ $errors->first('sales_date') }}</strong>
                           @endif
                       </div>
                   </div>
 
-                <div class="col-md-6">
-                  <div class="form-group">
-                      <label>Amount</label>
-                      <input type="number" name="amount" class="form-control" placeholder="Amount">
-                      @if($errors->has('phone'))
-                          <strong class="text-danger">{{ $errors->first('amount') }}</strong>
-                      @endif
-                  </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group">
-                    <label>Amount Paid</label>
-                    <input type="number" name="amount_paid" class="form-control" placeholder="Amount Paid">
-                    @if($errors->has('amount_paid'))
-                        <strong class="text-danger">{{ $errors->first('amount_paid') }}</strong>
-                    @endif
-                </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="form-group">
-                  <label>Amount Due</label>
-                  <input type="number" name="amount_due" class="form-control" placeholder="Amount Due">
-                  @if($errors->has('amount_due'))
-                      <strong class="text-danger">{{ $errors->first('amount_due') }}</strong>
-                  @endif
-              </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="form-group">
-                <label>Description</label>
-                <textarea name="description" id="address" cols="3" rows="3" class="form-control" placeholder="Description"></textarea>
-                @if($errors->has('description'))
-                    <strong class="text-danger">{{ $errors->first('description') }}</strong>
-                @endif
-            </div>
-        </div>
-
-          <div class="col-md-6">
-            <div class="form-group">
-                <label>Sells Date</label>
-                <input type="date" name="sales_date" id="sales_date" class="form-control" placeholder="Sells Date">
-                @if($errors->has('sales_date'))
-                    <strong class="text-danger">{{ $errors->first('sales_date') }}</strong>
-                @endif
-            </div>
-        </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea name="description" id="address" cols="3" rows="3" class="form-control" placeholder="Description"></textarea>
+                            @if($errors->has('description'))
+                                <strong class="text-danger">{{ $errors->first('description') }}</strong>
+                            @endif
+                        </div>
+                    </div>
 
                   <!-- /.col -->
                 </div>
