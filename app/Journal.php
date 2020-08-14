@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VoucherDetail extends Model
+class Journal extends Model
 {
-    //
+    protected $table = 'journals';
 }

@@ -7,6 +7,8 @@ use App\VoucherDetail;
 use App\Project;
 use App\Bank;
 use App\Lname;
+use App\Journal;
+use App\JournalDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -138,59 +140,53 @@ class VoucherController extends Controller
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function journalvoucher()
     {
-        //
+        $projects = Project::all();
+        $lnames = Lname::all();
+        return view('voucher.create_journal', compact('projects','lnames'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Voucher  $voucher
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Voucher $voucher)
+    public function alljournalvoucher()
     {
-        //
+        // $voucher_details = DB::table('voucher_details')
+        //     ->join('vouchers', 'voucher_details.voucher_id', '=', 'vouchers.id')
+        //     ->join('projects', 'vouchers.project_id', '=', 'projects.id')
+        //     ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
+        //     ->join('lnames', 'voucher_details.lname_id', '=', 'lnames.id')
+        //     ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
+        //     ->get();
+        //dd($voucher_details);
+        return view('voucher.view_journal');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Voucher  $voucher
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Voucher $voucher)
-    {
-        //
+    public function save_journal(Request $request){
+        // dd($request->all());
+        // $this->validate($request,[
+        //     'perticulers' => 'required',
+        //     'journal_date' => 'required',
+        // ]);
+
+        $ledger_count = sizeof($request->lname_id);
+        if($ledger_count > 0){
+            $journal = new Journal;
+            $journal->perticulers = $request->perticulers;
+            $journal->journal_date = $request->journal_date;
+            $journal->save();
+
+            for($i = 0; $i < $ledger_count; $i++){
+                $journal_detail = new JournalDetail;
+                $journal_detail->journal_id = $journal->id;
+                $journal_detail->lname_id = $request->lname_id[$i];
+                $journal_detail->amount = $request->amount[$i];
+                $journal_detail->save();
+            }
+
+            return redirect()->back()->with('success','Journal Added Successfully!');
+        }
+        else{
+            return redirect()->back()->with('error','Journal failed to add, must add account head with amount!');
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Voucher  $voucher
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Voucher $voucher)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Voucher  $voucher
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Voucher $voucher)
-    {
-        //
-    }
 }

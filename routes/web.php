@@ -131,4 +131,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/alldebitvoucher','VoucherController@alldebitvoucher')->name('alldebitvoucher');
     Route::get('/debitvoucher','VoucherController@debitvoucher')->name('debitvoucher');
     Route::post('/save_debit','VoucherController@save_debit')->name('save_debit');
+
+    //--------JOURNAL ROUTES------//
+    Route::get('/alljournalvoucher','VoucherController@alljournalvoucher')->name('alljournalvoucher');
+    Route::get('/journalvoucher','VoucherController@journalvoucher')->name('journalvoucher');
+    Route::post('/save_journal','VoucherController@save_journal')->name('save_journal');
 });

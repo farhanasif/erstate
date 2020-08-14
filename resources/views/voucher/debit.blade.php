@@ -16,7 +16,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('save_credit') }}" method="POST">
+        <form action="{{ route('save_debit') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">

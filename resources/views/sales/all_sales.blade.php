@@ -23,13 +23,10 @@
               <th>SL NO</th>
               <th>Customer Name</th>
               <th>Project Name</th>
-              <th>Product Name</th>
+              <th>Product ID</th>
               <th>Employee Name</th>
               <th>Customer Name</th>
               <th>Description</th>
-              <th>Amount</th>
-              <th>Amount paid</th>
-              <th>Amount Due</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -43,9 +40,6 @@
                 <td>{{ $sale->employee_name }}</td>
                 <td>{{ $sale->customer_name }}</td>
                 <td>{{ $sale->description }}</td>
-                <td>{{ $sale->amount }}</td>
-                <td>{{ $sale->amount_paid }}</td>
-                <td>{{ $sale->amount_due }}</td>
                 <td>
                     <a href="{{ route('editSales',$sale->id) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
                     <a href="{{ route('deleteSales',$sale->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
