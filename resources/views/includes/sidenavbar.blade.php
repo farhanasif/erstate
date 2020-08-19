@@ -169,13 +169,13 @@
                     <li class="nav-item">
                       <a href="{{ route('showAddRequisition') }}" class="nav-link">
                         <i class="far fa-dot-circle nav-icon text-danger"></i>
-                        <p>create Requisition</p>
+                        <p>Create Requisition</p>
                       </a>
                     </li>
                   </ul>
                 </li>
 
-                <li class="nav-item has-treeview">
+                {{-- <li class="nav-item has-treeview">
                   <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon text-danger"></i>
                     <p>
@@ -197,7 +197,7 @@
                       </a>
                     </li>
                   </ul>
-                </li>
+                </li> --}}
 
                 <li class="nav-item has-treeview">
                   <a href="#" class="nav-link">
@@ -209,15 +209,15 @@
                   </a>
                   <ul class="nav nav-treeview" style="display: none;">
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{ route('allRQNConfirmed') }}" class="nav-link">
                         <i class="far fa-dot-circle nav-icon text-danger"></i>
                         <p> All RQN</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{ route('showAddRQNConfirmed') }}" class="nav-link">
                         <i class="far fa-dot-circle nav-icon text-danger"></i>
-                        <p>create RQN</p>
+                        <p>Create RQN</p>
                       </a>
                     </li>
                   </ul>
@@ -233,13 +233,13 @@
                   </a>
                   <ul class="nav nav-treeview" style="display: none;">
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{ route('allOrder') }}" class="nav-link">
                         <i class="far fa-dot-circle nav-icon text-danger"></i>
                         <p> All Order</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{ route('showAddOrder') }}" class="nav-link">
                         <i class="far fa-dot-circle nav-icon text-danger"></i>
                         <p>create Order</p>
                       </a>

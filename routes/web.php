@@ -94,6 +94,14 @@ Route::middleware('auth')->group(function () {
         Route::post('/requisition/update-requisition/{id}', 'RequisitionController@updateRequisition')->name('updateRequisition');
         Route::get('/requisition/delete-requisition/{id}', 'RequisitionController@deleteRequisition')->name('deleteRequisition');
 
+        // ALL requisition confirmed ROUTES
+        Route::get('/rqn-confirmed/add-rqn-confirmed', 'RequisitionConfirmedController@showAddRQNConfirmed')->name('showAddRQNConfirmed');
+        Route::post('/rqn-confirmed/store-rqn-confirmed', 'RequisitionConfirmedController@storeRQNConfirmed')->name('storeRQNConfirmed');
+        Route::get('/rqn-confirmed/all-rqn-confirmed', 'RequisitionConfirmedController@allRQNConfirmed')->name('allRQNConfirmed');
+        Route::get('/rqn-confirmed/edit-rqn-confirmed/{id}', 'RequisitionConfirmedController@editRQNConfirmed')->name('editRQNConfirmed');
+        Route::post('/rqn-confirmed/update-rqn-confirmed/{id}', 'RequisitionConfirmedController@updateRQNConfirmed')->name('updateRQNConfirmed');
+        Route::get('/rqn-confirmed/delete-rqn-confirmed/{id}', 'RequisitionConfirmedController@deleteRQNConfirmed')->name('deleteRQNConfirmed');
+
         // ALL requisition details ROUTES
         Route::get('/requisition-details/add-requisition-details', 'RequisitionDetailsController@showAddRequisitionDetails')->name('showAddRequisitionDetails');
         Route::post('/requisition-details/store-requisition-details', 'RequisitionDetailsController@storeRequisitionDetails')->name('storeRequisitionDetails');
@@ -102,6 +110,14 @@ Route::middleware('auth')->group(function () {
         Route::post('/requisition-details/update-requisition-details/{id}', 'RequisitionDetailsController@updateRequisitionDetails')->name('updateRequisitionDetails');
         Route::get('/requisition-details/delete-requisition-details/{id}', 'RequisitionDetailsController@deleteRequisitionDetails')->name('deleteRequisitionDetails');
    
+        // ALL order ROUTES
+        Route::get('/order/add-order', 'OrderController@showAddOrder')->name('showAddOrder');
+        Route::post('/order/store-order', 'OrderController@storeIOrder')->name('storeIOrder');
+        Route::get('/order/all-order', 'OrderController@allOrder')->name('allOrder');
+        Route::get('/order/edit-order/{id}', 'OrderController@editOrder')->name('editOrder');
+        Route::post('/order/update-order/{id}', 'OrderController@updateOrder')->name('updateOrder');
+        Route::get('/order/delete-order/{id}', 'OrderController@deleteOrder')->name('deleteOrder');
+
     //--------Bank ROUTES---------//
     Route::resource('banks', 'BankController');
     Route::post('/banks_update', 'BankController@update')->name('banks_update');
