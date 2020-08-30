@@ -43,8 +43,10 @@
                 <td>{{ date('j F, Y', strtotime($project->launching_date)) }}</td>
                 <td>{{ date('j F, Y', strtotime($project->hand_over_date)) }}</td>
                 <td>
-                    <a href="{{ route('editProject',$project->id) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
-                    <a href="{{ route('deleteProject',$project->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                  <div style="width: 150px; display: block;">
+                    <a href="{{ route('editProject',$project->id) }}" class="btn btn-warning" title="Edit"><i class="far fa-edit"></i></a>
+                    <a href="{{ route('deleteProject',$project->id) }}" class="btn btn-danger" title="Delete"><i class="far fa-trash-alt"></i></a>
+                  </div>
                 </td>
             </tr>
               @endforeach

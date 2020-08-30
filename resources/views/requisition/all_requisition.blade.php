@@ -24,6 +24,7 @@
               <th>Project Name</th>
               <th>Employee Name</th>
               <th>Contact Person</th>
+              <th> Purpose </th>
               <th>Requisition Date</th>
               <th>Required Date</th>
               <th>Action</th>
@@ -39,9 +40,11 @@
                 <td>{{ $requisition->purpose }}</td>
                 <td>{{ date('j F, Y', strtotime($requisition->requisition_date)) }}</td>
                 <td>{{ date('j F, Y', strtotime($requisition->required_date)) }}</td>
-                <td class="row">
-                    <a href="{{ route('editRequisition',$requisition->id) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
-                    <a href="{{ route('deleteRequisition',$requisition->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                <td>
+                  <div style="width: 150px; display: block;">
+                    <a href="{{ route('editRequisition',$requisition->id) }}" class="btn btn-warning" title="Edit"><i class="far fa-edit"></i></a>
+                    <a href="{{ route('deleteRequisition',$requisition->id) }}" class="btn btn-danger" title="Delete"><i class="far fa-trash-alt"></i></a>
+                  </div>
                 </td>
             </tr>
               @endforeach
