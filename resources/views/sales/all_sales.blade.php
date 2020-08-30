@@ -41,8 +41,10 @@
                 <td>{{ $sale->customer_name }}</td>
                 <td>{{ $sale->description }}</td>
                 <td>
-                    <a href="{{ route('editSales',$sale->id) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
-                    <a href="{{ route('deleteSales',$sale->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                  <div style="width: 150px; display: block;">
+                    <a href="{{ route('editSales',$sale->id) }}" class="btn btn-warning" title="Edit"><i class="far fa-edit"></i></a>
+                    <a href="{{ route('deleteSales',$sale->id) }}" class="btn btn-danger" title="Delete"><i class="far fa-trash-alt"></i></a>
+                  </div>
                 </td>
             </tr>
               @endforeach

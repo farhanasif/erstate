@@ -45,7 +45,12 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td>
+                  <div style="width: 150px; display: block;">
+                    <a href="#" class="btn btn-warning" title="Edit"><i class="far fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger" title="Delete"><i class="far fa-trash-alt"></i></a>
+                  </div>
+                </td>
             </tr>
         </tbody>
       </table>

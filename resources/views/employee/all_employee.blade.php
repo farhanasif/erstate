@@ -43,8 +43,10 @@
                 <td>{{ $employee->nid }}</td>
                 <td>{{ $employee->department }}</td>
                 <td>
-                    <a href="{{ route('editEmployee',$employee->id) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
-                    <a href="{{ route('deleteEmployee',$employee->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                  <div style="width: 150px; display: block;">
+                    <a href="{{ route('editEmployee',$employee->id) }}" class="btn btn-warning" title="Edit"><i class="far fa-edit"></i></a>
+                    <a href="{{ route('deleteEmployee',$employee->id) }}" class="btn btn-danger" title="Delete"><i class="far fa-trash-alt"></i></a>
+                  </div>
                 </td>
             </tr>
               @endforeach

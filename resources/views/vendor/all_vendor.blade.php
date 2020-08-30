@@ -43,8 +43,10 @@
                 <td>{{ $vendor->website }}</td>
                 <td>{{ $vendor->description }}</td>
                 <td>
-                    <a href="{{ route('editVendor',$vendor->id) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
-                    <a href="{{ route('deleteVendor',$vendor->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                  <div style="width: 150px; display: block;">
+                    <a href="{{ route('editVendor',$vendor->id) }}" class="btn btn-warning" title="Edit"><i class="far fa-edit"></i></a>
+                    <a href="{{ route('deleteVendor',$vendor->id) }}" class="btn btn-danger" title="Delete"><i class="far fa-trash-alt"></i></a>
+                  </div>
                 </td>
             </tr>
               @endforeach
