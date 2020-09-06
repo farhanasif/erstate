@@ -354,7 +354,7 @@
                 </a>
                 <ul class="nav nav-treeview" style="display: none;">
                   <li class="nav-item">
-                    <a href="{{ route('ltype.index') }}" class="nav-link">
+                    <a href="{{ route('showAddLadger') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-purple"></i>
                       <p> All </p>
                     </a>
@@ -372,13 +372,13 @@
                 </a>
                 <ul class="nav nav-treeview" style="display: none;">
                   <li class="nav-item">
-                    <a href="{{ route('lgroup.index') }}" class="nav-link">
+                    <a href="{{ route('showAddLadgerGroup') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-purple"></i>
                       <p> All Group</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('ledgergroup.create') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-purple"></i>
                       <p>create Group</p>
                     </a>
@@ -424,7 +424,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('banks.index') }}" class="nav-link">
+              <a href="{{route('showAddBank')}}" class="nav-link">
                 <i class="far fa-circle nav-icon text-blue-grey "></i>
                 <p>All Bank Cash</p>
               </a>

@@ -59,7 +59,7 @@
               </div>
               <div class="card-footer">
                  <button type="submit" class="btn btn-success ">Update</button>
-                 <a href="{{ route('banks.index') }}" type="submit" class="btn btn-info">Back</a>
+                 <a href="{{ route('showAddBank') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
       </div>

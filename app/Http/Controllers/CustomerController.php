@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 
+use Illuminate\Support\Facades\Session;
+use Yajra\DataTables\Facades\DataTables;
+
 class CustomerController extends Controller
 {
     public function showAddCustomer()
@@ -17,6 +20,25 @@ class CustomerController extends Controller
         $customers = Customer::all();
         return view('customer.all_customer', compact('customers'));
     }
+
+    public function customerData(){
+        $customers = Customer::all();
+        $data_table_render= DataTables::of($customers)
+            ->addColumn('DT_RowIndex',function ($row){
+                return '<input type="checkbox" id="qst_id_'.$row["id"].'">';
+            })
+            //add edit and delte option
+                ->addColumn('action',function ($row){
+                    $edit_url=url('customer/edit-customer/'.$row['id']);
+                return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
+                     '<button onClick="deleteCustomer('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
+            })
+            ->rawColumns(['DT_RowIndex','action'])
+            ->addIndexColumn()
+            ->make(true);
+        return $data_table_render;
+    }
+
 
     public function storeCustomer(Request $request)
     {
@@ -77,7 +99,11 @@ class CustomerController extends Controller
     public function deleteCustomer($id)
     {
         $customer = Customer::find($id);
-        $customer->delete();
-        return redirect()->back()->with('danger','Customer Deleted Successfully!');
+        if ($customer){
+            $customer->delete();
+            return response()->json('success',201);
+        }else{
+            return response()->json('error',422);
+        }
     }
 }

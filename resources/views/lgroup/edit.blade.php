@@ -46,7 +46,7 @@
               </div>
               <div class="card-footer">
                  <button type="submit" class="btn btn-success ">Update</button>
-                 <a href="{{ route('lgroup.index') }}" type="submit" class="btn btn-info">Back</a>
+                 <a href="{{ route('showAddLadgerGroup') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
       </div>

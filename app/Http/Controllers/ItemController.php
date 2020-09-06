@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use Yajra\DataTables\Facades\DataTables;
+
 class ItemController extends Controller
 {
     public function showAddItem()
@@ -15,6 +17,24 @@ class ItemController extends Controller
     {
         $items = Item::all();
         return view('item.all_item', compact('items'));
+    }
+   
+    public function itemData(){
+        $items = Item::all();
+        $data_table_render= DataTables::of($items)
+            ->addColumn('DT_RowIndex',function ($row){
+                return '<input type="checkbox" id="qst_id_'.$row["id"].'">';
+            })
+            //add edit and delte option
+                ->addColumn('action',function ($row){
+                    $edit_url=url('item/edit-item/'.$row['id']);
+                return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
+                     '<button onClick="deleteItem('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
+            })
+            ->rawColumns(['DT_RowIndex','action'])
+            ->addIndexColumn()
+            ->make(true);
+        return $data_table_render;
     }
 
     public function storeItem(Request $request)
@@ -61,7 +81,11 @@ class ItemController extends Controller
     public function deleteItem($id)
     {
         $item = Item::find($id);
-        $item->delete();
-        return redirect()->back()->with('danger','Item Deleted Successfully!');
+        if($item){
+            $item->delete();
+            return response()->json('success',201);
+        }else{
+            return response()->json('error',422);
+        }
     }
 }

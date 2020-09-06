@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 
+use Yajra\DataTables\Facades\DataTables;
+
 class ProjectController extends Controller
 {
     public function showAddProject()
@@ -16,6 +18,24 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
         return view('project.all_project', compact('projects'));
+    }
+
+    public function projectData(){
+        $projects = Project::all();
+        $data_table_render= DataTables::of($projects)
+            ->addColumn('DT_RowIndex',function ($row){
+                return '<input type="checkbox" id="qst_id_'.$row["id"].'">';
+            })
+            //add edit and delte option
+                ->addColumn('action',function ($row){
+                    $edit_url=url('project/edit-project/'.$row['id']);
+                return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'.
+                     '<button onClick="deleteProject('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
+            })
+            ->rawColumns(['DT_RowIndex','action'])
+            ->addIndexColumn()
+            ->make(true);
+        return $data_table_render;
     }
 
     public function storeProject(Request $request)
@@ -80,7 +100,11 @@ class ProjectController extends Controller
     public function deleteProject($id)
     {
         $project = Project::find($id);
-        $project->delete();
-        return redirect()->back()->with('danger','Project Deleted Successfully!');
+        if($project){
+            $project->delete();
+            return response()->json('success',201);
+        }else{
+            return response()->json('error',422);
+        }
     }
 }

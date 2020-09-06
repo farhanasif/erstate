@@ -2,38 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Ltype;
 use Illuminate\Http\Request;
+use App\Ltype;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class LtypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function showAddLedger()
     {
-        $ltypes = Ltype::all();
-        return view('ltype.view', compact('ltypes'));
+        return view('ltype.view');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('ltype.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -49,40 +34,33 @@ class LtypeController extends Controller
         return redirect()->back()->with('success','Ledger Type Added Successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Ltype  $ltype
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Ltype $ltype)
-    {
-        
+    public function ladgerInfoData(){
+        $ladgerinfo = Ltype::all();
+        $data_table_render= DataTables::of($ladgerinfo)
+            ->addColumn('DT_RowIndex',function ($row){
+                return '<input type="checkbox" id="qst_id_'.$row["id"].'">';
+            })
+            //add edit and delte option
+                ->addColumn('action',function ($row){
+                    $edit_url=url('ledgertype/edit/'.$row['id']);
+                return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
+                     '<button onClick="destroy('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
+            })
+            ->rawColumns(['DT_RowIndex','action'])
+            ->addIndexColumn()
+            ->make(true);
+        return $data_table_render;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Ltype  $ltype
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Ltype $ltype)
+    public function editladger($id)
     {
-        //$customer = Customer::find($id);
+        $ltype = Ltype::find($id);
         return view('ltype.edit',compact('ltype'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Ltype  $ltype
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
         $ltype = Ltype::findOrFail($request->id);
-
         $this->validate($request,[
             'name' => 'required',
             'code' => 'required'
@@ -90,17 +68,17 @@ class LtypeController extends Controller
 
         $ltype->update($request->all());
 
-        return redirect()->route('ltype.index')->with('success','Ledger Type Updated Successfully!');
+        return redirect()->route('showAddLadger')->with('success','Ledger Type Updated Successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Ltype  $ltype
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Ltype $ltype)
+    public function destroy(Request $request)
     {
-        //
+        $ledgerType = Ltype::findOrFail($request->id);
+        if($ledgerType){
+            $ledgerType->delete();
+            return response()->json('success',201);
+        }else{
+            return response()->json('error',422);
+        }
     }
 }
