@@ -396,13 +396,13 @@
                 </a>
                 <ul class="nav nav-treeview" style="display: none;">
                   <li class="nav-item">
-                    <a href="{{ route('lname.index') }}" class="nav-link">
+                    <a href="{{ route('showAddLadgerName') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-purple"></i>
                       <p> All Name</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('lname.create') }}" class="nav-link">
+                    <a href="{{ route('ledgername.create') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-purple"></i>
                       <p>create Name</p>
                     </a>

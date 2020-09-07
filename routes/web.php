@@ -152,13 +152,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/ledgergroup-update', 'LgroupController@update')->name('ledgergroup_update');
     Route::get('/ledgergroup_delete/{id}','LgroupController@destroyladgerGroup')->name('delete_ledgergroup');
 
-
-    //Route::post('/ledgergroup_update', 'LgroupController@update')->name('ledgergroup_update');
-
     //--------Ledger Name ROUTEs------//
-    Route::resource('lname', 'LnameController');
+    //Route::resource('lname', 'LnameController');
+    Route::get('/ledgername/add', 'LnameController@showAddLedgerName')->name('showAddLadgerName');
+    Route::get('/ledgername/create-ledgername', 'LnameController@create')->name('ledgername.create');
+    Route::post('/ledgername/store-ledgername', 'LnameController@store')->name('storeledgername');
+    Route::get('/ledgername/all-datatable','LnameController@ladgerNameInfoData');
+    Route::get('/ledgername/edit/{id}', 'LnameController@editladgerName')->name('editLadgerName');
     Route::post('/ledgername_update', 'LnameController@update')->name('ledgername_update');
-    Route::post('/ledgername_delete','LnameController@destroy')->name('ledgername_delete');
+    Route::get('/ledgernames_delete/{id}','LnameController@destroyladgerName')->name('delete_LedgerName');
 
     //--------Initial Balance ROUTEs------//
     Route::resource('initial', 'InitialController');
