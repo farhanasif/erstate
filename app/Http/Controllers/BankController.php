@@ -83,4 +83,9 @@ class BankController extends Controller
             return response()->json('error',422);
         }
     }
+
+    public function totalBankOrCash(){
+        $totalBankOrCash=Bank::count();
+        return response()->json($totalBankOrCash);
+    }
 }

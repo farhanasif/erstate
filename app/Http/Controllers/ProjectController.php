@@ -29,7 +29,7 @@ class ProjectController extends Controller
             //add edit and delte option
                 ->addColumn('action',function ($row){
                     $edit_url=url('project/edit-project/'.$row['id']);
-                return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'.
+                return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
                      '<button onClick="deleteProject('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
             })
             ->rawColumns(['DT_RowIndex','action'])
@@ -106,5 +106,11 @@ class ProjectController extends Controller
         }else{
             return response()->json('error',422);
         }
+    }
+
+    //total project count method
+    public function totalProject(){
+        $postsProjects = Project::count();
+         return response()->json($postsProjects);
     }
 }

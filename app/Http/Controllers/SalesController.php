@@ -167,4 +167,9 @@ class SalesController extends Controller
             return response()->json('error',422);
         }
     }
+
+    public function totalSells(){
+        $totalSells=Sale::count();
+        return response()->json($totalSells);
+    }
 }

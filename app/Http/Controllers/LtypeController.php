@@ -81,4 +81,9 @@ class LtypeController extends Controller
             return response()->json('error',422);
         }
     }
+
+    public function totalLadgerType(){
+        $totalLedgerType=Ltype::count();
+        return response()->json($totalLedgerType);
+    }
 }

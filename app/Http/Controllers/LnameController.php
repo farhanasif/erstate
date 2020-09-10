@@ -165,4 +165,9 @@ class LnameController extends Controller
             return response()->json('error',422);
             }
     }
+
+    public function totalLedgerName(){
+        $totalLedgerName=Lname::count();
+        return response()->json($totalLedgerName);
+    }
 }

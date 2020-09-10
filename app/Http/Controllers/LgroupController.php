@@ -113,4 +113,9 @@ class LgroupController extends Controller
             return response()->json('error',422);
         }
     }
+
+    public function totalLedgerGroup(){
+        $totalLedgerGroup=Lgroup::count();
+        return response()->json($totalLedgerGroup);
+    }
 }

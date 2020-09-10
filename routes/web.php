@@ -178,4 +178,40 @@ Route::middleware('auth')->group(function () {
     Route::get('/alljournalvoucher','VoucherController@alljournalvoucher')->name('alljournalvoucher');
     Route::get('/journalvoucher','VoucherController@journalvoucher')->name('journalvoucher');
     Route::post('/save_journal','VoucherController@save_journal')->name('save_journal');
+
+    //---------Total project count---------//
+    Route::get('/total/project','ProjectController@totalProject');
+
+    //-------Total Product count------//
+    Route::get('/total/product','ProductController@totalProduct');
+
+    //------Total Sell count--------//
+    Route::get('/total/sell','SalesController@totalSells');
+
+    //-------Total requisition count-------//
+    Route::get('/total/requisition','RequisitionController@totalRequisition');
+
+    //-------Total order count-------//
+    Route::get('/total/order','OrderController@totalOrder');
+
+    //-----total ledger type count------//
+    Route::get('/total/ledgerType','LtypeController@totalLadgerType');
+
+    //-----total ledger group count-----//
+    Route::get('/total/ledgerGroup','LgroupController@totalLedgerGroup');
+
+    //-----total ledger name count-----//
+    Route::get('/total/ledgerName','LnameController@totalLedgerName');
+
+    //-----total bank or cash-----//
+    Route::get('/total/bankorcash','BankController@totalBankOrCash');
+
+    //-----user count-----//
+    Route::get('/total/user','UserController@totalUser');
+    //user profile
+    Route::get('/user/profile','UserController@profile');
+    Route::post('update/userProfile','UserController@updateProfile')->name('update.profile');
+    Route::post('/update/user/password','UserController@updatePassword')
+    ->name('update.password');
+
 });
