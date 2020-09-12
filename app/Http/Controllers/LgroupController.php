@@ -4,36 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Lgroup;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class LgroupController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function showAddLedgerGroup()
     {
-        $lgroups = Lgroup::all();
-        return view('lgroup.view', compact('lgroups'));
+        return view('lgroup.view');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('lgroup.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -47,6 +33,24 @@ class LgroupController extends Controller
         $lgroup->save(); 
 
         return redirect()->back()->with('success','Ledger Group Added Successfully!');
+    }
+
+    public function ladgerGroupInfoData(){
+        $ladgergroupinfo = Lgroup::all();
+        $data_table_render= DataTables::of($ladgergroupinfo)
+            ->addColumn('DT_RowIndex',function ($row){
+                return '<input type="checkbox" id="qst_id_'.$row["id"].'">';
+            })
+            //add edit and delte option
+                ->addColumn('action',function ($row){
+                    $edit_url=url('ledgergroup/edit/'.$row['id']);
+                return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
+                     '<button onClick="destroyladgerGroup('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
+            })
+            ->rawColumns(['DT_RowIndex','action'])
+            ->addIndexColumn()
+            ->make(true);
+        return $data_table_render;
     }
 
     /**
@@ -66,8 +70,9 @@ class LgroupController extends Controller
      * @param  \App\Lgroup  $lgroup
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lgroup $lgroup)
+    public function editladgerGroup($id)
     {
+        $lgroup = Lgroup::find($id);
         return view('lgroup.edit',compact('lgroup'));
     }
 
@@ -89,7 +94,7 @@ class LgroupController extends Controller
 
         $lgroup->update($request->all());
 
-        return redirect()->route('lgroup.index')->with('success','Ledger Group Updated Successfully!');
+        return redirect()->route('showAddLadgerGroup')->with('success','Ledger Group Updated Successfully!');
     }
 
     /**
@@ -98,8 +103,19 @@ class LgroupController extends Controller
      * @param  \App\Lgroup  $lgroup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lgroup $lgroup)
+    public function destroyladgerGroup(Request $request)
     {
-        //
+        $ledgerGroup = Lgroup::findOrFail($request->id);
+        if($ledgerGroup){
+            $ledgerGroup->delete();
+            return response()->json('success',201);
+        }else{
+            return response()->json('error',422);
+        }
+    }
+
+    public function totalLedgerGroup(){
+        $totalLedgerGroup=Lgroup::count();
+        return response()->json($totalLedgerGroup);
     }
 }

@@ -16,7 +16,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('lgroup.store') }}" method="POST">
+        <form action="{{ route('storeledgergroup') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -45,7 +45,7 @@
               </div>
               <div class="card-footer">
                  <button type="submit" class="btn btn-success ">Submit</button>
-                 <a href="{{ route('lgroup.index') }}" type="submit" class="btn btn-info">Back</a>
+                 <a href="{{ route('showAddLadgerGroup') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
       </div>

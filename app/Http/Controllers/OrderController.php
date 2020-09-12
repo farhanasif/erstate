@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\Item;
 use App\Vendor;
+use App\Order;
 use DB;
 
 class OrderController extends Controller
@@ -22,5 +23,10 @@ class OrderController extends Controller
     public function allOrder()
     {
         return view('order.all_order');
+    }
+
+    public function totalOrder(){
+        $totalOrder=Order::count();
+        return response()->json($totalOrder);
     }
 }

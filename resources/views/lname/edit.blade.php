@@ -88,7 +88,7 @@
               </div>
               <div class="card-footer">
                  <button type="submit" class="btn btn-success ">Update</button>
-                 <a href="{{ route('lname.index') }}" type="submit" class="btn btn-info">Back</a>
+                 <a href="{{ route('showAddLadgerName') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
       </div>

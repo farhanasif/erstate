@@ -157,4 +157,9 @@ class ProductController extends Controller
         $project->delete();
         return redirect()->back()->with('danger','Product Deleted Successfully!');
     }
+
+    public function totalProduct(){
+        $totalProducts=Product::count();
+        return response()->json($totalProducts);
+    }
 }

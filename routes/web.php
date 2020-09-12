@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/project/add-project', 'ProjectController@showAddProject')->name('showAddProject');
         Route::post('/project/store-project', 'ProjectController@storeProject')->name('storeProject');
         Route::get('/project/all-project', 'ProjectController@allProject')->name('allProject');
+        Route::get('/project/all-datatable','ProjectController@projectData');
         Route::get('/project/edit-project/{id}', 'ProjectController@editProject')->name('editProject');
         Route::post('/project/update-project/{id}', 'ProjectController@updateProject')->name('updateProject');
         Route::get('/project/delete-project/{id}', 'ProjectController@deleteProject')->name('deleteProject');
@@ -49,6 +50,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/customer/add-customer', 'CustomerController@showAddCustomer')->name('showAddCustomer');
         Route::post('/customer/store-customer', 'CustomerController@storeCustomer')->name('storeCustomer');
         Route::get('/customer/all-customer', 'CustomerController@allCustomer')->name('allCustomer');
+        Route::get('/customer/all-datatable','CustomerController@customerData');
         Route::get('/customer/edit-customer/{id}', 'CustomerController@editCustomer')->name('editCustomer');
         Route::post('/customer/update-customer/{id}', 'CustomerController@updateCustomer')->name('updateCustomer');
         Route::get('/customer/delete-customer/{id}', 'CustomerController@deleteCustomer')->name('deleteCustomer');
@@ -57,6 +59,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/employee/add-employee', 'EmployeeController@showAddEmployee')->name('showAddEmployee');
         Route::post('/employee/store-employee', 'EmployeeController@storeEmployee')->name('storeEmployee');
         Route::get('/employee/all-employee', 'EmployeeController@allEmployee')->name('allEmployee');
+        Route::get('/employee/all-datatable','EmployeeController@employeeData');
         Route::get('/employee/edit-employee/{id}', 'EmployeeController@editEmployee')->name('editEmployee');
         Route::post('/employee/update-employee/{id}', 'EmployeeController@updateEmployee')->name('updateEmployee');
         Route::get('/employee/delete-employee/{id}', 'EmployeeController@deleteEmployee')->name('deleteEmployee');
@@ -66,6 +69,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/vendor/add-vendor', 'VendorController@showAddVendor')->name('showAddVendor');
         Route::post('/vendor/store-vendor', 'VendorController@storeVendor')->name('storeVendor');
         Route::get('/vendor/all-vendor', 'VendorController@allVendor')->name('allVendor');
+        Route::get('/vendor/all-datatable','VendorController@vendorData');
         Route::get('/vendor/edit-vendor/{id}', 'VendorController@editVendor')->name('editVendor');
         Route::post('/vendor/update-vendor/{id}', 'VendorController@updateVendor')->name('updateVendor');
         Route::get('/vendor/delete-vendor/{id}', 'VendorController@deleteVendor')->name('deleteVendor');
@@ -74,6 +78,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/sales/add-sales', 'SalesController@showAddSales')->name('showAddSales');
         Route::post('/sales/store-sales', 'SalesController@storeSales')->name('storeSales');
         Route::get('/sales/all-sales', 'SalesController@allSales')->name('allSales');
+        Route::get('/sales/all-datatable','SalesController@salesData');
         Route::get('/sales/edit-sales/{id}', 'SalesController@editSales')->name('editSales');
         Route::post('/sales/update-sales/{id}', 'SalesController@updateSales')->name('updateSales');
         Route::get('/sales/delete-sales/{id}', 'SalesController@deleteSales')->name('deleteSales');
@@ -82,6 +87,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/item/add-item', 'ItemController@showAddItem')->name('showAddItem');
         Route::post('/item/store-item', 'ItemController@storeItem')->name('storeItem');
         Route::get('/item/all-item', 'ItemController@allItem')->name('allItem');
+        Route::get('/item/all-datatable','ItemController@itemData');
         Route::get('/item/edit-item/{id}', 'ItemController@editItem')->name('editItem');
         Route::post('/item/update-item/{id}', 'ItemController@updateItem')->name('updateItem');
         Route::get('/item/delete-item/{id}', 'ItemController@deleteItem')->name('deleteItem');
@@ -119,22 +125,42 @@ Route::middleware('auth')->group(function () {
         Route::get('/order/delete-order/{id}', 'OrderController@deleteOrder')->name('deleteOrder');
 
     //--------Bank ROUTES---------//
-    Route::resource('banks', 'BankController');
-    Route::post('/banks_update', 'BankController@update')->name('banks_update');
-    Route::post('/delete_bank','BankController@destroy')->name('delete_bank');
+       Route::get('/banks/add-bank', 'BankController@showAddBank')->name('showAddBank');
+       Route::get('/banks/create-bank', 'BankController@create')->name('banks.create');
+       Route::post('/banks/store-bank', 'BankController@store')->name('storeBank');
+       Route::get('/banks/all-datatable','BankController@bankInfoData');
+       Route::get('/banks/edit-bank/{id}', 'BankController@editBank')->name('editBank');
+       Route::post('/banks_update', 'BankController@update')->name('banks_update');
+       Route::get('/delete_bank/{id}','BankController@destroy')->name('delete_bank');
 
     //--------Ledger Type ROUTEs------//
-    Route::resource('ltype', 'LtypeController');
+    Route::get('/ledgertype/add', 'LtypeController@showAddLedger')->name('showAddLadger');
+    Route::get('/ledgertype/create-ledger', 'LtypeController@create')->name('ledgers.create');
+    Route::post('/ledgertype/store-ledger', 'LtypeController@store')->name('storeLedger');
+    Route::get('/ledgertype/all-datatable','LtypeController@ladgerInfoData');
+    Route::get('/ledgertype/edit/{id}', 'LtypeController@editladger')->name('editLadger');
     Route::post('/ledgertype_update', 'LtypeController@update')->name('ledgertype_update');
+    Route::get('/ledgertype_delete/{id}','LtypeController@destroy')->name('delete_ledger');
 
     //--------Ledger Group ROUTEs------//
-    Route::resource('lgroup', 'LgroupController');
-    Route::post('/ledgergroup_update', 'LgroupController@update')->name('ledgergroup_update');
+    //Route::resource('lgroup', 'LgroupController');
+    Route::get('/ledgergroup/add', 'LgroupController@showAddLedgerGroup')->name('showAddLadgerGroup');
+    Route::get('/ledgergroup/create-ledgergroup', 'LgroupController@create')->name('ledgergroup.create');
+    Route::post('/ledgergroup/store-ledgergroup', 'LgroupController@store')->name('storeledgergroup');
+    Route::get('/ledgergroup/all-datatable','LgroupController@ladgerGroupInfoData');
+    Route::get('/ledgergroup/edit/{id}', 'LgroupController@editladgerGroup')->name('editLadgerGroup');
+    Route::post('/ledgergroup-update', 'LgroupController@update')->name('ledgergroup_update');
+    Route::get('/ledgergroup_delete/{id}','LgroupController@destroyladgerGroup')->name('delete_ledgergroup');
 
     //--------Ledger Name ROUTEs------//
-    Route::resource('lname', 'LnameController');
+    //Route::resource('lname', 'LnameController');
+    Route::get('/ledgername/add', 'LnameController@showAddLedgerName')->name('showAddLadgerName');
+    Route::get('/ledgername/create-ledgername', 'LnameController@create')->name('ledgername.create');
+    Route::post('/ledgername/store-ledgername', 'LnameController@store')->name('storeledgername');
+    Route::get('/ledgername/all-datatable','LnameController@ladgerNameInfoData');
+    Route::get('/ledgername/edit/{id}', 'LnameController@editladgerName')->name('editLadgerName');
     Route::post('/ledgername_update', 'LnameController@update')->name('ledgername_update');
-    Route::post('/ledgername_delete','LnameController@destroy')->name('ledgername_delete');
+    Route::get('/ledgernames_delete/{id}','LnameController@destroyladgerName')->name('delete_LedgerName');
 
     //--------Initial Balance ROUTEs------//
     Route::resource('initial', 'InitialController');
@@ -152,4 +178,40 @@ Route::middleware('auth')->group(function () {
     Route::get('/alljournalvoucher','VoucherController@alljournalvoucher')->name('alljournalvoucher');
     Route::get('/journalvoucher','VoucherController@journalvoucher')->name('journalvoucher');
     Route::post('/save_journal','VoucherController@save_journal')->name('save_journal');
+
+    //---------Total project count---------//
+    Route::get('/total/project','ProjectController@totalProject');
+
+    //-------Total Product count------//
+    Route::get('/total/product','ProductController@totalProduct');
+
+    //------Total Sell count--------//
+    Route::get('/total/sell','SalesController@totalSells');
+
+    //-------Total requisition count-------//
+    Route::get('/total/requisition','RequisitionController@totalRequisition');
+
+    //-------Total order count-------//
+    Route::get('/total/order','OrderController@totalOrder');
+
+    //-----total ledger type count------//
+    Route::get('/total/ledgerType','LtypeController@totalLadgerType');
+
+    //-----total ledger group count-----//
+    Route::get('/total/ledgerGroup','LgroupController@totalLedgerGroup');
+
+    //-----total ledger name count-----//
+    Route::get('/total/ledgerName','LnameController@totalLedgerName');
+
+    //-----total bank or cash-----//
+    Route::get('/total/bankorcash','BankController@totalBankOrCash');
+
+    //-----user count-----//
+    Route::get('/total/user','UserController@totalUser');
+    //user profile
+    Route::get('/user/profile','UserController@profile');
+    Route::post('update/userProfile','UserController@updateProfile')->name('update.profile');
+    Route::post('/update/user/password','UserController@updatePassword')
+    ->name('update.password');
+
 });

@@ -32,4 +32,6 @@
 <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+{{--sweet alert--}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.11.5/dist/sweetalert2.js"></script>
 @yield('custom_js')

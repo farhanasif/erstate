@@ -123,4 +123,9 @@ class RequisitionController extends Controller
         $requisition->delete();
         return redirect()->back()->with('danger','Requisition Deleted Successfully!');
     }
+
+    public function totalRequisition(){
+        $totalRequisition=Requisition::count();
+        return response()->json($totalRequisition);
+    }
 }

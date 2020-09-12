@@ -16,7 +16,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('lname.store') }}" method="POST">
+        <form action="{{ route('storeledgername') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -82,7 +82,7 @@
               </div>
               <div class="card-footer">
                  <button type="submit" class="btn btn-success ">Submit</button>
-                 <a href="{{ route('lname.index') }}" type="submit" class="btn btn-info">Back</a>
+                 <a href="{{ route('showAddLadgerName') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
       </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Vendor;
+use Yajra\DataTables\Facades\DataTables;
 
 class VendorController extends Controller
 {
@@ -16,6 +17,24 @@ class VendorController extends Controller
     {
         $vendors = Vendor::all();
         return view('vendor.all_vendor', compact('vendors'));
+    }
+
+    public function vendorData(){
+        $vendors = Vendor::all();
+        $data_table_render= DataTables::of($vendors)
+            ->addColumn('DT_RowIndex',function ($row){
+                return '<input type="checkbox" id="qst_id_'.$row["id"].'">';
+            })
+            //add edit and delte option
+                ->addColumn('action',function ($row){
+                    $edit_url=url('vendor/edit-vendor/'.$row['id']);
+                return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
+                     '<button onClick="deleteVendor('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
+            })
+            ->rawColumns(['DT_RowIndex','action'])
+            ->addIndexColumn()
+            ->make(true);
+        return $data_table_render;
     }
 
     public function storeVendor(Request $request)
@@ -77,7 +96,11 @@ class VendorController extends Controller
     public function deleteVendor($id)
     {
         $vendor = Vendor::find($id);
-        $vendor->delete();
-        return redirect()->back()->with('danger','Vendor Deleted Successfully!');
+        if($vendor){
+            $vendor->delete();
+            return response()->json('success',201);
+        }else{
+            return response()->json('error',422);
+        }
     }
 }

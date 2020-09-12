@@ -13,8 +13,9 @@
         <div class="card-header">
           <h3 class="card-title">Add Bank/Cash Information</h3>
         </div>
+        @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('banks.store') }}" method="POST">
+        <form action="{{ route('storeBank') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -52,7 +53,7 @@
               </div>
               <div class="card-footer">
                  <button type="submit" class="btn btn-success ">Submit</button>
-                 <a href="{{ route('banks.index') }}" type="submit" class="btn btn-info">Back</a>
+                 <a href="{{ route('showAddBank') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
       </div>

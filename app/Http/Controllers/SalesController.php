@@ -9,6 +9,8 @@ use App\Product;
 use App\Employee;
 use App\Customer;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Session;
 
 class SalesController extends Controller
 {
@@ -37,8 +39,52 @@ class SalesController extends Controller
          LEFT JOIN products ON sales.product_id = products.id
          LEFT JOIN customers ON sales.customer_id = customers.id"
              );
+        //dd($data['salesInformations']);
 
         return view('sales.all_sales',$data);
+    }
+
+    public function salesData(){
+        // $data['sales'] = Sale::all();
+
+        $data = DB::select(
+            "SELECT sales.*,
+        projects.id AS project_id, (projects.name) AS project_name , 
+        (employees.id) AS employee_id, (employees.name) AS employee_name,
+         (products.id) AS product_id,
+         customers.id AS customer_id, (customers.name) AS customer_name
+         FROM sales
+         LEFT JOIN employees ON sales.employee_id = employees.id
+         LEFT JOIN projects ON sales.project_id = projects.id
+         LEFT JOIN products ON sales.product_id = products.id
+         LEFT JOIN customers ON sales.customer_id = customers.id"
+             );
+             foreach($data as $dat){
+                $customData[]=[
+                    'id'=>$dat->id,
+                    'customer_name'=>$dat->customer_name,
+                    'project_name'=>$dat->project_name,
+                    'product_id'=>$dat->product_id,
+                    'employee_name'=>$dat->employee_name,
+                    'sells_date'=>$dat->sells_date,
+                    'description'=>$dat->description,
+                ];
+            }
+        //dd($allData);
+        $data_table_render= DataTables::of($customData)
+            ->addColumn('DT_RowIndex',function ($row){
+                //return '<input type="checkbox" id="qst_id_'.$row["id"].'">';
+            })
+            //add edit and delte option
+                ->addColumn('action',function ($row){
+                    $edit_url=url('sales/edit-sales/'.$row['id']);
+                return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
+                     '<button onClick="deleteSales('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
+            })
+            ->rawColumns(['DT_RowIndex','action'])
+            ->addIndexColumn()
+            ->make(true);
+        return $data_table_render;
     }
 
     public function storeSales(Request $request)
@@ -114,7 +160,16 @@ class SalesController extends Controller
     public function deleteSales($id)
     {
         $sales = Sale::find($id);
-        $sales->delete();
-        return redirect()->back()->with('danger','Sells Deleted Successfully!');
+        if($sales){
+            $sales->delete();
+            return response()->json('success',201);
+        }else{
+            return response()->json('error',422);
+        }
+    }
+
+    public function totalSells(){
+        $totalSells=Sale::count();
+        return response()->json($totalSells);
     }
 }

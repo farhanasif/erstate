@@ -2,39 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Bank;
 use Illuminate\Http\Request;
+use App\Bank;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
 
 class BankController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function showAddBank()
     {
-        $banks = Bank::all();
-        return view('bank.view', compact('banks'));
+        return view('bank.view');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('bank.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function bankInfoData(){
+        $bankinfo = Bank::all();
+        $data_table_render= DataTables::of($bankinfo)
+            ->addColumn('DT_RowIndex',function ($row){
+                return '<input type="checkbox" id="qst_id_'.$row["id"].'">';
+            })
+            //add edit and delte option
+                ->addColumn('action',function ($row){
+                    $edit_url=url('banks/edit-bank/'.$row['id']);
+                return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
+                     '<button onClick="destroy('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
+            })
+            ->rawColumns(['DT_RowIndex','action'])
+            ->addIndexColumn()
+            ->make(true);
+        return $data_table_render;
+    }
+
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -51,36 +53,12 @@ class BankController extends Controller
         return redirect()->back()->with('success','Bank/Cash Added Successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Bank  $bank
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Bank $bank)
+    public function editBank($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Bank  $bank
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Bank $bank)
-    {
-        //$customer = Customer::find($id);
+        $bank = Bank::find($id);
         return view('bank.edit',compact('bank'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bank  $bank
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
         $bank = Bank::findOrFail($request->id);
@@ -92,19 +70,22 @@ class BankController extends Controller
 
         $bank->update($request->all());
 
-        return redirect()->route('banks.index')->with('success','Bank/Cash Updated Successfully!');
+        return redirect()->route('showAddBank')->with('success','Bank/Cash Updated Successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Bank  $bank
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request)
     {
         $bank = Bank::findOrFail($request->id);
-        $bank->delete();
-        return redirect()->route('banks.index')->with('danger','Bank/Cash Deleted Successfully!');
+        if($bank){
+            $bank->delete();
+            return response()->json('success',201);
+        }else{
+            return response()->json('error',422);
+        }
+    }
+
+    public function totalBankOrCash(){
+        $totalBankOrCash=Bank::count();
+        return response()->json($totalBankOrCash);
     }
 }

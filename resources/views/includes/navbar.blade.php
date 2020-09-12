@@ -43,11 +43,14 @@
                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
-            </a>
+              <i class="fa fa-sign-out pull-right"></i></a>
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{url('user/profile')}}">Profile<i class="nav-icon fas fa-user text-orange pull-right"></i>
+            </a>
       </li>
     </ul>
   </nav>

@@ -16,7 +16,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('ltype.store') }}" method="POST">
+        <form action="{{ route('storeLedger') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -45,7 +45,7 @@
               </div>
               <div class="card-footer">
                  <button type="submit" class="btn btn-success ">Submit</button>
-                 <a href="{{ route('ltype.index') }}" type="submit" class="btn btn-info">Back</a>
+                 <a href="{{ route('showAddLadger') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
       </div>

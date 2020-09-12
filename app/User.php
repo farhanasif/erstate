@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\User;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -36,4 +37,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public static $rules = [
+    //     'name'=>'required', 'string', 'max:255',
+    //     'email'=>'required|email|unique:users,email,'.Auth::id(),
+    // ];
 }

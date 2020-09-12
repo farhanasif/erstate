@@ -27,25 +27,7 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
-              @foreach ($banks as $bank)
-              <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $bank->name }}</td>
-                <td>{{ $bank->description }}</td>
-                <td>{{ $bank->account_no }}</td>
-                <td>
-                    <a href="{{ route('banks.edit',$bank) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
-                    <form action="{{route('delete_bank')}}" method="POST">
-                        @csrf
-                        <input type="hidden" value="{{$bank->id}}" name="id" placeholder="Search">
-                        <button class="btn btn-danger" type="submit"><i class="far fa-trash-alt"></i></button>
-                    </form>
-                </td>
-            </tr>
-              @endforeach
-
-        </tbody>
+          
       </table>
     </div>
     <!-- /.card-body -->
@@ -57,15 +39,90 @@
 
 @section('custom_js')
 <script>
-    $(document).ready(function() {
-    $('#all-banks').DataTable( {
-        "info": true,
-          "autoWidth": false,
-          scrollX:'50vh', 
-          scrollY:'50vh',
-        scrollCollapse: true,
-    } );
-} );
+//     $(document).ready(function() {
+//     $('#all-banks').DataTable( {
+//         "info": true,
+//           "autoWidth": false,
+//           scrollX:'50vh', 
+//           scrollY:'50vh',
+//         scrollCollapse: true,
+//     } );
+// } );
+
+$(document).ready( function () {
+    $('#all-banks').DataTable({
+        processing:true,
+        serverSide:true,
+        ajax:"{{url('banks/all-datatable')}}",
+        columns:[
+            { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+            { data: 'name', name: 'name' },
+            { data: 'description', name: 'description' },
+            { data: 'account_no', name: 'account_no' },
+            { data: 'action', name: 'action' }
+        ]
+    });
+});
+
+//delete 
+function destroy(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then(function(result) {
+                if (result.value) {
+                    //Delete by ajax from list-datatable
+                    var url="{{url('delete_bank')}}";
+                    $.ajax({
+                        //config part
+                        url:url+"/"+id,
+                        type:"GET",
+                        dataType:"json",
+                        //config part
+                        beforeSend:function () {
+                            Swal.fire({
+                                title: 'Deleting The Project data.....',
+                                html:"<i class='fa fa-spinner fa-spin' style='font-size: 24px;'></i>",
+                                confirmButtonColor: '#3085d6',
+                                allowOutSideClick:false,
+                                showCancelButton:false,
+                                showConfirmButton:false
+                            });
+                        },
+                        success:function (response) {
+                            Swal.close();
+                            if(response==="success") {
+                                Swal.fire({
+                                    title:'success',
+                                    text: 'You Have Successfully Deleted The Bank/Cash Data',
+                                    type:'success',
+                                    confirmButtonText: 'OK'
+                                }).then(function(result){
+                                    if (result.value) {
+                                        window.location.reload();
+                                    }
+                                });
+                            }
+                            console.log(response);
+                        },
+                        error:function (error) {
+                            Swal.fire({
+                                title: 'Error',
+                                text:'Something Went Wrong',
+                                type:'error',
+                                showConfirmButton: true
+                            });
+                            console.log(error);
+                        }
+                    })
+                }
+            });
+        }
 </script>
 @endsection
 
