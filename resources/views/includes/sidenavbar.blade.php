@@ -85,6 +85,34 @@
           </li>
           {{-- //end product menu --}}
 
+                    {{-- // land owner menu  --}}
+                    <li class="nav-item has-treeview {{ request()->is('product/*') ? 'menu-open' :''}}">
+                      <a href="#" class="nav-link {{ request()->is('product/*') ? 'active' :''}}">
+                        <i class="nav-icon fas fa-boxes bg-amber"></i>
+                        <p>
+                          land owner
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="{{ route('allLandowner') }}" class="nav-link {{ request()->is('/landowner/all-landowner') ? 'active' :''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>All land owner</p>
+                          </a>
+                        </li>
+          
+                        <li class="nav-item">
+                          <a href="{{ route('showAddLandowner') }}" class="nav-link {{ request()->is('/landowner/add-landowner') ? 'active' :''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create land owner</p>
+                          </a>
+                        </li>
+          
+                      </ul>
+                    </li>
+                    {{-- //end land owner menu --}}
+
             {{-- // Sell menu  --}}
             <li class="nav-item has-treeview {{ request()->is('sales/*') ? ' menu-open' :''}}">
             <a href="#" class="nav-link {{ request()->is('sales/*') ? 'active' :''}}">
