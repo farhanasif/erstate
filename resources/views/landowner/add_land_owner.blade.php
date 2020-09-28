@@ -15,7 +15,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('storeCustomer') }}" method="POST">
+        <form action="" method="POST">
             @csrf
             <div class="card-body">
                         <div class="col-md-2">
@@ -320,7 +320,7 @@
               </div>
               <div class="card-footer">
                  <button type="submit" class="btn btn-success ">Submit</button>
-                 <a href="{{ route('allCustomer') }}" type="submit" class="btn btn-info">Back</a>
+                 <a href="" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
       </div>
