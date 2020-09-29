@@ -69,14 +69,14 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('allProduct') }}" class="nav-link {{ request()->is('product/all-product') ? 'active' :''}}">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-circle nav-icon bg-amber"></i>
                   <p>All Product</p>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a href="{{ route('showAddProduct') }}" class="nav-link {{ request()->is('product/add-product') ? 'active' :''}}">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-circle nav-icon bg-amber"></i>
                   <p>Create Product</p>
                 </a>
               </li>
@@ -97,14 +97,14 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('allLandowner') }}" class="nav-link {{ request()->is('/landowner/all-landowner') ? 'active' :''}}">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-circle nav-icon text-danger"></i>
                   <p>All Land Owner</p>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a href="{{ route('showAddLandowner') }}" class="nav-link {{ request()->is('/landowner/add-landowner') ? 'active' :''}}">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-circle nav-icon text-danger"></i>
                   <p>Create Land Owner</p>
                 </a>
               </li>
@@ -112,6 +112,34 @@
             </ul>
           </li>
           {{-- //end land owner menu --}}
+
+          {{-- // land buy book menu  --}}
+          <li class="nav-item has-treeview {{ request()->is('product/*') ? 'menu-open' :''}}">
+            <a href="#" class="nav-link {{ request()->is('product/*') ? 'active' :''}}">
+              <i class="nav-icon fas fa-book text-blue"></i>
+              <p>
+                Land Buy Book
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('allLandowner') }}" class="nav-link {{ request()->is('/landowner/all-landowner') ? 'active' :''}}">
+                  <i class="far fa-circle nav-icon text-blue"></i>
+                  <p>All Land Buy Book</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('showAddLandowner') }}" class="nav-link {{ request()->is('/landowner/add-landowner') ? 'active' :''}}">
+                  <i class="far fa-circle nav-icon text-blue"></i>
+                  <p>Create Land Buy Book</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          {{-- //end land buy book menu --}}
 
             {{-- // Sell menu  --}}
             <li class="nav-item has-treeview {{ request()->is('sales/*') ? ' menu-open' :''}}">
