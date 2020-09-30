@@ -48,6 +48,15 @@ Route::middleware('auth')->group(function () {
         Route::post('/landowner/update-landowner/{id}', 'LandownerController@updateLandowner')->name('updateLandowner');
         Route::get('/landowner/delete-landowner/{id}', 'LandownerController@deleteLandowner')->name('deleteLandowner');
 
+        // ALL LAND S ROUTES
+        Route::get('/landbuybook/add-landbuybook', 'LandBuyBookController@showAddLandbuybook')->name('showAddLandbuybook');
+        Route::post('/landbuybook/store-landbuybook', 'LandBuyBookController@storeLandbuybook')->name('storeLandbuybook');
+        Route::get('/landbuybook/all-landbuybook', 'LandBuyBookController@allLandbuybook')->name('allLandbuybook');
+        Route::get('/landbuybook/all-datatable','LandBuyBookController@projectData');
+        Route::get('/landbuybook/edit-landbuybook/{id}', 'LandBuyBookController@editLandbuybook')->name('editLandbuybook');
+        Route::post('/landbuybook/update-landbuybook/{id}', 'LandBuyBookController@updateLandbuybook')->name('updateLandbuybook');
+        Route::get('/landbuybook/delete-landbuybook/{id}', 'LandBuyBookController@deleteLandbuybook')->name('deleteLandbuybook');
+
         // ALL PRODUCTS ROUTES
         Route::get('/product/add-product', 'ProductController@showAddProduct')->name('showAddProduct');
         Route::post('/product/store-product', 'ProductController@storeProduct')->name('storeProduct');
