@@ -190,9 +190,9 @@
 <script>
     $(document).ready(function() {
         $(function() { 
-     $( "#registration_date" ).datepicker();
-     $( "#hand_over_date" ).datepicker();
-  });
+            $( "#registration_date" ).datepicker();
+            $( "#hand_over_date" ).datepicker();
+        });
     });
 </script>
     
