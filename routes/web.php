@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/landowner/add-landowner', 'LandownerController@showAddLandowner')->name('showAddLandowner');
         Route::post('/landowner/store-landowner', 'LandownerController@storeLandowner')->name('storeLandowner');
         Route::get('/landowner/all-landowner', 'LandownerController@allLandowner')->name('allLandowner');
-        Route::get('/landowner/all-datatable','LandownerController@projectData');
+        Route::get('/landowner/all-datatable','LandownerController@landownerData');
         Route::get('/landowner/edit-landowner/{id}', 'LandownerController@editLandowner')->name('editLandowner');
         Route::post('/landowner/update-landowner/{id}', 'LandownerController@updateLandowner')->name('updateLandowner');
         Route::get('/landowner/delete-landowner/{id}', 'LandownerController@deleteLandowner')->name('deleteLandowner');

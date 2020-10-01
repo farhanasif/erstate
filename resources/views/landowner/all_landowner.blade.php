@@ -66,6 +66,7 @@ $(document).ready( function () {
     $('#all-landowner').DataTable({
         processing:true,
         serverSide:true,
+        "scrollX": true,
         ajax:"{{url('landowner/all-datatable')}}",
         columns:[
             { data: 'DT_RowIndex', name: 'DT_RowIndex' },

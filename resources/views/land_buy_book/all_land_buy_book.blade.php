@@ -1,7 +1,7 @@
 
 @extends('master')
 
-@section('breadcrumb-title', 'All landowner information')
+@section('breadcrumb-title', 'All land buy book information')
 
 @section('content')
 
@@ -9,43 +9,31 @@
 
   <div class="card card-success card-outline">
     <div class="card-header">
-        <h3 class="card-title">All landowner information</h3>
-        <a href="{{route('showAddLandowner')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add Landowner</a>
+        <h3 class="card-title">All land buy book information</h3>
+        <a href="{{route('showAddLandbuybook')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add land buy book</a>
 
         @include('message')
 
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="all-landowner" class="table table-bordered table-striped">
+      <table id="all-landbuybook" class="table table-bordered table-striped">
         <thead>
             <tr>
               <th>SL NO</th>
               <th>File No</th>
-              <th>Name</th>
-              <th>Father Name</th>
-              <th>Mother Name</th>
-              <th>NID No </th>
-              <th>Mobile</th>
-              <th>Permanent Address</th>
-              <th>Present Address</th>
-              <th>Media Man</th>
-              <th>Investigation Person</th>
-              <th>Mouza</th>
-              <th>PS</th>
-              <th>District </th>
+              <th>Donar Name</th>
+              <th>Recipient Name</th>
+              <th>Documents No</th>
+              <th>Date</th>
               <th>CS Khatian</th>
               <th>RS Khatian</th>
               <th>SA Khatian</th>
-              <th>CS/SA Dag</th>
+              <th>SA Dag</th>
               <th>RS Dag</th>
-              <th>Total Land Of RS</th>
-              <th>Purchase Of Land</th>
-              <th>Remaining Balance </th>
-              <th>Tp Land Price</th>
-              <th>Per Bigha Price</th>
-              <th>Registration Date</th>
-              <th>Deed Number</th>
+              <th>Amount Of Land</th>
+              <th>Rejection Amount</th>
+              <th>Hold No</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -63,22 +51,26 @@
 <script>
 
 $(document).ready( function () {
-    $('#all-landowner').DataTable({
+    $('#all-landbuybook').DataTable({
         processing:true,
         serverSide:true,
-        ajax:"{{url('landowner/all-datatable')}}",
+        "scrollX": true,
+        ajax:"{{url('landbuybook/all-datatable')}}",
         columns:[
             { data: 'DT_RowIndex', name: 'DT_RowIndex' },
             { data: 'file_no', name: 'file_no' },
-            { data: 'name', name: 'name' },
-            { data: 'father_name', name: 'father_name' },
-            { data: 'mother_name', name: 'mother_name' },
-            { data: 'district', name: 'district', },
+            { data: 'donor_name', name: 'donor_name' },
+            { data: 'recipient_name', name: 'recipient_name' },
+            { data: 'documents_no', name: 'documents_no' },
+            { data: 'date', name: 'date', },
             { data: 'cs_khatian', name: 'cs_khatian' },
             { data: 'rs_khatian', name: 'rs_khatian' },
             { data: 'sa_khatian', name: 'sa_khatian' },
-            { data: 'cs_sa_dag', name: 'cs_sa_dag' },
+            { data: 'sa_dag', name: 'sa_dag' },
             { data: 'rs_dag', name: 'rs_dag', },
+            { data: 'amount_of_land', name: 'amount_of_land' },
+            { data: 'rejection_amount', name: 'rejection_amount' },
+            { data: 'hold_no', name: 'hold_no', },
             { data: 'action', name: 'action' }
         ]
     });
@@ -96,7 +88,7 @@ function deleteLandowner(id) {
             }).then(function(result) {
                 if (result.value) {
                     //Delete by ajax from list-datatable
-                    var url="{{url('landowner/delete-landowner')}}";
+                    var url="{{url('landbuybook/delete-landbuybook')}}";
                     $.ajax({
                         //config part
                         url:url+"/"+id,
@@ -105,7 +97,7 @@ function deleteLandowner(id) {
                         //config part
                         beforeSend:function () {
                             Swal.fire({
-                                title: 'Deleting The Landowner data.....',
+                                title: 'Deleting The Land Buy Book data.....',
                                 html:"<i class='fa fa-spinner fa-spin' style='font-size: 24px;'></i>",
                                 confirmButtonColor: '#3085d6',
                                 allowOutSideClick:false,
@@ -118,7 +110,7 @@ function deleteLandowner(id) {
                             if(response==="success") {
                                 Swal.fire({
                                     title:'success',
-                                    text: 'You Have Successfully Deleted The Land buy book',
+                                    text: 'You Have Successfully Deleted The Land Buy Book',
                                     type:'success',
                                     confirmButtonText: 'OK'
                                 }).then(function(result){

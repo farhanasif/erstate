@@ -34,9 +34,9 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Donar Name</label>
-                            <input type="text" name="donar_name" class="form-control" placeholder="Donar Name">
-                                @if($errors->has('donar_name'))
-                                    <strong class="text-danger">{{ $errors->first('donar_name') }}</strong>
+                            <input type="text" name="donor_name" class="form-control" placeholder="Donar Name">
+                                @if($errors->has('donor_name'))
+                                    <strong class="text-danger">{{ $errors->first('donor_name') }}</strong>
                                 @endif
                         </div>
                     </div>
@@ -175,7 +175,7 @@
     </div>
     <div class="card-footer">
         <button type="submit" class="btn btn-success ">Submit</button>
-        <a href="" type="submit" class="btn btn-info">Back</a>
+        <a href="{{ route('allLandbuybook') }}" type="submit" class="btn btn-info">Back</a>
     </div>
 </form>
 </div>

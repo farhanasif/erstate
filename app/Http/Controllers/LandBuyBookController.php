@@ -20,7 +20,7 @@ class LandBuyBookController extends Controller
         return view('land_buy_book.all_land_buy_book', compact('land_buy_books'));
     }
 
-    public function landownerData(){
+    public function landbuybookData(){
         $land_buy_books = LandBuyBook::all();
         $data_table_render= DataTables::of($land_buy_books)
             ->addColumn('DT_RowIndex',function ($row){
@@ -41,22 +41,22 @@ class LandBuyBookController extends Controller
     public function storeLandbuybook(Request $request)
     {
         // dd($request->all());
-        // $this->validate($request,[
-        //     'file_no' => 'required',
-        //     'donor_name' => 'required',
-        //     'recipient_name' => 'required',
-        //     'documents_no' => 'required',
-        //     'date' => 'required',
-        //     'cs_khatian' => 'required',
-        //     'rs_khatian' => 'required',
-        //     'sa_khatian' => 'required',
-        //     'sa_dag' => 'required',
-        //     'rs_dag' => 'required',
-        //     'amount_of_land' => 'required',
-        //     'rejection_amount_name' => 'required',
-        //     'hold_no' => 'required'
+        $this->validate($request,[
+            'file_no' => 'required',
+            'donor_name' => 'required',
+            'recipient_name' => 'required',
+            'documents_no' => 'required',
+            'date' => 'required',
+            'cs_khatian' => 'required',
+            'rs_khatian' => 'required',
+            'sa_khatian' => 'required',
+            'sa_dag' => 'required',
+            'rs_dag' => 'required',
+            'amount_of_land' => 'required',
+            'rejection_amount' => 'required',
+            'hold_no' => 'required'
 
-        // ]);
+        ]);
         
         $LandBuyBooks = new LandBuyBook;
         $LandBuyBooks->file_no = $request->file_no;
@@ -70,7 +70,7 @@ class LandBuyBookController extends Controller
         $LandBuyBooks->sa_dag = $request->sa_dag;
         $LandBuyBooks->rs_dag = $request->rs_dag;
         $LandBuyBooks->amount_of_land = $request->amount_of_land;
-        $LandBuyBooks->rejection_amount_name = $request->rejection_amount_name;
+        $LandBuyBooks->rejection_amount = $request->rejection_amount;
         $LandBuyBooks->hold_no = $request->hold_no;
         $LandBuyBooks->save(); 
 
@@ -113,7 +113,7 @@ class LandBuyBookController extends Controller
         $LandBuyBooks->sa_dag = $request->sa_dag;
         $LandBuyBooks->rs_dag = $request->rs_dag;
         $LandBuyBooks->amount_of_land = $request->amount_of_land;
-        $LandBuyBooks->rejection_amount_name = $request->rejection_amount_name;
+        $LandBuyBooks->rejection_amount = $request->rejection_amount;
         $LandBuyBooks->hold_no = $request->hold_no;
         $projects->save(); 
 
