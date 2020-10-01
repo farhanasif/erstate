@@ -40,29 +40,30 @@ class LandBuyBookController extends Controller
 
     public function storeLandbuybook(Request $request)
     {
-        $this->validate($request,[
-            'file_no' => 'required',
-            'donor_name' => 'required',
-            'recipient_name' => 'required',
-            'documents_no' => 'required',
-            'date' => 'required',
-            'cs_khatian' => 'required',
-            'rs_khatian' => 'required',
-            'sa_khatian' => 'required',
-            'sa_dag' => 'required',
-            'rs_dag' => 'required',
-            'amount_of_land' => 'required',
-            'rejection_amount_name' => 'required',
-            'hold_no' => 'required'
+        // dd($request->all());
+        // $this->validate($request,[
+        //     'file_no' => 'required',
+        //     'donor_name' => 'required',
+        //     'recipient_name' => 'required',
+        //     'documents_no' => 'required',
+        //     'date' => 'required',
+        //     'cs_khatian' => 'required',
+        //     'rs_khatian' => 'required',
+        //     'sa_khatian' => 'required',
+        //     'sa_dag' => 'required',
+        //     'rs_dag' => 'required',
+        //     'amount_of_land' => 'required',
+        //     'rejection_amount_name' => 'required',
+        //     'hold_no' => 'required'
 
-        ]);
+        // ]);
         
         $LandBuyBooks = new LandBuyBook;
         $LandBuyBooks->file_no = $request->file_no;
         $LandBuyBooks->donor_name = $request->donor_name;
         $LandBuyBooks->recipient_name = $request->recipient_name;
         $LandBuyBooks->documents_no = $request->documents_no;
-        $LandBuyBooks->date = $request->nid_no;
+        $LandBuyBooks->date = $request->date;
         $LandBuyBooks->cs_khatian = $request->cs_khatian;
         $LandBuyBooks->rs_khatian = $request->rs_khatian;
         $LandBuyBooks->sa_khatian = $request->sa_khatian;
@@ -84,7 +85,6 @@ class LandBuyBookController extends Controller
 
     public function updateLandbuybook(Request $request, $id)
     {
-        dd($request->all());
         $this->validate($request,[
             'file_no' => 'required',
             'donor_name' => 'required',

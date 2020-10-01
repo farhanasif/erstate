@@ -15,7 +15,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('storeLandowner') }}" method="POST">
+        <form action="{{ route('storeLandbuybook') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
