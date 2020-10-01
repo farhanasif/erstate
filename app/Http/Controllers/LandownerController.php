@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Landowner;
+use Yajra\DataTables\Facades\DataTables;
 
 class LandownerController extends Controller
 {
@@ -26,9 +27,9 @@ class LandownerController extends Controller
             })
             //add edit and delte option
                 ->addColumn('action',function ($row){
-                    $edit_url=url('project/edit-project/'.$row['id']);
+                    $edit_url=url('landowner/edit-landowner/'.$row['id']);
                 return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
-                     '<button onClick="deleteProject('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
+                     '<button onClick="deleteLandowner('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
             })
             ->rawColumns(['DT_RowIndex','action'])
             ->addIndexColumn()
