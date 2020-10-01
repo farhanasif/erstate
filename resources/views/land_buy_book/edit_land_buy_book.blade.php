@@ -1,7 +1,7 @@
 
 @extends('master')
 
-@section('breadcrumb-title', 'Add land buy book information')
+@section('breadcrumb-title', 'Edit land buy book information')
 
 @section('content')
 
@@ -10,7 +10,7 @@
       <!-- SELECT2 EXAMPLE -->
       <div class="card card-success card-outline">
         <div class="card-header">
-          <h3 class="card-title">Add land buy book information</h3>
+          <h3 class="card-title">Edit land buy book information</h3>
         </div>
 
          @include('message')

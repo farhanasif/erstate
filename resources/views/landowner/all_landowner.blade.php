@@ -97,7 +97,10 @@ $(document).ready( function () {
             { data: 'registration_date', name: 'registration_date' },
             { data: 'deed_number', name: 'deed_number' },
             { data: 'action', name: 'action' }
-        ]
+        ],
+        // columnDefs: [
+        //     { orderable: false, targets: [ 5, 7, 8 ] } //This part is ok now
+        // ]
     });
 });
 //delete 
