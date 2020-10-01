@@ -28,7 +28,7 @@ class LandBuyBookController extends Controller
             })
             //add edit and delte option
                 ->addColumn('action',function ($row){
-                    $edit_url=url('landowner/edit-landowner/'.$row['id']);
+                    $edit_url=url('landbuybook/edit-landbuybook/'.$row['id']);
                 return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
                      '<button onClick="deleteLandowner('.$row['id'].')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
             })
@@ -79,12 +79,13 @@ class LandBuyBookController extends Controller
 
     public function editLandbuybook($id)
     {
-        $LandBuyBook = LandBuyBook::find($id);
-         return view('land_buy_book.edit_LandBuyBook', compact('landBuyBook'));
+        $land_buy_book = LandBuyBook::find($id);
+         return view('land_buy_book.edit_land_buy_book', compact('land_buy_book'));
     }
 
     public function updateLandbuybook(Request $request, $id)
     {
+        // dd($request->all());
         $this->validate($request,[
             'file_no' => 'required',
             'donor_name' => 'required',
@@ -97,7 +98,7 @@ class LandBuyBookController extends Controller
             'sa_dag' => 'required',
             'rs_dag' => 'required',
             'amount_of_land' => 'required',
-            'rejection_amount_name' => 'required',
+            'rejection_amount' => 'required',
             'hold_no' => 'required'
         ]);
 
@@ -115,7 +116,7 @@ class LandBuyBookController extends Controller
         $LandBuyBooks->amount_of_land = $request->amount_of_land;
         $LandBuyBooks->rejection_amount = $request->rejection_amount;
         $LandBuyBooks->hold_no = $request->hold_no;
-        $projects->save(); 
+        $LandBuyBooks->save(); 
 
         return redirect()->route('allLandbuybook')->with('success','Land buy book updated successfully!');
     }
