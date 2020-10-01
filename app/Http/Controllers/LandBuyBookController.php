@@ -84,6 +84,7 @@ class LandBuyBookController extends Controller
 
     public function updateLandbuybook(Request $request, $id)
     {
+        dd($request->all());
         $this->validate($request,[
             'file_no' => 'required',
             'donor_name' => 'required',

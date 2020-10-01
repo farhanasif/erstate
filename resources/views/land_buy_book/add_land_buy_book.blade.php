@@ -15,7 +15,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="" method="POST">
+        <form action="{{ route('storeLandowner') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -84,10 +84,10 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>S.A. khatian: </label>
-                        <input type="text" name="sa_khatian" class="form-control" placeholder="S.A. khatian">
-                        @if($errors->has('sa_khatian'))
-                            <strong class="text-danger">{{ $errors->first('sa_khatian') }}</strong>
+                        <label>C.S. khatian: </label>
+                        <input type="text" name="cs_khatian" class="form-control" placeholder="C.S. khatian">
+                        @if($errors->has('cs_khatian'))
+                            <strong class="text-danger">{{ $errors->first('cs_khatian') }}</strong>
                         @endif
                     </div>
                 </div>
