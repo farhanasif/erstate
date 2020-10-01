@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/landbuybook/add-landbuybook', 'LandBuyBookController@showAddLandbuybook')->name('showAddLandbuybook');
         Route::post('/landbuybook/store-landbuybook', 'LandBuyBookController@storeLandbuybook')->name('storeLandbuybook');
         Route::get('/landbuybook/all-landbuybook', 'LandBuyBookController@allLandbuybook')->name('allLandbuybook');
-        Route::get('/landbuybook/all-datatable','LandBuyBookController@projectData');
+        Route::get('/landbuybook/all-datatable','LandBuyBookController@landbuybookData');
         Route::get('/landbuybook/edit-landbuybook/{id}', 'LandBuyBookController@editLandbuybook')->name('editLandbuybook');
         Route::post('/landbuybook/update-landbuybook/{id}', 'LandBuyBookController@updateLandbuybook')->name('updateLandbuybook');
         Route::get('/landbuybook/delete-landbuybook/{id}', 'LandBuyBookController@deleteLandbuybook')->name('deleteLandbuybook');

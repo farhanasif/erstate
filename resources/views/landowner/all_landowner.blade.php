@@ -17,7 +17,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="all-project" class="table table-bordered table-striped">
+      <table id="all-landowner" class="table table-bordered table-striped">
         <thead>
             <tr>
               <th>SL NO</th>
@@ -63,10 +63,10 @@
 <script>
 
 $(document).ready( function () {
-    $('#all-project').DataTable({
+    $('#all-landowner').DataTable({
         processing:true,
         serverSide:true,
-        ajax:"{{url('project/all-datatable')}}",
+        ajax:"{{url('landowner/all-datatable')}}",
         columns:[
             { data: 'DT_RowIndex', name: 'DT_RowIndex' },
             { data: 'file_no', name: 'file_no' },
@@ -95,6 +95,7 @@ $(document).ready( function () {
             { data: 'per_bigha_price', name: 'per_bigha_price', },
             { data: 'registration_date', name: 'registration_date' },
             { data: 'deed_number', name: 'deed_number' },
+            { data: 'action', name: 'action' }
         ]
     });
 });

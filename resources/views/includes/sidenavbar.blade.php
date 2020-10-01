@@ -96,7 +96,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link {{ request()->is('/landowner/all-landowner') ? 'active' :''}}">
+                <a href="{{ route('allLandowner') }}" class="nav-link {{ request()->is('/landowner/all-landowner') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-danger"></i>
                   <p>All Land Owner</p>
                 </a>

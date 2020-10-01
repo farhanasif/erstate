@@ -16,7 +16,7 @@ class LandownerController extends Controller
     public function allLandowner()
     {
         $landowners = Landowner::all();
-        return view('landowners.all_landowner', compact('landowners'));
+        return view('landowner.all_landowner', compact('landowners'));
     }
 
     public function landownerData(){
@@ -25,7 +25,7 @@ class LandownerController extends Controller
             ->addColumn('DT_RowIndex',function ($row){
                 return '<input type="checkbox" id="qst_id_'.$row["id"].'">';
             })
-            //add edit and delte option
+            //add edit and delete option
                 ->addColumn('action',function ($row){
                     $edit_url=url('landowner/edit-landowner/'.$row['id']);
                 return '<a href="'.$edit_url.'" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
@@ -39,6 +39,7 @@ class LandownerController extends Controller
 
     public function storeLandowner(Request $request)
     {
+        // dd($request->all());
         $this->validate($request,[
             'file_no' => 'required',
             'name' => 'required',
@@ -102,8 +103,8 @@ class LandownerController extends Controller
 
     public function editLandowner($id)
     {
-        $Landowner = Landowner::find($id);
-         return view('Landowner.edit_Landowner', compact('Landowner'));
+        $landowner = Landowner::find($id);
+         return view('landowner.edit_landowner', compact('landowner'));
     }
 
     public function updateLandowner(Request $request, $id)
@@ -166,7 +167,7 @@ class LandownerController extends Controller
         $landowners->deed_number = $request->deed_number;
         $projects->save(); 
 
-        return redirect()->route('allProject')->with('success','Landowner updated successfully!');
+        return redirect()->route('allLandowner')->with('success','Landowner updated successfully!');
     }
     public function deleteLandowner($id)
     {

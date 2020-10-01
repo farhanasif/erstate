@@ -15,7 +15,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="" method="POST">
+        <form action="{{ route('storeLandowner') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -255,7 +255,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Remaining Balance: </label>
-                    <input type="text" name="remaining_balance" class="form-control" placeholder="Remaining Balance">
+                    <input type="number" name="remaining_balance" class="form-control" placeholder="Remaining Balance">
                     @if($errors->has('remaining_balance'))
                         <strong class="text-danger">{{ $errors->first('remaining_balance') }}</strong>
                     @endif
@@ -273,7 +273,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Total Purchase of Land Price: </label>
-                    <input type="text" name="tp_land_price" class="form-control" placeholder="Total Purchase of Land Price">
+                    <input type="number" name="tp_land_price" class="form-control" placeholder="Total Purchase of Land Price">
                     @if($errors->has('tp_land_price'))
                         <strong class="text-danger">{{ $errors->first('tp_land_price') }}</strong>
                     @endif
@@ -283,7 +283,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Per Bigha Price:</label>
-                    <input type="text" name="per_bigha_price" class="form-control" placeholder="Per Bigha Price">
+                    <input type="number" name="per_bigha_price" class="form-control" placeholder="Per Bigha Price">
                     @if($errors->has('per_bigha_price'))
                         <strong class="text-danger">{{ $errors->first('per_bigha_price') }}</strong>
                     @endif
@@ -295,7 +295,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Purchase of Land (Decimal): </label>
-                    <input type="text" name="purchase_of_land" class="form-control" placeholder="Purchase of Land (Decimal)">
+                    <input type="number" name="purchase_of_land" class="form-control" placeholder="Purchase of Land (Decimal)">
                     @if($errors->has('purchase_of_land'))
                         <strong class="text-danger">{{ $errors->first('purchase_of_land') }}</strong>
                     @endif
@@ -303,7 +303,7 @@
             </div>
         </div>
 
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+        {{-- <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -390,7 +390,7 @@
                      </tr>
                 </tbody>
             </table>
-        </div>
+        </div> --}}
 
         <div class="row">
             <div class="col-md-6">
@@ -406,7 +406,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Deed Number: </label>
-                    <input type="text" name="deed_number" class="form-control" placeholder="Deed Number">
+                    <input type="number" name="deed_number" class="form-control" placeholder="Deed Number">
                     @if($errors->has('deed_number'))
                         <strong class="text-danger">{{ $errors->first('deed_number') }}</strong>
                     @endif
@@ -416,7 +416,7 @@
               </div>
               <div class="card-footer">
                  <button type="submit" class="btn btn-success ">Submit</button>
-                 <a href="" type="submit" class="btn btn-info">Back</a>
+                 <a href="{{ route('allLandowner') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
       </div>
