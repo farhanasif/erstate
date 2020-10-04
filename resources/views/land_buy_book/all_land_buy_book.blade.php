@@ -1,7 +1,7 @@
 
 @extends('master')
 
-@section('breadcrumb-title', 'All Project Information')
+@section('breadcrumb-title', 'All land buy book information')
 
 @section('content')
 
@@ -9,25 +9,31 @@
 
   <div class="card card-success card-outline">
     <div class="card-header">
-        <h3 class="card-title">All Project Information</h3>
-        <a href="{{route('showAddProject')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add Project</a>
+        <h3 class="card-title">All land buy book information</h3>
+        <a href="{{route('showAddLandbuybook')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add land buy book</a>
 
         @include('message')
 
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="all-project" class="table table-bordered table-striped">
+      <table id="all-landbuybook" class="table table-bordered table-striped">
         <thead>
             <tr>
               <th>SL NO</th>
-              <th>Name</th>
-              <th>Location</th>
-              <th>Facing</th>
-              <th>Building Height</th>
-              <th>Land Area</th>
-              <th>Launching Date</th>
-              <th>Hand Over Date</th>
+              <th>File No</th>
+              <th>Donar Name</th>
+              <th>Recipient Name</th>
+              <th>Documents No</th>
+              <th>Date</th>
+              <th>CS Khatian</th>
+              <th>RS Khatian</th>
+              <th>SA Khatian</th>
+              <th>SA Dag</th>
+              <th>RS Dag</th>
+              <th>Amount Of Land</th>
+              <th>Rejection Amount</th>
+              <th>Hold No</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -43,36 +49,34 @@
 
 @section('custom_js')
 <script>
-//     $(document).ready(function() {
-//     $('#all-project').DataTable( {
-//         // scrollY:        '50vh',
-//         // scrollCollapse: true,
-//         "responsive": true,
-//       "autoWidth": false,
-//     } );
-// } );
 
 $(document).ready( function () {
-    $('#all-project').DataTable({
+    $('#all-landbuybook').DataTable({
         processing:true,
         serverSide:true,
-        ajax:"{{url('project/all-datatable')}}",
+        "scrollX": true,
+        ajax:"{{url('landbuybook/all-datatable')}}",
         columns:[
             { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-            { data: 'name', name: 'name' },
-            { data: 'location', name: 'location' },
-            { data: 'facing', name: 'facing' },
-            { data: 'building_height', name: 'building_height' },
-            { data: 'land_area', name: 'land_area' },
-            { data: 'launching_date', name: 'launching_date', },
-            { data: 'hand_over_date', name: 'hand_over_date' },
+            { data: 'file_no', name: 'file_no' },
+            { data: 'donor_name', name: 'donor_name' },
+            { data: 'recipient_name', name: 'recipient_name' },
+            { data: 'documents_no', name: 'documents_no' },
+            { data: 'date', name: 'date', },
+            { data: 'cs_khatian', name: 'cs_khatian' },
+            { data: 'rs_khatian', name: 'rs_khatian' },
+            { data: 'sa_khatian', name: 'sa_khatian' },
+            { data: 'sa_dag', name: 'sa_dag' },
+            { data: 'rs_dag', name: 'rs_dag', },
+            { data: 'amount_of_land', name: 'amount_of_land' },
+            { data: 'rejection_amount', name: 'rejection_amount' },
+            { data: 'hold_no', name: 'hold_no', },
             { data: 'action', name: 'action' }
         ]
     });
 });
-
 //delete 
-function deleteProject(id) {
+function deleteLandowner(id) {
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -84,7 +88,7 @@ function deleteProject(id) {
             }).then(function(result) {
                 if (result.value) {
                     //Delete by ajax from list-datatable
-                    var url="{{url('project/delete-project')}}";
+                    var url="{{url('landbuybook/delete-landbuybook')}}";
                     $.ajax({
                         //config part
                         url:url+"/"+id,
@@ -93,7 +97,7 @@ function deleteProject(id) {
                         //config part
                         beforeSend:function () {
                             Swal.fire({
-                                title: 'Deleting The Project data.....',
+                                title: 'Deleting The Land Buy Book data.....',
                                 html:"<i class='fa fa-spinner fa-spin' style='font-size: 24px;'></i>",
                                 confirmButtonColor: '#3085d6',
                                 allowOutSideClick:false,
@@ -106,7 +110,7 @@ function deleteProject(id) {
                             if(response==="success") {
                                 Swal.fire({
                                     title:'success',
-                                    text: 'You Have Successfully Deleted The Project',
+                                    text: 'You Have Successfully Deleted The Land Buy Book',
                                     type:'success',
                                     confirmButtonText: 'OK'
                                 }).then(function(result){
@@ -132,3 +136,6 @@ function deleteProject(id) {
         }
 </script>
 @endsection
+
+
+
