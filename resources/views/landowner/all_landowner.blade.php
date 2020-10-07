@@ -103,11 +103,11 @@
 <script>
     $(document).ready(function() {
     $('#all-landowner').DataTable( {
-        scrollY:'50vh',
+        // scrollY:'50vh',
         scrollX:'50vh',
         // scrollCollapse: true,
         // "responsive": true,
-      "autoWidth": false,
+      // "autoWidth": false,
     } );
 } );
 // $(document).ready( function () {
