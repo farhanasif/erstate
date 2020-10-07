@@ -174,9 +174,12 @@ class LandownerController extends Controller
         $landowner = Landowner::find($id);
         if($landowner){
             $landowner->delete();
-            return response()->json('success',201);
+            // return response()->json('success',201);
+            return back()->with('succes','Landowner deleted successfully!');
         }else{
-            return response()->json('error',422);
+            // return response()->json('error',422);
+
+            return back()->with('error','Do not deleted landowner data');
         }
     }
 }
