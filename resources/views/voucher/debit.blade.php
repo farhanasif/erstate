@@ -2,7 +2,7 @@
 
 @extends('master')
 
-@section('breadcrumb-title', ' Create Cr Voucher')
+@section('breadcrumb-title', ' Create Dr Voucher')
 
 @section('content')
 
@@ -118,7 +118,7 @@
               </div>
               <div class="card-footer">
                  <button type="submit" class="btn btn-success ">Submit</button>
-                 <a href="{{ route('lname.index') }}" type="submit" class="btn btn-info">Back</a>
+                 <a href="{{ route('alldebitvoucher') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
       </div>
