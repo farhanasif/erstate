@@ -86,8 +86,8 @@
                             <label>Account Head Name</label>
                             <select name="lname_id[]" class="form-control">
                               <option value="">--select account head--</option>
-                              @foreach ($lnames as $lname)
-                                  <option value="{{ $lname->id }}">{{ $lname->name }}</option>
+                              @foreach ($ltypes as $ltype)
+                                  <option value="{{ $ltype->id }}">{{ $ltype->name }}</option>
                               @endforeach
                           </select>
                           </div>
@@ -146,8 +146,8 @@
                             <label>Account Head Name</label>
                             <select name="lname_id[]" class="form-control">
                               <option value="">--select account head--</option>
-                              @foreach ($lnames as $lname)
-                                  <option value="{{ $lname->id }}">{{ $lname->name }}</option>
+                              @foreach ($ltypes as $lname)
+                                  <option value="{{ $ltype->id }}">{{ $ltype->name }}</option>
                               @endforeach
                           </select>
                           </div>

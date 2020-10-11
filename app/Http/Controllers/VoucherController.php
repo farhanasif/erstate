@@ -8,6 +8,7 @@ use App\Project;
 use App\Bank;
 use App\Lname;
 use App\Journal;
+use App\Ltype;
 use App\JournalDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +43,8 @@ class VoucherController extends Controller
         $projects = Project::all();
         $banks = Bank::all();
         $lnames = Lname::all();
-        return view('voucher.credit', compact('projects','banks','lnames'));
+        $ltypes = Ltype::all();
+        return view('voucher.credit', compact('projects','banks','lnames','ltypes'));
     }
 
     public function save_credit(Request $request){
@@ -103,7 +105,8 @@ class VoucherController extends Controller
         $projects = Project::all();
         $banks = Bank::all();
         $lnames = Lname::all();
-        return view('voucher.debit', compact('projects','banks','lnames'));
+        $ltypes = Ltype::all();
+        return view('voucher.debit', compact('projects','banks','lnames','ltypes'));
     }
 
     public function save_debit(Request $request){
@@ -144,7 +147,8 @@ class VoucherController extends Controller
     {
         $projects = Project::all();
         $lnames = Lname::all();
-        return view('voucher.create_journal', compact('projects','lnames'));
+        $ltypes = Ltype::all();
+        return view('voucher.create_journal', compact('projects','lnames','ltypes'));
     }
 
     public function alljournalvoucher()
