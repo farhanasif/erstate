@@ -685,6 +685,12 @@
                   <li class="nav-item">
                     <a href="#" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-brown"></i>
+                      <p> Trading Account</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon text-brown"></i>
                       <p> Trial Balance</p>
                     </a>
                   </li>

@@ -24,16 +24,16 @@
               <th>File No</th>
               <th>Donar Name</th>
               <th>Recipient Name</th>
-              <th>Documents No</th>
-              <th>Date</th>
+              {{-- <th>Documents No</th>
+              <th>Date</th>  --}}
               <th>CS Khatian</th>
               <th>RS Khatian</th>
               <th>SA Khatian</th>
               <th>SA Dag</th>
               <th>RS Dag</th>
-              <th>Amount Of Land</th>
+              {{-- <th>Amount Of Land</th>
               <th>Rejection Amount</th>
-              <th>Hold No</th>
+              <th>Hold No</th> --}}
               <th>Action</th>
             </tr>
           </thead>
@@ -59,18 +59,18 @@ $(document).ready( function () {
         columns:[
             { data: 'DT_RowIndex', name: 'DT_RowIndex' },
             { data: 'file_no', name: 'file_no' },
-            { data: 'donor_name', name: 'donor_name' },
+           { data: 'donor_name', name: 'donor_name' },
             { data: 'recipient_name', name: 'recipient_name' },
-            { data: 'documents_no', name: 'documents_no' },
-            { data: 'date', name: 'date', },
+            //{ data: 'documents_no', name: 'documents_no' },
+           // { data: 'date', name: 'date', },
             { data: 'cs_khatian', name: 'cs_khatian' },
             { data: 'rs_khatian', name: 'rs_khatian' },
             { data: 'sa_khatian', name: 'sa_khatian' },
             { data: 'sa_dag', name: 'sa_dag' },
             { data: 'rs_dag', name: 'rs_dag', },
-            { data: 'amount_of_land', name: 'amount_of_land' },
-            { data: 'rejection_amount', name: 'rejection_amount' },
-            { data: 'hold_no', name: 'hold_no', },
+           // { data: 'amount_of_land', name: 'amount_of_land' },
+            //{ data: 'rejection_amount', name: 'rejection_amount' },
+            //{ data: 'hold_no', name: 'hold_no', },
             { data: 'action', name: 'action' }
         ]
     });

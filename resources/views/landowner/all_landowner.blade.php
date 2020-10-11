@@ -23,30 +23,30 @@
               <th>SL NO</th>
               <th>File No</th>
               <th>Name</th>
-              <th>Father Name</th>
+              {{-- <th>Father Name</th>
               <th>Mother Name</th>
-              <th>NID No </th>
+              <th>NID No </th> --}}
               <th>Mobile</th>
-              <th>Permanent Address</th>
-              <th>Present Address</th>
+              {{-- <th>Permanent Address</th>
+              <th>Present Address</th> --}}
               <th>Email</th>
-              <th>Media Man</th>
-              <th>Investigation Person</th>
+              {{-- <th>Media Man</th>
+              <th>Investigation Person</th> --}}
               <th>Mouza</th>
               <th>PS</th>
-              <th>District </th>
+              {{-- <th>District </th> --}}
               <th>CS Khatian</th>
               <th>RS Khatian</th>
               <th>SA Khatian</th>
               <th>CS/SA Dag</th>
               <th>RS Dag</th>
-              <th>Total Land Of RS</th>
+              {{-- <th>Total Land Of RS</th>
               <th>Purchase Of Land</th>
               <th>Remaining Balance </th>
               <th>Tp Land Price</th>
               <th>Per Bigha Price</th>
-              <th>Registration Date</th>
-              <th>Deed Number</th>
+              <th>Registration Date</th> --}}
+              {{-- <th>Deed Number</th> --}}
               <th>Action</th>
             </tr>
           </thead>
@@ -56,30 +56,30 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $landowner->file_no }}</td>
                 <td>{{ $landowner->name }}</td>
-                <td>{{ $landowner->father_name }}</td>
+                {{-- <td>{{ $landowner->father_name }}</td>
                 <td>{{ $landowner->mother_name }}</td>
-                <td>{{ $landowner->nid_no }}</td>
+                <td>{{ $landowner->nid_no }}</td> --}}
                 <td>{{ $landowner->mobile }}</td>
-                <td>{{ $landowner->permanent_address }}</td>
-                <td>{{ $landowner->present_address }}</td>
+                {{-- <td>{{ $landowner->permanent_address }}</td>
+                <td>{{ $landowner->present_address }}</td> --}}
                 <td>{{ $landowner->email }}</td>
-                <td>{{ $landowner->media_man }}</td>
-                <td>{{ $landowner->investigation_person }}</td>
+                {{-- <td>{{ $landowner->media_man }}</td>
+                <td>{{ $landowner->investigation_person }}</td> --}}
                 <td>{{ $landowner->mouza }}</td>
                 <td>{{ $landowner->ps }}</td>
-                <td>{{ $landowner->district }}</td>
+                {{-- <td>{{ $landowner->district }}</td> --}}
                 <td>{{ $landowner->cs_khatian }}</td>
                 <td>{{ $landowner->rs_khatian }}</td>
                 <td>{{ $landowner->sa_khatian }}</td>
                 <td>{{ $landowner->cs_sa_dag }}</td>
                 <td>{{ $landowner->rs_dag }}</td>
-                <td>{{ $landowner->total_land_of_rs }}</td>
+                {{-- <td>{{ $landowner->total_land_of_rs }}</td>
                 <td>{{ $landowner->purchase_of_land }}</td>
                 <td>{{ $landowner->remaining_balance }}</td>
                 <td>{{ $landowner->tp_land_price }}</td>
                 <td>{{ $landowner->per_bigha_price }}</td>
                 <td>{{ $landowner->registration_date }}</td>
-                <td>{{ $landowner->deed_number }}</td>
+                <td>{{ $landowner->deed_number }}</td> --}}
                 <td>
                     <div style="width: 150px; display: block;">
                       <a href="{{ route('editLandowner',$landowner->id) }}" class="btn btn-info btn-xs" title="Edit"><i class="far fa-edit"></i></a>
