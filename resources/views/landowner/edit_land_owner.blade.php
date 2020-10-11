@@ -415,7 +415,7 @@
         </div>
               </div>
               <div class="card-footer">
-                 <button type="submit" class="btn btn-success ">Submit</button>
+                 <button type="submit" class="btn btn-success ">Update</button>
                  <a href="{{ route('allLandowner') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
