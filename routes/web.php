@@ -233,4 +233,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/update/user/password','UserController@updatePassword')
     ->name('update.password');
 
+    //*********Report ***********/
+    Route::get('/trading/account','TradingAccountController@index');
+    Route::get('/print/trading/account','TradingAccountController@printTradingAccount');
+    Route::get('/profit_loss/account','ProfitAndLossAccountController@index');
+    Route::get('/balance-sheet/account','BalanceSheetController@index');
+    Route::get('/print/balance-sheet','BalanceSheetController@printBalanceSheet');
+
 });
