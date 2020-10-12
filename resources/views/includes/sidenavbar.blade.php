@@ -683,9 +683,21 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('/trading/account') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-brown"></i>
                       <p> Trading Account</p>
+                    </a>
+                  </li>
+                   <li class="nav-item">
+                    <a href="{{ url('/balance-sheet/account') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon text-brown"></i>
+                      <p> Balance Sheet</p>
+                    </a>
+                  </li>
+                    <li class="nav-item">
+                    <a href="{{ url('/profit_loss/account') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon text-brown"></i>
+                      <p> Profit Or Loss Account</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -700,12 +712,7 @@
                       <p> Cost Of Revenue</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon text-brown"></i>
-                      <p> Profit Or Loss Account</p>
-                    </a>
-                  </li>
+
                   <li class="nav-item">
                     <a href="#" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-brown"></i>
@@ -718,12 +725,7 @@
                       <p> Fixed Asset Schedule</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon text-brown"></i>
-                      <p> Balance Sheet</p>
-                    </a>
-                  </li>
+
                   <li class="nav-item">
                     <a href="#" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-brown"></i>
