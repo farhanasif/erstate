@@ -16,11 +16,26 @@
                 <form role="form" action="" method="get">
                     <div class="row">
 
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                        <label>&nbsp;&nbsp; Project Name</label>
+                          <div class="col-md-12 col-sm-12">
+                         <select name="project_name" id="project_name" class="form-control select2bs4">  
+                            <option value="">--select project name</option>
+                          @foreach($projects as $project)
+                            <option value="{{ $project->name }}">{{ $project->name }}</option>
+                          @endforeach
+                        </select>  
+                          </div>
+                        </div>
+                    </div>
+
                     <div class="col-sm-4">
                         <div class="form-group">
                         <label>&nbsp;&nbsp; From Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" class="form-control" name="from_date" placeholder="From Date For Balance Sheet" id="from_data">
+                             <input type="text" class="form-control" name="from_date" placeholder="From Date For Balance Sheet" id="from_date">
                           </div>
                         </div>
                     </div>
@@ -29,7 +44,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; To Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" class="form-control" name="to_date" placeholder="To Date For Balance Sheet" id="to_data">
+                             <input type="text" class="form-control" name="to_date" placeholder="To Date For Balance Sheet" id="to_date">
                           </div>
                         </div>
                     </div>
@@ -51,13 +66,15 @@
 
 <script>
 $(document).ready(function() {
-
+      $('.select2bs4').select2({
+        theme: 'bootstrap4',
+      });
   $(function() {
-     $( "#from_data" ).datepicker({
+     $( "#from_date" ).datepicker({
           dateFormat: "YYYY-MM-DD HH:mm:ss",
           orientation: "bottom left"
      });
-    $( "#to_data" ).datepicker({
+    $( "#to_date" ).datepicker({
           dateFormat: "YYYY-MM-DD HH:mm:ss",
           orientation: "bottom left"
      });

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Project;
 
 class BalanceSheetController extends Controller
 {
     public function index(){
-        return view('report.balance_sheet');
+        $projects = Project::all();
+        return view('report.balance_sheet',compact('projects'));
         // return view('print_report.print_balance_sheet');
     }
 
