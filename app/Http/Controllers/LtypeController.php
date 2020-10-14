@@ -11,7 +11,9 @@ class LtypeController extends Controller
 {
     public function showAddLedger()
     {
-        return view('ltype.view');
+        $ltypes = Ltype::all();
+        // dd($ltypes);
+        return view('ltype.view',compact('ltypes'));
     }
 
     public function create()
