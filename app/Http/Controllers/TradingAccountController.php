@@ -8,13 +8,14 @@ use App\Project;
 class TradingAccountController extends Controller
 {
     public function index(){
-        $projects = Project::all();
-        return view('report.trading_account',compact('projects'));
-        // return view('print_report.print_trading_account');
+        // $projects = Project::all();
+        // return view('report.trading_account',compact('projects'));
+        return view('print_report.print_trading_account');
     }
 
     public function printTradingAccount(Request $request)
     {
+        $project_name = $request->project_name;
         $from_date = date('Y-m-d H:m:s', strtotime($request->from_date));
         $to_date = date('Y-m-d H:m:s', strtotime($request->to_date));
 

@@ -12,7 +12,9 @@ class LgroupController extends Controller
 
     public function showAddLedgerGroup()
     {
-        return view('lgroup.view');
+        $lgroups = Lgroup::all();
+        // dd($lgroups);
+        return view('lgroup.view',compact('lgroups'));
     }
 
     public function create()

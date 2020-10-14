@@ -58,8 +58,8 @@
                 <td>{{ $product->description }}</td>
                 <td>
                   <div style="width: 150px; display: block;">
-                    <a href="{{ route('editProduct',$product->id) }}" class="btn btn-warning" title="Edit"><i class="far fa-edit"></i></a>
-                    <a href="{{ route('deleteProduct',$product->id) }}" class="btn btn-danger" title="Delete"><i class="far fa-trash-alt"></i></a>
+                    <a href="{{ route('editProduct',$product->id) }}" class="btn btn-info btn-xs" title="Edit"><i class="far fa-edit"></i></a>
+                    <a href="{{ route('deleteProduct',$product->id) }}" class="btn btn-danger btn-xs" title="Delete"><i class="far fa-trash-alt"></i></a>
                   </div>
                 </td>
             </tr>
