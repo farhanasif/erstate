@@ -161,6 +161,8 @@ class VoucherController extends Controller
         //     ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
         //     ->get();
         //dd($voucher_details);
+
+        //bnvvbv
         return view('voucher.view_journal');
     }
 
