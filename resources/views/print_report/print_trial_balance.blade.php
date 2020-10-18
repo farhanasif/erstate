@@ -46,12 +46,12 @@
     
                 <tr>
                     <td></td>
-                    <td>Total</td>
+                    <td> <b> Total</b> </td>
                     <td> 
-                        {{ number_format($dr_sum )}}
+                        <b> {{ number_format($dr_sum )}} </b>
                     </td>
                     <td>
-                        {{ number_format($cr_sum)}}
+                        <b> {{ number_format($cr_sum)}} </b>
                     </td>
     
                 </tr>
