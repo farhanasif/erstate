@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 
-class BalanceSheetController extends Controller
+class TrialBlanceController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $projects = Project::all();
-        return view('report.balance_sheet',compact('projects'));
-        // return view('print_report.print_balance_sheet');
+        return view('report.trial_balance',compact('projects'));
     }
-
-    public function printBalanceSheet(Request $request)
+    public function printTrialBalace(Request $request)
     {
         $project_name = $request->project_name;
         $from_date = date('Y-m-d H:m:s', strtotime($request->from_date));
@@ -22,6 +21,9 @@ class BalanceSheetController extends Controller
         $data['from_date'] = date('d M Y', strtotime($from_date));
         $data['to_date'] = date('d M Y', strtotime($to_date));
 
-        return view('print_report.print_balance_sheet',$data);
+
+        
+
+        return view('print_report.print_trial_balance',$data);
     }
 }
