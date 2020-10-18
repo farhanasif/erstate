@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Project;
+use Illuminate\Support\Facades\DB;
+
 
 class ProfitAndLossAccountController extends Controller
 {
@@ -26,7 +28,23 @@ class ProfitAndLossAccountController extends Controller
    //     return view('print_report.print_balance_sheet',$data);
    // }
 
-   public function printProfitLossAccount(){
-       return view('print_report.print_profit_loss');
+   public function printProfitLossAccount(Request $request){
+    $project_id = $request->project_name;
+    $data['income'] = DB::select("SELECT sum(vd.amount) FROM `lnames` AS l
+    JOIN `ltypes` AS lt ON lt.id = l.ltype_id
+    JOIN `voucher_details` AS vd ON vd.lname_id = l.id
+    JOIN `vouchers` AS v ON v.id = vd.voucher_id
+    WHERE l.lgroup_id = 1 AND l.ltype_id = 1 AND v.project_id = ".$project_id);
+
+    $data['expen'] = DB::select("SELECT sum(vd.amount) FROM `lnames` AS l
+    JOIN `ltypes` AS lt ON lt.id = l.ltype_id
+    JOIN `voucher_details` AS vd ON vd.lname_id = l.id
+    JOIN `vouchers` AS v ON v.id = vd.voucher_id
+    WHERE l.lgroup_id = 1 AND l.ltype_id = 3 AND v.project_id = ".$project_id);
+
+    dd($data);
+    
+    return view('print_report.print_profit_loss');
+
    }
 }

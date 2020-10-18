@@ -4,9 +4,6 @@
 @section('breadcrumb-title', 'All Credit Vouchers')
 
 @section('content')
-@section('stylesheet')
-    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-@endsection
 
 <section class="content">
 
@@ -45,8 +42,6 @@
 @endsection
 
 @section('custom_js')
-<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
 <script>
     // $(document).ready(function() {
     //     $('#all-ltypes').DataTable( {

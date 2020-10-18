@@ -40,6 +40,7 @@ class VoucherController extends Controller
         ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
         ->join('lnames', 'voucher_details.lname_id', '=', 'lnames.id')
         ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
+        ->where('voucher_type', 'CR')
         ->get();
 
         foreach($voucher_details as $dat){
@@ -140,6 +141,7 @@ class VoucherController extends Controller
             ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
             ->join('lnames', 'voucher_details.lname_id', '=', 'lnames.id')
             ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.cheque_no','vouchers.perticulers')
+            ->where('voucher_type', 'DR')
             ->get();
 
             foreach($voucher_details as $dat){
