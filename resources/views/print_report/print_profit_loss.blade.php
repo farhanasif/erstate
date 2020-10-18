@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <title>&nbsp;</title>
-  <head>
-    <meta charset="UTF-8">
-    <title>&nbsp;</title>
-    <link rel="stylesheet" type="text/css" media="all" href="{{ URL::to('css/report_print.css') }}" />
-
-  </head>
-  <body>
-    <button class="print-button">Print Page</button>
+<div class="card-body">
+<button class="bg-warning text-dark float-right">Print Page</button>
     <div class="lik-uftcl-ptf-main-body">
       <div class="lik-uftcl-ptf-print-body">
         <form>
@@ -146,16 +137,3 @@
     </form>
   </div>
 </div>
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script>
-$(".print-button").on("click", function() {
-$("#search-grid").hide();
-$(".main-footer").hide();
-$('#title_data').hide();
-$('.print-button').hide();
-window.print();
-window.location = url;
-});
-</script>
-</body>
-</html>

@@ -13,14 +13,18 @@ class TradingAccountController extends Controller
         // return view('print_report.print_trading_account');
     }
 
-    public function printTradingAccount(Request $request)
-    {
-        $from_date = date('Y-m-d H:m:s', strtotime($request->from_date));
-        $to_date = date('Y-m-d H:m:s', strtotime($request->to_date));
+    // public function printTradingAccount(Request $request)
+    // {
+    //     $from_date = date('Y-m-d H:m:s', strtotime($request->from_date));
+    //     $to_date = date('Y-m-d H:m:s', strtotime($request->to_date));
 
-        $data['from_date'] = date('d M Y', strtotime($from_date));
-        $data['to_date'] = date('d M Y', strtotime($to_date));
+    //     $data['from_date'] = date('d M Y', strtotime($from_date));
+    //     $data['to_date'] = date('d M Y', strtotime($to_date));
 
-        return view('print_report.print_balance_sheet',$data);
+    //     return view('print_report.print_balance_sheet',$data);
+    // }
+
+    public function printTradingAccounts(){
+        return view('print_report.print_trading_accounts');
     }
 }
