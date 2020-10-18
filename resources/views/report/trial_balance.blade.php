@@ -19,7 +19,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                <form role="form" action="" method="get">
+                <form role="form" action="{{ url('/print/trialbalance') }}" method="get">
                     <div class="row">
                     
                     <div class="col-sm-4">
@@ -29,14 +29,14 @@
                          <select name="project_name" id="project_name" class="form-control select2bs4">  
                             <option value="">--select project name</option>
                           @foreach($projects as $project)
-                            <option value="{{ $project->name }}">{{ $project->name }}</option>
+                            <option value="{{ $project->id }}">{{ $project->name }}</option>
                           @endforeach
                         </select>  
                           </div>
                         </div>
                     </div>
 
-                    <div class="col-sm-4">
+                    {{-- <div class="col-sm-4">
                         <div class="form-group">
                         <label>&nbsp;&nbsp; From Month</label>
                           <div class="col-md-12 col-sm-12">
@@ -52,7 +52,7 @@
                              <input type="text" class="form-control" name="to_date" placeholder="To Date For Trading Account" id="to_date">
                           </div>
                         </div>
-                    </div>
+                    </div> --}}
                     </div>
 
                 </div>
