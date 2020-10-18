@@ -239,9 +239,11 @@ Route::middleware('auth')->group(function () {
 
     //*********Report ***********/
     Route::get('/trading/account','TradingAccountController@index');
-    Route::get('/print/trading/account','TradingAccountController@printTradingAccount');
+    Route::get('/print/trading/accounts','TradingAccountController@printTradingAccounts');
+
     Route::get('/profit_loss/account','ProfitAndLossAccountController@index');
     Route::get('/print/profit_loss/account','ProfitAndLossAccountController@printProfitLossAccount');
+
     Route::get('/balance-sheet/account','BalanceSheetController@index');
     Route::get('/print/balance-sheet','BalanceSheetController@printBalanceSheet');
 

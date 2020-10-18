@@ -39,7 +39,8 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; From Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" id="from_date" class="form-control" name="from_date" placeholder="From Date For Trading Account">
+                          <!-- <input type="text" id="from_date"> -->
+                             <input type="text" id="from_date" class="form-control" placeholder="From Date For Trading Account">
                           </div>
                         </div>
                     </div>
@@ -48,7 +49,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; To Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" id="to_data" class="form-control" name="to_data" placeholder="To Date For Trading Account">
+                             <input type="text" id="to_data" class="form-control" name="to_date" placeholder="To Date For Trading Account">
                           </div>
                         </div>
                     </div>
@@ -56,13 +57,20 @@
 
                 </div>
                 <!-- /.card-body -->
-                <!-- /.card-body -->
-                <div class="card-footer">
+
+                <!-- <div class="card-footer">
                     <a href=""><button type="submit" id="generate" class="btn btn-success">Generate</button></a>
-                </div>
+                </div> -->
               </form>
                 <!-- /.card-footer -->
+          </div><br>
+             
+          
+            <div id="indivi" class="card card-secondary">
+              
             </div>
+
+
         </section>
         <!-- /.content -->
 @endsection
@@ -75,6 +83,32 @@ $(document).ready(function() {
     $( "#to_data" ).datepicker({dateFormat: 'yy-mm-dd'});
     //$("#from_date").datepicker('show');
   } );
+
+
+  $('#to_data').change(function (e) {
+        e.preventDefault();
+
+        // var studentId=$("#studentList").val();
+        // var examName=$("#examName").val();
+
+        //console.log(classId, sectionId);
+
+        $.ajax({
+                type: "get",
+                url:"{{url('print/trading/accounts')}}",
+                
+                success: function (data) {
+                    
+                    $('#indivi').html(data);
+                }
+            });
+       // ajax:"{{url('individual/admitCardSectionWiseList/')}}"+'/'+classId+'/'+sectionId,
+        
+    //table.destroy();
+
+    });
+
+
 </script>
 
 @endsection
