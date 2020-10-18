@@ -20,7 +20,9 @@ class LnameController extends Controller
             ->select('lnames.*', 'lgroups.name as lgroup_name', 'ltypes.name as ltype_name')
             ->get();
         //$ladgerName=$lnames;
-        return view('lname.view');
+
+        // dd($lnames);
+        return view('lname.view',compact('lnames'));
     }
     public function create()
     {

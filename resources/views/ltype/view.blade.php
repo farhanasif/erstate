@@ -25,6 +25,19 @@
               <th>Action</th>
             </tr>
           </thead>
+          <tbody>
+            @foreach ($ltypes as $ltype)
+                <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $ltype->name }}</td>
+                <td>{{ $ltype->code }}</td>
+                <td>
+                    <a href="{{ route('editLadger',$ltype->id) }}" class="btn btn-info btn-xs" title="Edit"><i class="far fa-edit"></i></a>
+                    <a href="{{ route('delete_ledger',$ltype->id) }}" class="btn btn-danger btn-xs" title="Delete"><i class="far fa-trash-alt"></i></a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
           
       </table>
     </div>
@@ -37,29 +50,29 @@
 
 @section('custom_js')
 <script>
-//     $(document).ready(function() {
-//     $('#all-ltypes').DataTable( {
-//         "info": true,
-//           "autoWidth": false,
-//           scrollX:'50vh', 
-//           scrollY:'50vh',
-//         scrollCollapse: true,
-//     } );
-// } );
+    $(document).ready(function() {
+    $('#all-ltypes').DataTable( {
+        // "info": true,
+        //   "autoWidth": false,
+        //   scrollX:'50vh', 
+          scrollY:'50vh',
+        // scrollCollapse: true,
+    } );
+} );
 
-$(document).ready( function () {
-    $('#all-ltypes').DataTable({
-        processing:true,
-        serverSide:true,
-        ajax:"{{url('ledgertype/all-datatable')}}",
-        columns:[
-            { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-            { data: 'name', name: 'name' },
-            { data: 'code', name: 'code' },
-            { data: 'action', name: 'action' }
-        ]
-    });
-});
+// $(document).ready( function () {
+//     $('#all-ltypes').DataTable({
+//         processing:true,
+//         serverSide:true,
+//         ajax:"{{url('ledgertype/all-datatable')}}",
+//         columns:[
+//             { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+//             { data: 'name', name: 'name' },
+//             { data: 'code', name: 'code' },
+//             { data: 'action', name: 'action' }
+//         ]
+//     });
+// });
 
 //delete 
 function destroy(id) {
