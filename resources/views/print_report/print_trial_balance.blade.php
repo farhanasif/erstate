@@ -30,9 +30,11 @@
               </tr>
             </thead>
             <tbody>
+                @php $cr_sum = 0; $dr_sum = 0; @endphp
                 @foreach ($data as $item)
                  @php
-
+                    $cr_sum+= $item->voucher_type == 'CR' ? $item->amount : 0;
+                    $dr_sum+= $item->voucher_type == 'DR' ? $item->amount : 0;
                  @endphp
                 <tr>
                     <th> {{ $loop->iteration }}</th>
@@ -46,11 +48,11 @@
                     <td></td>
                     <td>Total</td>
                     <td> 
-                    @php
-                        
-                    @endphp 
+                        {{ number_format($dr_sum )}}
                     </td>
-                    <td></td>
+                    <td>
+                        {{ number_format($cr_sum)}}
+                    </td>
     
                 </tr>
     
