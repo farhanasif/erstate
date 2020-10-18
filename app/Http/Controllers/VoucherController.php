@@ -8,9 +8,9 @@ use App\Project;
 use App\Bank;
 use App\Lname;
 use App\Journal;
-use App\Ltype;
 use App\JournalDetails;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\DB;
 
 class VoucherController extends Controller
@@ -33,6 +33,45 @@ class VoucherController extends Controller
         return view('voucher.view_credit', compact('voucher_details'));
     }
 
+    public function allcreditvoucherDataTable(){
+        $voucher_details = DB::table('voucher_details')
+        ->join('vouchers', 'voucher_details.voucher_id', '=', 'vouchers.id')
+        ->join('projects', 'vouchers.project_id', '=', 'projects.id')
+        ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
+        ->join('lnames', 'voucher_details.lname_id', '=', 'lnames.id')
+        ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
+        ->get();
+
+        foreach($voucher_details as $dat){
+            $customData[]=[
+                'voucher_id'=>$dat->voucher_id,
+                'voucher_date'=>$dat->voucher_date,
+                'lname'=>$dat->lname,
+                'bank_name'=>$dat->bank_name,
+                'cheque_no'=>$dat->cheque_no,
+                'amount'=>$dat->amount,
+                'project_name'=>$dat->project_name,
+                'perticulers'=>$dat->perticulers,
+
+            ];
+        }
+    //dd($customData);
+        $data_table_render= DataTables::of($customData)
+            ->addColumn('DT_RowIndex',function ($row){
+                //return '<input type="checkbox" id="qst_id_'.$row["id"].'">';
+            })
+            //add edit and delte option
+                ->addColumn('action',function ($row){
+                    //$edit_url=url('sales/edit-sales/'.$row['id']);
+                // return '<a href="#" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
+                //      '<button onClick="#" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
+            })
+            ->rawColumns(['DT_RowIndex','action'])
+            ->addIndexColumn()
+            ->make(true);
+        return $data_table_render;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -43,8 +82,7 @@ class VoucherController extends Controller
         $projects = Project::all();
         $banks = Bank::all();
         $lnames = Lname::all();
-        $ltypes = Ltype::all();
-        return view('voucher.credit', compact('projects','banks','lnames','ltypes'));
+        return view('voucher.credit', compact('projects','banks','lnames'));
     }
 
     public function save_credit(Request $request){
@@ -92,7 +130,46 @@ class VoucherController extends Controller
             ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
             ->get();
         //dd($voucher_details);
-        return view('voucher.view_credit', compact('voucher_details'));
+        return view('voucher.view_debit', compact('voucher_details'));
+    }
+
+    public function allDebitVoucherDataTable(){
+        $voucher_details = DB::table('voucher_details')
+            ->join('vouchers', 'voucher_details.voucher_id', '=', 'vouchers.id')
+            ->join('projects', 'vouchers.project_id', '=', 'projects.id')
+            ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
+            ->join('lnames', 'voucher_details.lname_id', '=', 'lnames.id')
+            ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.cheque_no','vouchers.perticulers')
+            ->get();
+
+            foreach($voucher_details as $dat){
+                $customData[]=[
+                    'voucher_id'=>$dat->voucher_id,
+                    'voucher_date'=>$dat->voucher_date,
+                    'lname'=>$dat->lname,
+                    'bank_name'=>$dat->bank_name,
+                    'cheque_no'=>$dat->cheque_no,
+                    'amount'=>$dat->amount,
+                    'project_name'=>$dat->project_name,
+                    'perticulers'=>$dat->perticulers,
+    
+                ];
+            }
+
+            $data_table_render= DataTables::of($customData)
+            ->addColumn('DT_RowIndex',function ($row){
+                //return '<input type="checkbox" id="qst_id_'.$row["id"].'">';
+            })
+            //add edit and delte option
+                ->addColumn('action',function ($row){
+                    //$edit_url=url('sales/edit-sales/'.$row['id']);
+                // return '<a href="#" class="btn btn-info btn-xs"><i class="far fa-edit"></i></a>'."&nbsp&nbsp;".
+                //      '<button onClick="#" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>';
+            })
+            ->rawColumns(['DT_RowIndex','action'])
+            ->addIndexColumn()
+            ->make(true);
+        return $data_table_render;   
     }
 
     /**
@@ -105,8 +182,7 @@ class VoucherController extends Controller
         $projects = Project::all();
         $banks = Bank::all();
         $lnames = Lname::all();
-        $ltypes = Ltype::all();
-        return view('voucher.debit', compact('projects','banks','lnames','ltypes'));
+        return view('voucher.debit', compact('projects','banks','lnames'));
     }
 
     public function save_debit(Request $request){
@@ -147,8 +223,7 @@ class VoucherController extends Controller
     {
         $projects = Project::all();
         $lnames = Lname::all();
-        $ltypes = Ltype::all();
-        return view('voucher.create_journal', compact('projects','lnames','ltypes'));
+        return view('voucher.create_journal', compact('projects','lnames'));
     }
 
     public function alljournalvoucher()
@@ -161,8 +236,6 @@ class VoucherController extends Controller
         //     ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
         //     ->get();
         //dd($voucher_details);
-
-        //bnvvbv
         return view('voucher.view_journal');
     }
 
