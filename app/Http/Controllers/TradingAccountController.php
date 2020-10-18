@@ -8,9 +8,9 @@ use App\Project;
 class TradingAccountController extends Controller
 {
     public function index(){
-        // $projects = Project::all();
-        // return view('report.trading_account',compact('projects'));
-        return view('print_report.print_trading_account');
+        $projects = Project::all();
+        return view('report.trading_account',compact('projects'));
+        //return view('print_report.print_trading_account');
     }
 
     public function printTradingAccounts(){
