@@ -1,16 +1,19 @@
 
 @extends('master')
 
-@section('breadcrumb-title', 'All Credit Vouchers')
+@section('breadcrumb-title', 'All Debit Vouchers')
 
 @section('content')
+@section('stylesheet')
+    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+@endsection
 
 <section class="content">
 
   <div class="card card-success card-outline">
     <div class="card-header">
         <h3 class="card-title">All Debit Vouchers</h3>
-        <a href="{{route('creditvoucher')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add Cr Voucher</a>
+        <a href="{{route('debitvoucher')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add Dr Voucher</a>
         @include('message')
 
     </div>
@@ -19,33 +22,21 @@
       <table id="all-ltypes" class="table table-bordered table-striped">
         <thead>
             <tr>
+            <tr>
               <th>SL</th>
-              <th>Voucher</th>
-              <th>Account Head</th>
-              <th>Made of Payment</th>
+              <th>Voucher Id</th>
+              <th>Voucher Date</th>
+              <th>LName</th>
+              <th>Bank Name</th>
+              <th>Checque No</th>
               <th>Amount</th>
-              <th>Project</th>
+              <th>Project Name</th>
               <th>Particulars</th>
               <th>Action</th>
             </tr>
-          </thead>
-          <tbody>
-              @foreach ($voucher_details as $voucher_detail)
-              <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td><b>Voucher No<br />{{ $voucher_detail->voucher_id }}</b><br />Date: {{ $voucher_detail->voucher_date }}</td>
-                <td>{{ $voucher_detail->lname }}</td>
-                <td>{{ $voucher_detail->bank_name }}<br />Cheque: {{ $voucher_detail->cheque_no }}</td>
-                <td>{{ $voucher_detail->amount }}</td>
-                <td><b>{{ $voucher_detail->project_name }}</b></td>
-                <td>{{ $voucher_detail->perticulers }}</td>
-                <td>
-                    {{-- <a href="{{ route('voucher_detail.edit',$voucher_detail) }}" class="btn btn-warning"><i class="far fa-edit"></i></a> --}}
-                </td>
             </tr>
-              @endforeach
-
-        </tbody>
+          </thead>
+          
       </table>
     </div>
     <!-- /.card-body -->
@@ -56,16 +47,40 @@
 @endsection
 
 @section('custom_js')
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
 <script>
-    $(document).ready(function() {
-        $('#all-ltypes').DataTable( {
-            "info": true,
-            "autoWidth": false,
-            scrollX:'50vh', 
-            scrollY:'50vh',
-            scrollCollapse: true,
-        } );
+    // $(document).ready(function() {
+    //     $('#all-ltypes').DataTable( {
+    //         "info": true,
+    //         "autoWidth": false,
+    //         scrollX:'50vh', 
+    //         scrollY:'50vh',
+    //         scrollCollapse: true,
+    //     } );
+    // });
+
+    $(document).ready( function () {
+    $('#all-ltypes').DataTable({
+        processing:true,
+        serverSide:true,
+        "responsive": true,
+        "autoWidth": false,
+        ajax:"{{url('allcreditvoucher/datatable')}}",
+        columns:[
+          { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+            { data: 'voucher_id', name: 'voucher_id' },
+            { data: 'voucher_date', name: 'voucher_date' },
+            { data: 'lname', name: 'lname' },
+            { data: 'bank_name', name: 'bank_name' },
+            { data: 'cheque_no', name: 'cheque_no' },
+            { data: 'amount', name: 'amount'},
+            { data: 'project_name', name: 'project_name'},
+            { data: 'perticulers', name: 'perticulers'},
+            { data: 'action', name: 'action' }
+        ]
     });
+});
 </script>
 @endsection
 
