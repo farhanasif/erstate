@@ -9,26 +9,17 @@ use Illuminate\Support\Facades\DB;
 class TradingAccountController extends Controller
 {
     public function index(){
-        // $projects = Project::all();
-        // return view('report.trading_account',compact('projects'));
         $all_data = DB::select(
             "SELECT projects.id, projects.name, vouchers.voucher_date
             FROM projects
             INNER JOIN vouchers ON projects.id=vouchers.project_id;"
              );
-             dd($all_data);
-        return view('print_report.print_trading_account');
+        $projects = Project::all();
+        return view('report.trading_account',compact('projects'));
+
     }
 
-    public function printTradingAccount(Request $request)
-    {
-        $project_name = $request->project_name;
-        $from_date = date('Y-m-d H:m:s', strtotime($request->from_date));
-        $to_date = date('Y-m-d H:m:s', strtotime($request->to_date));
-
-        $data['from_date'] = date('d M Y', strtotime($from_date));
-        $data['to_date'] = date('d M Y', strtotime($to_date));
-
-        return view('print_report.print_balance_sheet',$data);
+    public function printTradingAccounts(){
+        return view('print_report.print_trading_accounts');
     }
 }

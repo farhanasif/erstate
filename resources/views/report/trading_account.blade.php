@@ -1,5 +1,10 @@
 @extends('master')
 @section('content')
+@section('custom_css')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" type="text/css" media="all" href="{{ URL::to('css/report_print.css') }}" />
+@endsection
 
 @section('breadcrumb-title', 'Trading Account')
 
@@ -34,7 +39,8 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; From Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" class="form-control" name="from_date" placeholder="From Date For Trading Account" id="from_data">
+                          <!-- <input type="text" id="from_date"> -->
+                             <input type="text" id="from_date" class="form-control" placeholder="From Date For Trading Account">
                           </div>
                         </div>
                     </div>
@@ -43,7 +49,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; To Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" class="form-control" name="to_date" placeholder="To Date For Trading Account" id="to_data">
+                             <input type="text" id="to_data" class="form-control" name="to_date" placeholder="To Date For Trading Account">
                           </div>
                         </div>
                     </div>
@@ -51,32 +57,58 @@
 
                 </div>
                 <!-- /.card-body -->
-                <!-- /.card-body -->
-                <div class="card-footer">
+
+                <!-- <div class="card-footer">
                     <a href=""><button type="submit" id="generate" class="btn btn-success">Generate</button></a>
-                </div>
+                </div> -->
               </form>
                 <!-- /.card-footer -->
+          </div><br>
+             
+          
+            <div id="indivi" class="card card-secondary">
+              
             </div>
+
+
         </section>
         <!-- /.content -->
 @endsection
-@section('customjs')
-
+@section('custom_js')
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 $(document).ready(function() {
+    $( "#from_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+    $( "#to_data" ).datepicker({dateFormat: 'yy-mm-dd'});
+    //$("#from_date").datepicker('show');
+  } );
 
-  $(function() {
-     $( "#from_data" ).datepicker({
-          dateFormat: "YYYY-MM-DD HH:mm:ss",
-          orientation: "bottom left"
-     });
-    $( "#to_data" ).datepicker({
-          dateFormat: "YYYY-MM-DD HH:mm:ss",
-          orientation: "bottom left"
-     });
+
+  $('#to_data').change(function (e) {
+        e.preventDefault();
+
+        // var studentId=$("#studentList").val();
+        // var examName=$("#examName").val();
+
+        //console.log(classId, sectionId);
+
+        $.ajax({
+                type: "get",
+                url:"{{url('print/trading/accounts')}}",
+                
+                success: function (data) {
+                    
+                    $('#indivi').html(data);
+                }
+            });
+       // ajax:"{{url('individual/admitCardSectionWiseList/')}}"+'/'+classId+'/'+sectionId,
+        
+    //table.destroy();
+
     });
-  });
+
+
 </script>
 
 @endsection
