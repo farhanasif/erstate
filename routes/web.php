@@ -195,10 +195,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/alldebitvoucher/datatable','VoucherController@allDebitVoucherDataTable');
 
     Route::get('/allcreditvoucher','VoucherController@index')->name('allcreditvoucher');
+    Route::get('/allcreditvoucher/datatable','VoucherController@allcreditvoucherDataTable');
+
     Route::get('/creditvoucher','VoucherController@creditvoucher')->name('creditvoucher');
     Route::post('/save_credit','VoucherController@save_credit')->name('save_credit');
 
     Route::get('/alldebitvoucher','VoucherController@alldebitvoucher')->name('alldebitvoucher');
+    Route::get('/alldebitvoucher/datatable','VoucherController@allDebitVoucherDataTable');
+
     Route::get('/debitvoucher','VoucherController@debitvoucher')->name('debitvoucher');
     Route::post('/save_debit','VoucherController@save_debit')->name('save_debit');
 
@@ -246,6 +250,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/trading/account','TradingAccountController@index');
     Route::get('print/trading/accounts','TradingAccountController@printTradingAccounts');
+
 
     // profit_loss
     Route::get('/profit_loss/account','ProfitAndLossAccountController@index');
