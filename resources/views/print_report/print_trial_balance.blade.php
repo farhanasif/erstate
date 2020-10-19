@@ -7,10 +7,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" media="all" href="{{ URL::to('css/report_print.css') }}" />
     <title>Trial Balance</title>
   </head>
   <body>
+    <br>
+    <button class="print-button ml-5" id="print-button">Print Page</button>
       <br><br>
       <h3 class="text-center">{{ $data[0]->name }}</h3>
       <h3 class="text-center">Trial Balance (Fund Flow Statement)</h3>
@@ -33,8 +35,14 @@
                 @php $cr_sum = 0; $dr_sum = 0; @endphp
                 @foreach ($data as $item)
                  @php
-                    $cr_sum+= $item->voucher_type == 'CR' ? $item->amount : 0;
-                    $dr_sum+= $item->voucher_type == 'DR' ? $item->amount : 0;
+                 if ($item->voucher_type == 'CR') {
+                  $cr_sum+= $item->amount;
+                 }
+                 if ($item->voucher_type == 'DR') {
+                  $dr_sum+= $item->amount;
+                 }
+                    // $cr_sum+= $item->voucher_type == 'CR' ? $item->amount : 0;
+                    // $dr_sum+= $item->voucher_type == 'DR' ? $item->amount : 0;
                  @endphp
                 <tr>
                     <th> {{ $loop->iteration }}</th>
@@ -61,7 +69,13 @@
     </div>
 
 </div>
+    <script>
+    $(".print-button").on("click", function() {
 
+    window.print();
+    window.location = url;
+    });
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

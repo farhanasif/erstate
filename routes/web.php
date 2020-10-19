@@ -39,6 +39,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/project/delete-project/{id}', 'ProjectController@deleteProject')->name('deleteProject');
 
 
+        // ALL ADJUSTMENT ROUTES
+        Route::get('adjustment/all','AdjustmentController@index');
+        Route::get('adjustment/create','AdjustmentController@create');
+        Route::post('adjustment/store','AdjustmentController@store');
+
+
         // ALL LAND OWNERS ROUTES
         Route::get('/landowner/add-landowner', 'LandownerController@showAddLandowner')->name('showAddLandowner');
         Route::post('/landowner/store-landowner', 'LandownerController@storeLandowner')->name('storeLandowner');

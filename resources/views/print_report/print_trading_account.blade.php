@@ -14,93 +14,78 @@
         <form>
           <div class="lik-uftcl-pdf-header"></div>
           <div class="lik-uftcl-pdf-body">
-            <div class="main-2" style="border-radius: 0px!important; padding: 0px!important;">
-              <div class="body-top">
+            <div class="main-2" style="width: 798px!important; border-radius: 0px!important; padding: 0px!important;">
+              <div class="body-top" >
                 <p class="ptf-ln-3">
-                  <span> Noboudoy Purbachal City <br/>  Trading Account</span>
+                  <span>{{$projectDetails[0]->name}} <br/>  Trading Account</span>
                   <span></span>
                   {{-- <img src="../images/logo/acf-pf.png" alt="acf" style="width: 200px;height: 100px;margin-left: auto;margin-right: auto;"> --}}
                   <span>For Financial Year 2019 to 2020</span>
                 </p>
               </div>
-              <table class="settlement" width="900" style="table-layout:fixed; border-radius: 0px!important; width: 788px;border: none;border-top: 1px solid #000;margin-top: 0px!important;">
-                <tbody>
-                  <tr class="">
-                    <th> Particulars (Head Wise Expenditure) </th>
-                    <th>TK</th>
-                    <th> Particulars (Head Wise Income) </th>
-                    <th>TK</th>
-                  </tr>
-                </tbody>
-              </table>
-              <table class="settlement-table" width="800" style="table-layout:fixed; margin-bottom: 10px; width: 788px;border: none;border-top: 1px solid #000;">
-                <tbody>
-                  <tr>
-                    <td> Purchase of Land </td>
-                    <td> </td>
-                    <td> Sales of Land</td>
-                    <td></td>
-                  </tr>
+              <?php $total_income = 0; $total_expen = 0;?>
+              @if(count($data))
+            <div style="width:900px">
+              <div style="width:48%; float:right; margin:5px">
+                    <table class="">
+                      <thead>
+                        <tr class="">
+                          <th> Particulars (Head Wise Income) </th>
+                          <th>TK</th>
+                        </tr>
+                      </thead>
+                
+                      <tbody>
+                      @foreach ($data['income'] as $item)
+                        <?php ($item->l_name == "Sales Commission" ? $total_income -= $item->amount : $total_income += $item->amount); ?>
+                        
+                        <tr>
+                        <td> {{$item->l_name}} </td>
+                        <td style="text-align:right;"> @if($item->l_name == "Sales Commission") ( {{$item->amount }} ) @else {{$item->amount }} @endif</td>
+                        </tr>
+                      @endforeach   
+                      </tbody>
+            
+                    </table>
+                 </div>
+                 <div style="width:48%; float:left;margin:5px">
+                    <table class="">
+                      <thead>
+                        <tr class="">
+                          <th> Particulars (Head Wise Expenditure) </th>
+                          <th>TK</th>
+                        </tr>
+                      </thead>
 
-                  <tr>
-                    <td> Purchase of Commission </td>
-                    <td> </td>
-                    <td> Less Com</td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td> Stammp Cost  </td>
-                    <td>  </td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td> Registration Exp. </td>
-                    <td> </td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                   <tr>
-                    <td> Mutation </td>
-                    <td> </td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td> Land Case </td>
-                    <td> </td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td> Land Aquisition </td>
-                    <td> 0 </td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td> Gross Profit </td>
-                    <td> 0 </td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td>  <b> Total </b></td>
-                    <td> </td>
-                    <td>  <b> Total </b></td>
-                    <td></td>
-                  </tr>
-                   
-              </tbody>
-          </table>
-        </div>
+                      <tbody>
+                      @foreach ($data['expen'] as $item)
+                      <?php $total_expen += $item->amount; ?>
+                        <tr>
+                          <td> {{$item->l_name}} </td>
+                          <td style="text-align:right;">{{$item->amount }}</td>
+                        </tr>
+                      @endforeach 
+                        <tr>
+                          <td> Gross Profit </td>
+                          <td style="text-align:right;"><u><?php echo $total_income - $total_expen; ?></u></td>
+                        </tr>  
+                      </tbody>
+                    </table>
+                 </div>
+              </div>
+              
+              <div style="width:48%;float:left;margin-left:15px">
+                <p class="ptf-ln-3" style="width:66%; margin-top:10px!important;"><b>  Total</b></p>
+                <p style=""><u><?php echo $total_income; ?></u>  </p>
+              </div>
+              <div style="width:48%;float:right;margin-right:15px">
+                <p class="ptf-ln-3" style="width:66%; margin-top:10px!important;"><b>  Total</b></p>
+                <p style="float:right;margin-right:30px"><u><?php echo $total_income; ?></u>  </p>
+              </div>
+            </div>
+            @else
+             <h3>There is no data found</h3>
+             @endif
         <!-- table section end -->
         <div class="body-mid" style="padding-top: 25px;">
           <p style="text-align: center;font-size: 12px;line-height: .5;">"Please report to us within 48 hours if this statement is incorrect. Otherwise this statement will be considered to be confirmed by you."</p>

@@ -155,7 +155,6 @@ public function allDebitVoucherDataTable(){
     'amount'=>$dat->amount,
     'project_name'=>$dat->project_name,
     'perticulers'=>$dat->perticulers,
-
     ];
     }
 
