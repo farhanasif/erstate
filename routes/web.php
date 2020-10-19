@@ -243,8 +243,9 @@ Route::middleware('auth')->group(function () {
     ->name('update.password');
 
     //*********Report ***********/
+    
     Route::get('/trading/account','TradingAccountController@index');
-    Route::get('/print/trading/account','TradingAccountController@printTradingAccount');
+    Route::get('print/trading/accounts','TradingAccountController@printTradingAccounts');
 
     // profit_loss
     Route::get('/profit_loss/account','ProfitAndLossAccountController@index');
