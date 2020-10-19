@@ -8,9 +8,9 @@ use App\Project;
 class BalanceSheetController extends Controller
 {
     public function index(){
-        // $projects = Project::all();
-        // return view('report.balance_sheet',compact('projects'));
-        return view('print_report.print_balance_sheet');
+        $projects = Project::all();
+        return view('report.balance_sheet',compact('projects'));
+        // return view('print_report.print_balance_sheet');
     }
 
     public function printBalanceSheet(Request $request)

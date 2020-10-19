@@ -185,6 +185,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('initial', 'InitialController');
     Route::get('/initialledger', 'InitialController@ledgerIndex')->name('initialledger');
 
+    Route::get('/allcreditvoucher/datatable','VoucherController@allcreditvoucherDataTable');
+    Route::get('/alldebitvoucher/datatable','VoucherController@allDebitVoucherDataTable');
+
     Route::get('/allcreditvoucher','VoucherController@index')->name('allcreditvoucher');
     Route::get('/allcreditvoucher/datatable','VoucherController@allcreditvoucherDataTable');
 
@@ -239,12 +242,19 @@ Route::middleware('auth')->group(function () {
 
     //*********Report ***********/
     Route::get('/trading/account','TradingAccountController@index');
-    Route::get('/print/trading/accounts','TradingAccountController@printTradingAccounts');
 
+    Route::get('/print/trading/account','TradingAccountController@printTradingAccount');
+
+    // profit_loss
     Route::get('/profit_loss/account','ProfitAndLossAccountController@index');
     Route::get('/print/profit_loss/account','ProfitAndLossAccountController@printProfitLossAccount');
 
+    // balance-sheet
     Route::get('/balance-sheet/account','BalanceSheetController@index');
     Route::get('/print/balance-sheet','BalanceSheetController@printBalanceSheet');
+
+    // trial balance
+    Route::get('/trialbalance','TrialBlanceController@index');
+    Route::get('/print/trialbalance','TrialBlanceController@printTrialBalace');
 
 });
