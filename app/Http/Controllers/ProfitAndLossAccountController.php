@@ -32,20 +32,29 @@ class ProfitAndLossAccountController extends Controller
    public function printProfitLossAccount(Request $request){
     $project_id = $request->project_name;
     $projectDetails=DB::select('select * from projects where id='.$project_id);
-    $data['income'] = DB::select("SELECT sum(vd.amount) AS openingAmount FROM `lnames` AS l
+    $data['income'] = DB::select("SELECT vd.amount, l.name as l_name FROM `lnames` AS l
                             JOIN `ltypes` AS lt ON lt.id = l.ltype_id
                             JOIN `voucher_details` AS vd ON vd.lname_id = l.id
                             JOIN `vouchers` AS v ON v.id = vd.voucher_id
                             WHERE l.lgroup_id = 1 AND l.ltype_id = 1 AND v.project_id = ".$project_id);
+    $data['total_income'] = 0;
+    foreach($data['income'] as $val) {
+        ($val->l_name == "Sales Commission" ? $data['total_income'] -= $val->amount : $data['total_income'] += $val->amount);
+    }
 
-
-    $data['expen'] = DB::select("SELECT sum(vd.amount) FROM `lnames` AS l
+    $data['expen'] = DB::select("SELECT sum(vd.amount) as total_expen FROM `lnames` AS l
                             JOIN `ltypes` AS lt ON lt.id = l.ltype_id
                             JOIN `voucher_details` AS vd ON vd.lname_id = l.id
                             JOIN `vouchers` AS v ON v.id = vd.voucher_id
                             WHERE l.lgroup_id = 1 AND l.ltype_id = 3 AND v.project_id = ".$project_id);
 
-    //dd($data);
+    
+    $data['profite_head'] = DB::select("SELECT vd.amount, l.name as l_name FROM `lnames` AS l
+                                JOIN `voucher_details` AS vd ON vd.lname_id = l.id
+                                JOIN `vouchers` AS v ON v.id = vd.voucher_id
+                                WHERE l.lgroup_id = 2 AND v.project_id = ".$project_id);
+    $data['adjustment'] = DB::select("select * from adjustments as ad where ad.type = 2 and ad.project_id = ".$project_id);
+    // dd($data);
     
     return view('print_report.print_profit_loss',compact('data','projectDetails'));
 

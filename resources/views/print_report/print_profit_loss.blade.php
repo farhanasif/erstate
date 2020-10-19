@@ -23,7 +23,7 @@
                   <span>For Financial Year 2019 - 2020</span>
                 </p>
               </div>
-            <?php $total_income = 0; $total_expen = 0;?>
+            <?php $total_income = 0; $total_profit_head = 0;$total_adj_tk = 0;?>
             @if(count($data))
             <div style="width:900px">
               <div style="width:48%; float:right; margin:5px">
@@ -36,13 +36,11 @@
                       </thead>
                 
                       <tbody>
-                      @foreach ($data['income'] as $item)
                         
                         <tr>
-                        <td> Opening Balance C/D </td>
-                        <td style="text-align:right;">{{$item->openingAmount}}</td>
+                        <td> Balance C/D </td>
+                        <td style="text-align:right;">{{ $data['total_income'] - $data['expen'][0]->total_expen }}</td>
                         </tr>
-                      @endforeach 
                       </tbody>
             
                     </table>
@@ -57,13 +55,23 @@
                       </thead>
 
                       <tbody>
+                      @foreach ($data['profite_head'] as $item)
+                      <?php $total_profit_head += $item->amount; ?>
                         <tr>
-                          <td>Balance C/D Openning</td>
-                          <td style="text-align:right;">87685657567e</td>
+                          <td> {{$item->l_name}} </td>
+                          <td style="text-align:right;">{{$item->amount }}</td>
                         </tr>
+                      @endforeach 
+                      @foreach ($data['adjustment'] as $item)
+                      <?php $total_profit_head += $item->amount; ?>
+                        <tr>
+                          <td> {{$item->particulars}} </td>
+                          <td style="text-align:right;">{{$item->amount }}</td>
+                        </tr>
+                      @endforeach 
                         <tr>
                           <td> Net Profit </td>
-                          <td style="text-align:right;"><u>687675976976789</u></td>
+                          <td style="text-align:right;"><u><?php echo $data['total_income'] - $data['expen'][0]->total_expen - $total_profit_head; ?></u></td>
                         </tr>  
                       </tbody>
                     </table>
@@ -72,11 +80,11 @@
               
               <div style="width:48%;float:left;margin-left:8px">
                 <p class="ptf-ln-3" style="width:66%; margin-top:10px!important;"><b>  Total</b></p>
-                <p style=""><u>556565656565667</u></p>
+                <p style=""><u>{{ $data['total_income'] - $data['expen'][0]->total_expen }}</u></p>
               </div>
               <div style="width:48%;float:right;margin-right:15px">
                 <p class="ptf-ln-3" style="width:66%; margin-top:10px!important;"><b>  Total</b></p>
-                <p style=""><u>{{$item->openingAmount}}</u></p>
+                <p style=""><u>{{ $data['total_income'] - $data['expen'][0]->total_expen }}</u></p>
               </div>
             </div>
             @else
