@@ -60,7 +60,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                         <label>Voucher Date</label>
-                        <input type="date" class="form-control" name="voucher_date" id="voucher_date">
+                        <input type="date" class="form-control" name="voucher_date" id="voucher_date" required>
                         @if($errors->has('voucher_date'))
                           <strong class="text-danger">{{ $errors->first('voucher_date') }}</strong>
                         @endif

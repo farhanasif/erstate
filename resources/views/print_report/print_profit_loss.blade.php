@@ -117,6 +117,7 @@ $('.print-button').hide();
 window.print();
 window.location = url;
 });
+
 </script>
 </body>
 </html>
