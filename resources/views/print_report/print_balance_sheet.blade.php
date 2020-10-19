@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <title>&nbsp;</title>
-    <link rel="stylesheet" type="text/css" media="all" href="{{ URL::to('css/report_print.css') }}" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/report_print.css') }}" />
 
   </head>
   <body>
