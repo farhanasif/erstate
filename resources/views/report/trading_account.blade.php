@@ -18,7 +18,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                <form role="form" action="" method="get">
+                <form role="form" action="{{url('print/trading/accounts')}}" method="get">
                     <div class="row">
                     
                     <div class="col-sm-4">
@@ -28,7 +28,7 @@
                          <select name="project_name" id="project_name" class="form-control select2bs4">  
                             <option value="">--select project name</option>
                           @foreach($projects as $project)
-                            <option value="{{ $project->name }}">{{ $project->name }}</option>
+                            <option value="{{ $project->id }}">{{ $project->name }}</option>
                           @endforeach
                         </select>  
                           </div>
@@ -40,7 +40,7 @@
                         <label>&nbsp;&nbsp; From Month</label>
                           <div class="col-md-12 col-sm-12">
                           <!-- <input type="text" id="from_date"> -->
-                             <input type="text" id="from_date" class="form-control" placeholder="From Date For Trading Account">
+                             <input type="text" name="from_date" id="from_date" class="form-control" placeholder="From Date For Trading Account">
                           </div>
                         </div>
                     </div>
@@ -58,17 +58,17 @@
                 </div>
                 <!-- /.card-body -->
 
-                <!-- <div class="card-footer">
+                <div class="card-footer">
                     <a href=""><button type="submit" id="generate" class="btn btn-success">Generate</button></a>
-                </div> -->
+                </div>
               </form>
                 <!-- /.card-footer -->
           </div><br>
              
           
-            <div id="indivi" class="card card-secondary">
+            <!-- <div id="indivi" class="card card-secondary">
               
-            </div>
+            </div> -->
 
 
         </section>
@@ -85,28 +85,28 @@ $(document).ready(function() {
   } );
 
 
-  $('#to_data').change(function (e) {
-        e.preventDefault();
+  // $('#to_data').change(function (e) {
+  //       e.preventDefault();
 
-        // var studentId=$("#studentList").val();
-        // var examName=$("#examName").val();
+  //       // var studentId=$("#studentList").val();
+  //       // var examName=$("#examName").val();
 
-        //console.log(classId, sectionId);
+  //       //console.log(classId, sectionId);
 
-        $.ajax({
-                type: "get",
-                url:"{{url('print/trading/accounts')}}",
+  //       $.ajax({
+  //               type: "get",
+  //               url:"{{url('print/trading/accounts')}}",
                 
-                success: function (data) {
+  //               success: function (data) {
                     
-                    $('#indivi').html(data);
-                }
-            });
-       // ajax:"{{url('individual/admitCardSectionWiseList/')}}"+'/'+classId+'/'+sectionId,
+  //                   $('#indivi').html(data);
+  //               }
+  //           });
+  //      // ajax:"{{url('individual/admitCardSectionWiseList/')}}"+'/'+classId+'/'+sectionId,
         
-    //table.destroy();
+  //   //table.destroy();
 
-    });
+  //   });
 
 
 </script>

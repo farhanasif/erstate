@@ -19,7 +19,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                <form role="form" action="" method="get">
+                <form role="form" action="{{url('print/profit_loss/account')}}" method="get">
                     <div class="row">
                     
                     <div class="col-sm-4">
@@ -29,7 +29,7 @@
                          <select name="project_name" id="project_name" class="form-control select2bs4">  
                             <option value="">--select project name</option>
                           @foreach($projects as $project)
-                            <option value="{{ $project->name }}">{{ $project->name }}</option>
+                            <option value="{{ $project->id }}">{{ $project->name }}</option>
                           @endforeach
                         </select>  
                           </div>
@@ -56,16 +56,15 @@
 
                 </div>
                 <!-- /.card-body -->
-                <!-- /.card-body -->
-                <!-- <div class="card-footer">
+                <div class="card-footer">
                     <a href=""><button type="submit" id="generate" class="btn btn-success">Generate</button></a>
-                </div> -->
+                </div>
               </form>
                 <!-- /.card-footer -->
             </div><br>
-            <div id="indivi" class="card card-secondary">
+            <!-- <div id="indivi" class="card card-secondary">
               
-            </div>
+            </div> -->
         </section>
         <!-- /.content -->
 @endsection
@@ -80,28 +79,28 @@ $(document).ready(function() {
     //$("#from_date").datepicker('show');
   } );
 
-  $('#to_data').change(function (e) {
-        e.preventDefault();
+  // $('#to_data').change(function (e) {
+  //       e.preventDefault();
 
-        // var studentId=$("#studentList").val();
-        // var examName=$("#examName").val();
+  //       // var studentId=$("#studentList").val();
+  //       // var examName=$("#examName").val();
 
-        //console.log(classId, sectionId);
+  //       //console.log(classId, sectionId);
 
-        $.ajax({
-                type: "get",
-                url:"{{url('print/profit_loss/account')}}",
+  //       $.ajax({
+  //               type: "get",
+  //               url:"{{url('print/profit_loss/account')}}",
                 
-                success: function (data) {
+  //               success: function (data) {
                     
-                    $('#indivi').html(data);
-                }
-            });
-       // ajax:"{{url('individual/admitCardSectionWiseList/')}}"+'/'+classId+'/'+sectionId,
+  //                   $('#indivi').html(data);
+  //               }
+  //           });
+  //      // ajax:"{{url('individual/admitCardSectionWiseList/')}}"+'/'+classId+'/'+sectionId,
         
-    //table.destroy();
+  //   //table.destroy();
 
-    });
+  //   });
 </script>
 
 @endsection

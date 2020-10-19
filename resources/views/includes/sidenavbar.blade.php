@@ -605,6 +605,32 @@
             </ul>
           </li>
 
+          {{-- ADJUSTMENT --}}
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="far fa-circle nav-icon text-red"></i>
+              <p>
+                Adjustment
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="{{ url('') }}" class="nav-link">
+                  <i class="far fa-dot-circle nav-icon text-red"></i>
+                  <p> All Adjustment</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('adjustment/create') }}" class="nav-link">
+                  <i class="far fa-dot-circle nav-icon text-red"></i>
+                  <p> Create Adjustment</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="far fa-circle nav-icon text-red"></i>
