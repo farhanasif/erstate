@@ -557,6 +557,32 @@
           </p>
         </a>
         <ul class="nav nav-treeview" style="display: none;">
+
+          {{-- <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="far fa-circle nav-icon text-red"></i>
+              <p>
+                Fund Transfer
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+              <a href="{{ route('allcreditvoucher') }}" class="nav-link">
+                  <i class="far fa-dot-circle nav-icon text-red"></i>
+                  <p> All Fund Transfer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('/fund_transfer') }}" class="nav-link">
+                  <i class="far fa-dot-circle nav-icon text-red"></i>
+                  <p> Create Fund Transfer</p>
+                </a>
+              </li>
+            </ul>
+          </li> --}}
+
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="far fa-circle nav-icon text-red"></i>

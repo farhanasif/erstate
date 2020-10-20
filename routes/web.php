@@ -259,4 +259,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/trialbalance','TrialBlanceController@index');
     Route::get('/print/trialbalance','TrialBlanceController@printTrialBalace');
 
+    // FUND TRANSFER ROUTES 
+    Route::get('/fund_transfer','FundTransferController@index');
+    Route::get('/fund_transfer/create','FundTransferController@create');
+
 });

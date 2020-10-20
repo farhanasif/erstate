@@ -20,26 +20,31 @@
         <thead>
             <tr>
               <th>SL</th>
-              <th>Voucher No</th>
-              <th>Particulars</th>
-              <th>Project Name</th>
-              <th>Date</th>
-              <th>Head Of Account Name</th>
-              <th>Dr</th>
-              <th>Cr</th>
+              <th> From Project Name</th>
+              <th> To Project Name</th>
+              <th>Journal Date</th>
+              <th>From Account Name</th>
+              <th>To Account Name</th>
+              <th>From Amount</th>
+              <th>To Amount</th>
+              <th>Journal Type</th>
             </tr>
           </thead>
           <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            @foreach ($journals as $journal)
+            <tr>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $journal->journal_type == 'DR' ? $journal->project_name: '' }}</td>
+              <td>{{ $journal->journal_type == 'CR' ? $journal->project_name: '' }}</td>
+              <td>{{ $journal->journal_date }}</td>
+              <td>{{ $journal->journal_type == 'DR' ? $journal->ledger_name : '' }}</td>
+              <td>{{ $journal->journal_type == 'CR' ? $journal->ledger_name : ''}}</td>
+              <td>{{ $journal->journal_type == 'DR' ? $journal->amount : '' }}</td>
+              <td>{{ $journal->journal_type == 'CR' ? $journal->amount : ''}}</td>
+              <td>{{ $journal->journal_type }}</td>
+          </tr>
+            @endforeach
+
         </tbody>
       </table>
     </div>
@@ -56,8 +61,8 @@
         $('#all-journal').DataTable( {
             "info": true,
             "autoWidth": false,
-            scrollX:'50vh', 
-            scrollY:'50vh',
+            // scrollX:'50vh', 
+            // scrollY:'50vh',
             scrollCollapse: true,
         } );
     });

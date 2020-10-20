@@ -4,6 +4,12 @@
 
 @section('breadcrumb-title', ' Create Journal Voucher')
 
+
+@section('custom_css')
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+@endsection
+
 @section('content')
 
 <section class="content">
@@ -135,7 +141,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                       <label>Journal Date</label>
-                      <input type="date" class="form-control" name="journal_date" id="journal_date">
+                      <input type="text" class="form-control" name="journal_date" id="journal_date" placeholder="Voucher Date">
                       @if($errors->has('voucher_date'))
                         <strong class="text-danger">{{ $errors->first('voucher_date') }}</strong>
                       @endif
@@ -160,7 +166,13 @@
 
   @section('custom_js')
 
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <script>
+
+      $( "#journal_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+
       $(document).ready(function() {
         var i=1;
         var j=1;
