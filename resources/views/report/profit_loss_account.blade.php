@@ -20,8 +20,8 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                 <form role="form" action="{{url('print/profit_loss/account')}}" method="get">
+                 @csrf
                     <div class="row">
-                    
                     <div class="col-sm-4">
                         <div class="form-group">
                         <label>&nbsp;&nbsp; Project Name</label>

@@ -19,10 +19,9 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                <form role="form" action="" method="get">
+                <form role="form" action="{{url('print/balance-sheet')}}" method="get">
+                 @csrf
                     <div class="row">
-
-
                     <div class="col-sm-4">
                         <div class="form-group">
                         <label>&nbsp;&nbsp; Project Name</label>
@@ -30,7 +29,7 @@
                          <select name="project_name" id="project_name" class="form-control select2bs4">  
                             <option value="">--select project name</option>
                           @foreach($projects as $project)
-                            <option value="{{ $project->name }}">{{ $project->name }}</option>
+                            <option value="{{ $project->id }}">{{ $project->name }}</option>
                           @endforeach
                         </select>  
                           </div>

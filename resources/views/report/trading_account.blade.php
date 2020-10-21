@@ -19,6 +19,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                 <form role="form" action="{{url('print/trading/accounts')}}" method="get">
+                 @csrf
                     <div class="row">
                     
                     <div class="col-sm-4">
