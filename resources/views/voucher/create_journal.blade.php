@@ -1,8 +1,12 @@
-
-
 @extends('master')
 
 @section('breadcrumb-title', ' Create Journal Voucher')
+
+
+@section('custom_css')
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+@endsection
 
 @section('content')
 
@@ -44,8 +48,8 @@
                               <label>Account Head Name</label>
                               <select name="lname_id_dr[]" class="form-control">
                                 <option value="">--select account head (Dr)--</option>
-                                @foreach ($ltypes as $ltype)
-                                    <option value="{{ $ltype->id }}">{{ $ltype->name }}</option>
+                                @foreach ($lnames as $lname)
+                                    <option value="{{ $lname->id }}">{{ $lname->name }}</option>
                                 @endforeach
                             </select>
                             </div>
@@ -135,13 +139,12 @@
                 <div class="col-md-12">
                   <div class="form-group">
                       <label>Journal Date</label>
-                      <input type="date" class="form-control" name="journal_date" id="journal_date">
+                      <input type="text" class="form-control" name="journal_date" id="journal_date" placeholder="Voucher Date">
                       @if($errors->has('voucher_date'))
                         <strong class="text-danger">{{ $errors->first('voucher_date') }}</strong>
                       @endif
                   </div>
               </div>
-
 
                    <!-- /.col -->
                 </div>
@@ -161,25 +164,26 @@
 
   @section('custom_js')
 
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <script>
+      $( "#journal_date" ).datepicker({dateFormat: 'yy-mm-dd'});
       $(document).ready(function() {
         var i=1;
         var j=1;
-
         console.log('here you go');
-
         $("#addButtonDr").click(function (e) {
           e.preventDefault();
           i++;
-
           _dynamic_div = `<div class="row" id="row_`+i+`">
                         <div class="col-md-5">
                           <div class="form-group">
                             <label>Account Head Name</label>
                             <select name="lname_id[]" class="form-control">
                               <option value="">--select account head (Dr)--</option>
-                              @foreach ($ltypes as $ltype)
-                                  <option value="{{ $ltype->id }}">{{ $ltype->name }}</option>
+                              @foreach ($lnames as $lname)
+                                  <option value="{{ $lname->id }}">{{ $lname->name }}</option>
                               @endforeach
                           </select>
                           </div>
@@ -201,28 +205,23 @@
           //console.log(_dynamic_div);
           $('#journal_details_dr').append(_dynamic_div)
         });
-
         $(document).on('click', '.btn_remove', function(){
             var button_id = $(this).attr("id");
             //console.log(button_id);   
             $('#row_'+button_id+'').remove();  
       });
-
-
       //journal details cr
-
       $("#addButtonCr").click(function (e) {
         e.preventDefault();
         j++;
-
         _dynamic_div_cr = `<div class="row" id="row_`+j+`">
                       <div class="col-md-5">
                         <div class="form-group">
                           <label>Account Head Name</label>
                           <select name="lname_id[]" class="form-control">
                             <option value="">--select account head (Cr)--</option>
-                            @foreach ($ltypes as $ltype)
-                                <option value="{{ $ltype->id }}">{{ $ltype->name }}</option>
+                            @foreach ($lnames as $lname)
+                                <option value="{{ $lname->id }}">{{ $lname->name }}</option>
                             @endforeach
                         </select>
                         </div>
@@ -244,7 +243,6 @@
         //console.log(_dynamic_div);
         $('#journal_details_dr').append(_dynamic_div_cr)
       });
-
       $(document).on('click', '.btn_remove', function(){
           var button_id = $(this).attr("id");
           //console.log(button_id);   

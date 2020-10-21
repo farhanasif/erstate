@@ -241,32 +241,82 @@ class VoucherController extends Controller
         return view('voucher.view_journal');
     }
 
-    public function save_journal(Request $request){
+    public function save_journal(Request $request)
+    {
         // dd($request->all());
         // $this->validate($request,[
-        //     'perticulers' => 'required',
-        //     'journal_date' => 'required',
+        // 'perticulers' => 'required',
+        // 'journal_date' => 'required',
         // ]);
 
-        $ledger_count = sizeof($request->lname_id);
-        if($ledger_count > 0){
+        $ledger_count = sizeof($request->lname_id_dr);
+        if ($ledger_count > 0) {
             $journal = new Journal;
             $journal->perticulers = $request->perticulers;
             $journal->journal_date = $request->journal_date;
             $journal->save();
 
-            for($i = 0; $i < $ledger_count; $i++){
-                $journal_detail = new JournalDetail;
+            for ($i = 0; $i < $ledger_count; $i++) {
+                $journal_detail = new JournalDetails;
                 $journal_detail->journal_id = $journal->id;
-                $journal_detail->lname_id = $request->lname_id[$i];
-                $journal_detail->amount = $request->amount[$i];
+                $journal_detail->project_id = $request->project_id_dr;
+                $journal_detail->lname_id = $request->lname_id_dr[$i];
+                $journal_detail->amount = $request->amount_dr[$i];
+                $journal_detail->journal_type = $request->lname_id_dr[$i] ? 'DR' : '';
                 $journal_detail->save();
             }
 
-            return redirect()->back()->with('success','Journal Added Successfully!');
-        }
-        else{
-            return redirect()->back()->with('error','Journal failed to add, must add account head with amount!');
+            for ($i = 0; $i < $ledger_count; $i++) {
+                $journal_detail = new JournalDetails;
+                $journal_detail->journal_id = $journal->id;
+                $journal_detail->project_id = $request->project_id_cr;
+                $journal_detail->lname_id = $request->lname_id_cr[$i];
+                $journal_detail->amount = $request->amount_cr[$i];
+                $journal_detail->journal_type = $request->lname_id_cr[$i] ? 'CR' : '';
+                $journal_detail->save();
+            }
+
+            // for ($i = 0; $i < $ledger_count; $i++) {
+            //     $voucher_detail = new VoucherDetail;
+            //     $voucher_detail->voucher_id = $journal->id;
+            //     $voucher_detail->project_id = $request->project_id_cr;
+            //     $voucher_detail->lname_id = $request->lname_id_cr[$i];
+            //     $voucher_detail->amount = $request->amount_cr[$i];
+            //     $voucher_detail->journal_type = $request->lname_id_cr[$i] ? 'CR' : '';
+            //     $voucher_detail->save();
+            // }
+            $ledger_count = sizeof($request->lname_id_dr);
+            if ($ledger_count > 0) {
+                $voucher = new Voucher;
+                $voucher->perticulers = $request->perticulers;
+                $voucher->project_id = $request->project_id_dr;
+                $voucher->voucher_date = $request->voucher_date;
+                $voucher->voucher_type = $request->lname_id_dr[$i] ? 'DR' : '';
+                $voucher->save();
+
+
+                for ($i = 0; $i < $ledger_count; $i++) {
+                    $voucher_detail = new VoucherDetail;
+                    $voucher_detail->voucher_id = $voucher->id;
+                    $voucher_detail->lname_id = $request->lname_id_dr[$i];
+                    $voucher_detail->amount = $request->amount_dr[$i];
+                    $voucher_detail->save();
+                }
+    
+                for ($i = 0; $i < $ledger_count; $i++) {
+                    $voucher_detail = new VoucherDetail;
+                    $voucher_detail->voucher_id = $voucher->id;
+                    $voucher_detail->project_id = $$voucher->project_id_cr;
+                    $voucher_detail->lname_id = $request->lname_id_cr[$i];
+                    $voucher_detail->amount = $request->amount_cr[$i];
+                    $voucher_detail->voucher_type = $voucher->lname_id_cr[$i] ? 'CR' : '';
+                    $voucher_detail->save();
+                }
+
+            }
+            return redirect()->back()->with('success', 'Journal Added Successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Journal failed to add, must add account head with amount!');
         }
     }
 
