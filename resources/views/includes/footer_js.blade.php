@@ -33,8 +33,4 @@
 <script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
-<!-- Select2 -->
-<script src="{{ asset('assets/plugins/plugins/select2/js/select2.full.min.js')}}"></script>
-
-
 @yield('custom_js')

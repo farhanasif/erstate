@@ -259,8 +259,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/trialbalance','TrialBlanceController@index');
     Route::get('/print/trialbalance','TrialBlanceController@printTrialBalace');
 
-    // INSTALLMENT ROUTES 
-    Route::get('/installment/index','InstallmentController@index');
-    Route::post('/installment/create','InstallmentController@create');
+    // ALL INSTALLMENT ROUTES 
+    Route::get('/installment/all','InstallmentController@index');
+    Route::get('/installment/create','InstallmentController@create');
+    Route::post('/installment/store','InstallmentController@store');
+    Route::get('/installment/edit/{id}','InstallmentController@edit')->name('editInstallment');
+    Route::post('/installment/update/{id}','InstallmentController@update')->name('updateInstallment');
+    Route::get('/installment/delete/{id}','InstallmentController@delete')->name('deleteInstallment');
+
+    Route::get('/land-owner-data','InstallmentController@land_owner_data');
+    
 
 });

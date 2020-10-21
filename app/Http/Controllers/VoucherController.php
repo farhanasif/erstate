@@ -268,6 +268,15 @@ class VoucherController extends Controller
             $journal->journal_date = $request->journal_date;
             $journal->save();
 
+            // $voucher = new Voucher;
+            // $voucher->project_id = $request->project_id;
+            // $voucher->bank_id = $request->bank_id;
+            // $voucher->cheque_no = $request->cheque_no;
+            // $voucher->perticulers = $request->perticulers;
+            // $voucher->voucher_type = 'DR';
+            // $voucher->voucher_date = $request->voucher_date;
+            // $voucher->save();
+
             for ($i = 0; $i < $ledger_count; $i++) {
                 $journal_detail = new JournalDetails;
                 $journal_detail->journal_id = $journal->id;
@@ -276,6 +285,12 @@ class VoucherController extends Controller
                 $journal_detail->amount = $request->amount_dr[$i];
                 $journal_detail->journal_type = $request->lname_id_dr[$i] ? 'DR' : '';
                 $journal_detail->save();
+
+                // $voucher_detail = new VoucherDetail;
+                // $voucher_detail->voucher_id = $voucher->id;
+                // $voucher_detail->lname_id = $request->lname_id[$i];
+                // $voucher_detail->amount = $request->amount[$i];
+                // $voucher_detail->save();
             }
 
             for ($i = 0; $i < $ledger_count; $i++) {
@@ -286,6 +301,12 @@ class VoucherController extends Controller
                 $journal_detail->amount = $request->amount_cr[$i];
                 $journal_detail->journal_type = $request->lname_id_cr[$i] ? 'CR' : '';
                 $journal_detail->save();
+
+                // $voucher_detail = new VoucherDetail;
+                // $voucher_detail->voucher_id = $voucher->id;
+                // $voucher_detail->lname_id = $request->lname_id[$i];
+                // $voucher_detail->amount = $request->amount[$i];
+                // $voucher_detail->save();
             }
 
             return redirect()->back()->with('success', 'Journal Added Successfully!');

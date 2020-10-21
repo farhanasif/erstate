@@ -38,14 +38,6 @@
 
 @section('custom_js')
 <script>
-//     $(document).ready(function() {
-//     $('#all-item').DataTable( {
-//         // scrollY:        '50vh',
-//         // scrollCollapse: true,
-//         "responsive": true,
-//       "autoWidth": false,
-//     } );
-// } );
 
 $(document).ready( function () {
     $('#all-item').DataTable({

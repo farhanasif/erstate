@@ -18,7 +18,7 @@
             <div class="main-2" style="width: 798px!important; border-radius: 0px!important; padding: 0px!important;">
               <div class="body-top" >
                 <p class="ptf-ln-3">
-                  <span> Noboudoy Housing Limited <br> Noboudoy Purbachoal City  <br/>  Balance Sheet</span>
+                  <span><br> Noboudoy Purbachoal City  <br/>  Balance Sheet</span>
                   <span></span>
                   <span>For Financial Year 2019 to 2020</span>
                 </p>
@@ -102,9 +102,9 @@
                 <p style=""><u></u> {{ $liability_sum + 52348145 }} </p>
               </div>
               
-              <div style="width:48%;float:right;margin-right:15px">
-                <p class="ptf-ln-3" style="width:66%; margin-top:10px!important;"><b>  Total</b></p>
-                <p style="float:right;margin-right:30px"><u></u> {{ $asset_sum }} </p>
+              <div style="width:48%;float:right;margin-right:15px; margin-top:-40px;">
+                <p class="ptf-ln-3" style="width:66%;"><b>  Total</b></p>
+                <p style="float:right;"><u></u> {{ $asset_sum }} </p>
               </div>
             </div>
              {{-- <h3>There is no data found</h3> --}}
@@ -136,7 +136,6 @@
 // window.print();
 // window.location = url;
 // });
-
     function print_current_page()
     {
       window.print();
