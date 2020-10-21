@@ -109,6 +109,20 @@
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a href="{{ url('') }}" class="nav-link {{ request()->is('/landowner/add-landowner') ? 'active' :''}}">
+                  <i class="far fa-circle nav-icon text-danger"></i>
+                  <p>All Installment</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ url('/installment/index') }}" class="nav-link {{ request()->is('/landowner/add-landowner') ? 'active' :''}}">
+                  <i class="far fa-circle nav-icon text-danger"></i>
+                  <p>Create Installment</p>
+                </a>
+              </li>
+
             </ul>
           </li>
           {{-- //end land owner menu --}}

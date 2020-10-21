@@ -3,6 +3,11 @@
 
 @section('breadcrumb-title', 'Add land owner information')
 
+@section('custom_css')
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+@endsection
+
 @section('content')
 
 <section class="content">
@@ -19,12 +24,26 @@
             @csrf
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>File No</label>
                             <input type="text" name="file_no" class="form-control" placeholder="File No">
                                 @if($errors->has('file_no'))
                                     <strong class="text-danger">{{ $errors->first('file_no') }}</strong>
+                                @endif                    
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Project Name</label>
+                                <select name="project_name" class="form-control" id="">
+                                    <option value="">--select project name--</option>
+                                    @foreach ($projects as $project)
+                                        <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                    @endforeach
+                                </select>  
+                                @if($errors->has('project_name'))
+                                    <strong class="text-danger">{{ $errors->first('project_name') }}</strong>
                                 @endif                    
                         </div>
                     </div>
@@ -303,100 +322,11 @@
             </div>
         </div>
 
-        {{-- <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>SL NO</th>
-                    <th>Number of Installment</th>
-                    <th>Date</th>
-                    <th>Particular</th>
-                    <th>Cumulative Figure</th>
-                    <th>Comment</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                     </tr>
-                </tbody>
-            </table>
-        </div> --}}
-
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Registration Date:</label>
-                    <input type="date" name="registration_date" id="registration_date" class="form-control" placeholder="Registration Date">
+                    <input type="text" name="registration_date" id="registration_date" class="form-control" placeholder="Registration Date">
                     @if($errors->has('registration_date'))
                         <strong class="text-danger">{{ $errors->first('registration_date') }}</strong>
                     @endif
@@ -428,13 +358,12 @@
 
   @section('custom_js')
 
-<script>
-    $(document).ready(function() {
-        $(function() { 
-     $( "#registration_date" ).datepicker();
-     $( "#hand_over_date" ).datepicker();
-  });
-    });
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+
+      $( "#registration_date" ).datepicker({dateFormat: 'yy-mm-dd'});
 </script>
     
 @endsection
