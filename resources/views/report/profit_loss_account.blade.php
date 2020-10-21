@@ -39,7 +39,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; From Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" id="from_data" class="form-control" name="from_date" placeholder="From Date For Profit & Loss">
+                             <input type="text" id="from_data" class="form-control" name="from_data" placeholder="From Date For Profit & Loss">
                           </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; To Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" id="to_data" class="form-control" name="to_date" placeholder="To Date For Profit & Loss">
+                             <input type="text" id="to_data" class="form-control" name="to_data" placeholder="To Date For Profit & Loss">
                           </div>
                         </div>
                     </div>
