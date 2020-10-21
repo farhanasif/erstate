@@ -264,4 +264,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/trialbalance','TrialBlanceController@index');
     Route::get('/print/trialbalance','TrialBlanceController@printTrialBalace');
 
+    // INSTALLMENT ROUTES 
+    Route::get('/installment/index','InstallmentController@index');
+    Route::post('/installment/create','InstallmentController@create');
+
 });

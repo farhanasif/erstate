@@ -12,7 +12,9 @@
   </head>
   <body>
     <br>
-    <button class="print-button ml-5" id="print-button">Print Page</button>
+    {{-- <button class="print-button ml-5" id="print-button">Print Page</button> --}}
+    <button onclick="print_current_page()">Print this page</button>
+
       <br><br>
       <h3 class="text-center">{{ $data[0]->name }}</h3>
       <h3 class="text-center">Trial Balance (Fund Flow Statement)</h3>
@@ -70,11 +72,10 @@
 
 </div>
     <script>
-    $(".print-button").on("click", function() {
-
-    window.print();
-    window.location = url;
-    });
+function print_current_page()
+{
+window.print();
+}
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

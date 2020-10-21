@@ -227,9 +227,10 @@ class VoucherController extends Controller
 
     public function journalvoucher()
     {
-        $projects = Project::all();
-        $lnames = Lname::all();
-        return view('voucher.create_journal', compact('projects', 'lnames'));
+        $data['projects'] = Project::all();
+        $data['lnames'] = Lname::all();
+        
+        return view('voucher.create_journal', $data);
     }
 
     public function alljournalvoucher()
@@ -242,7 +243,14 @@ class VoucherController extends Controller
         // ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
         // ->get();
         //dd($voucher_details);
-        return view('voucher.view_journal');
+        $journals = DB::table('journal_details as jd')
+        ->select('jd.*','j.perticulers','j.journal_date', 'l.name as ledger_name','p.name as project_name','p.id as p_id')
+        ->join('lnames as l','l.id','=','jd.lname_id')
+        ->join('journals as j','j.id','=','jd.journal_id')
+        ->join('projects as p','p.id','=','jd.project_id')
+        ->get();
+        // dd($journals);
+        return view('voucher.view_journal',compact('journals'));
     }
 
     public function save_journal(Request $request)
@@ -253,7 +261,7 @@ class VoucherController extends Controller
         // 'journal_date' => 'required',
         // ]);
 
-        $ledger_count = sizeof($request->lname_id);
+        $ledger_count = sizeof($request->lname_id_dr);
         if ($ledger_count > 0) {
             $journal = new Journal;
             $journal->perticulers = $request->perticulers;
@@ -263,8 +271,20 @@ class VoucherController extends Controller
             for ($i = 0; $i < $ledger_count; $i++) {
                 $journal_detail = new JournalDetails;
                 $journal_detail->journal_id = $journal->id;
-                $journal_detail->lname_id = $request->lname_id[$i];
-                $journal_detail->amount = $request->amount[$i];
+                $journal_detail->project_id = $request->project_id_dr;
+                $journal_detail->lname_id = $request->lname_id_dr[$i];
+                $journal_detail->amount = $request->amount_dr[$i];
+                $journal_detail->journal_type = $request->lname_id_dr[$i] ? 'DR' : '';
+                $journal_detail->save();
+            }
+
+            for ($i = 0; $i < $ledger_count; $i++) {
+                $journal_detail = new JournalDetails;
+                $journal_detail->journal_id = $journal->id;
+                $journal_detail->project_id = $request->project_id_cr;
+                $journal_detail->lname_id = $request->lname_id_cr[$i];
+                $journal_detail->amount = $request->amount_cr[$i];
+                $journal_detail->journal_type = $request->lname_id_cr[$i] ? 'CR' : '';
                 $journal_detail->save();
             }
 

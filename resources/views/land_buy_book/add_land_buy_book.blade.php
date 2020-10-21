@@ -3,6 +3,11 @@
 
 @section('breadcrumb-title', 'Add land buy book information')
 
+@section('custom_css')
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+@endsection
+
 @section('content')
 
 <section class="content">
@@ -67,7 +72,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Date</label>
-                    <input type="date" name="date" class="form-control" placeholder="">
+                    <input type="text" name="date" id="date" class="form-control" placeholder="Date">
                     @if($errors->has('date'))
                         <strong class="text-danger">{{ $errors->first('date') }}</strong>
                     @endif
@@ -185,15 +190,15 @@
 
   @endsection
 
+
   @section('custom_js')
 
-<script>
-    $(document).ready(function() {
-        $(function() { 
-            $( "#registration_date" ).datepicker();
-            $( "#hand_over_date" ).datepicker();
-        });
-    });
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+
+      $( "#date" ).datepicker({dateFormat: 'yy-mm-dd'});
 </script>
     
 @endsection

@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Landowner;
+use App\Project;
 use Yajra\DataTables\Facades\DataTables;
 
 class LandownerController extends Controller
 {
     public function showAddLandowner()
     {
-        return view('landowner.add_land_owner');
+        $projects = Project::all();
+        return view('landowner.add_land_owner',compact('projects'));
     }
 
     public function allLandowner()
@@ -43,6 +45,7 @@ class LandownerController extends Controller
         $this->validate($request,[
             'file_no' => 'required',
             'name' => 'required',
+            'project_name' => 'required',
             'father_name' => 'required',
             'mother_name' => 'required',
             'nid_no' => 'required',
@@ -71,6 +74,7 @@ class LandownerController extends Controller
         
         $landowners = new Landowner;
         $landowners->file_no = $request->file_no;
+        $landowners->project_id = $request->project_name;
         $landowners->name = $request->name;
         $landowners->father_name = $request->father_name;
         $landowners->mother_name = $request->mother_name;
@@ -111,6 +115,7 @@ class LandownerController extends Controller
     {
         $this->validate($request,[
             'file_no' => 'required',
+            'project_name' => 'required',
             'name' => 'required',
             'father_name' => 'required',
             'mother_name' => 'required',
@@ -140,6 +145,7 @@ class LandownerController extends Controller
 
         $landowners = Landowner::find($id);
         $landowners->file_no = $request->file_no;
+        $landowners->project_id = $request->project_name;
         $landowners->name = $request->name;
         $landowners->father_name = $request->father_name;
         $landowners->mother_name = $request->mother_name;
@@ -165,7 +171,7 @@ class LandownerController extends Controller
         $landowners->per_bigha_price = $request->per_bigha_price;
         $landowners->registration_date = $request->registration_date;
         $landowners->deed_number = $request->deed_number;
-        $projects->save(); 
+        $landowners->save(); 
 
         return redirect()->route('allLandowner')->with('success','Landowner updated successfully!');
     }
