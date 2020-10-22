@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
                     <div class="form-group">
                         <label>Combined Amount</label>
                         <input type="text" name="combined_amount" id="" class="form-control" placeholder="0">
@@ -85,9 +85,9 @@
                             <strong class="text-danger">{{ $errors->first('combined_amount') }}</strong>
                         @endif                      
                     </div>
-                </div>
+                </div> --}}
 
-                    <!-- /.col -->
+                    {{-- <!-- /.col -->
                   <div class="col-md-6">
                     <div class="form-group">
                         <label>Due Amount</label>
@@ -96,7 +96,7 @@
                           <strong class="text-danger">{{ $errors->first('due_amount') }}</strong>
                       @endif                      
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="col-md-6">
                     <div class="form-group">
@@ -134,6 +134,8 @@
           $("#project_name").change("change", function() {
             // e.preventDefault();
             var project_name = $("#project_name").val();
+            var owner_name = $("#owner_name").val();
+            console.log(owner_name);
 
             var token = "{{ csrf_token() }}";
             var url_data = "{{ url('/land-owner-data') }}";
@@ -147,7 +149,6 @@
                     },
                     success: function(data) {
                         // console.log(data);
-                        // document.getElementById("owner_name").value = name;
                         if(data){
                             $('#owner_name').empty();
                             $('#owner_name').focus;

@@ -26,6 +26,7 @@ class InstallmentController extends Controller
     {
         $data['projects'] = Project::all();
         $data['banks'] = Bank::all();
+        $data['landowners'] = Landowner::all();
         return view('installment.create_installment',$data);
     }
 
@@ -43,8 +44,8 @@ class InstallmentController extends Controller
             'project_name' => 'required',
             'amount_type' => 'required',
             'installment_amount' => 'required',
-            'combined_amount' => 'required',
-            'due_amount' => 'required',
+            // 'combined_amount' => 'required',
+            // 'due_amount' => 'required',
             'installment_date' => 'required',
         ]);
 
@@ -53,8 +54,8 @@ class InstallmentController extends Controller
         $installments->project_id = $request->project_name;
         $installments->amount_type = $request->amount_type;
         $installments->installment_amount = $request->installment_amount;
-        $installments->combined_amount = $request->combined_amount;
-        $installments->due_amount = $request->due_amount;
+        // $installments->combined_amount = $request->combined_amount;
+        // $installments->due_amount = $request->due_amount;
         $installments->installment_date = $request->installment_date;
         $installments->save();
 
@@ -78,7 +79,7 @@ class InstallmentController extends Controller
             'project_name' => 'required',
             'amount_type' => 'required',
             'installment_amount' => 'required',
-            'combined_amount' => 'required',
+            // 'combined_amount' => 'required',
             // 'due_amount' => 'required',
             'installment_date' => 'required',
         ]);
@@ -88,8 +89,8 @@ class InstallmentController extends Controller
         $installments->project_id = $request->project_name;
         $installments->amount_type = $request->amount_type;
         $installments->installment_amount = $request->installment_amount;
-        $installments->combined_amount = $request->combined_amount;
-        $installments->due_amount = $request->due_amount;
+        // $installments->combined_amount = $request->combined_amount;
+        // $installments->due_amount = $request->due_amount;
         $installments->installment_date = $request->installment_date;
         $installments->save();
 

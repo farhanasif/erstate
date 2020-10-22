@@ -37,6 +37,7 @@
               </tbody>
               
           </table>
+          <br>
 
       <table id="all-landowner" class="table table-bordered table-striped">
             <h4 class="text-center">Land Schedule</h4>
@@ -113,6 +114,33 @@
           </tbody>
           
       </table>
+      <br>
+
+      <table id="all-landowner" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>SL</th>
+            <th>Installment</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Combined Amount</th>
+            <th>Due Amount</th>
+            </tr>
+      </thead>
+      <tbody>
+        @foreach ($installment_details as $installment)
+        <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td>1</td>
+            <td>{{ $installment->installment_date }}</td>
+            <td>{{ $installment->installment_amount }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        @endforeach
+      </tbody>
+      
+  </table>
     </div>
     <!-- /.card-body -->
   </div>

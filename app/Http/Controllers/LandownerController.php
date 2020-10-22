@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Installment;
 use Illuminate\Http\Request;
 use App\Landowner;
 use App\Project;
@@ -117,9 +118,10 @@ class LandownerController extends Controller
 
     public function viewLandownerDetails($id)
     {
-        $landowner_details = Landowner::find($id);
-        // dd($landowner_details);
-         return view('landowner.view_land_owner_details', compact('landowner_details'));
+        $data['landowner_details'] = Landowner::find($id);
+        $data['installment_details'] = Installment::all();
+        // dd($data);
+         return view('landowner.view_land_owner_details', $data);
     }
 
     public function updateLandowner(Request $request, $id)
