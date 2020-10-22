@@ -8,7 +8,7 @@
 
   </head>
   <body>
-    <button class="print-button">Print Page</button>
+    <button onclick="print_current_page()">Print this page</button>
     <div class="lik-uftcl-ptf-main-body">
       <div class="lik-uftcl-ptf-print-body">
         <form>
@@ -105,14 +105,10 @@
 </div>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script>
-$(".print-button").on("click", function() {
-$("#search-grid").hide();
-$(".main-footer").hide();
-$('#title_data').hide();
-$('.print-button').hide();
-window.print();
-window.location = url;
-});
+    function print_current_page()
+    {
+      window.print();
+    }
 </script>
 </body>
 </html>

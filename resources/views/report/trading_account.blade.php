@@ -49,7 +49,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; To Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" id="to_data" class="form-control" name="to_date" placeholder="To Date For Trading Account">
+                             <input type="text" id="to_date" class="form-control" name="to_date" placeholder="To Date For Trading Account">
                           </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
 <script>
 $(document).ready(function() {
     $( "#from_date" ).datepicker({dateFormat: 'yy-mm-dd'});
-    $( "#to_data" ).datepicker({dateFormat: 'yy-mm-dd'});
+    $( "#to_date" ).datepicker({dateFormat: 'yy-mm-dd'});
     //$("#from_date").datepicker('show');
   } );
 

@@ -42,6 +42,9 @@ class LandownerController extends Controller
     public function storeLandowner(Request $request)
     {
         // dd($request->all());
+        $remaining_land = $request->total_land_of_rs - $request->purchase_of_land;
+        $tp_land_price = $request->purchase_of_land * $request->tp_land_price_percent;
+        // dd($tp_land_price);
         $this->validate($request,[
             'file_no' => 'required',
             'name' => 'required',
@@ -65,8 +68,8 @@ class LandownerController extends Controller
             'rs_dag' => 'required',
             'total_land_of_rs' => 'required',
             'purchase_of_land' => 'required',
-            'remaining_balance' => 'required',
-            'tp_land_price' => 'required',
+            // 'remaining_balance' => 'required',
+            // 'tp_land_price' => 'required',
             'per_bigha_price' => 'required',
             'registration_date' => 'required',
             'deed_number' => 'required'
@@ -95,8 +98,9 @@ class LandownerController extends Controller
         $landowners->rs_dag = $request->rs_dag;
         $landowners->total_land_of_rs = $request->total_land_of_rs;
         $landowners->purchase_of_land = $request->purchase_of_land;
-        $landowners->remaining_balance = $request->remaining_balance;
-        $landowners->tp_land_price = $request->tp_land_price;
+        $landowners->remaining_balance = $remaining_land;
+        $landowners->tp_land_price = $tp_land_price;
+        $landowners->tp_land_price_percent = $request->tp_land_price_percent;
         $landowners->per_bigha_price = $request->per_bigha_price;
         $landowners->registration_date = $request->registration_date;
         $landowners->deed_number = $request->deed_number;
@@ -111,8 +115,18 @@ class LandownerController extends Controller
          return view('landowner.edit_land_owner', compact('landowner'));
     }
 
+    public function viewLandownerDetails($id)
+    {
+        $landowner_details = Landowner::find($id);
+        // dd($landowner_details);
+         return view('landowner.view_land_owner_details', compact('landowner_details'));
+    }
+
     public function updateLandowner(Request $request, $id)
     {
+        $remaining_land = $request->total_land_of_rs - $request->purchase_of_land;
+        $tp_land_price = $request->purchase_of_land * $request->tp_land_price_percent;
+
         $this->validate($request,[
             'file_no' => 'required',
             'project_name' => 'required',
@@ -136,8 +150,8 @@ class LandownerController extends Controller
             'rs_dag' => 'required',
             'total_land_of_rs' => 'required',
             'purchase_of_land' => 'required',
-            'remaining_balance' => 'required',
-            'tp_land_price' => 'required',
+            // 'remaining_balance' => 'required',
+            // 'tp_land_price' => 'required',
             'per_bigha_price' => 'required',
             'registration_date' => 'required',
             'deed_number' => 'required'
@@ -166,11 +180,13 @@ class LandownerController extends Controller
         $landowners->rs_dag = $request->rs_dag;
         $landowners->total_land_of_rs = $request->total_land_of_rs;
         $landowners->purchase_of_land = $request->purchase_of_land;
-        $landowners->remaining_balance = $request->remaining_balance;
-        $landowners->tp_land_price = $request->tp_land_price;
+        $landowners->remaining_balance = $remaining_land;
+        $landowners->tp_land_price = $tp_land_price;
+        $landowners->tp_land_price_percent = $request->tp_land_price_percent;
         $landowners->per_bigha_price = $request->per_bigha_price;
         $landowners->registration_date = $request->registration_date;
         $landowners->deed_number = $request->deed_number;
+        $landowners->save(); 
         $landowners->save(); 
 
         return redirect()->route('allLandowner')->with('success','Landowner updated successfully!');

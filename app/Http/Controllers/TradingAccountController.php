@@ -32,8 +32,8 @@ class TradingAccountController extends Controller
 
     public function printTradingAccounts(Request $request){
         $project_id = $request->project_name;
-        $from_date = date('Y-m-d H:m:s', strtotime($request->from_date));
-        $to_date = date('Y-m-d H:m:s', strtotime($request->to_date));
+        $from_date = date('Y-m-d 00:00:00', strtotime($request->from_date));
+        $to_date = date('Y-m-d 00:00:00', strtotime($request->to_date));
 
         $projectDetails=DB::select('select * from projects where id='.$project_id);
         //dd($from_date);
@@ -41,13 +41,13 @@ class TradingAccountController extends Controller
                             JOIN `ltypes` AS lt ON lt.id = l.ltype_id
                             JOIN `voucher_details` AS vd ON vd.lname_id = l.id
                             JOIN `vouchers` AS v ON v.id = vd.voucher_id
-                            WHERE (v.voucher_date BETWEEN '".$from_date."' AND '".$to_date."') AND l.lgroup_id = 1 AND l.ltype_id = 1 AND v.project_id = ".$project_id);
+                            WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 1 AND l.ltype_id = 1 AND v.project_id = ".$project_id);
 
         $data['expen'] = DB::select("SELECT l.name as l_name, vd.amount FROM `lnames` AS l
                             JOIN `ltypes` AS lt ON lt.id = l.ltype_id
                             JOIN `voucher_details` AS vd ON vd.lname_id = l.id
                             JOIN `vouchers` AS v ON v.id = vd.voucher_id
-                            WHERE (v.voucher_date BETWEEN '".$from_date."' AND '".$to_date."') AND l.lgroup_id = 1 AND l.ltype_id = 3 AND v.project_id = ".$project_id);
+                            WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 1 AND l.ltype_id = 3 AND v.project_id = ".$project_id);
         // dd($data);
         return view('print_report.print_trading_accounts',compact('data','projectDetails'));
     }
