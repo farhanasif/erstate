@@ -29,11 +29,11 @@
               <th>Mobile</th>
               {{-- <th>Permanent Address</th>
               <th>Present Address</th> --}}
-              <th>Email</th>
+              {{-- <th>Email</th> --}}
               {{-- <th>Media Man</th>
               <th>Investigation Person</th> --}}
               <th>Mouza</th>
-              <th>PS</th>
+              {{-- <th>PS</th> --}}
               {{-- <th>District </th> --}}
               <th>CS Khatian</th>
               <th>RS Khatian</th>
@@ -62,11 +62,11 @@
                 <td>{{ $landowner->mobile }}</td>
                 {{-- <td>{{ $landowner->permanent_address }}</td>
                 <td>{{ $landowner->present_address }}</td> --}}
-                <td>{{ $landowner->email }}</td>
+                {{-- <td>{{ $landowner->email }}</td> --}}
                 {{-- <td>{{ $landowner->media_man }}</td>
                 <td>{{ $landowner->investigation_person }}</td> --}}
                 <td>{{ $landowner->mouza }}</td>
-                <td>{{ $landowner->ps }}</td>
+                {{-- <td>{{ $landowner->ps }}</td> --}}
                 {{-- <td>{{ $landowner->district }}</td> --}}
                 <td>{{ $landowner->cs_khatian }}</td>
                 <td>{{ $landowner->rs_khatian }}</td>
@@ -81,8 +81,9 @@
                 <td>{{ $landowner->registration_date }}</td>
                 <td>{{ $landowner->deed_number }}</td> --}}
                 <td>
-                    <div style="width: 150px; display: block;">
+                    <div style="width: 80px; display: block;">
                       <a href="{{ route('editLandowner',$landowner->id) }}" class="btn btn-info btn-xs" title="Edit"><i class="far fa-edit"></i></a>
+                      <a href="{{ route('viewLandownerDetails',$landowner->id) }}" class="btn btn-success btn-xs" title="View Details"><i class="far fa-eye"></i></a>
                       <a href="{{ route('deleteLandowner',$landowner->id) }}" class="btn btn-danger btn-xs" title="Delete"><i class="far fa-trash-alt"></i></a>
                     </div>
                   </td>
@@ -104,7 +105,7 @@
     $(document).ready(function() {
     $('#all-landowner').DataTable( {
         // scrollY:'50vh',
-        scrollX:'50vh',
+        // scrollX:'50vh',
         // scrollCollapse: true,
         // "responsive": true,
       // "autoWidth": false,
