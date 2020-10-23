@@ -108,24 +108,37 @@
                   <p>Create Land Owner</p>
                 </a>
               </li>
-
-              <li class="nav-item">
-                <a href="{{ url('/installment/all') }}" class="nav-link {{ request()->is('/installment/all') ? 'active' :''}}">
-                  <i class="far fa-circle nav-icon text-danger"></i>
-                  <p>All Installment</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="{{ url('/installment/create') }}" class="nav-link {{ request()->is('/installment/create') ? 'active' :''}}">
-                  <i class="far fa-circle nav-icon text-danger"></i>
-                  <p>Create Installment</p>
-                </a>
-              </li>
-
             </ul>
           </li>
           {{-- //end land owner menu --}}
+
+            {{-- // installment menu  --}}
+            <li class="nav-item has-treeview {{ request()->is('installment/*') ? 'menu-open' :''}}">
+              <a href="#" class="nav-link {{ request()->is('installment/*') ? 'active' :''}}">
+                <i class="nav-icon fas fa-credit-card text-green"></i>
+                <p>
+                 Land Installment
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ url('/installment/all') }}" class="nav-link {{ request()->is('/installment/all') ? 'active' :''}}">
+                    <i class="far fa-circle nav-icon text-danger"></i>
+                    <p>All Installment</p>
+                  </a>
+                </li>
+      
+                <li class="nav-item">
+                  <a href="{{ url('/installment/create') }}" class="nav-link {{ request()->is('/installment/create') ? 'active' :''}}">
+                    <i class="far fa-circle nav-icon text-danger"></i>
+                    <p>Create Installment</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {{-- //end land installment menu --}}
+
 
           {{-- // land buy book menu  --}}
           <li class="nav-item has-treeview {{ request()->is('landbuybook/*') ? 'menu-open' :''}}">
