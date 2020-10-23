@@ -22,11 +22,8 @@
             <tr>
               <th>SL NO</th>
               <th>Project Name</th>
-              <th>Combined Amount</th>
-              <th>Due Amount</th> 
               <th>Installment Amount</th>
               <th>Installment Date</th>
-              <th>Owner Name</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -35,11 +32,8 @@
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $installment->project_name }}</td>
-                <td>{{ $installment->combined_amount }}</td>
-                <td>{{ $installment->due_amount }}</td>
-                <td>{{ $installment->installment_amount }}</td>
+                <td>{{ number_format($installment->installment_amount) }}</td>
                 <td>{{ $installment->installment_date }}</td>
-                <td>{{ $installment->land_owner_name }}</td>
                 <td>
                     <div style="width: 150px; display: block;">
                         <a href="{{ route('editInstallment',$installment->id) }}" class="btn btn-info btn-xs" title="Edit"><i class="far fa-edit"></i></a>

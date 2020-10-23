@@ -55,7 +55,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label> Bank/Cash</label>
-                      <select name="amount_type" id="" class="form-control select2bs4">
+                      <select name="bank_id" id="" class="form-control select2bs4">
                         <option value="">--select</option>
                         @foreach ($banks as $bank)
                             <option value="{{ $bank->id }}">{{ $bank->name }}</option>
@@ -154,7 +154,7 @@
                             $('#owner_name').focus;
                             $('#owner_name').append('<option value="">-- Select Owner Name--</option>');
                             $.each(data, function(key, value){
-                            $('select[name="land_owner_name"]').append('<option value="'+ value.name +'">' + value.name+ '</option>');
+                            $('select[name="land_owner_name"]').append('<option value="'+ value.id +'">' + value.name+ '</option>');
                             });
                         }else{
                         $('#owner_name').empty();

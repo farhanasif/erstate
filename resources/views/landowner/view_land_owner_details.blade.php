@@ -95,17 +95,17 @@
     <table class="table table-bordered">
         <tbody>
             <tr>
-                <th style="width: 300px">Total Land Amount of RS {{ $landowner_details->rs_dag }} = </th>
+                <th style="width: 300px">Total Land Amount of RS {{ $landowner_details->rs_dag }}  </th>
                 <td class="text-center" style="width: 150px" >{{ $landowner_details->total_land_of_rs }}</td>
                 <td>Percent</td>
             </tr>
             <tr>
-                <th style="width: 300px">Purchase of Land = </th>
+                <th style="width: 300px">Purchase of Land  </th>
                 <td class="text-center" style="width: 150px" >{{ $landowner_details->purchase_of_land }}</td>
                 <td>Percent</td>
             </tr>
             <tr>
-                <th style="width: 300px" class="text-right">Available = </th>
+                <th style="width: 300px" class="text-right">Available  </th>
                 <td class="text-center" style="width: 150px" >{{ $landowner_details->total_land_of_rs - $landowner_details->purchase_of_land }}</td>
                 <td>Percent</td>
             </tr>
@@ -115,22 +115,22 @@
     <table id="all-landowner" class="table table-bordered">
         <tbody>
             <tr>
-                <th style="width: 300px">Total Land Amount = </th>
+                <th style="width: 300px">Total Land Amount  </th>
                 <td style="width: 200px; text-align:center;">{{ $landowner_details->purchase_of_land }}</td>
                 <td>Percent</td>
             </tr>
             <tr>
-                <th style="width: 300px">Per Percent Amount = </th>
+                <th style="width: 300px">Per Percent Amount </th>
                 <td style="width: 200px; text-align:center;">{{ number_format($landowner_details->tp_land_price_percent) }}</td>
                 <td>TK</td>
             </tr>
             <tr>
-                <th style="width: 300px">Total Bigha Price = </th>
+                <th style="width: 300px">Total Bigha Price  </th>
                 <td style="width: 200px; text-align:center;">{{ number_format($landowner_details->per_bigha_price) }}</td>
                 <td>TK</td>
             </tr>
             <tr>
-                <th style="width: 300px">Total Amount = </th>
+                <th style="width: 300px">Total Amount  </th>
                 <td style="width: 200px; text-align:center;">{{ number_format($landowner_details->purchase_of_land * $landowner_details->tp_land_price_percent) }}</td>
                 <td>TK</td>
             </tr>
@@ -152,18 +152,21 @@
       <tbody>
           @php
               $total_amount = $landowner_details->purchase_of_land * $landowner_details->tp_land_price_percent;
+              $due_amount = $total_amount;
+              $combined_amount = 0;
           @endphp
         @foreach ($installment_details as $key => $installment)
         @php
-            $due_amount = $total_amount - $installment->installment_amount;
+            $due_amount -= $installment->installment_amount;
+            $combined_amount += $installment->installment_amount;
         @endphp
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $loop->iteration }} Installment</td>
                 <td>{{ $installment->installment_date }}</td>
-                <td>{{ number_format($installment->installment_amount) }}</td>
-                <td></td>
-                <td></td>
+                <td>{{ number_format($installment->installment_amount)."/=" }}</td>
+                <td>{{ number_format($combined_amount)."/=" }}</td>
+                <td>{{ number_format($due_amount)."/=" }}</td>
             </tr>
         @endforeach
       </tbody>
