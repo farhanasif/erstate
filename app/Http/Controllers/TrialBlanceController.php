@@ -17,18 +17,18 @@ class TrialBlanceController extends Controller
     {
         // $dr = DB::table('');
         $project_name = $request->project_name;
-        // $from_date = date('Y-m-d H:m:s', strtotime($request->from_date));
-        // $to_date = date('Y-m-d H:m:s', strtotime($request->to_date));
+        $from_date = date('Y-m-d 00:00:00', strtotime($request->from_date));
+        $to_date = date('Y-m-d 00:00:00', strtotime($request->to_date));
 
-        // $data['from_date'] = date('d M Y', strtotime($from_date));
-        // $data['to_date'] = date('d M Y', strtotime($to_date));
+        $data['from_dat'] = $from_date = date('Y-m-d ', strtotime($request->from_date));
+        $data['to_dat'] = $to_date = date('Y-m-d', strtotime($request->to_date));
 
-        $data = DB::table('vouchers as v')
+        $data['trial_balance_details'] = DB::table('vouchers as v')
                    ->select('v.*','vd.id as vd_id','vd.lname_id', 'vd.amount', 'l.name as ledger_name','p.name','p.id as p_id')
                    ->join('voucher_details as vd','v.id','=','vd.voucher_id')
                    ->join('lnames as l','l.id','=','vd.lname_id')
                    ->join('projects as p','p.id','=','v.project_id')
-                   ->where('p.id','=',$project_name)
+                   ->where( 'p.id', '=', $project_name)
                    ->get();
         // dd($data);
         
