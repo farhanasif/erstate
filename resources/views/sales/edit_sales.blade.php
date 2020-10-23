@@ -4,6 +4,11 @@
 
 @section('breadcrumb-title', 'Edit Sell Information')
 
+@section('custom_css')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+@endsection
+
 @section('content')
 
 <section class="content">
@@ -129,14 +134,17 @@
 
   @endsection
 
-@section('custom_js')
+  @section('custom_js')
 
-<script>
-    $(document).ready(function() {
-      $(function() { 
-        $( "#hand_over_date" ).datepicker();
-     });
-    });
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+
+    $(function () {
+      $( "#sales_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+    })
+
 </script>
     
 @endsection

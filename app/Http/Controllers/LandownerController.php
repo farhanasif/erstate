@@ -120,9 +120,15 @@ class LandownerController extends Controller
 
     public function viewLandownerDetails($id)
     {
-        $data['landowner_details'] = Landowner::find($id);
-        $data['installment_details'] = Installment::all();
-        // dd($data);
+        // $data['landowner_details'] = Landowner::find($id);
+        // $data['installment_details'] = Installment::where( 'land_owner_id', $id);
+
+        $data['landowner_details'] = DB::table('landowners as l')
+        ->select('l.*','i.*')
+        ->join('installments as i','i.land_owner_id','=','l.id')
+        ->where( 'l.id', '=', $id)
+        ->get();
+        // dd( $data['landowner_details']);
          return view('landowner.view_land_owner_details', $data);
     }
 
