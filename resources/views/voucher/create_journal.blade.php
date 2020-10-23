@@ -43,7 +43,7 @@
                     <div class="row">
                       <div class="col-md-12" id="journal_details_dr">
                         <div class="row" id="row_1">
-                          <div class="col-md-5">
+                          <div class="col-md-5 {{$errors->has('name') ? 'has-error' : ''}}">
                             <div class="form-group">
                               <label>Account Head Name <span style="color: red;">*</span></label>
                               <select name="lname_id_dr[]" class="form-control">
@@ -52,12 +52,22 @@
                                     <option value="{{ $lname->id }}">{{ $lname->name }}</option>
                                 @endforeach
                             </select>
+                              @if($errors->has('name'))
+                                <span class="help-block text-danger">
+                                  {{$errors->first('name')}}
+                                </span>
+                              @endif
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-4 {{$errors->has('amount') ? 'has-error' : ''}}">
                             <div class="form-group">
                                 <label>Amount <span style="color: red;">*</span></label>
                                 <input type="text" name="amount_dr[]" class="form-control" placeholder="0">
+                                @if($errors->has('amount'))
+                                  <span class="help-block text-danger">
+                                    {{$errors->first('amount')}}
+                                  </span>
+                                @endif
                             </div>
                           </div>
                         </div>
@@ -152,8 +162,8 @@
                 <div class="form-group">
                     <label>Perticulers<span style="color: red;">*</span></label>
                     <textarea name="perticulers" id="perticulers" cols="3" rows="3" class="form-control" placeholder="Perticulers"></textarea>
-                    @if($errors->has('perticulars'))
-                        <strong class="text-danger">{{ $errors->first('perticulars') }}</strong>
+                    @if($errors->has('perticulers'))
+                        <strong class="text-danger">{{ $errors->first('perticulers') }}</strong>
                     @endif
                 </div>
               </div>

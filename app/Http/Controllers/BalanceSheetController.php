@@ -24,16 +24,16 @@ class BalanceSheetController extends Controller
         //dd($from_date);
 
         $data['liabilities'] = DB::select("SELECT vd.amount, l.name as l_name FROM `lnames` AS l
-                        JOIN `ltypes` AS lt ON lt.id = l.ltype_id
-                        JOIN `voucher_details` AS vd ON vd.lname_id = l.id
-                        JOIN `vouchers` AS v ON v.id = vd.voucher_id
-                        WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 3 AND l.ltype_id = 2 AND v.project_id = ".$project_id);
+            JOIN `ltypes` AS lt ON lt.id = l.ltype_id
+            JOIN `voucher_details` AS vd ON vd.lname_id = l.id
+            JOIN `vouchers` AS v ON v.id = vd.voucher_id
+            WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 3 AND l.ltype_id = 2 AND v.project_id = ".$project_id);
 
         $data['assets'] = DB::select("SELECT vd.amount, l.name as l_name FROM `lnames` AS l
-                        JOIN `ltypes` AS lt ON lt.id = l.ltype_id
-                        JOIN `voucher_details` AS vd ON vd.lname_id = l.id
-                        JOIN `vouchers` AS v ON v.id = vd.voucher_id
-                        WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 3 AND l.ltype_id = 4 AND v.project_id =".$project_id);
+            JOIN `ltypes` AS lt ON lt.id = l.ltype_id
+            JOIN `voucher_details` AS vd ON vd.lname_id = l.id
+            JOIN `vouchers` AS v ON v.id = vd.voucher_id
+            WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 3 AND l.ltype_id = 4 AND v.project_id =".$project_id);
 
 
         $data['adjustments'] = DB::select("select ad.*, l.name as ledger_name, vd.amount as vd_amount from adjustments as ad 
@@ -43,10 +43,10 @@ class BalanceSheetController extends Controller
 
         // this year net profit calculation
         $data['income'] = DB::select("SELECT vd.amount, l.name as l_name FROM `lnames` AS l
-                JOIN `ltypes` AS lt ON lt.id = l.ltype_id
-                JOIN `voucher_details` AS vd ON vd.lname_id = l.id
-                JOIN `vouchers` AS v ON v.id = vd.voucher_id
-                WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 1 AND l.ltype_id = 1 AND v.project_id = ".$project_id);
+            JOIN `ltypes` AS lt ON lt.id = l.ltype_id
+            JOIN `voucher_details` AS vd ON vd.lname_id = l.id
+            JOIN `vouchers` AS v ON v.id = vd.voucher_id
+            WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 1 AND l.ltype_id = 1 AND v.project_id = ".$project_id);
 
         $data['t_adjustment'] = DB::select("select sum(amount) as total_amount from adjustments as ad where ad.type = 2 and ad.project_id = ".$project_id);
 
@@ -56,16 +56,16 @@ class BalanceSheetController extends Controller
                 }
 
         $data['expen'] = DB::select("SELECT sum(vd.amount) as total_expen FROM `lnames` AS l
-                                JOIN `ltypes` AS lt ON lt.id = l.ltype_id
-                                JOIN `voucher_details` AS vd ON vd.lname_id = l.id
-                                JOIN `vouchers` AS v ON v.id = vd.voucher_id
-                                WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 1 AND l.ltype_id = 3 AND v.project_id = ".$project_id);
+            JOIN `ltypes` AS lt ON lt.id = l.ltype_id
+            JOIN `voucher_details` AS vd ON vd.lname_id = l.id
+            JOIN `vouchers` AS v ON v.id = vd.voucher_id
+            WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 1 AND l.ltype_id = 3 AND v.project_id = ".$project_id);
 
 
         $data['profite_head'] = DB::select("SELECT sum(vd.amount) as profit_amount FROM `lnames` AS l
-                                    JOIN `voucher_details` AS vd ON vd.lname_id = l.id
-                                    JOIN `vouchers` AS v ON v.id = vd.voucher_id
-                                    WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 2 AND v.project_id = ".$project_id);
+            JOIN `voucher_details` AS vd ON vd.lname_id = l.id
+            JOIN `vouchers` AS v ON v.id = vd.voucher_id
+            WHERE (v.voucher_date >= '".$from_date."' AND v.voucher_date <= '".$to_date."') AND l.lgroup_id = 2 AND v.project_id = ".$project_id);
 
                                     // dd($data);
 

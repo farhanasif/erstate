@@ -231,24 +231,24 @@ class VoucherController extends Controller
 
     public function alljournalvoucher()
     {
-        // $voucher_details = DB::table('voucher_details')
-        //     ->join('vouchers', 'voucher_details.voucher_id', '=', 'vouchers.id')
-        //     ->join('projects', 'vouchers.project_id', '=', 'projects.id')
-        //     ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
-        //     ->join('lnames', 'voucher_details.lname_id', '=', 'lnames.id')
-        //     ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
-        //     ->get();
-        //dd($voucher_details);
-        return view('voucher.view_journal');
+        $journals = DB::table('journal_details as jd')
+        ->select('jd.*','j.perticulers','j.journal_date', 'l.name as ledger_name','p.name as project_name','p.id as p_id')
+        ->join('lnames as l','l.id','=','jd.lname_id')
+        ->join('journals as j','j.id','=','jd.journal_id')
+        ->join('projects as p','p.id','=','jd.project_id')
+        ->get();
+         //dd($journals);
+        return view('voucher.view_journal',compact('journals'));
     }
 
     public function save_journal(Request $request)
     {
         // dd($request->all());
-        // $this->validate($request,[
-        // 'perticulers' => 'required',
-        // 'journal_date' => 'required',
-        // ]);
+        $this->validate($request,[
+        'perticulers' => 'required',
+        'journal_date' => 'required',
+        'voucher_date' => 'required',
+        ]);
 
         $ledger_count = sizeof($request->lname_id_dr);
         if ($ledger_count > 0) {
