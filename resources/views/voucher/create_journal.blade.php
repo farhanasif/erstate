@@ -1,13 +1,11 @@
-
-
 @extends('master')
 
 @section('breadcrumb-title', ' Create Journal Voucher')
 
 
 @section('custom_css')
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 @endsection
 
 @section('content')
@@ -28,7 +26,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>Project</label>
+                      <label>Project<span style="color: red;">*</span></label>
                       <select name="project_id_dr" class="form-control">
                         <option value="">--select project name (Dr)--</option>
                         @foreach ($projects as $project)
@@ -45,29 +43,32 @@
                     <div class="row">
                       <div class="col-md-12" id="journal_details_dr">
                         <div class="row" id="row_1">
-                          <div class="col-md-5">
+                          <div class="col-md-5 {{$errors->has('name') ? 'has-error' : ''}}">
                             <div class="form-group">
-                              <label>Account Head Name</label>
+                              <label>Account Head Name <span style="color: red;">*</span></label>
                               <select name="lname_id_dr[]" class="form-control">
                                 <option value="">--select account head (Dr)--</option>
                                 @foreach ($lnames as $lname)
                                     <option value="{{ $lname->id }}">{{ $lname->name }}</option>
                                 @endforeach
                             </select>
+                              @if($errors->has('name'))
+                                <span class="help-block text-danger">
+                                  {{$errors->first('name')}}
+                                </span>
+                              @endif
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-4 {{$errors->has('amount') ? 'has-error' : ''}}">
                             <div class="form-group">
-                                <label>Amount</label>
+                                <label>Amount <span style="color: red;">*</span></label>
                                 <input type="text" name="amount_dr[]" class="form-control" placeholder="0">
-                            </div>
-                          </div>
-                          <div class="col-md-2">
-                              <div class="form-group pt-4">
-                                  <span style="font-size: 1.2em; color: Tomato;" id="addButtonDr"> 
-                                    <i class="far fa-plus-square fa-lg pt-3"></i>
+                                @if($errors->has('amount'))
+                                  <span class="help-block text-danger">
+                                    {{$errors->first('amount')}}
                                   </span>
-                              </div>
+                                @endif
+                            </div>
                           </div>
                         </div>
                         
@@ -79,7 +80,7 @@
 
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>Project</label>
+                      <label>Project<span style="color: red;">*</span></label>
                       <select name="project_id_cr" class="form-control">
                         <option value="">--select project name (Cr)--</option>
                         @foreach ($projects as $project)
@@ -98,7 +99,7 @@
                         <div class="row" id="row_1">
                           <div class="col-md-5">
                             <div class="form-group">
-                              <label>Account Head Name</label>
+                              <label>Account Head Name<span style="color: red;">*</span></label>
                               <select name="lname_id_cr[]" class="form-control">
                                 <option value="">--select account head (Cr)--</option>
                                 @foreach ($lnames as $lname)
@@ -109,16 +110,9 @@
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                                <label>Amount</label>
+                                <label>Amount<span style="color: red;">*</span></label>
                                 <input type="text" name="amount_cr[]" class="form-control" placeholder="0">
                             </div>
-                          </div>
-                          <div class="col-md-2">
-                              <div class="form-group pt-4">
-                                  <span style="font-size: 1.2em; color: Tomato;" id="addButtonCr"> 
-                                    <i class="far fa-plus-square fa-lg pt-3"></i>
-                                  </span>
-                              </div>
                           </div>
                         </div>
                         
@@ -128,24 +122,50 @@
                     
                   </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                      <label>Perticulers</label>
-                      <textarea name="perticulers" id="perticulers" cols="3" rows="3" class="form-control" placeholder="Perticulers"></textarea>
-                      @if($errors->has('perticulars'))
-                          <strong class="text-danger">{{ $errors->first('perticulars') }}</strong>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>&nbsp;&nbsp; Journal Date<span style="color: red;">*</span></label>
+                  <div class="col-md-12 col-sm-12">
+                    <input type="text" class="form-control" name="journal_date" id="journal_date" placeholder="Journal Date">
+                      @if($errors->has('journal_date'))
+                        <strong class="text-danger">{{ $errors->first('journal_date') }}</strong>
                       @endif
                   </div>
                 </div>
+              </div>
 
-                <div class="col-md-12">
+              <div class="col-sm-6">
                   <div class="form-group">
-                      <label>Journal Date</label>
-                      <input type="text" class="form-control" name="journal_date" id="journal_date" placeholder="Voucher Date">
-                      @if($errors->has('voucher_date'))
-                        <strong class="text-danger">{{ $errors->first('voucher_date') }}</strong>
-                      @endif
+                  <label>&nbsp;&nbsp; Voucher Date<span style="color: red;">*</span></label>
+                    <div class="col-md-12 col-sm-12">
+                      <input type="text" class="form-control" name="voucher_date" id="voucher_date" placeholder="Voucher Date">
+                        @if($errors->has('voucher_date'))
+                          <strong class="text-danger">{{ $errors->first('voucher_date') }}</strong>
+                        @endif
+                    </div>
                   </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Bank Name<span style="color: red;">*</span></label>
+                  <select name="bank" class="form-control">
+                    <option value="">--select Bank--</option>
+                    @foreach ($banks as $bank)
+                        <option value="{{ $bank->id }}">{{ $bank->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                    <label>Perticulers<span style="color: red;">*</span></label>
+                    <textarea name="perticulers" id="perticulers" cols="3" rows="3" class="form-control" placeholder="Perticulers"></textarea>
+                    @if($errors->has('perticulers'))
+                        <strong class="text-danger">{{ $errors->first('perticulers') }}</strong>
+                    @endif
+                </div>
               </div>
 
                    <!-- /.col -->
@@ -170,98 +190,9 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
   <script>
-
       $( "#journal_date" ).datepicker({dateFormat: 'yy-mm-dd'});
-
-      $(document).ready(function() {
-        var i=1;
-        var j=1;
-
-        console.log('here you go');
-
-        $("#addButtonDr").click(function (e) {
-          e.preventDefault();
-          i++;
-
-          _dynamic_div = `<div class="row" id="row_`+i+`">
-                        <div class="col-md-5">
-                          <div class="form-group">
-                            <label>Account Head Name</label>
-                            <select name="lname_id[]" class="form-control">
-                              <option value="">--select account head (Dr)--</option>
-                              @foreach ($lnames as $lname)
-                                  <option value="{{ $lname->id }}">{{ $lname->name }}</option>
-                              @endforeach
-                          </select>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="form-group">
-                              <label>Amount</label>
-                              <input type="text" name="amount[]" class="form-control" placeholder="0">
-                          </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group pt-4">
-                                <span style="font-size: 1.2em; color: red;" class="btn_remove" id="`+i+`"> 
-                                  <i class="far fa-trash-alt pt-3"></i>
-                                </span>
-                            </div>
-                        </div>
-                      </div>`;
-          //console.log(_dynamic_div);
-          $('#journal_details_dr').append(_dynamic_div)
-        });
-
-        $(document).on('click', '.btn_remove', function(){
-            var button_id = $(this).attr("id");
-            //console.log(button_id);   
-            $('#row_'+button_id+'').remove();  
-      });
-
-
-      //journal details cr
-
-      $("#addButtonCr").click(function (e) {
-        e.preventDefault();
-        j++;
-
-        _dynamic_div_cr = `<div class="row" id="row_`+j+`">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                          <label>Account Head Name</label>
-                          <select name="lname_id[]" class="form-control">
-                            <option value="">--select account head (Cr)--</option>
-                            @foreach ($lnames as $lname)
-                                <option value="{{ $lname->id }}">{{ $lname->name }}</option>
-                            @endforeach
-                        </select>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Amount</label>
-                            <input type="text" name="amount[]" class="form-control" placeholder="0">
-                        </div>
-                      </div>
-                      <div class="col-md-2">
-                          <div class="form-group pt-4">
-                              <span style="font-size: 1.2em; color: red;" class="btn_remove" id="`+j+`"> 
-                                <i class="far fa-trash-alt pt-3"></i>
-                              </span>
-                          </div>
-                      </div>
-                    </div>`;
-        //console.log(_dynamic_div);
-        $('#journal_details_dr').append(_dynamic_div_cr)
-      });
-
-      $(document).on('click', '.btn_remove', function(){
-          var button_id = $(this).attr("id");
-          //console.log(button_id);   
-          $('#row_'+button_id+'').remove();  
-    });
-      });
+      $( "#voucher_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+     
   </script>
       
   @endsection

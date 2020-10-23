@@ -4,6 +4,11 @@
 
 @section('breadcrumb-title', 'Add Project Information')
 
+@section('custom_css')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+@endsection
+
 @section('content')
 
 <section class="content">
@@ -82,7 +87,7 @@
             <div class="col-md-6">
               <div class="form-group">
                   <label>Lanching Date</label>
-                  <input type="date" class="form-control" name="launching_date" id="launching_date">
+                  <input type="text" class="form-control" name="launching_date" id="launching_date" placeholder="Launching Date">
                   @if($errors->has('launching_date'))
                     <strong class="text-danger">{{ $errors->first('launching_date') }}</strong>
                   @endif
@@ -92,7 +97,7 @@
           <div class="col-md-6">
             <div class="form-group">
                 <label>Hand Over Date</label>
-                <input type="date" class="form-control" name="hand_over_date" id="hand_over_date">
+                <input type="text" class="form-control" name="hand_over_date" id="hand_over_date" placeholder="Hand Over Date">
                 @if($errors->has('hand_over_date'))
                   <strong class="text-danger">{{ $errors->first('hand_over_date') }}</strong>
                 @endif
@@ -116,13 +121,16 @@
 
   @section('custom_js')
 
-<script>
-    $(document).ready(function() {
-        $(function() { 
-     $( "#launching_date" ).datepicker();
-     $( "#hand_over_date" ).datepicker();
-  });
-    });
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+
+    $(function () {
+      $( "#launching_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+      $( "#hand_over_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+    })
+
 </script>
     
 @endsection
