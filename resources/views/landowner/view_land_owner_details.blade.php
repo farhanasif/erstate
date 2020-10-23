@@ -120,7 +120,7 @@
                 <td>Shotok</td>
             </tr>
             <tr>
-                <th style="width: 300px">Per Shotok Amount </th>
+                <th style="width: 300px">Per Shotok Price </th>
                 <td style="width: 200px; text-align:center;">{{ number_format($landowner_details->tp_land_price_percent) }}</td>
                 <td>TK</td>
             </tr>

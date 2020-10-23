@@ -20,7 +20,7 @@
                 <p class="ptf-ln-3">
                   <span><br> Noboudoy Purbachoal City  <br/>  Balance Sheet</span>
                   <span></span>
-                  <span>For Financial Year 2019 to 2020</span>
+                  <span>For Financial Year {{ $from_dat }} to {{ $to_dat }}</span>
                 </p>
               </div>
 
