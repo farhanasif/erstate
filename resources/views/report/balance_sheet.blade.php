@@ -26,7 +26,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; Project Name</label>
                           <div class="col-md-12 col-sm-12">
-                         <select name="project_name" id="project_name" class="form-control select2bs4">  
+                         <select name="project_name" required id="project_name" class="form-control select2bs4">  
                             <option value="">--select project name</option>
                           @foreach($projects as $project)
                             <option value="{{ $project->id }}">{{ $project->name }}</option>
@@ -40,7 +40,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; From Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" id="from_date" class="form-control" name="from_date" placeholder="From Date For Balance Sheet">
+                             <input type="text" id="from_date" required class="form-control" name="from_date" placeholder="From Date For Balance Sheet">
                           </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; To Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" id="to_date" class="form-control" name="to_date" placeholder="To Date For Balance Sheet">
+                             <input type="text" id="to_date" required class="form-control" name="to_date" placeholder="To Date For Balance Sheet">
                           </div>
                         </div>
                     </div>

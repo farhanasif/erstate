@@ -20,6 +20,9 @@ class BalanceSheetController extends Controller
         $from_date = date('Y-m-d 00:00:00', strtotime($request->from_date));
         $to_date = date('Y-m-d 00:00:00', strtotime($request->to_date));
 
+        $data['from_dat'] = $from_date = date('Y-m-d ', strtotime($request->from_date));;
+        $data['to_dat'] = $to_date = date('Y-m-d', strtotime($request->to_date));;
+
         $projectDetails=DB::select('select * from projects where id='.$project_id);
         //dd($from_date);
 
@@ -70,7 +73,7 @@ class BalanceSheetController extends Controller
                                     // dd($data);
 
         $data['this_year_profit'] =  $data['total_income'] - ( $data['expen'][0]->total_expen + $data['profite_head'][0]->profit_amount + $data['t_adjustment'][0]->total_amount);
-        // dd($data['this_year_profit']);
+        // dd($data);
 
         return view('print_report.print_balance_sheet',$data);
     }
