@@ -62,7 +62,7 @@
                           <div class="col-md-4 {{$errors->has('amount') ? 'has-error' : ''}}">
                             <div class="form-group">
                                 <label>Amount <span style="color: red;">*</span></label>
-                                <input type="text" name="amount_dr[]" class="form-control" placeholder="0">
+                                <input type="text" name="amount_dr[]" id="amount_dr" class="form-control" placeholder="0">
                                 @if($errors->has('amount'))
                                   <span class="help-block text-danger">
                                     {{$errors->first('amount')}}
@@ -111,7 +111,7 @@
                           <div class="col-md-4">
                             <div class="form-group">
                                 <label>Amount<span style="color: red;">*</span></label>
-                                <input type="text" name="amount_cr[]" class="form-control" placeholder="0">
+                                <input type="text" name="amount_cr[]" id="amount_cr"  class="form-control" placeholder="0" readonly>
                             </div>
                           </div>
                         </div>
@@ -134,11 +134,11 @@
                 </div>
               </div>
 
-              <div class="col-sm-6">
+              <div class="col-sm-6" hidden>
                   <div class="form-group">
                   <label>&nbsp;&nbsp; Voucher Date<span style="color: red;">*</span></label>
                     <div class="col-md-12 col-sm-12">
-                      <input type="text" class="form-control" name="voucher_date" id="voucher_date" placeholder="Voucher Date">
+                      <input type="text" class="form-control" name="voucher_date" id="voucher_date" placeholder="Voucher Date" hidden>
                         @if($errors->has('voucher_date'))
                           <strong class="text-danger">{{ $errors->first('voucher_date') }}</strong>
                         @endif
@@ -192,6 +192,17 @@
   <script>
       $( "#journal_date" ).datepicker({dateFormat: 'yy-mm-dd'});
       $( "#voucher_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+
+      $("#amount_dr").on("input", function () {
+        var d = $(this).val();
+        $('#amount_cr').val(d);
+      });
+
+      
+      // $("#journal_date").on("input", function () {
+      //   var d = $(this).val();
+      //   $('#voucher_date').val(d);
+      // });
      
   </script>
       

@@ -247,7 +247,6 @@ class VoucherController extends Controller
         $this->validate($request,[
         'perticulers' => 'required',
         'journal_date' => 'required',
-        'voucher_date' => 'required',
         ]);
 
         $ledger_count = sizeof($request->lname_id_dr);
@@ -287,7 +286,7 @@ class VoucherController extends Controller
                 $voucher->project_id = $request->project_id_dr;
                 $voucher->bank_id = $request->bank;
                 $voucher->perticulers = $request->perticulers;
-                $voucher->voucher_date = $request->voucher_date;
+                $voucher->voucher_date = $request->journal_date;
                 $voucher->voucher_type = $request->lname_id_dr[$i] ? 'DR' : '';
                 $voucher->save();
 
@@ -295,7 +294,7 @@ class VoucherController extends Controller
                 $voucher->project_id = $request->project_id_dr;
                 $voucher->bank_id = $request->bank;
                 $voucher->perticulers = $request->perticulers;
-                $voucher->voucher_date = $request->voucher_date;
+                $voucher->voucher_date = $request->journal_date;
                 $voucher->voucher_type = $request->lname_id_cr[$i] ? 'CR' : '';
                 $voucher->save();
                  
