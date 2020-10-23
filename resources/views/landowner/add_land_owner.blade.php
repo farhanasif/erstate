@@ -291,7 +291,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Purchase of Land Price (Per Percent): </label>
+                    <label>Purchase of Land Price (Per Shotok): </label>
                     <input type="number" name="tp_land_price_percent" id="tp_land_price_percent" class="form-control" placeholder="Total Purchase of Land Price" value="{{ old('tp_land_price_percent') }}">
                     @if($errors->has('tp_land_price_percent'))
                         <strong class="text-danger">{{ $errors->first('tp_land_price_percent') }}</strong>
