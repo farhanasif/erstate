@@ -3,6 +3,11 @@
 
 @section('breadcrumb-title', 'Add Sell Information')
 
+@section('custom_css')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+@endsection
+
 @section('content')
 
 <section class="content">
@@ -82,7 +87,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                             <label>Sells Date</label>
-                            <input type="date" name="sales_date" id="sales_date" class="form-control" placeholder="Sells Date">
+                            <input type="text" name="sales_date" id="sales_date" class="form-control" placeholder="Sells Date">
                             @if($errors->has('sales_date'))
                                 <strong class="text-danger">{{ $errors->first('sales_date') }}</strong>
                             @endif
@@ -97,8 +102,8 @@
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
                           </select>
-                          @if($errors->has('sales_date'))
-                              <strong class="text-danger">{{ $errors->first('sales_date') }}</strong>
+                          @if($errors->has('status'))
+                              <strong class="text-danger">{{ $errors->first('status') }}</strong>
                           @endif
                       </div>
                   </div>
@@ -129,14 +134,17 @@
 
   @endsection
 
-@section('custom_js')
+  @section('custom_js')
 
-<script>
-    $(document).ready(function() {
-      $(function() { 
-        $( "#hand_over_date" ).datepicker();
-     });
-    });
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+
+    $(function () {
+      $( "#sales_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+    })
+
 </script>
     
 @endsection
