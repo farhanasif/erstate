@@ -86,8 +86,8 @@
           {{-- //end product menu --}}
 
           {{-- // land owner menu  --}}
-          <li class="nav-item has-treeview {{ request()->is('product/*') ? 'menu-open' :''}}">
-            <a href="#" class="nav-link {{ request()->is('product/*') ? 'active' :''}}">
+          <li class="nav-item has-treeview {{ request()->is('landowner/*') ? 'menu-open' :''}}">
+            <a href="#" class="nav-link {{ request()->is('landowner/*') ? 'active' :''}}">
               <i class="nav-icon fas fa-chart-area text-danger"></i>
               <p>
                 Land Owner
@@ -110,14 +110,14 @@
               </li>
 
               <li class="nav-item">
-                <a href="{{ url('/installment/all') }}" class="nav-link {{ request()->is('/landowner/add-landowner') ? 'active' :''}}">
+                <a href="{{ url('/installment/all') }}" class="nav-link {{ request()->is('/installment/all') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-danger"></i>
                   <p>All Installment</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{ url('/installment/create') }}" class="nav-link {{ request()->is('/landowner/add-landowner') ? 'active' :''}}">
+                <a href="{{ url('/installment/create') }}" class="nav-link {{ request()->is('/installment/create') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-danger"></i>
                   <p>Create Installment</p>
                 </a>
@@ -128,8 +128,8 @@
           {{-- //end land owner menu --}}
 
           {{-- // land buy book menu  --}}
-          <li class="nav-item has-treeview {{ request()->is('product/*') ? 'menu-open' :''}}">
-            <a href="#" class="nav-link {{ request()->is('product/*') ? 'active' :''}}">
+          <li class="nav-item has-treeview {{ request()->is('landbuybook/*') ? 'menu-open' :''}}">
+            <a href="#" class="nav-link {{ request()->is('landbuybook/*') ? 'active' :''}}">
               <i class="nav-icon fas fa-book text-blue"></i>
               <p>
                 Land Buy Book
@@ -138,7 +138,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('allLandbuybook') }}" class="nav-link {{ request()->is('/landowner/all-landowner') ? 'active' :''}}">
+                <a href="{{ route('allLandbuybook') }}" class="nav-link {{ request()->is('/landbuybook/all-landowner') ? 'active' :''}}">
                   <i class="far fa-circle nav-icon text-blue"></i>
                   <p>All Land Buy Book</p>
                 </a>

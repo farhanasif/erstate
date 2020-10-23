@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('breadcrumb-title', 'Create General Information')
+@section('breadcrumb-title', 'Create Installment Information')
 
 @section('custom_css')
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -14,7 +14,7 @@
       <!-- SELECT2 EXAMPLE -->
       <div class="card card-default">
         <div class="card-header">
-          <h3 class="card-title">Create General Information</h3>
+          <h3 class="card-title">Create Installment Information</h3>
         </div>
 
          @include('message')

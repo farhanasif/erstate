@@ -20,9 +20,10 @@ class ProductController extends Controller
     {
         // $data['products'] = Product::all();
 
-        $data['productsInformations'] = DB::select("SELECT products.*, projects.id AS project_id, (projects.name) AS project_name
+        $data['productsInformations'] = DB::select("SELECT products.*, p.id AS project_id, (p.name) AS project_name
             FROM products
-            LEFT JOIN projects ON products.project_id = projects.id");
+            LEFT JOIN projects as p ON products.project_id = p.id");
+            // dd($data);
 
         return view('product.all_product', $data);
     }
@@ -92,6 +93,14 @@ class ProductController extends Controller
         $data['product'] = Product::find($id);
         $data['projects'] = Project::all();
          return view('product.edit_product',$data);
+    }
+
+    public function viewDetailsProduct($id)
+    {
+        $data['product'] = Product::find($id);
+        $data['projects'] = Project::all();
+        // dd($data);
+         return view('product.view_details_product',$data);
     }
 
     public function updateProduct(Request $request, $id)

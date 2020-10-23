@@ -113,8 +113,9 @@ class LandownerController extends Controller
 
     public function editLandowner($id)
     {
-        $landowner = Landowner::find($id);
-         return view('landowner.edit_land_owner', compact('landowner'));
+        $data['landowner'] = Landowner::find($id);
+        $data['projects'] = Project::all();
+         return view('landowner.edit_land_owner', $data);
     }
 
     public function viewLandownerDetails($id)
