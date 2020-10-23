@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Installment;
 use Illuminate\Http\Request;
 use App\Landowner;
 use App\Project;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\DB;
 
 class LandownerController extends Controller
 {
@@ -111,15 +113,17 @@ class LandownerController extends Controller
 
     public function editLandowner($id)
     {
-        $landowner = Landowner::find($id);
-         return view('landowner.edit_land_owner', compact('landowner'));
+        $data['landowner'] = Landowner::find($id);
+        $data['projects'] = Project::all();
+         return view('landowner.edit_land_owner', $data);
     }
 
     public function viewLandownerDetails($id)
     {
-        $landowner_details = Landowner::find($id);
-        // dd($landowner_details);
-         return view('landowner.view_land_owner_details', compact('landowner_details'));
+        $data['landowner_details'] = Landowner::find($id);
+        $data['installment_details'] = Installment::all();
+        // dd($data);
+         return view('landowner.view_land_owner_details', $data);
     }
 
     public function updateLandowner(Request $request, $id)

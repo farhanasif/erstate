@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('breadcrumb-title', 'Create General Information')
+@section('breadcrumb-title', 'Create Installment Information')
 
 @section('custom_css')
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -14,7 +14,7 @@
       <!-- SELECT2 EXAMPLE -->
       <div class="card card-default">
         <div class="card-header">
-          <h3 class="card-title">Create General Information</h3>
+          <h3 class="card-title">Create Installment Information</h3>
         </div>
 
          @include('message')
@@ -55,7 +55,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label> Bank/Cash</label>
-                      <select name="amount_type" id="" class="form-control select2bs4">
+                      <select name="bank_id" id="" class="form-control select2bs4">
                         <option value="">--select</option>
                         @foreach ($banks as $bank)
                             <option value="{{ $bank->id }}">{{ $bank->name }}</option>
@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
                     <div class="form-group">
                         <label>Combined Amount</label>
                         <input type="text" name="combined_amount" id="" class="form-control" placeholder="0">
@@ -85,9 +85,9 @@
                             <strong class="text-danger">{{ $errors->first('combined_amount') }}</strong>
                         @endif                      
                     </div>
-                </div>
+                </div> --}}
 
-                    <!-- /.col -->
+                    {{-- <!-- /.col -->
                   <div class="col-md-6">
                     <div class="form-group">
                         <label>Due Amount</label>
@@ -96,7 +96,7 @@
                           <strong class="text-danger">{{ $errors->first('due_amount') }}</strong>
                       @endif                      
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="col-md-6">
                     <div class="form-group">
@@ -134,6 +134,8 @@
           $("#project_name").change("change", function() {
             // e.preventDefault();
             var project_name = $("#project_name").val();
+            var owner_name = $("#owner_name").val();
+            console.log(owner_name);
 
             var token = "{{ csrf_token() }}";
             var url_data = "{{ url('/land-owner-data') }}";
@@ -147,13 +149,12 @@
                     },
                     success: function(data) {
                         // console.log(data);
-                        // document.getElementById("owner_name").value = name;
                         if(data){
                             $('#owner_name').empty();
                             $('#owner_name').focus;
                             $('#owner_name').append('<option value="">-- Select Owner Name--</option>');
                             $.each(data, function(key, value){
-                            $('select[name="land_owner_name"]').append('<option value="'+ key +'">' + value.name+ '</option>');
+                            $('select[name="land_owner_name"]').append('<option value="'+ value.id +'">' + value.name+ '</option>');
                             });
                         }else{
                         $('#owner_name').empty();
