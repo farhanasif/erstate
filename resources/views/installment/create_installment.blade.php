@@ -154,7 +154,7 @@
                             $('#owner_name').focus;
                             $('#owner_name').append('<option value="">-- Select Owner Name--</option>');
                             $.each(data, function(key, value){
-                            $('select[name="land_owner_name"]').append('<option value="'+ key +'">' + value.name+ '</option>');
+                            $('select[name="land_owner_name"]').append('<option value="'+ value.name +'">' + value.name+ '</option>');
                             });
                         }else{
                         $('#owner_name').empty();

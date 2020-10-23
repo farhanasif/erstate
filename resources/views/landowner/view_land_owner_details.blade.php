@@ -14,39 +14,47 @@
     <!-- /.card-header -->
     <div class="card-body">
 
-        <table id="all-landowner" class="table table-bordered table-striped">
-            <h4 class="text-center">General information</h4>
-            <thead>
+        <table id="all-landowner" class="table table-bordered">
+            <div class="card-header bg-info">
+                <h4 class="card-title ">General information</h4>
+            </div>
+            <br>
+            <tbody>
                 <tr>
-                    <th>Name</th>
-                    <th>Father Name</th>
-                    <th>Mother Name</th>
-                    <th>Address</th>
-                    <th>NID</th>
-                    </tr>
-              </thead>
-              <tbody>
-                <tr>
+                    <th style="width: 150px">Name</th>
                     <td>{{ $landowner_details->name }}</td>
-                    <td>{{ $landowner_details->father_name }}</td>
-                    <td>{{ $landowner_details->mother_name }}</td>
-                    <td> <b>Permanent Address:</b> {{ $landowner_details->permanent_address }} <br> <b>Present Address:</b> {{ $landowner_details->present_address }}</td>
-                    <td>{{ $landowner_details->nid_no }}</td>
                 </tr>
-    
-              </tbody>
-              
+                <tr>
+                    <th style="width: 150px">Father Name</th>
+                    <td>{{ $landowner_details->father_name }}</td>
+                </tr>
+                <tr>
+                    <th style="width: 150px">Mother Name</th>
+                    <td>{{ $landowner_details->mother_name }}</td>
+                </tr>
+                <tr>
+                    <th style="width: 150px">Address</th>
+                    <td> <b>Permanent Address:</b> {{ $landowner_details->permanent_address }} <br> <b>Present Address:</b> {{ $landowner_details->present_address }}</td>
+                </tr>
+                <tr>
+                    <th style="width: 150px">NID</th>
+                    <td>{{ $landowner_details->nid_no }}</td>                
+                </tr>
+            </tbody>
           </table>
           <br>
 
       <table id="all-landowner" class="table table-bordered table-striped">
-            <h4 class="text-center">Land Schedule</h4>
+            <div class="card-header bg-info">
+                <h4 class="card-title ">Land Schedule</h4>
+            </div>
+            <br>
         <thead>
             <tr>
               <th colspan="3" class="text-center">Khatian</th>
               <th colspan="2" class="text-center">Dag</th>
             </tr>
-            <tr>
+            <tr class="text-center">
                 <th>CS</th>
                 <th>SA</th>
                 <th>RS</th>
@@ -55,7 +63,7 @@
                 </tr>
           </thead>
           <tbody>
-                <tr>
+                <tr class="text-center">
                     <td>{{ $landowner_details->cs_khatian }}</td>
                     <td>{{ $landowner_details->sa_khatian }}</td>
                     <td>{{ $landowner_details->rs_khatian }}</td>
@@ -68,51 +76,65 @@
       <br>
 
       <table class="table table-bordered">
-        <thead>
+        <tbody>
             <tr>
-                <th>Total Land Amount of CS and SA Dag</th>
-                <td>{{ $landowner_details->cs_sa_dag }}</td>
-                <th>Total Land Amount of RS Dag</th>
-                <td>{{ $landowner_details->total_land_of_rs }}</td>
-                <th>RS Dag</th>
-                <td>{{ $landowner_details->rs_dag }}</td>
+                <th style="width: 300px;">Total Land Amount of CS and SA Dag</th>
+                <td colspan="2" class="text-center">{{ $landowner_details->cs_sa_dag }}</td>
+                <td>Percent</td>
             </tr>
-        </thead>      
+            <tr>
+                <th style="width: 300px;">Total Land Amount of RS Dag</th>
+                <td class="text-center">{{ $landowner_details->rs_dag }}</td>
+                <td class="text-center">{{ $landowner_details->total_land_of_rs }}</td>
+                <td>Percent</td>
+            </tr>
+        </tbody>      
     </table>
 
     <br>
     <table class="table table-bordered">
-        <thead>
+        <tbody>
             <tr>
-                <th>Total Land Amount of RS {{ $landowner_details->rs_dag }}</th>
-                <td>{{ $landowner_details->total_land_of_rs }}</td>
-                <th>Purchase of Land</th>
-                <td>{{ $landowner_details->purchase_of_land }}</td>
-                <th>Due</th>
-                <td>{{ $landowner_details->total_land_of_rs - $landowner_details->purchase_of_land }}</td>
+                <th style="width: 300px">Total Land Amount of RS {{ $landowner_details->rs_dag }} = </th>
+                <td class="text-center" style="width: 150px" >{{ $landowner_details->total_land_of_rs }}</td>
+                <td>Percent</td>
             </tr>
-        </thead>      
+            <tr>
+                <th style="width: 300px">Purchase of Land = </th>
+                <td class="text-center" style="width: 150px" >{{ $landowner_details->purchase_of_land }}</td>
+                <td>Percent</td>
+            </tr>
+            <tr>
+                <th style="width: 300px" class="text-right">Available = </th>
+                <td class="text-center" style="width: 150px" >{{ $landowner_details->total_land_of_rs - $landowner_details->purchase_of_land }}</td>
+                <td>Percent</td>
+            </tr>
+        </tbody>      
     </table>
     <br>
-    <table id="all-landowner" class="table table-bordered table-striped">
-        <thead>
+    <table id="all-landowner" class="table table-bordered">
+        <tbody>
             <tr>
-                <th>Total Land Amount</th>
-                <th>Per Percent Amount</th>
-                <th>Total Bigha Price</th>
-                <th>Total Amount</th>
-                </tr>
-          </thead>
-          <tbody>
-            <tr>
-                <td>{{ $landowner_details->purchase_of_land }}</td>
-                <td>{{ number_format($landowner_details->tp_land_price_percent) }}</td>
-                <td>{{ number_format($landowner_details->per_bigha_price) }}</td>
-                <td>{{ number_format($landowner_details->purchase_of_land * $landowner_details->tp_land_price_percent) }}</td>
+                <th style="width: 300px">Total Land Amount = </th>
+                <td style="width: 200px; text-align:center;">{{ $landowner_details->purchase_of_land }}</td>
+                <td>Percent</td>
             </tr>
-
-          </tbody>
-          
+            <tr>
+                <th style="width: 300px">Per Percent Amount = </th>
+                <td style="width: 200px; text-align:center;">{{ number_format($landowner_details->tp_land_price_percent) }}</td>
+                <td>TK</td>
+            </tr>
+            <tr>
+                <th style="width: 300px">Total Bigha Price = </th>
+                <td style="width: 200px; text-align:center;">{{ number_format($landowner_details->per_bigha_price) }}</td>
+                <td>TK</td>
+            </tr>
+            <tr>
+                <th style="width: 300px">Total Amount = </th>
+                <td style="width: 200px; text-align:center;">{{ number_format($landowner_details->purchase_of_land * $landowner_details->tp_land_price_percent) }}</td>
+                <td>TK</td>
+            </tr>
+          </tbody>          
       </table>
       <br>
 
@@ -128,15 +150,21 @@
             </tr>
       </thead>
       <tbody>
-        @foreach ($installment_details as $installment)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>1</td>
-            <td>{{ $installment->installment_date }}</td>
-            <td>{{ $installment->installment_amount }}</td>
-            <td></td>
-            <td></td>
-        </tr>
+          @php
+              $total_amount = $landowner_details->purchase_of_land * $landowner_details->tp_land_price_percent;
+          @endphp
+        @foreach ($installment_details as $key => $installment)
+        @php
+            $due_amount = $total_amount - $installment->installment_amount;
+        @endphp
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $loop->iteration }} Installment</td>
+                <td>{{ $installment->installment_date }}</td>
+                <td>{{ number_format($installment->installment_amount) }}</td>
+                <td></td>
+                <td></td>
+            </tr>
         @endforeach
       </tbody>
       

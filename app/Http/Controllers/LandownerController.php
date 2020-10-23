@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Landowner;
 use App\Project;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\DB;
 
 class LandownerController extends Controller
 {
