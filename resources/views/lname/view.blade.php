@@ -58,7 +58,7 @@
         // "info": true,
         //   "autoWidth": false,
         //   scrollX:'50vh', 
-          scrollY:'50vh',
+        //   scrollY:'50vh',
         // scrollCollapse: true,
     } );
 } );
