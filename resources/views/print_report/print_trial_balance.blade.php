@@ -18,7 +18,7 @@
       <br><br>
       <h3 class="text-center">{{ $trial_balance_details[0]->name }}</h3>
       <h3 class="text-center">Trial Balance (Fund Flow Statement)</h3>
-      <h3 class="text-center">For Financial Year 2019 to 2020</h3>
+      <h3 class="text-center">From {{ $from_dat }} to {{ $to_dat }}</h3>
     <br><br>
 
 
@@ -34,6 +34,9 @@
               </tr>
             </thead>
             <tbody>
+
+              @if(count($trial_balance_details))
+                  
                 @php $cr_sum = 0; $dr_sum = 0; @endphp
                 @foreach ($trial_balance_details as $item)
                  @php
@@ -67,6 +70,9 @@
                 </tr>
     
             </tbody>
+            @else
+            <h3>There is no data found</h3>
+           @endif  
           </table>
     </div>
 

@@ -21,11 +21,11 @@
                   <span>{{$projectDetails[0]->name}} <br/>  Profit & Loss A/C (Income Statement)</span>
                   <span></span>
                   {{-- <img src="../images/logo/acf-pf.png" alt="acf" style="width: 200px;height: 100px;margin-left: auto;margin-right: auto;"> --}}
-                  <span>For Financial Year 2019 - 2020</span>
+                  <span>From {{ $from_dat }} to {{ $to_dat }}</span>
                 </p>
               </div>
             <?php $total_income = 0; $total_profit_head = 0;$total_adj_tk = 0;?>
-            @if(count($data))
+            {{-- @if(count($data)) --}}
             <div style="width:900px">
               <div style="width:48%; float:right; margin:5px">
                     <table class="">
@@ -40,7 +40,7 @@
                         
                         <tr>
                         <td> Balance C/D </td>
-                        <td style="text-align:right;">{{ $data['total_income'] - $data['expen'][0]->total_expen }}</td>
+                        <td style="text-align:right;">{{ $total_income - $expen[0]->total_expen }}</td>
                         </tr>
                       </tbody>
             
@@ -56,14 +56,14 @@
                       </thead>
 
                       <tbody>
-                      @foreach ($data['profite_head'] as $item)
+                      @foreach ($profite_head as $item)
                       <?php $total_profit_head += $item->amount; ?>
                         <tr>
                           <td> {{$item->l_name}} </td>
                           <td style="text-align:right;">{{$item->amount }}</td>
                         </tr>
                       @endforeach 
-                      @foreach ($data['adjustment'] as $item)
+                      @foreach ($adjustment as $item)
                       <?php $total_profit_head += $item->amount; ?>
                         <tr>
                           <td> {{$item->particulars}} </td>
@@ -72,7 +72,7 @@
                       @endforeach 
                         <tr>
                           <td> Net Profit </td>
-                          <td style="text-align:right;"><u><?php echo $data['total_income'] - $data['expen'][0]->total_expen - $total_profit_head; ?></u></td>
+                          <td style="text-align:right;"><u><?php echo $total_income - ( $expen[0]->total_expen - $total_profit_head); ?></u></td>
                         </tr>  
                       </tbody>
                     </table>
@@ -81,16 +81,16 @@
               
               <div style="width:48%;float:left;margin-left:8px">
                 <p class="ptf-ln-3" style="width:66%; margin-top:10px!important;"><b>  Total</b></p>
-                <p style=""><u>{{ $data['total_income'] - $data['expen'][0]->total_expen }}</u></p>
+                <p style=""><u>{{ $total_income - $expen[0]->total_expen }}</u></p>
               </div>
               <div style="width:48%;float:right;margin-right:15px">
                 <p class="ptf-ln-3" style="width:66%; margin-top:10px!important;"><b>  Total</b></p>
-                <p style=""><u>{{ $data['total_income'] - $data['expen'][0]->total_expen }}</u></p>
+                <p style=""><u>{{ $total_income - $expen[0]->total_expen }}</u></p>
               </div>
             </div>
-            @else
+            {{-- @else
              <h3>There is no data found</h3>
-            @endif  
+            @endif   --}}
         <!-- table section end -->
         <div class="body-mid" style="padding-top: 25px;">
           <p style="text-align: center;font-size: 12px;line-height: .5;">"Please report to us within 48 hours if this statement is incorrect. Otherwise this statement will be considered to be confirmed by you."</p>

@@ -39,7 +39,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; From Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" required id="from_data" class="form-control" name="from_date" placeholder="From Date For Profit & Loss">
+                             <input type="text" required id="from_date" class="form-control" name="from_date" placeholder="From Date For Profit & Loss">
                           </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; To Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" required id="to_data" class="form-control" name="to_date" placeholder="To Date For Profit & Loss">
+                             <input type="text" required id="to_date" class="form-control" name="to_date" placeholder="To Date For Profit & Loss">
                           </div>
                         </div>
                     </div>
@@ -74,8 +74,8 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 $(document).ready(function() {
-    $( "#from_data" ).datepicker({dateFormat: 'yy-mm-dd'});
-    $( "#to_data" ).datepicker({dateFormat: 'yy-mm-dd'});
+    $( "#from_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+    $( "#to_date" ).datepicker({dateFormat: 'yy-mm-dd'});
     //$("#from_date").datepicker('show');
   } );
 
