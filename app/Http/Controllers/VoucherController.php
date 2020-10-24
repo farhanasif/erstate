@@ -141,8 +141,9 @@ class VoucherController extends Controller
             ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
             ->join('lnames', 'voucher_details.lname_id', '=', 'lnames.id')
             ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.cheque_no','vouchers.perticulers')
-            ->where('voucher_type', 'DR')
+            //->where('voucher_type', 'DR')
             ->get();
+        //dd($voucher_details);
 
             foreach($voucher_details as $dat){
                 $customData[]=[
@@ -285,14 +286,16 @@ class VoucherController extends Controller
                 //dd($voucher);
                 $voucher->project_id = $request->project_id_dr;
                 $voucher->bank_id = $request->bank;
+                $voucher->cheque_no = $request->cheque_no;
                 $voucher->perticulers = $request->perticulers;
                 $voucher->voucher_date = $request->journal_date;
                 $voucher->voucher_type = $request->lname_id_dr[$i] ? 'DR' : '';
                 $voucher->save();
 
                 $voucher = new Voucher;
-                $voucher->project_id = $request->project_id_dr;
+                $voucher->project_id = $request->project_id_cr;
                 $voucher->bank_id = $request->bank;
+                $voucher->cheque_no = $request->cheque_no;
                 $voucher->perticulers = $request->perticulers;
                 $voucher->voucher_date = $request->journal_date;
                 $voucher->voucher_type = $request->lname_id_cr[$i] ? 'CR' : '';

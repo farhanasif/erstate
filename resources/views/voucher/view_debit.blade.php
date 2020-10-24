@@ -66,7 +66,7 @@
         serverSide:true,
         "responsive": true,
         "autoWidth": false,
-        ajax:"{{url('allcreditvoucher/datatable')}}",
+        ajax:"{{url('alldebitvoucher/datatable')}}",
         columns:[
           { data: 'DT_RowIndex', name: 'DT_RowIndex' },
             { data: 'voucher_id', name: 'voucher_id' },

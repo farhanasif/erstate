@@ -149,12 +149,19 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Bank Name<span style="color: red;">*</span></label>
-                  <select name="bank" class="form-control">
+                  <select name="bank" class="form-control" id="bank_id">
                     <option value="">--select Bank--</option>
                     @foreach ($banks as $bank)
                         <option value="{{ $bank->id }}">{{ $bank->name }}</option>
                     @endforeach
                   </select>
+                </div>
+              </div>
+
+              <div class="col-md-6" id="show_checque_filed" style="display:none">
+                <div class="form-group">
+                  <label>Checque Number<span style="color: red;">*</span></label>
+                  <input type="text" class="form-control" name="cheque_no" id="checque_id">
                 </div>
               </div>
 
@@ -196,6 +203,18 @@
       $("#amount_dr").on("input", function () {
         var d = $(this).val();
         $('#amount_cr').val(d);
+      });
+
+      $(document).ready( function () {
+        $("#bank_id").on("click", function () {
+          var d='';
+         d = $('#bank_id').val();
+         //console.log(d);
+         if(d != 11 && d!=''){
+          document.getElementById("show_checque_filed").style.display = "block";
+          console.log(d);
+         }
+      });
       });
 
       

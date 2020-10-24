@@ -247,4 +247,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/balance-sheet/account','BalanceSheetController@index');
     Route::get('/print/balance-sheet','BalanceSheetController@printBalanceSheet');
 
+     // trial balance
+     Route::get('/trialbalance','TrialBlanceController@index');
+     Route::get('/print/trialbalance','TrialBlanceController@printTrialBalace');
+
 });
