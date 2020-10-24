@@ -18,9 +18,9 @@
             <div class="main-2" style="width: 798px!important; border-radius: 0px!important; padding: 0px!important;">
               <div class="body-top" >
                 <p class="ptf-ln-3">
-                  <span><br> Noboudoy Purbachoal City  <br/>  Balance Sheet</span>
+                  <span><br> {{ $projectDetails[0]->name }}  <br/>  Balance Sheet</span>
                   <span></span>
-                  <span>For Financial Year {{ $from_dat }} to {{ $to_dat }}</span>
+                  <span>From {{ $from_dat }} to {{ $to_dat }}</span>
                 </p>
               </div>
 
@@ -49,11 +49,11 @@
                     @endforeach
 
                     <tr>
-                      <td> Previous Years Profit Tk 20554154</td>
+                      <td> Previous Years Profit Tk </td>
                     </tr>
                     <tr>
-                      <td> This Year Profit Tk {{ $this_year_profit }}</td>
-                      <td> {{ $this_year_profit + 20554154}} </td>
+                      <td> This Year Profit Tk </td>
+                      <td> {{ $this_year_profit}} </td>
                     </tr>
 
                   </tbody>
@@ -99,7 +99,7 @@
               
               <div style="width:50%;float:left;margin-left:10px">
                 <p class="ptf-ln-3" style="width:66%; margin-top:10px!important;"><b>  Total</b></p>
-                <p style=""><u></u> {{ $liability_sum + 52348145 }} </p>
+                <p style=""><u></u> {{ $liability_sum +  $this_year_profit }} </p>
               </div>
               
               <div style="width:48%;float:right;margin-right:15px; margin-top:-40px;">

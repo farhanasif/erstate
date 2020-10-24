@@ -20,11 +20,11 @@
                   <span>{{$projectDetails[0]->name}} <br/>  Trading Account</span>
                   <span></span>
                   {{-- <img src="../images/logo/acf-pf.png" alt="acf" style="width: 200px;height: 100px;margin-left: auto;margin-right: auto;"> --}}
-                  <span>For Financial Year 2019 to 2020</span>
+                  <span>From {{ $from_dat }} to {{ $to_dat }}</span>
                 </p>
               </div>
               <?php $total_income = 0; $total_expen = 0;?>
-              @if(count($data))
+              {{-- @if(count($data)) --}}
             <div style="width:900px">
               <div style="width:48%; float:right; margin:5px">
                     <table class="">
@@ -36,7 +36,7 @@
                       </thead>
                 
                       <tbody>
-                      @foreach ($data['income'] as $item)
+                      @foreach ($income as $item)
                         <?php ($item->l_name == "Sales Commission" ? $total_income -= $item->amount : $total_income += $item->amount); ?>
                         
                         <tr>
@@ -58,7 +58,7 @@
                       </thead>
 
                       <tbody>
-                      @foreach ($data['expen'] as $item)
+                      @foreach ($expen as $item)
                       <?php $total_expen += $item->amount; ?>
                         <tr>
                           <td> {{$item->l_name}} </td>
@@ -83,9 +83,9 @@
                 <p style="float:right;margin-right:30px"><u><?php echo $total_income; ?></u>  </p>
               </div>
             </div>
-            @else
+            {{-- @else
              <h3>There is no data found</h3>
-             @endif
+             @endif --}}
         <!-- table section end -->
         <div class="body-mid" style="padding-top: 25px;">
           <p style="text-align: center;font-size: 12px;line-height: .5;">"Please report to us within 48 hours if this statement is incorrect. Otherwise this statement will be considered to be confirmed by you."</p>
