@@ -32,6 +32,6 @@ class TrialBlanceController extends Controller
                    ->get();
         // dd($data);
         
-        return view('print_report.print_trial_balance',compact('data'));
+        return view('print_report.print_trial_balance',$data);
     }
 }

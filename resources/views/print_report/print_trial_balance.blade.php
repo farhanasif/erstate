@@ -16,7 +16,7 @@
     <button onclick="print_current_page()">Print this page</button>
 
       <br><br>
-      <h3 class="text-center">{{ $data[0]->name }}</h3>
+      <h3 class="text-center">{{ $trial_balance_details[0]->name }}</h3>
       <h3 class="text-center">Trial Balance (Fund Flow Statement)</h3>
       <h3 class="text-center">For Financial Year 2019 to 2020</h3>
     <br><br>
@@ -35,7 +35,7 @@
             </thead>
             <tbody>
                 @php $cr_sum = 0; $dr_sum = 0; @endphp
-                @foreach ($data as $item)
+                @foreach ($trial_balance_details as $item)
                  @php
                  if ($item->voucher_type == 'CR') {
                   $cr_sum+= $item->amount;
