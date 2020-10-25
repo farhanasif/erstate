@@ -22,8 +22,8 @@
             <tr>
               <th>SL NO</th>
               <th>Voucher No</th>
-              <th>Perticulers</th>
               <th>Project Name</th>
+              <th>Perticulers</th>
               <th>Made Of Payment</th>
               <th>CHQ. No</th>
               <th>Date</th>
