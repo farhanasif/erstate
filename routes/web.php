@@ -275,6 +275,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/installment/delete/{id}','InstallmentController@delete')->name('deleteInstallment');
 
     Route::get('/land-owner-data','InstallmentController@land_owner_data');
+
+    //Daily expenducture summary sheet
+    Route::get('/daily/expenditure_summery/sheet','DailyExpenditureSummarySheetController@dailyExpenditure');
     
 
 });
