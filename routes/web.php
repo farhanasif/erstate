@@ -213,6 +213,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/journalvoucher','VoucherController@journalvoucher')->name('journalvoucher');
     Route::post('/save_journal','VoucherController@save_journal')->name('save_journal');
 
+
+    //--------CONTRA VOUCHER ROUTES------//
+    Route::get('/contravoucher/create','ContraVoucherController@create')->name('createContraVoucher');
+    Route::get('/contravoucher/all','ContraVoucherController@index')->name('allContraVoucher');
+    Route::post('/contravoucher/store','ContraVoucherController@store')->name('storeContraVoucher');
+    Route::get('/contravoucher/edit/{id}','ContraVoucherController@edit')->name('editContraVoucher');
+    Route::post('/contravoucher/update/{id}', 'ContraVoucherController@update')->name('updateContraVoucher');
+    Route::get('/contravoucher/delete/{id}','ContraVoucherController@delete')->name('deleteContraVoucher');
+
     //---------Total project count---------//
     Route::get('/total/project','ProjectController@totalProject');
 

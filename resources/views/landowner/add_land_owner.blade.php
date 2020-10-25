@@ -20,7 +20,7 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ route('storeLandowner') }}" method="POST">
+        <form action="{{ route('storeLandowner') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -332,13 +332,23 @@
                     @endif
                 </div>
             </div>
-    
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Deed Number: </label>
-                    <input type="number" name="deed_number" class="form-control" placeholder="Deed Number" value="{{ old('deed_number') }}">
+                    <input type="number" name="deed_number" class="form-control" placeholder="Deed Number ">
                     @if($errors->has('deed_number'))
                         <strong class="text-danger">{{ $errors->first('deed_number') }}</strong>
+                    @endif
+                </div>
+            </div>
+    
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Upload File</label>
+                    <input type="file" name="upload_file" class="form-control">
+                    @if($errors->has('upload_file'))
+                        <strong class="text-danger">{{ $errors->first('upload_file') }}</strong>
                     @endif
                 </div>
             </div>

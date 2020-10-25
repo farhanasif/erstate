@@ -8,6 +8,7 @@ use App\Landowner;
 use App\Project;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class LandownerController extends Controller
 {
@@ -78,6 +79,21 @@ class LandownerController extends Controller
         ]);
         
         $landowners = new Landowner;
+
+        $date = Carbon::now()->format("his")+rand(1000,9999);
+        //print_r ($request->file('image'));
+     
+        if ($image = $request->file('upload_file')){
+            $extension = $request->file('upload_file')->getClientOriginalExtension();
+            $imageName = $date.'.'.$extension;
+            $path = public_path('uploads/landowners/');
+            $image->move($path, $imageName);
+            $landowners->upload_file = $imageName;
+        }
+        else{
+            $landowners->upload_file = "Null";
+        }
+
         $landowners->file_no = $request->file_no;
         $landowners->project_id = $request->project_name;
         $landowners->name = $request->name;
@@ -125,7 +141,7 @@ class LandownerController extends Controller
 
         $data['landowner_details'] = DB::table('landowners as l')
         ->select('l.*','i.*')
-        ->join('installments as i','i.land_owner_id','=','l.id')
+        ->leftJoin('installments as i','i.land_owner_id','=','l.id')
         ->where( 'l.id', '=', $id)
         ->get();
         // dd( $data['landowner_details']);
@@ -168,6 +184,21 @@ class LandownerController extends Controller
         ]);
 
         $landowners = Landowner::find($id);
+
+        $date = Carbon::now()->format("his")+rand(1000,9999);
+        //print_r ($request->file('image'));
+     
+        if ($image = $request->file('upload_file')){
+            $extension = $request->file('upload_file')->getClientOriginalExtension();
+            $imageName = $date.'.'.$extension;
+            $path = public_path('uploads/landowners/');
+            $image->move($path, $imageName);
+            $landowners->upload_file = $imageName;
+        }
+        else{
+            $landowners->upload_file = "Null";
+        }
+
         $landowners->file_no = $request->file_no;
         $landowners->project_id = $request->project_name;
         $landowners->name = $request->name;
