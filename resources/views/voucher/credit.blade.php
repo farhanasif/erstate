@@ -72,6 +72,15 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Voucher No</label>
+                        <input type="text" class="form-control" name="voucher_no" id="voucher_no">
+                        @if($errors->has('voucher_no'))
+                          <strong class="text-danger">{{ $errors->first('voucher_no') }}</strong>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-md-6">
                   <div class="form-group">
                       <label>Perticulers</label>
                       <textarea name="perticulers" id="perticulers" cols="3" rows="3" class="form-control" placeholder="Perticulers"></textarea>
