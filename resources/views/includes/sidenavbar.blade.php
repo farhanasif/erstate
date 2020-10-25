@@ -718,13 +718,13 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('allContraVoucher') }}" class="nav-link">
                   <i class="far fa-dot-circle nav-icon text-red"></i>
                   <p> All Contra</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('createContraVoucher') }}" class="nav-link">
                   <i class="far fa-dot-circle nav-icon text-red"></i>
                   <p> Create Contra</p>
                 </a>

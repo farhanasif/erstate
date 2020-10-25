@@ -119,7 +119,7 @@
             </tbody>      
         </table>
         {{-- <br> --}}
-        <table id="all-landowner" class="table table-bordered" style="width: 55%; margin-left:5%;">
+        <table id="all-landowner" class="table table-bordered" style="width: 55%; margin-left:4.5%;">
             <tbody>
                 <tr>
                     <th style="width: 300px">Total Land  </th>
@@ -155,6 +155,7 @@
             </tr>
       </thead>
       <tbody>
+
           @php
               $total_amount = $landowner_details[0]->purchase_of_land * $landowner_details[0]->tp_land_price_percent;
               $due_amount = $total_amount;
@@ -167,7 +168,8 @@
         @endphp
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ date('j F, Y', strtotime($installment->installment_date,3)) }} </td>
+                {{-- <td>{{ date('j F, Y', strtotime($installment->installment_date,3)) }} </td> --}}
+                <td>{{ $installment->installment_date ? $installment->installment_date : '' }} </td>
                 <td style="width: 200px; text-align:right;">{{ number_format($installment->installment_amount) }}</td>
                 <td style="width: 200px; text-align:right;">{{ number_format($combined_amount) }}</td>
                 <td style="width: 200px; text-align:right;">{{ number_format($due_amount)}}</td>
