@@ -42,8 +42,8 @@
                 <td>{{ $contra_voucher->bank_name }}</td>
                 <td>{{ $contra_voucher->check_no }}</td>
                 <td> {{ date('j F, Y', strtotime($contra_voucher->voucher_date,3)) }}</td>
-                <td>{{ number_format($contra_voucher->amount) }}</td>
-                <td>{{ number_format($contra_voucher->amount) }}</td>
+                <td>{{ number_format($contra_voucher->amount_type == 'DR' ? $contra_voucher->amount : 0 ) }}</td>
+                <td>{{ number_format($contra_voucher->amount_type == 'CR' ? $contra_voucher->amount : 0) }}</td>
                 <td>
                     <div style="width: 100px; display: block;">
                         <a href="{{ route('editContraVoucher',$contra_voucher->id) }}" class="btn btn-info btn-xs" title="Edit"><i class="far fa-edit"></i></a>
