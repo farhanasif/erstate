@@ -16,11 +16,10 @@ class InstallmentController extends Controller
     {
         $installments = DB::table('installments as ins')
         ->select('ins.*', 'p.name as project_name','p.id as p_id')
-        ->sum('ins.installment_amount as total_installment_amount')
         ->join('projects as p','p.id','=','ins.project_id')
         ->get();
 
-        dd($installments);
+        // dd($installments);
         return view('installment.all_installment',compact('installments'));
     }
     public function create()
