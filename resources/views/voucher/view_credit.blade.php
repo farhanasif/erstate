@@ -22,6 +22,7 @@
                 <th>SL</th>
                 {{-- <th>Voucher Id</th> --}}
                 <th>Voucher Date</th>
+                <th>Voucher No</th>
                 <th>Ledger Name</th>
                 <th>Bank Name</th>
                 <th>Checque No</th>
@@ -64,6 +65,7 @@ $(document).ready( function () {
         { data: 'DT_RowIndex', name: 'DT_RowIndex' },
         // { data: 'voucher_id', name: 'voucher_id' },
         { data: 'voucher_date', name: 'voucher_date' },
+        { data: 'voucher_number', name: 'voucher_number' },
         { data: 'lname', name: 'lname' },
         { data: 'bank_name', name: 'bank_name' },
         { data: 'cheque_no', name: 'cheque_no' },

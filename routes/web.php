@@ -278,6 +278,11 @@ Route::middleware('auth')->group(function () {
 
     //Daily expenducture summary sheet
     Route::get('/daily/expenditure_summery/sheet','DailyExpenditureSummarySheetController@dailyExpenditure');
+    Route::get('/print/daily/expenditure_summery/sheet','DailyExpenditureSummarySheetController@printDailyExpenditure');
+
+    //Daily Income summary sheet
+    Route::get('/daily/income_summery/sheet','DailyIncomeSummarySheetController@dailyIncome');
+    Route::get('/print/daily/income_summery/sheet','DailyIncomeSummarySheetController@printDailyIncome');
     
 
 });
