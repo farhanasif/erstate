@@ -23,7 +23,7 @@
               <th>SL NO</th>
               <th>Project Name</th>
               <th>Installment Amount</th>
-              <th>Installment Date</th>
+              {{-- <th>Installment Date</th> --}}
               <th>Action</th>
             </tr>
           </thead>
@@ -32,10 +32,10 @@
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $installment->project_name }}</td>
-                <td>{{ number_format($installment->installment_amount) }}</td>
-                <td>{{ $installment->installment_date }}</td>
+                <td>{{ number_format($installment->total_amount) }}</td>
+                {{-- <td>{{ $installment->installment_date }}</td> --}}
                 <td>
-                    <div style="width: 150px; display: block;">
+                    <div style="width: 50px; display: block;">
                         <a href="{{ route('editInstallment',$installment->id) }}" class="btn btn-info btn-xs" title="Edit"><i class="far fa-edit"></i></a>
                         <a href="{{ url('deleteInstallment',$installment->id) }}" class="btn btn-danger btn-xs" title="Delete"><i class="far fa-trash-alt"></i></a>
                     </div>

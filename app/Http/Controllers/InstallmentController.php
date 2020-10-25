@@ -14,11 +14,16 @@ class InstallmentController extends Controller
 {
     public function index()
     {
-        $installments = DB::table('installments as ins')
-        ->select('ins.*', 'p.name as project_name','p.id as p_id')
-        ->join('projects as p','p.id','=','ins.project_id')
-        ->get();
+        // $installments = DB::table('installments as ins')
+        // ->select('ins.*', 'p.name as project_name','p.id as p_id')
+        // ->join('projects as p','p.id','=','ins.project_id')
+        // ->get();
 
+        $installments = DB::select("SELECT installments.*,SUM(installments.installment_amount) AS total_amount,projects.name AS project_name
+        FROM installments
+        INNER JOIN landowners ON landowners.id = installments.land_owner_id
+        INNER JOIN projects ON projects.id = installments.project_id
+        GROUP BY installments.project_id");
         // dd($installments);
         return view('installment.all_installment',compact('installments'));
     }
