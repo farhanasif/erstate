@@ -46,8 +46,8 @@
     $('#all-ltypes').DataTable( {
         "info": true,
           "autoWidth": false,
-          scrollX:'50vh', 
-          scrollY:'50vh',
+          // scrollX:'50vh', 
+          // scrollY:'50vh',
         scrollCollapse: true,
     } );
 } );
