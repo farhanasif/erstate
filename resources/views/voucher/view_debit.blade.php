@@ -42,36 +42,36 @@
 
 @section('custom_js')
 <script>
-$(document).ready(function() {
-    $('#all-dbvoucher').DataTable( {
-    "info": true,
-    "autoWidth": false,
-    // scrollX:'50vh',
-    scrollY:'50vh',
-    scrollCollapse: true,
-    } );
-});
+// $(document).ready(function() {
+//     $('#all-dbvoucher').DataTable( {
+//     "info": true,
+//     "autoWidth": false,
+//     // scrollX:'50vh',
+//     scrollY:'50vh',
+//     scrollCollapse: true,
+//     } );
+// });
 
 $(document).ready( function () {
-$('#all-ltypes').DataTable({
-processing:true,
-serverSide:true,
-"responsive": true,
-"autoWidth": false,
-ajax:"{{url('alldebitvoucher/datatable')}}",
-columns:[
-{ data: 'DT_RowIndex', name: 'DT_RowIndex' },
-{ data: 'voucher_id', name: 'voucher_id' },
-{ data: 'voucher_date', name: 'voucher_date' },
-{ data: 'lname', name: 'lname' },
-{ data: 'bank_name', name: 'bank_name' },
-{ data: 'cheque_no', name: 'cheque_no' },
-{ data: 'amount', name: 'amount'},
-{ data: 'project_name', name: 'project_name'},
-{ data: 'perticulers', name: 'perticulers'},
-{ data: 'action', name: 'action' }
-]
-});
+    $('#all-dbvoucher').DataTable({
+    processing:true,
+    serverSide:true,
+    "responsive": true,
+    "autoWidth": false,
+    ajax:"{{url('alldebitvoucher/datatable')}}",
+    columns:[
+        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+        // { data: 'voucher_id', name: 'voucher_id' },
+        { data: 'voucher_date', name: 'voucher_date' },
+        { data: 'lname', name: 'lname' },
+        { data: 'bank_name', name: 'bank_name' },
+        { data: 'cheque_no', name: 'cheque_no' },
+        { data: 'amount', name: 'amount'},
+        { data: 'project_name', name: 'project_name'},
+        { data: 'perticulers', name: 'perticulers'},
+        // { data: 'action', name: 'action' }
+        ]
+    });
 });
 </script>
 @endsection

@@ -42,7 +42,7 @@ class VoucherController extends Controller
         ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
         // ->where('voucher_type', 'CR')
         ->get();
-
+        //dd($voucher_details);
         foreach($voucher_details as $dat){
             $customData[]=[
                 'voucher_id'=>$dat->voucher_id,
