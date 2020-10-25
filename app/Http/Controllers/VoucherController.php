@@ -39,7 +39,7 @@ class VoucherController extends Controller
         ->join('projects', 'vouchers.project_id', '=', 'projects.id')
         ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
         ->join('lnames', 'voucher_details.lname_id', '=', 'lnames.id')
-        ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no')
+        ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.perticulers','vouchers.cheque_no','vouchers.voucher_number')
         ->where('voucher_type', 'CR')
         ->get();
         //dd($voucher_details);
@@ -53,6 +53,7 @@ class VoucherController extends Controller
                 'amount'=>$dat->amount,
                 'project_name'=>$dat->project_name,
                 'perticulers'=>$dat->perticulers,
+                'voucher_number'=>$dat->voucher_number,
 
             ];
         }
@@ -141,7 +142,7 @@ class VoucherController extends Controller
             ->join('projects', 'vouchers.project_id', '=', 'projects.id')
             ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
             ->join('lnames', 'voucher_details.lname_id', '=', 'lnames.id')
-            ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.cheque_no','vouchers.perticulers')
+            ->select('voucher_details.*', 'lnames.name as lname', 'banks.name as bank_name', 'projects.name as project_name', 'vouchers.voucher_date', 'vouchers.cheque_no','vouchers.perticulers','vouchers.voucher_number')
             ->where('voucher_type', 'DR')
             ->get();
         //dd($voucher_details);
@@ -150,6 +151,7 @@ class VoucherController extends Controller
                 $customData[]=[
                     'voucher_id'=>$dat->voucher_id,
                     'voucher_date'=>$dat->voucher_date,
+                    'voucher_number'=>$dat->voucher_number,
                     'lname'=>$dat->lname,
                     'bank_name'=>$dat->bank_name,
                     'cheque_no'=>$dat->cheque_no,
@@ -205,6 +207,7 @@ class VoucherController extends Controller
             $voucher->perticulers = $request->perticulers;
             $voucher->voucher_type = 'DR';
             $voucher->voucher_date = $request->voucher_date;
+            $voucher->voucher_number = $request->voucher_no;
             $voucher->save();
 
             for($i = 0; $i < $ledger_count; $i++){

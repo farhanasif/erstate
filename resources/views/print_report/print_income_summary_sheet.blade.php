@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" media="all" href="{{ URL::to('css/report_print.css') }}" />
 @endsection
 
-@section('breadcrumb-title', 'Daily Expenditure Summary Sheet')
+@section('breadcrumb-title', 'Daily Income Summary Sheet')
 
     <!-- Main content -->
     <section class="content">
@@ -17,7 +17,7 @@
             
                 <div class="card-body">
                 <button class="text-right text-warning" onclick="print_current_page()">Print this page</button>
-                  <h5 style="text-align:center">Noboudoy Purbachal City<br/>Daily Expenditure Summary Sheet</h5><p style="text-align:center">For Financial Year 2019-2020</p>
+                  <h5 style="text-align:center">Noboudoy Purbachal City<br/>Daily Income Summary Sheet</h5><p style="text-align:center">For Financial Year 2019-2020</p>
                 </div>
             
               <!-- /.card-header -->
@@ -27,9 +27,9 @@
                     <tr>
                       <th style="width: 10px">Serial No</th>
                       <th style="width: 10px">Voucher No</th>
-                      <th style="width: 40px">Head Of Expenditure</th>
+                      <th style="width: 40px">Head Of Income</th>
                       <th style="width: 10px">Cash</th>
-                      <th style="width: 20px">Bamk</th>
+                      <th style="width: 20px">Bank</th>
                       <th style="width: 10px">Total</th>
                     </tr>
                   </thead>
@@ -107,7 +107,6 @@ function print_current_page()
     {
       window.print();
     }
-
 </script>
 
 @endsection

@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" media="all" href="{{ URL::to('css/report_print.css') }}" />
 @endsection
 
-@section('breadcrumb-title', 'Daily Expenditure Summary Sheet')
+@section('breadcrumb-title', 'Daily Income Summary Sheet')
 
         <!-- Main content -->
         <section class="content">

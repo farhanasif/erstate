@@ -786,6 +786,18 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a href="{{ url('/daily/expenditure_summery/sheet') }}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon text-brown"></i>
+                      <p> Daily Expenditure Summary</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{url('daily/income_summery/sheet')}}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon text-brown"></i>
+                      <p> Daily Income Summary</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a href="#" class="nav-link">
                       <i class="far fa-dot-circle nav-icon text-brown"></i>
                       <p> Cost Of Revenue</p>
