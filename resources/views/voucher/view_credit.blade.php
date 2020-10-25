@@ -31,21 +31,7 @@
                 {{-- <th>Action</th> --}}
             </tr>
         </thead>
-        {{-- <tbody>
-            @foreach ($voucher_details as $vd)
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                {{-- <td>{{ $vd->voucher_id }}</td> --}}
-                {{-- <td>{{ $vd->voucher_date }}</td>
-                <td>{{ $vd->lname }}</td>
-                <td>{{ $vd->bank_name }}</td>
-                <td>{{ $vd->cheque_no }}</td>
-                <td>{{ number_format($vd->amount) }}</td>
-                <td>{{ $vd->project_name }}</td>
-                <td>{{ $vd->perticulers }}</td> --}}
-            {{-- </tr>
-          @endforeach --}}
-        {{-- </tbody>  --}}
+        
     </table>
 </div>
 <!-- /.card-body -->
@@ -57,36 +43,36 @@
 
 @section('custom_js')
 <script>
-    $(document).ready(function() {
-        $('#all-ltypes').DataTable( {
-        "info": true,
-        "autoWidth": false,
-        // scrollX:'50vh',
-        scrollY:'50vh',
-        scrollCollapse: true,
-        } );
-    });
+    // $(document).ready(function() {
+    //     $('#all-ltypes').DataTable( {
+    //     "info": true,
+    //     "autoWidth": false,
+    //     // scrollX:'50vh',
+    //     scrollY:'50vh',
+    //     scrollCollapse: true,
+    //     } );
+    // });
 
 $(document).ready( function () {
-$('#all-ltypes').DataTable({
-processing:true,
-serverSide:true,
-"responsive": true,
-"autoWidth": false,
-ajax:"{{url('allcreditvoucher/datatable')}}",
-columns:[
-{ data: 'DT_RowIndex', name: 'DT_RowIndex' },
-{ data: 'voucher_id', name: 'voucher_id' },
-{ data: 'voucher_date', name: 'voucher_date' },
-{ data: 'lname', name: 'lname' },
-{ data: 'bank_name', name: 'bank_name' },
-{ data: 'cheque_no', name: 'cheque_no' },
-{ data: 'amount', name: 'amount'},
-{ data: 'project_name', name: 'project_name'},
-{ data: 'perticulers', name: 'perticulers'},
-{ data: 'action', name: 'action' }
-]
-});
+    $('#all-ltypes').DataTable({
+    processing:true,
+    serverSide:true,
+    "responsive": true,
+    "autoWidth": false,
+    ajax:"{{url('allcreditvoucher/datatable')}}",
+    columns:[
+        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+        // { data: 'voucher_id', name: 'voucher_id' },
+        { data: 'voucher_date', name: 'voucher_date' },
+        { data: 'lname', name: 'lname' },
+        { data: 'bank_name', name: 'bank_name' },
+        { data: 'cheque_no', name: 'cheque_no' },
+        { data: 'amount', name: 'amount'},
+        { data: 'project_name', name: 'project_name'},
+        { data: 'perticulers', name: 'perticulers'},
+        // { data: 'action', name: 'action' }
+        ]
+    });
 });
 </script>
 @endsection
