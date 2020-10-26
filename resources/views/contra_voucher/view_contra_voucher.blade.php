@@ -22,8 +22,8 @@
             <tr>
               <th>SL NO</th>
               <th>Voucher No</th>
-              <th>Perticulers</th>
               <th>Project Name</th>
+              <th>Perticulers</th>
               <th>Made Of Payment</th>
               <th>CHQ. No</th>
               <th>Date</th>
@@ -40,7 +40,7 @@
                 <td>{{ $contra_voucher->project_name }}</td>
                 <td>{{ $contra_voucher->perticulers }}</td>
                 <td>{{ $contra_voucher->bank_name }}</td>
-                <td>{{ $contra_voucher->check_no }}</td>
+                <td>{{ $contra_voucher->bank_id == 11 ? '' : $contra_voucher->check_no }}</td>
                 <td> {{ date('j F, Y', strtotime($contra_voucher->voucher_date,3)) }}</td>
                 <td>{{ number_format($contra_voucher->amount_type == 'DR' ? $contra_voucher->amount : 0 ) }}</td>
                 <td>{{ number_format($contra_voucher->amount_type == 'CR' ? $contra_voucher->amount : 0) }}</td>

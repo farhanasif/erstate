@@ -15,7 +15,7 @@ class ContraVoucherController extends Controller
         $contra_vouchers = DB::table('contras as c')
         ->join('projects as p', 'c.project_id', '=', 'p.id')
         ->join('banks as b', 'c.bank_id', '=', 'b.id')
-        ->select('c.*', 'p.name as project_name', 'b.name as bank_name')
+        ->select('c.*', 'p.name as project_name', 'b.name as bank_name','b.id as bank_id')
         ->get();
 
         return view('contra_voucher.view_contra_voucher',compact('contra_vouchers'));
@@ -45,7 +45,7 @@ class ContraVoucherController extends Controller
         $contras->project_id = $request->project_name;
         $contras->bank_id = $request->bank_id_dr;
         // $contras->bank_id_cr = $request->bank_id_cr;
-        $contras->check_no = $request->check_no;
+        $contras->check_no = $request->bank_id_dr == 11 ?'' : $request->check_no;
         $contras->voucher_no = $request->voucher_no;
         $contras->voucher_date = $request->voucher_date;
         $contras->amount = $request->amount;
@@ -57,7 +57,8 @@ class ContraVoucherController extends Controller
         $contras->project_id = $request->project_name;
         // $contras->bank_id_dr = $request->bank_id_dr;
         $contras->bank_id = $request->bank_id_cr;
-        $contras->check_no = $request->check_no;
+        // $contras->check_no = $request->check_no;
+        $contras->check_no = $request->bank_id_cr == 11 ? '' : $request->check_no;
         $contras->voucher_no = $request->voucher_no;
         $contras->voucher_date = $request->voucher_date;
         $contras->amount = $request->amount;
