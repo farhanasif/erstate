@@ -20,6 +20,11 @@ class TrialBlanceController extends Controller
         $from_date = date('Y-m-d 00:00:00', strtotime($request->from_date));
         $to_date = date('Y-m-d 00:00:00', strtotime($request->to_date));
 
+        // dd($from_date);
+
+        $data['projectDetails']=DB::select('select * from projects where id='.$project_id);
+         // dd($data['projectDetails']);
+
         $data['from_dat'] = $from_date = date('Y-m-d ', strtotime($request->from_date));
         $data['to_dat'] = $to_date = date('Y-m-d', strtotime($request->to_date));
 
@@ -31,7 +36,7 @@ class TrialBlanceController extends Controller
                    ->where( 'p.id', '=', $project_id)
                    ->whereBetween('v.voucher_date',[$from_date,$to_date])
                    ->get();
-                //    dd($data['trial_balance_details']);   
+                   // dd($data['trial_balance_details']);   
 
         return view('print_report.print_trial_balance',$data);
     }

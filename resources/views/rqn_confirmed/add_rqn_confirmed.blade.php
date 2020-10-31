@@ -20,7 +20,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Project Name</label>
-                        <select name="project_name" id="" class="form-control">
+                        <select name="project_name" id="" class="form-control select2bs4">
                             <option value="">--select--</option>
                             @foreach ($projects as $project)
                                 <option value="{{ $project->id }}">{{ $project->name }}</option>
@@ -35,7 +35,7 @@
                   <div class="col-md-4">
                       <div class="form-group">
                           <label>Employee name</label>
-                          <select name="employee_name" id="" class="form-control">
+                          <select name="employee_name" id="" class="form-control select2bs4">
                               <option value="">--select--</option>
                               @foreach ($employees as $employee)
                                 <option value="{{ $employee->id }}"> {{ $employee->name }}</option>
@@ -113,7 +113,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     {{-- <label></label> --}}
-                                    <select name="item_name[]" class="form-control" id="">
+                                    <select name="item_name[]" class="form-control select2bs4" id="">
                                         <option value="">--Select item name</option>
                                         @foreach ($item_names as $item_name)
                                             <option value=" {{ $item_name->id }}">{{ $item_name->item_name }}</option>
@@ -218,6 +218,11 @@
   @section('custom_js')
 
   <script>
+    //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+      
       $(document).ready(function() {
         var i=1;
 

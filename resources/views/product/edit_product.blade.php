@@ -23,7 +23,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Project Name</label>
-                      <select name="project_name" class="form-control">
+                      <select name="project_name" class="form-control select2bs4">
                         <option value="">--select--</option>
                         @foreach ($projects as $project)
                             <option <?= $product->project_id == $project->id ? 'selected' : ''?>  value="{{ $project->id }}">{{ $project->name }}</option>
@@ -39,7 +39,7 @@
                     <div class="form-group">
                       <label>Flat Type</label>
                       {{-- <input type="text" name="flat_type" class="form-control" placeholder="Flat Type"> --}}
-                      <select name="flat_type" id="" class="form-control">
+                      <select name="flat_type" id="" class="form-control select2bs4">
                         <option value="">--Select Flat Type--</option>
                         <option <?= $product->flat_type == 'A' ? 'selected' : ''?>  value="A">A</option>
                         <option <?= $product->flat_type == 'B' ? 'selected' : ''?>  value="B">B</option>
@@ -64,7 +64,7 @@
                     <div class="form-group">
                       <label>Floor Number</label>
                       {{-- <input type="number" name="floor_number" class="form-control" placeholder="Floor Number"> --}}
-                      <select name="floor_number" id="" class="form-control">
+                      <select name="floor_number" id="" class="form-control select2bs4">
                         <option value="">--Select Floor Number</option>
                         <option <?= $product->floor_number == '1st' ? 'selected' : ''?> value="1st">1st</option>
                         <option <?= $product->floor_number == '2nd' ? 'selected' : ''?> value="2nd">2nd</option>
@@ -224,4 +224,85 @@
     </div><!-- /.container-fluid -->
   </section>
 
+  @endsection
+
+
+  @section('custom_js')
+     <script>
+
+          //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+
+      $("#unit_price").on("input", function () {
+        var d = $('#flat_size').val()*$(this).val();
+        $('#total_flat_price').val(d);
+    });
+
+      $("#flat_size").on("input", function () {
+        var d = $('#unit_price').val()*$(this).val();
+        $('#total_flat_price').val(d);
+    });
+
+    
+    $("#utility_charge").on("input", function () {
+       calculate();
+    });
+    $("#additional_work_charge").on("input", function () {
+      calculate();
+   });
+   $("#car_parking_charge").on("input", function () {
+    calculate();
+  });
+  $("#other_charge").on("input", function () {
+    calculate();
+  });
+  $("#utility_charge").on("input", function () {
+    calculate();
+  });
+  $("#discount").on("input", function () {
+    calculate();
+  });
+  $("#refund_additional_work_charge").on("input", function () {
+    calculate();
+  });
+
+    function calculate(){
+      var adw = parseInt($('#additional_work_charge').val());
+      var cpc = parseInt($('#car_parking_charge').val());
+      var oc = parseInt($('#other_charge').val());
+      var tfp =parseInt($('#total_flat_price').val());
+      var uc =parseInt($('#utility_charge').val());
+      var dis =parseInt($('#discount').val());
+      var re =parseInt($('#refund_additional_work_charge').val());
+
+
+     
+      if (isNaN(adw)){
+        adw = 0;
+      }
+      if (isNaN(uc)){
+        uc = 0;
+      }
+      if (isNaN(cpc)){
+        cpc = 0;
+      }
+      if(isNaN(oc)){
+        oc =0;
+      }
+      if(isNaN(dis)){
+        dis =0;
+      }
+      if(isNaN(re)){
+        re =0;
+      }
+      
+   var total_charge = (tfp + adw+ cpc+oc +uc)-(dis+re);
+
+      
+      $('#net_total').val(total_charge);
+    }
+
+      </script>
   @endsection

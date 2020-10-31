@@ -233,6 +233,62 @@
       <!-- /.row -->
     </div><!--/. container-fluid -->
   </section>
+
+    <section class="content">
+    <div class="container-fluid">
+      <!-- Info boxes -->
+      <div class="row">
+      <div class="col-12">
+          <div class="info-box mb-3">
+            <div class="info-box-content">
+              <div class="card-header">
+                <h2>
+                    Quick Access
+                </h2>
+              </div>
+              <div class="card-body">
+                 <div class="row">
+                    <div class="col-12">
+                      <a href="#" type="button" class="btn bg-pink">Project</a>
+                      <a href="#" type="button" class="btn bg-green">Product</a>
+                      <a href="#" type="button" class="btn bg-yellow">Sell</a>
+                      <a href="#" type="button" class="btn bg-black">Purchase Requisition</a>
+                      <a href="#" type="button" class="btn bg-cyan">Purchase Order</a>
+                      <a href="#" type="button" class="btn bg-green">Vendor</a>
+                      <a href="#" type="button" class="btn bg-yellow">Employee</a>
+                      <a href="#" type="button" class="btn bg-black">Customer</a>
+                      <a href="#" type="button" class="btn bg-teal">Ledger</a>
+                      <a href="#" type="button" class="btn bg-green">Trial Balance</a>
+                    </div>
+
+                    <div class="col-12 mt-2">
+                      <a href="#" type="button" class="btn bg-orange">Cost Of Revenue </a>
+                      <a href="#" type="button" class="btn bg-purple">Profit Or Loss Account</a>
+                      <a href="#" type="button" class="btn bg-blue">Retained Earnings</a>
+                      <a href="#" type="button" class="btn bg-green">Fixed Asset Schedule</a>
+                      <a href="#" type="button" class="btn bg-blue">Balance sheet</a>
+                    </div>
+
+                    <div class="col-12 mt-2">
+                      <a href="#" type="button" class="btn bg-cyan">Cash Flow</a>
+                      <a href="#" type="button" class="btn bg-teal">Receive Payment</a>
+                      <a href="#" type="button" class="btn bg-teal">Ledger Type</a>
+                      <a href="#" type="button" class="btn bg-orange">Ledger Group</a>
+                      <a href="#" type="button" class="btn bg-lime">Debit Voucher</a>
+                      <a href="#" type="button" class="btn bg-purple">Credit Voucher</a>
+                      <a href="#" type="button" class="btn bg-orange">Journal Voucher</a>
+                      <a href="#" type="button" class="btn bg-orange">Contra Voucher</a>
+                    </div>
+              </div>
+              </div>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+      </div>
+    </div><!--/. container-fluid -->
+  </section>
 @endsection
 
 @section('custom_js')

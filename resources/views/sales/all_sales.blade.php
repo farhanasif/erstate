@@ -25,7 +25,7 @@
               <th>Project Name</th>
               <th>Product ID</th>
               <th>Employee Name</th>
-              <th>Customer Name</th>
+              <th>Sells Date</th>
               <th>Description</th>
               <th>Action</th>
             </tr>

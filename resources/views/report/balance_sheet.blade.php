@@ -9,6 +9,8 @@
 
 @section('breadcrumb-title', 'Balance Sheet')
 
+@section('content')
+<input type="text" id="page" value="blsr" hidden></input>
         <!-- Main content -->
         <section class="content">
 

@@ -10,7 +10,7 @@
 <div class="card card-success card-outline">
 <div class="card-header">
 <h3 class="card-title">All Credit Vouchers</h3>
-<a href="{{route('creditvoucher')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add Cr Voucher</a>
+<a href="{{route('createCreditVoucher')}}" class="btn btn-default float-sm-right"><i class="fas fa-plus"></i> Add Cr Voucher</a>
 @include('message')
 
 </div>

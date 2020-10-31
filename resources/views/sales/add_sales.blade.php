@@ -4,8 +4,8 @@
 @section('breadcrumb-title', 'Add Sell Information')
 
 @section('custom_css')
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css"> -->
 @endsection
 
 @section('content')
@@ -27,7 +27,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>Customer Name</label>
-                          <select name="customer_name" id="" class="form-control">
+                          <select name="customer_name" class="form-control select2bs4" id="" class="form-control">
                             <option value="">--select--</option>
                             @foreach ($customers as $customer)
                                 <option value="{{ $customer->id }}">{{ $customer->name }}</option>
@@ -42,7 +42,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>Project Name</label>
-                            <select name="project_name" id="" class="form-control">
+                            <select name="project_name" class="form-control select2bs4" id="" class="form-control">
                               <option value="">--select--</option>
                               @foreach ($projects as $project)
                                   <option value="{{ $project->id }}">{{ $project->name }}</option>
@@ -57,7 +57,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>Product Name</label>
-                          <select name="product_name" id="" class="form-control">
+                          <select name="product_name" class="form-control select2bs4" id="" class="form-control">
                             <option value="">--select--</option>
                             @foreach ($products as $product)
                                 <option value="{{ $product->id }}">{{ $product->id }}</option>
@@ -72,7 +72,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>Employee Name</label>
-                          <select name="employee_name" id="" class="form-control">
+                          <select name="employee_name" class="form-control select2bs4" id="" class="form-control">
                             <option value="">--select--</option>
                             @foreach ($employees as $employee)
                                 <option value="{{ $employee->id }}">{{ $employee->name }}</option>
@@ -97,7 +97,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                           <label>Status</label>
-                          <select name="status" id="" class="form-control">
+                          <select name="status" id="" class="form-control select2bs4">
                             <option value="">--select--</option>
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
@@ -136,10 +136,14 @@
 
   @section('custom_js')
 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
   <script>
+    //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
 
     $(function () {
       $( "#sales_date" ).datepicker({dateFormat: 'yy-mm-dd'});

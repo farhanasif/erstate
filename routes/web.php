@@ -38,13 +38,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/project/update-project/{id}', 'ProjectController@updateProject')->name('updateProject');
         Route::get('/project/delete-project/{id}', 'ProjectController@deleteProject')->name('deleteProject');
 
-
-        // ALL ADJUSTMENT ROUTES
-        Route::get('adjustment/all','AdjustmentController@index');
-        Route::get('adjustment/create','AdjustmentController@create');
-        Route::post('adjustment/store','AdjustmentController@store');
-
-
         // ALL LAND OWNERS ROUTES
         Route::get('/landowner/add-landowner', 'LandownerController@showAddLandowner')->name('showAddLandowner');
         Route::post('/landowner/store-landowner', 'LandownerController@storeLandowner')->name('storeLandowner');
@@ -193,34 +186,39 @@ Route::middleware('auth')->group(function () {
     Route::resource('initial', 'InitialController');
     Route::get('/initialledger', 'InitialController@ledgerIndex')->name('initialledger');
 
-    Route::get('/allcreditvoucher/datatable','VoucherController@allcreditvoucherDataTable');
+    Route::get('voucher/allcreditvoucher/datatable','VoucherController@allcreditvoucherDataTable')->name('allcreditvoucher');
+
+
+    Route::get('voucher/credit/all','VoucherController@index')->name('allCreditVoucher');
+    Route::get('/allcreditvoucher/datatable','VoucherController@allcreditvoucherDataTable');    
+    Route::get('voucher/credit/create','VoucherController@creditvoucher')->name('createCreditVoucher');
+    Route::post('voucher/credit/save','VoucherController@save_credit')->name('save_credit');
+
+    Route::get('voucher/debit/all','VoucherController@alldebitvoucher')->name('alldebitvoucher');
     Route::get('/alldebitvoucher/datatable','VoucherController@allDebitVoucherDataTable');
-
-    Route::get('/allcreditvoucher','VoucherController@index')->name('allcreditvoucher');
-    Route::get('/allcreditvoucher/datatable','VoucherController@allcreditvoucherDataTable');
-
-    Route::get('/creditvoucher','VoucherController@creditvoucher')->name('creditvoucher');
-    Route::post('/save_credit','VoucherController@save_credit')->name('save_credit');
-
-    Route::get('/alldebitvoucher','VoucherController@alldebitvoucher')->name('alldebitvoucher');
-    Route::get('/alldebitvoucher/datatable','VoucherController@allDebitVoucherDataTable');
-
-    Route::get('/debitvoucher','VoucherController@debitvoucher')->name('debitvoucher');
-    Route::post('/save_debit','VoucherController@save_debit')->name('save_debit');
+    Route::get('voucher/debit/create','VoucherController@debitvoucher')->name('debitvoucher');
+    Route::post('voucher/debit/save','VoucherController@save_debit')->name('save_debit');
 
     //--------JOURNAL ROUTES------//
-    Route::get('/alljournalvoucher','VoucherController@alljournalvoucher')->name('alljournalvoucher');
-    Route::get('/journalvoucher','VoucherController@journalvoucher')->name('journalvoucher');
-    Route::post('/save_journal','VoucherController@save_journal')->name('save_journal');
+    Route::get('voucher/journal/all','VoucherController@alljournalvoucher')->name('alljournalvoucher');
+    Route::get('voucher/journal/create','VoucherController@journalvoucher')->name('journalvoucher');
+    Route::post('voucher/journal/save','VoucherController@save_journal')->name('save_journal');
 
-
+    // ------- ALL ADJUSTMENT ROUTES ------- //
+    Route::get('voucher/adjustment/all','AdjustmentController@index')->name('allAdjustment');
+    Route::get('voucher/adjustment/create','AdjustmentController@create')->name('createAdjustment');
+    Route::post('voucher/adjustment/store','AdjustmentController@store')->name('storeAdjustment');
+    Route::get('voucher/adjustment/edit/{id}','AdjustmentController@edit')->name('editAdjustment');
+    Route::post('voucher/adjustment/update/{id}','AdjustmentController@update')->name('updateAdjustment');
+    Route::get('voucher/adjustment/delete/{id}','AdjustmentController@delete')->name('deleteAdjustment');
+    
     //--------CONTRA VOUCHER ROUTES------//
-    Route::get('/contravoucher/create','ContraVoucherController@create')->name('createContraVoucher');
-    Route::get('/contravoucher/all','ContraVoucherController@index')->name('allContraVoucher');
-    Route::post('/contravoucher/store','ContraVoucherController@store')->name('storeContraVoucher');
-    Route::get('/contravoucher/edit/{id}','ContraVoucherController@edit')->name('editContraVoucher');
-    Route::post('/contravoucher/update/{id}', 'ContraVoucherController@update')->name('updateContraVoucher');
-    Route::get('/contravoucher/delete/{id}','ContraVoucherController@delete')->name('deleteContraVoucher');
+    Route::get('voucher/contra/create','ContraVoucherController@create')->name('createContraVoucher');
+    Route::get('voucher/contra/all','ContraVoucherController@index')->name('allContraVoucher');
+    Route::post('voucher/contra/store','ContraVoucherController@store')->name('storeContraVoucher');
+    Route::get('voucher/contra/edit/{id}','ContraVoucherController@edit')->name('editContraVoucher');
+    Route::post('voucher/contra/update/{id}', 'ContraVoucherController@update')->name('updateContraVoucher');
+    Route::get('voucher/contra/delete/{id}','ContraVoucherController@delete')->name('deleteContraVoucher');
 
     //---------Total project count---------//
     Route::get('/total/project','ProjectController@totalProject');
@@ -259,20 +257,20 @@ Route::middleware('auth')->group(function () {
 
     //*********Report ***********/
     
-    Route::get('/trading/account','TradingAccountController@index');
+    Route::get('/report/account/trading','TradingAccountController@index');
     Route::get('print/trading/accounts','TradingAccountController@printTradingAccounts');
 
 
     // profit_loss
-    Route::get('/profit_loss/account','ProfitAndLossAccountController@index');
+    Route::get('/report/account/profit_loss','ProfitAndLossAccountController@index');
     Route::get('/print/profit_loss/account','ProfitAndLossAccountController@printProfitLossAccount');
 
     // balance-sheet
-    Route::get('/balance-sheet/account','BalanceSheetController@index');
+    Route::get('/report/account/balance-sheet','BalanceSheetController@index');
     Route::get('/print/balance-sheet','BalanceSheetController@printBalanceSheet');
 
     // trial balance
-    Route::get('/trialbalance','TrialBlanceController@index');
+    Route::get('/report/account/trialbalance','TrialBlanceController@index');
     Route::get('/print/trialbalance','TrialBlanceController@printTrialBalace');
 
     // ALL INSTALLMENT ROUTES 
@@ -286,11 +284,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/land-owner-data','InstallmentController@land_owner_data');
 
     //Daily expenducture summary sheet
-    Route::get('/daily/expenditure_summery/sheet','DailyExpenditureSummarySheetController@dailyExpenditure');
+    Route::get('/report/account/daily/expenditure_summery/sheet','DailyExpenditureSummarySheetController@dailyExpenditure');
     Route::get('/print/daily/expenditure_summery/sheet','DailyExpenditureSummarySheetController@printDailyExpenditure');
 
     //Daily Income summary sheet
-    Route::get('/daily/income_summery/sheet','DailyIncomeSummarySheetController@dailyIncome');
+    Route::get('/report/account/daily/income_summery/sheet','DailyIncomeSummarySheetController@dailyIncome');
     Route::get('/print/daily/income_summery/sheet','DailyIncomeSummarySheetController@printDailyIncome');
     
 

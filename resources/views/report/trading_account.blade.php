@@ -25,7 +25,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; Project Name</label>
                           <div class="col-md-12 col-sm-12">
-                         <select name="project_name" required id="project_name" class="form-control select2bs4">  
+                         <select class="form-control select2bs4" name="project_name" required id="project_name">  
                             <option value="">--select project name</option>
                           @foreach($projects as $project)
                             <option value="{{ $project->id }}">{{ $project->name }}</option>
@@ -78,11 +78,18 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+  
+
 $(document).ready(function() {
     $( "#from_date" ).datepicker({dateFormat: 'yy-mm-dd'});
     $( "#to_date" ).datepicker({dateFormat: 'yy-mm-dd'});
     //$("#from_date").datepicker('show');
   } );
+
+//Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
 
 
   // $('#to_data').change(function (e) {

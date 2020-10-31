@@ -15,9 +15,6 @@
     <div class="card-body">
 
         <table id="all-landowner" class="table table-bordered">
-            {{-- <div class="card-header card-success card-outline">
-                <h4 class="card-title text-center">General information</h4>
-            </div> --}}
             <h4 style="text-align: center;  border: 1px solid #808080; height:50px; padding-top:10px;" >General information</h4>
             <br>
             <tbody>
@@ -44,6 +41,50 @@
                 <tr>
                     <th style="width: 150px">Mobile</th>
                     <td>{{ $landowner_details[0]->mobile }}</td>                
+                </tr>
+                <tr>
+                    <th style="width: 150px">Email</th>
+                    <td>{{ $landowner_details[0]->email }}</td>                
+                </tr>
+            </tbody>
+          </table>
+          <br>
+
+          <table id="all-landowner" class="table table-bordered">
+            {{-- <div class="card-header card-success card-outline">
+                <h4 class="card-title text-center">General information</h4>
+            </div> --}}
+            <h4 style="text-align: center;  border: 1px solid #808080; height:50px; padding-top:10px;" >Others information</h4>
+            <br>
+            <tbody>
+                <tr>
+                    <th style="width: 200px">Mouza</th>
+                    <td>{{ $landowner_details[0]->mouza }}</td>
+                </tr>
+                <tr>
+                    <th style="width: 200px">PS</th>
+                    <td>{{ $landowner_details[0]->ps }}</td>
+                </tr>
+                <tr>
+                    <th style="width: 200px">Media Man</th>
+                    <td>{{ $landowner_details[0]->media_man }}</td>
+                </tr>
+                <tr>
+                    <th style="width: 200px">Investigation Person</th>
+                    <td>{{ $landowner_details[0]->investigation_person }}</td>
+                </tr>
+                <tr>
+                    <th style="width: 200px">District</th>
+                    <td>{{ $landowner_details[0]->district }} </td>
+                </tr>
+                <tr>
+                    <th style="width: 200px">Deed Number</th>
+                    <td>{{ $landowner_details[0]->deed_number }}</td>                
+                </tr>
+                <tr>
+                    <th style="width: 200px">Document</th>
+                    <td>
+                    <a style="width: 200px; display: block;" href="{{asset('/uploads/landowners/'.$landowner_details[0]->upload_file) }}">View Document</a></td>                
                 </tr>
             </tbody>
           </table>
@@ -99,7 +140,7 @@
     <br>
 
     <div class="row">
-        <table class="table table-bordered" style="width: 40%;">
+        <table class="table table-bordered" style="width: 40%; margin-left:.6%;">
             <tbody>
                 <tr>
                     <th style="width: 300px">Total Land Amount of RS {{ $landowner_details[0]->rs_dag }}  </th>
@@ -119,7 +160,7 @@
             </tbody>      
         </table>
         {{-- <br> --}}
-        <table id="all-landowner" class="table table-bordered" style="width: 55%; margin-left:4.5%;">
+        <table id="all-landowner" class="table table-bordered" style="width: 55%; margin-left:3.9%;">
             <tbody>
                 <tr>
                     <th style="width: 300px">Total Land  </th>
@@ -144,7 +185,9 @@
               </tbody>          
           </table>
     </div>
+    <br>
       <table id="all-landowner" class="table table-bordered table-striped">
+        <h4 style="text-align: center;  border: 1px solid #808080; height:50px; padding-top:10px;" >Installment information</h4> <br>
     <thead>
         <tr style="width: 200px; text-align:center;">
             <th>SL</th>

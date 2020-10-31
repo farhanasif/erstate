@@ -5,10 +5,17 @@
     <meta charset="UTF-8">
     <title>&nbsp;</title>
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/report_print.css') }}" />
+    <style>
+      @media print {
+          #myPrntbtn {
+              display :  none;
+          }
+      }
+    </style>
 
   </head>
   <body>
-    <button onclick="print_current_page()">Print this page</button>
+     <input id ="myPrntbtn" type="button" value="Print" onclick="window.print();" >
     <div class="lik-uftcl-ptf-main-body">
       <div class="lik-uftcl-ptf-print-body">
         <form>
@@ -105,9 +112,15 @@
 </div>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script>
-    function print_current_page()
-    {
-      window.print();
+   function printMyPage() {
+        //Get the print button
+        var printButton = document.getElementById("myPrntbtn");
+        //Hide the print button 
+        printButton.style.visibility = 'hidden';
+        //Print the page content
+        window.print()
+        //Show back the print button on web page 
+        printButton.style.visibility = 'visible';
     }
 </script>
 </body>

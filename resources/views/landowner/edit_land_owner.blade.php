@@ -36,7 +36,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Project Name</label>
-                                <select name="project_name" class="form-control" id="">
+                                <select name="project_name" class="form-control select2bs4" id="">
                                     <option value="">--select project name--</option>
                                     @foreach ($projects as $project)
                                         <option {{ $project->id ==  $landowner->project_id ? 'selected' : ''}} value="{{ $project->id }}">{{ $project->name }}</option>
@@ -345,12 +345,15 @@
 
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Upload Image</label>
-                    <input type="file" name="image" class="form-control">
+                    <label>Upload Document</label>
+                    <input type="file" name="upload_file" class="form-control">
                     {{-- <img src="" alt=""> --}}
-                    @if($errors->has('image'))
-                        <strong class="text-danger">{{ $errors->first('image') }}</strong>
+                    @if($errors->has('upload_file'))
+                        <strong class="text-danger">{{ $errors->first('upload_file') }}</strong>
                     @endif
+                     <br>
+                   <!--  <img style="width: 200px; height: 200px" src="{{asset('/uploads/landowners/'.$landowner->upload_file) }}"> -->
+                <a style="width: 200px; display: block;" href="{{asset('/uploads/landowners/'.$landowner->upload_file) }}">View Previous Document</a>
                 </div>
             </div>
         </div>
@@ -373,6 +376,11 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
   <script>
+
+          //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
 
       $( "#registration_date" ).datepicker({dateFormat: 'yy-mm-dd'});
 

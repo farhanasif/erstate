@@ -10,6 +10,7 @@
 @endsection
 
 @section('content')
+<input type="text" id="page" value="voucher_create" hidden></input>
 
 <section class="content">
     <div class="container-fluid">
@@ -28,7 +29,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Project</label>
-                      <select name="project_id" class="form-control">
+                      <select name="project_id" class="form-control select2bs4">
                         <option value="">--select project--</option>
                         @foreach ($projects as $project)
                             <option value="{{ $project->id }}">{{ $project->name }}</option>
@@ -42,7 +43,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Bank/Cash</label>
-                      <select name="bank_id" class="form-control">
+                      <select name="bank_id" class="form-control select2bs4">
                         <option value="">--select bank--</option>
                         @foreach ($banks as $bank)
                             <option value="{{ $bank->id }}">{{ $bank->name }}</option>
@@ -98,7 +99,7 @@
                         <div class="col-md-5">
                           <div class="form-group">
                             <label>Account Head Name</label>
-                            <select name="lname_id[]" class="form-control">
+                            <select name="lname_id[]" class="form-control select2bs4">
                               <option value="">--select account head--</option>
                               @foreach ($lnames as $lname)
                                   <option value="{{ $lname->id }}">{{ $lname->name }}</option>
@@ -145,6 +146,11 @@
   @section('custom_js')
 
   <script>
+    //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+      
       $(document).ready(function() {
         var i=1;
 

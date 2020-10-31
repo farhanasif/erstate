@@ -14,14 +14,14 @@
 
          @include('message')
         <!-- /.card-header -->
-        <form action="{{ url('adjustment/store') }}" method="POST">
+        <form action="{{ route('storeAdjustment') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Project Name</label>
-                      <select name="project_name" id="" class="form-control">
+                      <select name="project_name" id="" class="form-control select2bs4">
                         <option value="">--Select Project Name--</option>
                         @foreach ($projects as $project)
                             <option value="{{ $project->id }}"> {{ $project->name }}</option>
@@ -36,7 +36,7 @@
                   <div class="col-md-6">
                       <div class="form-group">
                           <label>Ledger Name</label>
-                          <select name="ledger_name" id="" class="form-control">
+                          <select name="ledger_name" id="" class="form-control select2bs4">
                             <option value="">--Select Project Name--</option>
                         @foreach ($ledger_names as $lname)
                             <option value="{{ $lname->id }}"> {{ $lname->name }}</option>
@@ -50,7 +50,7 @@
                   <div class="col-md-6">
                       <div class="form-group">
                           <label>Account Type</label>
-                          <select name="type" id="" class="form-control">
+                          <select name="type" id="" class="form-control select2bs4">
                             <option value="">--Select Project Name--</option>
                         @foreach ($ledger_groups as $type)
                             <option value="{{ $type->id }}"> {{ $type->name }}</option>
@@ -97,7 +97,7 @@
               </div>
               <div class="card-footer">
                  <button type="submit" class="btn btn-success ">Submit</button>
-                 <a href="{{ url('adjustment/all') }}" type="submit" class="btn btn-info">Back</a>
+                 <a href="{{ route('allAdjustment') }}" type="submit" class="btn btn-info">Back</a>
               </div>
         </form>
       </div>
@@ -106,3 +106,12 @@
   </section>
 
   @endsection
+  
+  @section('custom_js')
+  <script>
+    //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+  </script>
+  @endsection 

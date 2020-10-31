@@ -18,7 +18,8 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                <form role="form" action="#" method="get">
+                <form role="form" action="{{url('print/daily/expenditure_summery/sheet')}}" method="get">
+                @csrf
                     <div class="row">
                     
                     <div class="col-sm-4">
@@ -27,9 +28,9 @@
                           <div class="col-md-12 col-sm-12">
                          <select name="project_name" required id="project_name" class="form-control select2bs4">  
                             <option value="">--select project name</option>
-                          
-                            <option value="#">Noubody Housing Limited</option>
-                         
+                             @foreach($projects as $project)
+                             <option value="{{ $project->id }}">{{$project->name}}</option>
+                             @endforeach
                         </select>  
                           </div>
                         </div>
@@ -40,7 +41,7 @@
                         <label>&nbsp;&nbsp; From Month</label>
                           <div class="col-md-12 col-sm-12">
                           <!-- <input type="text" id="from_date"> -->
-                             <input type="text" required name="from_date" id="from_date" class="form-control" placeholder="From Date For Trading Account">
+                             <input type="text" required name="from_date" id="from_date" class="form-control" placeholder="From Date For Daily Expenditure">
                           </div>
                         </div>
                     </div>
@@ -49,7 +50,7 @@
                         <div class="form-group">
                         <label>&nbsp;&nbsp; To Month</label>
                           <div class="col-md-12 col-sm-12">
-                             <input type="text" required id="to_date" class="form-control" name="to_date" placeholder="To Date For Trading Account">
+                             <input type="text" required id="to_date" class="form-control" name="to_date" placeholder="To Date For Daily Expenditure">
                           </div>
                         </div>
                     </div>

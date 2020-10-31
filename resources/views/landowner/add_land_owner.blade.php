@@ -35,16 +35,16 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Project Name</label>
-                                <select name="project_name" class="form-control" id="">
-                                    <option value="">--select project name--</option>
-                                    @foreach ($projects as $project)
-                                        <option value="{{ $project->id }}">{{ $project->name }}</option>
-                                    @endforeach
-                                </select>  
-                                @if($errors->has('project_name'))
-                                    <strong class="text-danger">{{ $errors->first('project_name') }}</strong>
-                                @endif                    
+                        <label>Project Name</label>
+                            <select class="form-control select2bs4" style="width: 100%;height:80%!important;" data-select2-id="1" name="project_name" id="">
+                                <option value="">--select project name--</option>
+                                @foreach ($projects as $project)
+                                    <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                @endforeach
+                            </select>  
+                            @if($errors->has('project_name'))
+                                <strong class="text-danger">{{ $errors->first('project_name') }}</strong>
+                            @endif                    
                         </div>
                     </div>
                 </div>
@@ -345,7 +345,7 @@
     
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Upload File</label>
+                    <label>Upload Document</label>
                     <input type="file" name="upload_file" class="form-control">
                     @if($errors->has('upload_file'))
                         <strong class="text-danger">{{ $errors->first('upload_file') }}</strong>
@@ -368,10 +368,15 @@
 
   @section('custom_js')
 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
   <script>
+      $('.select2').select2()
+      //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
 
       $( "#registration_date" ).datepicker({dateFormat: 'yy-mm-dd'});
 

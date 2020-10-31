@@ -9,14 +9,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/report_print.css') }}" />
     <title>Trial Balance</title>
+    <style>
+      @media print {
+          #myPrntbtn {
+              display :  none;
+          }
+      }
+    </style>
   </head>
   <body>
     <br>
-    {{-- <button class="print-button ml-5" id="print-button">Print Page</button> --}}
-    <button onclick="print_current_page()">Print this page</button>
-
+       <input id ="myPrntbtn" type="button" value="Print" onclick="window.print();" >
       <br><br>
-      <h3 class="text-center">{{ $trial_balance_details[0]->name }}</h3>
+      <h3 class="text-center">{{$projectDetails[0]->name}}</h3>
       <h3 class="text-center">Trial Balance (Fund Flow Statement)</h3>
       <h3 class="text-center">From {{ $from_dat }} to {{ $to_dat }}</h3>
     <br><br>
@@ -24,6 +29,7 @@
 
 <div class="card ml-5 mr-5">
     <div class="card-body">
+      @if(count($trial_balance_details))
         <table class="table">
             <thead class="thead-dark">
               <tr>
@@ -35,9 +41,10 @@
             </thead>
             <tbody>
 
-              @if(count($trial_balance_details))
+
                   
                 @php $cr_sum = 0; $dr_sum = 0; @endphp
+
                 @foreach ($trial_balance_details as $item)
                  @php
                  if ($item->voucher_type == 'CR') {
@@ -46,14 +53,12 @@
                  if ($item->voucher_type == 'DR') {
                   $dr_sum+= $item->amount;
                  }
-                    // $cr_sum+= $item->voucher_type == 'CR' ? $item->amount : 0;
-                    // $dr_sum+= $item->voucher_type == 'DR' ? $item->amount : 0;
                  @endphp
                 <tr>
                     <th> {{ $loop->iteration }}</th>
                     <td>{{ $item->ledger_name }}</td>
-                    <td>{{ $item->voucher_type == 'DR' ? number_format($item->amount) : '0'}}</td>
-                    <td>{{ $item->voucher_type == 'CR' ? number_format($item->amount) : '0'}}</td>
+                    <td>{{ $item->voucher_type == 'DR' ? number_format($item->amount) : 0}}</td>
+                    <td>{{ $item->voucher_type == 'CR' ? number_format($item->amount) : 0}}</td>
                   </tr>
                 @endforeach
     
@@ -69,20 +74,27 @@
     
                 </tr>
     
-            </tbody>
-            @else
-            <h3>There is no data found</h3>
-           @endif  
+            </tbody> 
           </table>
+          @else
+            <h3 class="text-center text-danger">There is no data found!</h3>
+          @endif 
     </div>
 
 </div>
-    <script>
-function print_current_page()
-{
-window.print();
-}
-    </script>
+
+<script>
+  function printMyPage() {
+        //Get the print button
+        var printButton = document.getElementById("myPrntbtn");
+        //Hide the print button 
+        printButton.style.visibility = 'hidden';
+        //Print the page content
+        window.print()
+        //Show back the print button on web page 
+        printButton.style.visibility = 'visible';
+    }
+</script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

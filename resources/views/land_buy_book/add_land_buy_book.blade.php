@@ -72,7 +72,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Date</label>
-                    <input type="text" name="date" id="date" class="form-control" placeholder="Date">
+                    <input class="form-control select2bs4" type="text" name="date" id="date" class="form-control" placeholder="Date">
                     @if($errors->has('date'))
                         <strong class="text-danger">{{ $errors->first('date') }}</strong>
                     @endif

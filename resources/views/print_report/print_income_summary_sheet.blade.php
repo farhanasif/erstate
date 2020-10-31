@@ -5,6 +5,13 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <link rel="stylesheet" type="text/css" media="all" href="{{ URL::to('css/report_print.css') }}" />
 @endsection
+<style>
+@media print {
+    #myPrntbtn {
+        display :  none;
+    }
+}
+</style>
 
 @section('breadcrumb-title', 'Daily Income Summary Sheet')
 
@@ -16,76 +23,66 @@
             <div class="card">
             
                 <div class="card-body">
-                <button class="text-right text-warning" onclick="print_current_page()">Print this page</button>
-                  <h5 style="text-align:center">Noboudoy Purbachal City<br/>Daily Income Summary Sheet</h5><p style="text-align:center">For Financial Year 2019-2020</p>
+                  <input id ="myPrntbtn" type="button" value="Print" onclick="window.print();" >
+                  <h5 style="text-align:center">{{$projectDetails[0]->name}}<br/>Daily Income Summary Sheet</h5><p style="text-align:center">{{ $from_dat }} To {{ $to_dat }}</p>
                 </div>
-            
+                <?php $total_income = 0; $total_expentiture_amount=0;?>
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
                   <thead>                  
                     <tr>
-                      <th style="width: 10px">Serial No</th>
-                      <th style="width: 10px">Voucher No</th>
-                      <th style="width: 40px">Head Of Income</th>
-                      <th style="width: 10px">Cash</th>
-                      <th style="width: 20px">Bank</th>
-                      <th style="width: 10px">Total</th>
+                      <th style="text-align:center;">Serial No</th>
+                      <th style="text-align:center;">Voucher No</th>
+                      <th style="text-align:center;">Head Of Income</th>
+                      <th style="text-align:center;">Payment Type</th>
+                      <th style="text-align:center;">Total</th>
                     </tr>
                   </thead>
                   <tbody>
+                  @foreach ($income as $item)
+                  <?php $total_income += $item->amount; ?>
                     <tr>
-                      <td>1.</td>
-                      <td>7667667676</td>
-                      <td>Sales promosational ex.-news papes</td>
-                      <td>97878778</td>
-                      <td>Sonali Bank</td>
-                      <td>97878778</td>
+                      <td style="text-align:center;">{{ $loop->iteration }}</td>
+                      <td style="text-align:center;">{{$item->v_no}}</td>
+                      <td>{{$item->l_name}}</td>
+                      <td style="text-align:center;">
+                        @if($item->bank_name=="Cash")
+                          <button class="btn btn-primary btn-xs">Cash</button>
+                        @else
+                        <button class="btn btn-warning btn-xs">{{$item->bank_name}}</button>
+                        @endif
+                      </td> 
+                      <td style="text-align:right;">{{$item->amount}}</td>
                     </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>7667667676</td>
-                      <td>Sales promosational ex.-news papes</td>
-                      <td>97878778</td>
-                      <td>Sonali Bank</td>
-                      <td>97878778</td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>7667667676</td>
-                      <td>Sales promosational ex.-news papes</td>
-                      <td>97878778</td>
-                      <td>Sonali Bank</td>
-                      <td>97878778</td>
-                    </tr>
+                  @endforeach
                     <tr>
                       <td></td>
                       <td></td>
-                      <td style=" font-weight: bold;">Total Expenditure Taka</td>
+                      <td style=" font-weight: bold;text-align:right;">Total Expenditure Taka</td>
                       <td></td>
-                      <td></td>
-                      <td style=" font-weight: bold;">7878797878778 /=</td>
+                      <td style=" font-weight: bold;text-align:right;">{{ number_format($total_income )}} /=</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
-              <div class="row">
+              <div class="row" hidden>
                 <div class="col-sm-4">
                     <div class="card-body">
-                        <h5 style="font-size: 110%;" class="card-title">Prepared By</h5><br>
+                        <h5 style="font-size: 110%;" class="card-title">Prepared By</h5><hr style="float:left;margin-left:-90px;width:35%;margin-top:30px; color:blue;border-top: 1px dashed #8c8b8b;;"><br>
                         <p class="card-text">Executive <br/>Finance & Accounts</p>           
                     </div>    
                 </div>
                 <div class="col-sm-4">   
                     <div class="card-body">
-                        <h5 style="font-size: 110%;" class="card-title">Checked By</h5><br>
+                        <h5 style="font-size: 110%;" class="card-title">Checked By</h5><hr style="float:left;margin-left:-90px;width:35%;margin-top:30px; color:blue;border-top: 1px dashed #8c8b8b;;"><br>
                         <p class="card-text">General Manager <br/>Finance & Accounts</p>     
                     </div> 
                 </div>
                 <div class="col-sm-4">   
                     <div class="card-body">
-                        <h5 style="font-size: 110%;" class="card-title">Approved By</h5>
+                        <h5 style="font-size: 110%;" class="card-title">Approved By</h5><hr style="float:left;margin-left:-90px;width:35%;margin-top:30px; color:blue;border-top: 1px dashed #8c8b8b;;">
                         <p class="card-text">Chirman/Managing Director</p>
                     </div> 
                 </div>
@@ -103,9 +100,15 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 
-function print_current_page()
-    {
-      window.print();
+ function printMyPage() {
+        //Get the print button
+        var printButton = document.getElementById("myPrntbtn");
+        //Hide the print button 
+        printButton.style.visibility = 'hidden';
+        //Print the page content
+        window.print()
+        //Show back the print button on web page 
+        printButton.style.visibility = 'visible';
     }
 </script>
 

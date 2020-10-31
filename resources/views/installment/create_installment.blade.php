@@ -3,8 +3,8 @@
 @section('breadcrumb-title', 'Create Installment Information')
 
 @section('custom_css')
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css"> -->
 @endsection
 
 @section('content')
@@ -27,7 +27,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label> Project</label>
-                    <select name="project_name" class="form-control" id="project_name">
+                    <select name="project_name" class="form-control select2bs4" id="project_name">
                         <option value="">--select project name--</option>
                         @foreach ($projects as $project)
                             <option value="{{ $project->id}}">{{ $project->name}}</option>
@@ -125,10 +125,15 @@
 
   @section('custom_js')
 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
   <script>
+
+  //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
 
     $(document).ready(function() {
           $("#project_name").change("change", function() {
